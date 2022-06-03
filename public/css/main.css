@@ -1,0 +1,80 @@
+
+habit-thinking {
+    display: block;
+    position: relative;
+    margin: 1em 0;
+    padding-left: 28px;
+    cursor: pointer;
+    user-select: none; /* テキストの選択を防ぐ */
+}
+th {
+    background-color: rgba(199, 209, 202, 0.356);
+    width: 15%;
+}
+
+div.columns {
+    column-count: 4;
+    column-gap: 30px;
+    
+    margin: 10;
+    padding: 0;
+  }
+
+.habit {
+    width: 140px;
+}
+body {
+    margin-bottom: 50px;
+    word-break: break-word;
+}
+.wrap_thinking {
+    column-count: 3;
+}
+p {
+    line-height: 2.0;
+  }
+.button_wrapper{
+    text-align: right;
+}
+.button_wrappe_left {
+    text-align: left;
+}
+.page {
+    text-align: center;
+}
+.under_line {
+    text-decoration:underline;
+}
+
+.buttons-first {
+    display: inline-block;
+    margin:  20px 20px 20px 0px;
+}
+
+.buttons {
+    display: inline-block;
+    margin: 20px 20px;
+}
+
+.welcome {
+    margin-top: 70px; 
+}
+
+label.heading {
+    font-weight: 500;
+}
+
+h3.title_head { 
+    margin: 20px 0px 20px 0px;
+}
+div.serch {
+    margin: 20px 0px 20px 0px;
+}
+
+div.card {
+    margin-top: 50px;
+}
+
+div.pages {
+    margin: 30px;
+}
