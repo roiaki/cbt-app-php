@@ -8,7 +8,7 @@ habit-thinking {
 }
 
 th {
-    background-color: rgba(214, 216, 224, 0.956);
+    background-color: rgba(224, 223, 214, 0.956);
     text-align: center;
     width: 15%;
 }
@@ -88,4 +88,12 @@ div.pages {
 
 div.jumbotron {
     margin-top: 30px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #FFFFCC;
 }

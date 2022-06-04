@@ -132,6 +132,15 @@ if (5 <= $hour && $hour <= 12) {
     <div class="container">
       @yield('content')
     </div>
+
+    <footer class="footer">
+      <!-- Copyright -->
+      <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2022 Copyright: roiaki All rights reserved.</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+
     <script src="{{ asset('/js/main.js') }}"></script>
     <script src="{{ mix('/js/app.js') }}"></script>
     
@@ -142,9 +151,6 @@ if (5 <= $hour && $hour <= 12) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
-
-    
-    
+     
 </body>
-
 </html>
