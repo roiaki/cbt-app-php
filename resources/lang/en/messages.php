@@ -17,7 +17,7 @@ return [
 
     'info_sentence01' => 'Recall and describe events that are depressed or have negative thoughts.',
     'info_sentence02' => 'Please remember and describe the events that I want to change my way of thinking in a negative way. Write down how you thought and felt in three columns. Also, check if there are any unpleasant habits in the process of thinking.',
-    'info_sentence03' => 'Please click the "7 Column Creation Button" from the 3 column details page to enter. Verify based on objective facts and modify to a balanced and favorable cognition.',
+    'info_sentence03' => 'Please click the "7Column Creation Button" of the 3column details page to enter. Verify based on objective facts and modify to a Realistic, balanced favorable cognition.',
     
     
 ];
