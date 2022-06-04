@@ -95,7 +95,7 @@ return [
     'numeric' => ':attributeは数字で入力してください。',
     'present' => ':attributeは存在する必要があります。',
     'regex' => ':attributeの書式が不正です。',
-    'required' => ':attribute を入力してください。',
+    'required' => ':attributeを入力してください。',
     'required_if' => ':otherが:valueの時、:attributeを入力してください。',
     'required_unless' => ':otherが:valuesでない時、:attributeを入力してください。',
     'required_with' => ':valuesが存在する時、:attributeを入力してください。',
@@ -161,8 +161,7 @@ return [
         'basis_thinking' => '考えの根拠',
         'opposite_fact' => '逆の事実',
         'new_thinking' => '新しい考え',
-        'new_emotion' => '新しい感情',
-        'new_emotion_strength' => '新しい感情の強さ'
+        'new_emotion' => '新しい感情'
     ],
 
 ];

@@ -9,8 +9,8 @@
 
     <table class="table table-bordered">
       <tr>
-        <th>作成日</th>
-        <th>更新日</th>
+        <th>作成日時</th>
+        <th>最終変更日時</th>
         <th>id</th>
         <th>出来事ID</th>
         <th>3コラムID</th>
