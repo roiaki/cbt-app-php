@@ -128,11 +128,14 @@ if (5 <= $hour && $hour <= 12) {
         </div>
       @endif
          
-
+    <!-- ページ　-->
     <div class="container">
-      @yield('content')
+      <main>
+        @yield('content')
+      </main>
     </div>
 
+    <!-- フッター -->
     <footer class="footer">
       <!-- Copyright -->
       <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
@@ -143,7 +146,7 @@ if (5 <= $hour && $hour <= 12) {
 
     <script src="{{ asset('/js/main.js') }}"></script>
     <script src="{{ mix('/js/app.js') }}"></script>
-    
+
     <!-- jQuery読み込み -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 

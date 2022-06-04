@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="jumbotron" style="background:url(images/welcome_image.png); background-size:cover;">>
+    <div class="jumbotron" style="background:url(images/welcome_image.png); background-size:cover;">
       <div class="text-center">
         <h1>{{ __('messages.welcome_title') }}</h1>
         <p style="margin-top:20px">{{ __('messages.sentence01') }}<br>{{ __('messages.sentence02') }}</p>

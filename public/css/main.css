@@ -1,4 +1,5 @@
-habit-thinking {
+habit-thinking 
+{
     display: block;
     position: relative;
     margin: 1em 0;
@@ -7,93 +8,120 @@ habit-thinking {
     user-select: none; /* テキストの選択を防ぐ */
 }
 
-th {
+th 
+{
     background-color: rgba(224, 223, 214, 0.956);
     text-align: center;
     width: 15%;
 }
 
-div.columns {
+div.columns 
+{
     column-count: 4;
     column-gap: 30px;
     margin: 10;
     padding: 0;
 }
 
-.habit {
+.habit 
+{
     width: 140px;
 }
 
-body {
+body 
+{
     margin-bottom: 50px;
     word-break: break-word;
 }
 
-.wrap_thinking {
+.wrap_thinking 
+{
     column-count: 3;
 }
 
-p {
+p 
+{
     line-height: 2.0;
 }
 
-.button_wrapper{
+.button_wrapper
+{
     text-align: right;
 }
-.button_wrappe_left {
+
+.button_wrappe_left 
+{
     text-align: left;
 }
 
-.page {
+.page 
+{
     text-align: center;
 }
 
-.under_line {
+.under_line 
+{
     text-decoration:underline;
 }
 
-.buttons-first {
+.buttons-first 
+{
     display: inline-block;
     margin:  20px 20px 20px 0px;
 }
 
-.buttons {
+.buttons 
+{
     display: inline-block;
     margin: 20px 20px;
 }
 
-.welcome {
+.welcome 
+{
     margin-top: 70px; 
 }
 
-label.heading {
+label.heading 
+{
     font-weight: 500;
 }
 
-h3.title_head { 
+h3.title_head 
+{ 
     margin: 20px 0px 20px 0px;
 }
 
-div.serch {
+div.serch 
+{
     margin: 20px 0px 20px 0px;
 }
 
-div.card {
+div.card 
+{
     margin-top: 50px;
 }
 
-div.pages {
+div.pages 
+{
     margin: 30px;
 }
 
-div.jumbotron {
-    margin-top: 30px;
+div.jumbotron 
+{
+    margin-top: 40px;
 }
 
-.footer {
+main 
+{
+    padding-bottom: 60px; 
+}
+
+.footer 
+{
+    margin-top: 50px;
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 60px;
+    height: 70px;
     background-color: #FFFFCC;
 }
