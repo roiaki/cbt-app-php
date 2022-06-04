@@ -7,7 +7,7 @@
         <h1>{{ __('messages.welcome_title') }}</h1>
         <p style="margin-top:20px">{{ __('messages.sentence01') }}<br>{{ __('messages.sentence02') }}</p>
         <h2 style="margin-top:30px">May your heart suffer less</h2>
-        <div style="margin-top:40px">
+        <div style="margin-top:310px">
         {!! link_to_route('signup.get', __('messages.register'), [], ['class' => 'btn btn-lg btn-primary']) !!}
         </div>
       </div>
