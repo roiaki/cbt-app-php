@@ -25,7 +25,11 @@
         <div class="form-group">
           <!-- 内容 -->
           <label class="heading" for="content">{{ __('event.create_contents') }}</label>
-          <textarea class="form-control" id="content" name="content" cols="90" rows="7">{{ old('content') }}</textarea>
+          <textarea class="form-control" 
+                    id="content" 
+                    name="content" 
+                    cols="90" 
+                    rows="7">{{ old('content') }}</textarea>
 
           <!-- バリデーションエラー表示-->
           @if($errors->has('content'))
