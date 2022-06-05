@@ -33,11 +33,11 @@ if (5 <= $hour && $hour <= 12) {
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-  
 </head>
 
 <body>
-  <header class="mb-4">
+<div class="footerFixed">
+  <header class="">
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
       <a class="navbar-brand fw-bold ml-5" href="/events">CBT APP</a>
 
@@ -120,25 +120,25 @@ if (5 <= $hour && $hour <= 12) {
         </ul>
       </div>
     </nav>
-      <!-- フラッシュメッセージ -->
-      @if(session('flash_message'))
-        <div class="d-block mx-auto img-fluid w-50 alert alert-success justify-content-center col-5" id="flash">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          {{session('flash_message')}}
-        </div>
-      @endif
-         
+  </header>
+    <!-- フラッシュメッセージ -->
+    @if(session('flash_message'))
+      <div class="d-block mx-auto img-fluid w-50 alert alert-success justify-content-center col-5" id="flash">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{session('flash_message')}}
+      </div>
+    @endif
+          
     <!-- ページ　-->
-    <div class="container">
-      <main>
+    <main>
+      <div class="container">
         @yield('content')
-      </main>
-    </div>
-
+      </div>
+    </main>
     <!-- フッター -->
     <footer class="footer">
       <!-- Copyright -->
-      <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+      <div class="text-center p-4">
         © 2022 Copyright: roiaki All rights reserved.</a>
       </div>
       <!-- Copyright -->
@@ -154,6 +154,7 @@ if (5 <= $hour && $hour <= 12) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
-     
+  
+</div>
 </body>
 </html>
