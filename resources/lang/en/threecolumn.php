@@ -12,31 +12,41 @@ return [
     "detail" => "Detail",
   
     
-    // 新規作成ページ
-    "create_headtitle" => "出来事　新規作成",
-    "create_title" => "タイトル",
-    "create_contents" => "内容",
-    "create_button" => "出来事作成",
-    "back" => "戻る",
+     // 3コラム作成ページ
+     "page_title" => "3 column new creation",
+     "1-1_title" => "1-1 Event title",
+     "1-2_title" => "1-2 Contents of the event",
+     
+     "2-1_title" => "2-1 Emotion name",
+     "2-2_title" => "2-2 strength",
+     
+     "3-1_title" => "3-1 What You thought at that time",
+     "3-2_title" => "3-2 Way of thinking",
+ 
+     "2-1_sentence" => "Point: How did you feel at that time?",
+     "2-2_sentence" => "Point: How strong is that feeling?",
+     
+     "3-1_sentence" => "Point: Choose the thought that has the most influence on your emotions (hot thinking)",
+     "3-2_sentence" => "Point: Check if there is a habit of being biased in thinking",
+ 
+     "habitName01" => "Too generalized",
+     "habitName02" => "Association to yourself",
+     "habitName03" => "Unfounded reasoning",
+     "habitName04" => "White or black thinking",
+     "habitName05" => "Thinking to be done",
+     "habitName06" => "Overestimation and underestimation",
+     "habitName07" => "Emotional branding",
+ 
+     "habitContents01" => "・ Think like [always] or [not all] based on only one event or failure.",
+     "habitContents02" => "・ When something bad happens, I judge that it is my responsibility even if it is not related to me.",
+     "habitContents03" => "・ Hurry up to a conclusion without clear evidence and think negatively.",
+     "habitContents04" => "・ Think of things in white or black.",
+     "habitContents05" => "・ Thinking that [should, must]",
+     "habitContents06" => "・ Overestimate your shortcomings and failures and underestimate your strengths and successes.",
+     "habitContents07" => "・ Judge the situation based on how you feel, not on objective facts.",
 
-    // 詳細ページ
-    "event_detail_head" => "出来事 詳細ページ  ",
-    "event_id" => "出来事ID",
-    "created_day" => "作成日",
-    
-    "title" => "タイトル",
-    "content" => "内容",
-
-    "create_threecolumn_button" => "３コラム作成",
-    "edit" => "編集",
-    "delete" => "削除",
-
-    // 編集ページ
-    "event_edit_head" => "出来事編集ページ",
-    "event_edit_title" => "タイトル",
-    "event_edit_content" => "内容",
-    "update_button" => "更新",
-    ""
+     "buttonCreate" => "Creation",
+     "buttonBack" => "Back",
     
 ];
 

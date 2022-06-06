@@ -35,7 +35,7 @@ return [
     "event_edit_title" => "タイトル",
     "event_edit_content" => "内容",
     "update_button" => "更新",
-    ""
+    
     
 ];
 

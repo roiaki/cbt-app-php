@@ -10,38 +10,42 @@ return [
     "thinking" => "考えたこと",
     "updated_day" => "更新日",
     "detail" => "詳細",
-  
-    
-    // 出来事新規作成ページ
-    "create_headtitle" => "出来事　新規作成",
-    "create_title" => "タイトル",
-    "create_contents" => "内容",
-    "create_button" => "出来事作成",
-    "back" => "戻る",
-
-    // 詳細ページ
-    "event_detail_head" => "出来事 詳細ページ  ",
-    "event_id" => "出来事ID",
-    "created_day" => "作成日",
-    "updated_day" => "更新日",
-    "title" => "タイトル",
-    "content" => "内容",
-
-    "create_threecolumn_button" => "３コラム作成",
-    "edit" => "編集",
-    "delete" => "削除",
-
-    // 編集ページ
-    "event_edit_head" => "出来事編集ページ",
-    "event_edit_title" => "タイトル",
-    "event_edit_content" => "内容",
-    "update_button" => "更新",
     
     // 3コラム作成ページ
-    "create_column_title" => "3コラム新規作成",
-    'create_emotion_name' => '2-1 感情名',
-    'create_emotion_strenght' => '2-2 強さ',
+    "page_title" => "3コラム新規作成",
+    "1-1_title" => "1-1 出来事のタイトル",
+    "1-2_title" => "1-2 出来事の内容",
+    
+    "2-1_title" => "2-1 感情名",
+    "2-2_title" => "2-2 強さ",
+    
+    "3-1_title" => "3-1 その時考えたこと",
+    "3-2_title" => "3-2 考え方の癖",
 
+    "2-1_sentence" => "ポイント：その時どんな気持ちになったでしょう。",
+    "2-2_sentence" => "ポイント：その気持ちの強さはどのくらい？",
+    
+    "3-1_sentence" => "ポイント：感情に一番影響を与えている考えを選ぶ（ホットな思考）",
+    "3-2_sentence" => "ポイント：考え方に偏った癖がないかチェック",
+
+    "habitName01" => "一般化のし過ぎ",
+    "habitName02" => "自分への関連付け",
+    "habitName03" => "根拠のない推論",
+    "habitName04" => "白か黒か思考",
+    "habitName05" => "すべき思考",
+    "habitName06" => "過大評価と過少評価",
+    "habitName07" => "感情による決めつけ",
+
+    "habitContents01" => "・1つの出来事や失敗だけを根拠に「いつも～だ」「すべて～ない」のように考える。",
+    "habitContents02" => "・何か良くないことが起こった時、自分に関係ないとこまで自分の責任だと判断する。",
+    "habitContents03" => "・はっきりした証拠がないまま結論を急ぎ、否定的にあれこれ考える。",
+    "habitContents04" => "・ものごとを白が黒で考える。",
+    "habitContents05" => "・「～すべきだ、～しなければならない」といった思考",
+    "habitContents06" => "・自分の欠点や失敗を実際より過大に考え、長所や成功を過少評価する。",
+    "habitContents07" => "・客観的事実ではなく自分がどのように感じているかという事を元に状況を判断する。",
+    
+    "buttonCreate" => "作成",
+    "buttonBack" => "戻る",
     
 ];
 
