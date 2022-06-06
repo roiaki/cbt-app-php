@@ -12,7 +12,7 @@ return [
     "detail" => "詳細",
   
     
-    // 新規作成ページ
+    // 出来事新規作成ページ
     "create_headtitle" => "出来事　新規作成",
     "create_title" => "タイトル",
     "create_contents" => "内容",
@@ -36,7 +36,12 @@ return [
     "event_edit_title" => "タイトル",
     "event_edit_content" => "内容",
     "update_button" => "更新",
-    ""
+    
+    // 3コラム作成ページ
+    "create_column_title" => "3コラム新規作成",
+    'create_emotion_name' => '2-1 感情名',
+    'create_emotion_strenght' => '2-2 強さ',
+
     
 ];
 

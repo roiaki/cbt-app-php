@@ -149,14 +149,14 @@
             </tr>
             
             <tr>
-              <td align="center">
+              <td>
                 {{$three_column->emotion_name }}
                 <input type="hidden"
                        name="new_emotion_name"
                        value="{{$three_column->emotion_name }}"
                 >
               </td>
-              <td align="center">
+              <td>
                 {{$three_column->emotion_strength }}
               </td>
               <td align="center">
@@ -168,8 +168,9 @@
               </td>
             </tr>
 
+            @if(isset($three_column->emotion_name00))
             <tr>
-              <td align="center">       
+              <td>       
                 @if(isset($three_column->emotion_name00))
                   {{$three_column->emotion_name00 }}
                   <input type="hidden"
@@ -178,13 +179,13 @@
                   >
                 @endif
               </td>
-              <td align="center">
+              <td>
                   @if(isset($three_column->emotion_strength00))
                     {{$three_column->emotion_strength00 }}
                   @endif
               </td>
               @if(isset($three_column->emotion_strength00))
-                <td align="center">
+                <td>
                   <input type="number" 
                         class="form-control mt-2" 
                         id="new_emotion_strength00" 
@@ -193,10 +194,12 @@
                 </td>
               @endif
             </tr>
+            @endif
 
+            @if(isset($three_column->emotion_name01))
             <tr>
               @if(isset($three_column->emotion_name01))
-                <td align="center">       
+                <td>       
                   {{$three_column->emotion_name01 }}
                   <input type="hidden"
                          name="new_emotion_name01"
@@ -206,13 +209,13 @@
               @endif
 
               @if(isset($three_column->emotion_strength01))
-                <td align="center">
+                <td>
                   {{$three_column->emotion_strength01 }} 
                 </td>
               @endif
 
               @if(isset($three_column->emotion_strength01))
-                <td align="center">
+                <td>
                   <input type="number" 
                         class="form-control mt-2" 
                         id="new_emotion_strength01" 
@@ -221,10 +224,12 @@
                 </td>
               @endif
             </tr>
+            @endif
 
+            @if(isset($three_column->emotion_name02))
             <tr>
               @if(isset($three_column->emotion_name02))
-                <td align="center">       
+                <td>       
                   {{$three_column->emotion_name02 }}
                   <input type="hidden"
                         name="new_emotion_name02"
@@ -234,13 +239,13 @@
               @endif
 
               @if(isset($three_column->emotion_strength02))
-                <td align="center">
+                <td>
                   {{$three_column->emotion_strength02 }} 
                 </td>
               @endif
 
               @if(isset($three_column->emotion_strength02))
-                <td align="center">
+                <td>
                   <input type="number" 
                          class="form-control mt-2" 
                          id="new_emotion_strength02" 
@@ -249,6 +254,8 @@
                </td>
               @endif
             </tr>
+            @endif
+            
           </table>
           
           <!-- バリデーションエラーメッセージ-->

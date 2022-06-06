@@ -4,7 +4,7 @@
 
 <div class="row justify-content-center"> 
   <div class="col-sm-7">
-    <h3 class="title_head">３コラム新規作成</h3>
+    <h3 class="title_head">{{ __('threecolumn.create_column_title') }}</h3>
       <!-- model 第一引数：Modelのインスタンス、第二引数：連想配列　-->
       <form action="{{ route('three_columns.store') }}" method="POST">
         @csrf
@@ -55,7 +55,10 @@
       <div class="row">
       
         <div class="form-group col">
-          <label for="emotion_name">2-1 感情名</label>
+          <label for="emotion_name"><h5>{{ __('threecolumn.create_emotion_name') }}</h5></label>
+          <p class="alert alert-success" role="alert">
+            ポイント：その時どんな気持ちになったでしょう。
+          </p>
           <input type="text"
                  class="form-control"
                  id="emotion_name_def"
@@ -74,7 +77,10 @@
         </div>
 
         <div class="form-group col">
-          <label for="emotion_strength">2-2 強さ</label>
+          <label for="emotion_strength"><h5>2-2 強さ</h5></label>
+          <p class="alert alert-success" role="alert">
+            ポイント：その気持ちの強さはどのくらい？
+          </p>
           <input type="number"
                  class="form-control"
                  id="emotion_strength_def"
@@ -116,35 +122,32 @@
                        @keypress.shift.enter="addInput">
               </div>
             
-              <!-- 入力ボックスの削除ボタン -->
-              <button type="button" 
-                      class="btn btn-outline-danger btn-sm" 
-                      @click="removeInput(index)">削除</button>
-        
-            </div>
-            
+            </div>   
         </div>
 
         <!-- 入力ボックスを追加するボタン ② -->
-        <button class="btn btn-info" type="button" @click="addInput" v-if="!isTextMax">
-            追加する
-            （残り<span v-text="remainingTextCount"></span>件）
-        </button>
-        
-        
-        <!-- 確認用 -->
-<!--
-        <hr>
-        <label>textsの中身</label>
-        <div v-text="texts"></div>
-        <div v-text="strength"></div>
--->
-      </div>
-         
+        <div class="btn-toolbar">
+          <div class="btn-group">
+            <button class="btn btn-info" type="button" @click="addInput" v-if="!isTextMax">
+                追加する
+                （残り<span v-text="remainingTextCount"></span>件）
+            </button>
+          </div>
 
-      <div class="form-group">
-        <label for="thinking">3-1 その時考えたこと</label><br>
-        <p>・感情に一番影響を与えている考えを選ぶ</p>
+          <div class="btn-group ml-auto">
+            <button type="button" 
+                    class="btn btn-outline-danger mr-auto" 
+                    v-if="remainingTextCount < 3"
+                    @click="removeInput(index)">削除する</button>
+            </div>
+          </div>
+        </div>
+
+      <div class="form-group mt-4">
+        <label for="thinking"><h5>3-1 その時考えたこと</h5></label>
+        <p class="alert alert-success" role="alert">
+            ポイント：感情に一番影響を与えている考えを選ぶ
+        </p>
         <textarea class="form-control" 
                   id="thinking" 
                   name="thinking" 
@@ -161,7 +164,10 @@
         @endif
       </div>
 
-      <label>3-2 考え方の癖</label>
+      <label class="mt-3"><h5>3-2 考え方の癖</h5></label>
+      <p class="alert alert-success" role="alert">
+            ポイント：考え方に偏った癖がないかチェック
+      </p>
       <div class="form-group">
       
         <div class="form-check form-check-inline">
