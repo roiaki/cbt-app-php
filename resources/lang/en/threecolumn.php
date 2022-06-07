@@ -56,13 +56,14 @@ return [
      "title04" => "EventID",
      "title05" => "3columnID",
 
-     "buttonCreate7" => "Create",
+     "buttonCreate7" => "7ColumnCreate",
      "buttonEdit" => "Edit",
      "buttonDelete" => "Delete",
 
      "editPageTitle" => "3 Column edit page",
      "buttonUpdate" => "Update",
     
+     // 7コラム作成ページ
 ];
 
 ?>

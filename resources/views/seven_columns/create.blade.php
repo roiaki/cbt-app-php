@@ -4,7 +4,7 @@
 
 <div class="row justify-content-center">
   <div class="col-sm-8">
-  <h3 class="title_head">７コラム新規作成</h3>
+  <h3 class="title_head">{{ __('sevencolumn.createPageTitle') }}</h3>
     <!-- model 第一引数：Modelのインスタンス、第二引数：連想配列　-->
     <form action="{{ route('seven_columns.store') }}" method="POST">
       @csrf
@@ -13,7 +13,7 @@
       <input type="hidden" name="event_id" value="{{ $three_column->event_id }}">
       
       <div class="form-group">
-        <label for="title"><h5>①-1　出来事 の タイトル</h5></label>
+        <label for="title"><h5>{{ __('sevencolumn.1-1_title') }}</h5></label>
         <!-- idはグローバル属性であり、HTML内の全ての要素に適用される。
                  name属性はHTMLの特定の要素（フォーム要素）主にバックエンド
             -->
@@ -36,7 +36,7 @@
       </div>
 
       <div class="form-group">
-        <label for="content"><h5>①-2  出来事 の 内容</h5></label>
+        <label for="content"><h5>{{ __('sevencolumn.1-2_title') }}</h5></label>
         <textarea class="form-control" 
                   id="content" 
                   name="content" 
@@ -55,7 +55,7 @@
       </div>
       
       <div class="form-group">
-        <label for="thinking"><h5>③　その時考えたこと</h5></label>
+        <label for="thinking"><h5>{{ __('sevencolumn.3-1_title') }}</h5></label>
         <p>ポイント：言い訳せずに簡単な言葉で表現する</p>
         <textarea class="form-control" 
                   id="thinking" 
@@ -75,9 +75,9 @@
       </div>
 
       <div class="form-group mt-5">
-        <label for="basis_thinking"><h5>④　自分の考えの根拠</h5></label>
+        <label for="basis_thinking"><h5>{{ __('sevencolumn.4_title') }}</h5></label>
         <p class="alert alert-success" role="alert">
-          ポイント：客観的であるとベスト。<br>人から尋ねられた時に「だって」と説明するように
+          {{ __('sevencolumn.4_sentence') }}
         </p>
         <textarea class="form-control" 
                   id="basis_thinking" 
@@ -96,8 +96,10 @@
       </div>
 
       <div class="form-group mt-5">
-        <label for="opposite_fact"><h5>⑤　逆の事実</h5></label>
-        <p class="alert alert-success" role="alert">ポイント：「でも」そう考えなくても良いのでは？</p>
+        <label for="opposite_fact"><h5>{{ __('sevencolumn.5_title') }}</h5></label>
+        <p class="alert alert-success" role="alert">
+          {{ __('sevencolumn.5_sentence') }}
+        </p>
         <textarea class="form-control" 
                   id="opposite_fact" 
                   name="opposite_fact" 
@@ -115,8 +117,10 @@
       </div>
 
       <div class="form-group mt-5">
-        <label for="new_thinking"><h5>⑥　新しい考え方</h5></label>
-        <p class="alert alert-success" role="alert">ポイント：④と考えられるけど、⑤とも考えられる</p>
+        <label for="new_thinking"><h5>{{ __('sevencolumn.6_title') }}</h5></label>
+        <p class="alert alert-success" role="alert">
+        {{ __('sevencolumn.6_sentence') }}
+        </p>
         <textarea class="form-control" 
                   id="new_thinking" 
                   name="new_thinking" 
@@ -134,18 +138,17 @@
       </div>
 
       <div class="form-group mt-5">
-        <label for="new_emotion"><h5>⑦  新しい感情</h5></label>
+        <label for="new_emotion"><h5>{{ __('sevencolumn.7_title') }}</h5></label>
         <p class="alert alert-success" role="alert">
-          ポイント：「⑥新しい考え」のように考えると、<br>
-          抱いていた感情の強さはどう変わった？
+        {{ __('sevencolumn.7_sentence') }}
         </p>
 
         <div class="mt-3">
           <table class="table table-bordered">
             <tr>
-              <th>感情名</th>
-              <th>以前の感情の強さ</th>
-              <th>新しい感情の強さ</th></tr>
+              <th>{{ __('sevencolumn.emotion_name') }}</th>
+              <th>{{ __('sevencolumn.prev_emotion_strength') }}</th>
+              <th>{{ __('sevencolumn.new_emotion_strength') }}</th></tr>
             </tr>
             
             <tr>
@@ -271,11 +274,11 @@
   
         <input type="submit" 
                class="btn btn-primary btn-lg" 
-               value="7コラム作成"
+               value="{{ __('sevencolumn.button_create') }}"
         >
 
         <div class="buttons">
-          <button type="button" class="btn btn-secondary btn-lg" onclick="history.back(-1)">戻る</button>
+          <button type="button" class="btn btn-secondary btn-lg" onclick="history.back(-1)">{{ __('sevencolumn.button_back') }}</button>
         </div>
 
     </form>
