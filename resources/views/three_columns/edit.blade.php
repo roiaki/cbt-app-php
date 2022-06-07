@@ -4,7 +4,7 @@
 
 <div class="row justify-content-center">
   <div class="col-sm-7">
-  <h3 class="title_head">3コラム編集 ( id={{ $three_column->id }} )</h3>
+  <h3 class="title_head">{{ __('threecolumn.editPageTitle') }} ( id={{ $three_column->id }} )</h3>
     <!-- 'route' => ['messages.update', $message->id] というルーティング指定になります。
         配列の2つ目に $message->id を入れることで 
         update の URL である /messages/{message} の {message} に id が入ります
@@ -17,10 +17,10 @@
 
       <div class="form-group">
         <!-- タイトル -->
-        <label for="title">出来事 の タイトル</label>
+        <label for="title"><h5>{{ __('threecolumn.1-1_title') }}</h5></label>
         <!-- idはグローバル属性であり、HTML内の全ての要素に適用される。
                  name属性はHTMLの特定の要素（フォーム要素）主にバックエンド
-            -->
+        -->
         <input type="text" 
                class="form-control" 
                id="title" 
@@ -41,7 +41,7 @@
 
       <div class="form-group">
         <!-- 内容 -->
-        <label for="content">出来事 の 内容</label>
+        <label for="content"><h5>{{ __('threecolumn.1-2_title') }}</h5></label>
         <textarea class="form-control" 
                   id="content" 
                   name="content" 
@@ -61,7 +61,7 @@
 
       <div class="row">
         <div class="form-group col">
-          <label for="emotion_name">感情名</label>
+          <label for="emotion_name"><h5>{{ __('threecolumn.2-1_title') }}</h5></label>
           <input type="text" 
                 class="form-control" 
                 id="emotion_name" 
@@ -140,7 +140,7 @@
         </div>
 
         <div class="form-group col">
-          <label for="emotion_strength">感情の強さ</label>
+          <label for="emotion_strength"><h5>{{ __('threecolumn.2-2_title') }}</h5></label>
           <input type="number" 
                 class="form-control" 
                 id="emotion_strength" 
@@ -189,7 +189,7 @@
       </div>
 
       <div class="form-group">
-        <label for="thinking">その時考えたこと</label><br>
+        <label for="thinking"><h5>{{ __('threecolumn.3-1_title') }}</h5></label><br>
         <textarea class="form-control" 
                   id="thinking" 
                   name="thinking" 
@@ -206,7 +206,9 @@
         @endif
       </div>
 
+      
       <div class="form-group">
+        <h5>{{ __('threecolumn.3-2_title') }}</h5>
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[0]" id="1" 
           <?php
@@ -215,10 +217,10 @@
             }
           ?>>
           <label class="form-check-label" for="1">
-            一般化のし過ぎ
+          {{ __('threecolumn.habitName01') }}
           </label>
         </div>
-        <p>・1つの出来事や失敗だけを根拠に「いつも～だ」「すべて～ない」のように考える。</p>
+        <p>{{ __('threecolumn.habitContents01') }}</p>
 
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[1]" id="2" 
@@ -228,10 +230,10 @@
             }
           ?>>
           <label class="form-check-label" for="2">
-            自分への関連付け
+          {{ __('threecolumn.habitName02') }}
           </label>
         </div>
-        <p>・何か良くないことが起こった時、自分に関係ないとこまで自分の責任だと判断する。</p>
+        <p>{{ __('threecolumn.habitContents02') }}</p>
 
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[2]" id="3" 
@@ -241,10 +243,10 @@
             }
           ?>>
           <label class="form-check-label" for="3">
-            根拠のない推論
+          {{ __('threecolumn.habitName03') }}
           </label>
         </div>
-        <p>・はっきりした証拠がないまま結論を急ぎ、否定的にあれこれ考える。</p>
+        <p>{{ __('threecolumn.habitContents03') }}</p>
 
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[3]" id="4" 
@@ -254,10 +256,10 @@
             }
           ?>>
           <label class="form-check-label" for="4">
-            白か黒か思考
+          {{ __('threecolumn.habitName04') }}
           </label>
         </div>
-        <p>・ものごとを白が黒で考える。</p>
+        <p>{{ __('threecolumn.habitContents04') }}</p>
 
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[4]" id="5" 
@@ -267,10 +269,10 @@
             }
           ?>>
           <label class="form-check-label" for="5">
-            すべき思考
+          {{ __('threecolumn.habitName05') }}
           </label>
         </div>
-        <p>・「～すべきだ、～しなければならない」といった思考</p>
+        <p>{{ __('threecolumn.habitContents05') }}</p>
 
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[5]" id="6" 
@@ -280,10 +282,10 @@
             }
           ?>>
           <label class="form-check-label" for="6">
-            過大評価と過少評価
+          {{ __('threecolumn.habitName06') }}
           </label>
         </div>
-        <p>・自分の欠点や失敗を実際より過大に考え、長所や成功を過少評価する。</p>
+        <p>{{ __('threecolumn.habitContents06') }}</p>
 
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[6]" id="7" 
@@ -293,10 +295,10 @@
             }
           ?>>
           <label class="form-check-label" for="7">
-            感情による決めつけ
+          {{ __('threecolumn.habitName07') }}
           </label>
         </div>
-        <p>・客観的事実ではなく自分がどのように感じているかという事を元に状況を判断する。</p>
+        <p>{{ __('threecolumn.habitContents07') }}</p>
         
         <!-- 必須バリデーション表示-->
         @if($errors->has('habit'))
@@ -308,10 +310,10 @@
         @endif
       </div>
 
-      <input type="submit" class="btn btn-primary btn-lg" value="更新">
+      <input type="submit" class="btn btn-primary btn-lg" value="{{ __('threecolumn.buttonUpdate') }}">
 
       <div class="buttons">
-        <button type="button" class="btn btn-secondary btn-lg" onclick="history.back(-1)">戻る</button>
+        <button type="button" class="btn btn-secondary btn-lg" onclick="history.back(-1)">{{ __('threecolumn.buttonBack') }}</button>
       </div>
     </form>
   </div>

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    // 一覧ページ
+    // 3コラム一覧ページ
     "three_title" => "3コラム一覧",
     "search_word" => "検索キーワード",
     "search" => "検索",
@@ -46,6 +46,24 @@ return [
     
     "buttonCreate" => "作成",
     "buttonBack" => "戻る",
+
+    // 3コラム詳細ページ
+    "showPageTitle" => "3コラム詳細ページ",
+    "title01" => "作成日",
+    "title02" => "更新日",
+    "title03" => "ユーザID",
+    "title04" => "出来事ID",
+    "title05" => "3コラムID",
+
+    "buttonCreate7" => "7コラム作成",
+    "buttonEdit" => "編集",
+    "buttonDelete" => "削除",
+
+    // 3コラム編集ページ
+    "editPageTitle" => "3コラム編集ページ",
+    "buttonUpdate" => "更新",
+
+
     
 ];
 

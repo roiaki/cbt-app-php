@@ -3,15 +3,15 @@
 @section('content')
 <div class="row justify-content-center">
   <div class="col-sm-7">
-    <h3 class="title_head">３コラム詳細ページ　( id={{ $three_column->id }} )</h3>
+    <h3 class="title_head">{{ __('threecolumn.showPageTitle') }}　( id={{ $three_column->id }} )</h3>
 
     <table class="table table-bordered">
       <tr>
-        <th>作成日時</th>
-        <th>最終変更日時</th>
-        <th>ユーザーID</th>
-        <th>出来事ID</th>
-        <th>3コラムID</th>
+        <th>{{ __('threecolumn.title01') }}</th>
+        <th>{{ __('threecolumn.title02') }}</th>
+        <th>{{ __('threecolumn.title03') }}</th>
+        <th>{{ __('threecolumn.title04') }}</th>
+        <th>{{ __('threecolumn.title05') }}</th>
       </tr>
 
       <tr>
@@ -25,8 +25,8 @@
 
     <table class="table table-bordered">
       <tr>
-        <th>1-1 タイトル</th>
-        <th>1-2 内容</th>
+        <th>{{ __('threecolumn.1-1_title') }}</th>
+        <th>{{ __('threecolumn.1-2_title') }}</th>
       </tr>
 
       <tr>
@@ -37,8 +37,8 @@
 
     <table class="table table-bordered">
       <tr>
-        <th>2-1 感情</th>
-        <th>2-2 強さ</th>
+        <th>{{ __('threecolumn.2-1_title') }}</th>
+        <th>{{ __('threecolumn.2-2_title') }}</th>
         </th>
       </tr>
       <tr>
@@ -71,7 +71,7 @@
 
     <table class="table table-bordered" class="table table-bordered">
       <tr>
-        <th width="70%">3 その時考えた事</th>
+        <th width="70%">{{ __('threecolumn.3-1_title') }}</th>
       </tr>
       <tr>
         <td width="70%">{{ $three_column->thinking }}</td>
@@ -80,31 +80,40 @@
 
 
     <table class="table table-bordered">
-
       <tr>
-        <th>考え方の癖</th>
+        <th>{{ __('threecolumn.3-2_title') }}</th>
       </tr>
       <tr>
         <td>
           <div class="form-group">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="habit[0]" id="1" <?php
-                                                                                      if (in_array(1, $habit_id)) {
-                                                                                        echo 'checked';
-                                                                                      }
-                                                                                      ?>>
+              <input class="form-check-input" 
+                     type="checkbox" 
+                     name="habit[0]" 
+                     id="1" 
+                     <?php
+                       if (in_array(1, $habit_id)) {
+                         echo 'checked';
+                       }
+                     ?>
+              >
               <label class="form-check-label" for="1">
-                一般化のし過ぎ
+              {{ __('threecolumn.habitName01') }}
               </label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="habit[0]" id="1" <?php
-                                                                                      if (in_array(2, $habit_id)) {
-                                                                                        echo 'checked';
-                                                                                      }
-                                                                                      ?>>
+              <input class="form-check-input" 
+                     type="checkbox" 
+                     name="habit[0]" 
+                     id="1" 
+                     <?php
+                       if (in_array(2, $habit_id)) {
+                         echo 'checked';
+                       }
+                     ?>
+              >
               <label class="form-check-label" for="1">
-                自分への関連付け
+                {{ __('threecolumn.habitName02') }}
               </label>
             </div>
             <div class="form-check form-check-inline">
@@ -114,7 +123,7 @@
                                                                                       }
                                                                                       ?>>
               <label class="form-check-label" for="1">
-                根拠のない推論
+                {{ __('threecolumn.habitName03') }}              
               </label>
             </div>
             <div class="form-check form-check-inline">
@@ -124,7 +133,7 @@
                                                                                       }
                                                                                       ?>>
               <label class="form-check-label" for="1">
-                白か黒か思考
+                {{ __('threecolumn.habitName04') }}
               </label>
             </div>
             <div class="form-check form-check-inline">
@@ -134,7 +143,7 @@
                                                                                       }
                                                                                       ?>>
               <label class="form-check-label" for="1">
-                すべき思考
+                {{ __('threecolumn.habitName05') }}
               </label>
             </div>
             <div class="form-check form-check-inline">
@@ -144,7 +153,7 @@
                                                                                       }
                                                                                       ?>>
               <label class="form-check-label" for="1">
-                過大評価と過少評価
+                {{ __('threecolumn.habitName06') }}
               </label>
             </div>
             <div class="form-check form-check-inline">
@@ -154,7 +163,7 @@
                                                                                       }
                                                                                       ?>>
               <label class="form-check-label" for="1">
-                感情による決めつけ
+                {{ __('threecolumn.habitName07') }}
               </label>
             </div>
           </div>
@@ -166,26 +175,26 @@
     <div class="buttons-first">
       <form action="{{ route('seven_columns.create', ['id' => $three_column->id]) }}" method="get">
         @CSRF
-        <button type="submit" class="btn btn-success btn-lg">7コラム作成</button>
+        <button type="submit" class="btn btn-success btn-lg">{{ __('threecolumn.buttonCreate7') }}</button>
       </form>
     </div>
 
     <div class="buttons">
       <form action="{{ route('three_columns.edit', ['param' => $three_column->id] ) }}" method="get">
         @CSRF
-        <button type="submit" class="btn btn-secondary btn-lg">編集</button>
+        <button type="submit" class="btn btn-secondary btn-lg">{{ __('threecolumn.buttonEdit') }}</button>
       </form>
     </div>
 
     <div class="buttons">
       <form action="{{ route('three_columns.destroy', ['param' => $three_column->id] ) }}" method="post">
         @CSRF
-        <button type="submit" class="btn btn-danger btn-lg" onclick="return confirmDelete();">削除</button>
+        <button type="submit" class="btn btn-danger btn-lg" onclick="return confirmDelete();">{{ __('threecolumn.buttonDelete') }}</button>
       </form>
     </div>
 
     <div class="buttons">
-      <button class="btn btn-primary btn-lg" onclick="history.back(-1)">戻る</button>
+      <button class="btn btn-primary btn-lg" onclick="history.back(-1)">{{ __('threecolumn.buttonBack') }}</button>
     </div>
   </div>
 </div>

@@ -21,7 +21,7 @@ return [
      "2-2_title" => "2-2 strength",
      
      "3-1_title" => "3-1 What You thought at that time",
-     "3-2_title" => "3-2 Way of thinking",
+     "3-2_title" => "3-2 The habit of thinking",
  
      "2-1_sentence" => "Point: How did you feel at that time?",
      "2-2_sentence" => "Point: How strong is that feeling?",
@@ -47,6 +47,21 @@ return [
 
      "buttonCreate" => "Creation",
      "buttonBack" => "Back",
+
+     // 3コラム詳細ページ
+     "showPageTitle" => "3 column detail page",
+     "title01" => "Created Day",
+     "title02" => "Updated Day",
+     "title03" => "UserID",
+     "title04" => "EventID",
+     "title05" => "3columnID",
+
+     "buttonCreate7" => "Create",
+     "buttonEdit" => "Edit",
+     "buttonDelete" => "Delete",
+
+     "editPageTitle" => "3 Column edit page",
+     "buttonUpdate" => "Update",
     
 ];
 
