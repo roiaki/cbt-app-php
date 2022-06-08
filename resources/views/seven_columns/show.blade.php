@@ -5,16 +5,16 @@
 <!-- ここにページ毎のコンテンツを書く -->
 <div class="row justify-content-center">
   <div class="col-sm-7">
-    <h3 class="title_head">7コラム詳細ページ ( id = {{ $seven_column->id }} )</h3>
+    <h3 class="title_head">{{ __('sevencolumn.sevenShowPageTitle') }} ( id = {{ $seven_column->id }} )</h3>
 
     <table class="table table-bordered">
       <tr>
-        <th>作成日</th>
-        <th>更新日</th>
-        <th>id</th>
-        <th>出来事ID</th>
-        <th>3コラムID</th>
-        <th>ユーザーID</th>
+        <th>{{ __('sevencolumn.created_day') }}</th>
+        <th>{{ __('sevencolumn.updated_day') }}</th>
+        <th>{{ __('sevencolumn.id') }}</th>
+        <th>{{ __('sevencolumn.eventId') }}</th>
+        <th>{{ __('sevencolumn.3colId') }}</th>
+        <th>{{ __('sevencolumn.userId') }}</th>
       </tr>
 
       <tr>
@@ -30,7 +30,7 @@
 
     <table class="table table-bordered">
       <tr>
-        <th>タイトル</th>
+        <th>{{ __('sevencolumn.1-1_title') }}</th>
       </tr>
       <tr>
         <td>{{ $event->title }}</td>
@@ -39,7 +39,7 @@
 
     <table class="table table-bordered">
       <tr>
-        <th>内容</th>
+        <th>{{ __('sevencolumn.1-2_title') }}</th>
       </tr>
       <tr>
         <td>{{ $event->content }}</td>
@@ -48,7 +48,7 @@
 
     <table class="table table-bordered">
       <tr>
-        <th>その時考えた事</th>
+        <th>{{ __('sevencolumn.3-1_title') }}</th>
       </tr>
       <tr>
         <td>{{ $three_column->thinking }}</td>
@@ -57,7 +57,7 @@
     
     <table class="table table-bordered">
       <tr>
-        <th>考え方の癖</th>
+        <th>{{ __('sevencolumn.3-2_title') }}</th>
       </tr>
       <td><?php foreach ($habit_names as $name) {
             echo "・" . $name . "<br>";
@@ -69,7 +69,7 @@
 
     <table class="table table-bordered">
       <tr>
-        <th>その考えの根拠</th>
+        <th>{{ __('sevencolumn.4_title') }}</th>
       </tr>
       <tr>
         <td>{{ $seven_column->basis_thinking }}</td>
@@ -78,7 +78,7 @@
 
     <table class="table table-bordered">
       <tr>
-        <th>逆の事実</th>
+        <th>{{ __('sevencolumn.5_title') }}</th>
       </tr>
       <tr>
         <td>{{ $seven_column->opposite_fact }}</td>
@@ -87,7 +87,7 @@
 
     <table class="table table-bordered">
       <tr>
-        <th>新しい考え</th>
+        <th>{{ __('sevencolumn.6_title') }}</th>
       </tr>
       <tr>
         <td>{{ $seven_column->new_thinking }}</td>
@@ -96,12 +96,12 @@
 
     <table class="table table-bordered">
       <tr>
-        <th colspan="3">感情の変化</th>
+        <th colspan="3">{{ __('sevencolumn.emotion_change') }}</th>
       </tr>
       <tr>
-        <td>感情名</td>
-        <td>以前の感情の強さ</td>
-        <td>新しい感情の強さ</td>
+        <td>{{ __('sevencolumn.emotion_name') }}</td>
+        <td>{{ __('sevencolumnprev_emotion_strength') }}</td>
+        <td>{{ __('sevencolumn.new_emotion_strength') }}</td>
       </tr>
       <tr>
         <td>{{ $seven_column->new_emotion_name }}</td>

@@ -4,7 +4,7 @@
 
 <div class="row justify-content-center">
   <div class="col-sm-7">
-    <h3 class="title_head">7コラム一覧</h3>
+    <h3 class="title_head">{{ __('sevencolumn.pageTitle') }}</h3>
     
     <!--↓↓ 検索フォーム ↓↓-->
     <div class="row">
@@ -15,9 +15,9 @@
             <input type="text" 
                    name="keyword" 
                    value="@if ( !empty($keyword) ){{ $keyword }}@endif"
-                   class="form-control" placeholder="検索キーワード">
+                   class="form-control" placeholder="{{ __('sevencolumn.search_word') }}">
                    
-            <input type="submit" value="検索" class="btn btn-info">
+            <input type="submit" value="{{ __('sevencolumn.search') }}" class="btn btn-info">
           </div>          
         </form>
       </div>
@@ -29,10 +29,10 @@
       <table class="table table-striped table-bordered">
         <thead>
           <tr class="table-primary">
-            <th>id</th>
-            <th>タイトル</th>
-            <th>内容</th>
-            <th>更新日</th>
+            <th>{{ __('sevencolumn.id') }}</th>
+            <th>{{ __('sevencolumn.title') }}</th>
+            <th>{{ __('sevencolumn.content') }}</th>
+            <th>{{ __('sevencolumn.updated_day') }}</th>
           </tr>
         </thead>
         <tbody>
@@ -50,7 +50,7 @@
             </td>
 
             <td>{{ date( 'Y/m/d H:i', strtotime($seven_column->updated_at) ) }}
-              <p><a href="{{ route('seven_columns.show', $seven_column->id) }}">詳細</a></p>
+              <p><a href="{{ route('seven_columns.show', $seven_column->id) }}">{{ __('sevencolumn.detail') }}</a></p>
             </td>
           </tr>
           @endforeach

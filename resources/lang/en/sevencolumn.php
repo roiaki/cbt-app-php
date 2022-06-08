@@ -1,6 +1,17 @@
 <?php
 
 return [
+
+    // 3コラム一覧ページ
+    "pageTitle" => "7 Column list",
+    "search_word" => "Search keyword",
+    "search" => "search",
+    "id" => "7 Column ID",
+    "title" => "Title",
+    "content" => "Content",
+    "updated_day" => "Updated day",
+    "detail" => "Detail",
+ 
     // 3コラム作成ページ
     "createPageTitle" => "7 Column New page",
 
@@ -30,6 +41,12 @@ return [
     "button_create" => "Create",
     "button_back" => "Back",
     
-
+    // 7コラム詳細ページ
+    "sevenShowPageTitle" => "7 Column detail page",
+    "created_day" => "Created date",
+    "eventId" => "Event ID",
+    "3colId" => "3 Column ID",
+    "userId" => "userID",
+    "emotion_change" => "emotion change",
     ]
 ?>

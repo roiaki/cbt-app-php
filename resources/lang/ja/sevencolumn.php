@@ -1,7 +1,19 @@
 <?php
 
 return [
-    // 3コラム作成ページ
+
+    // 3コラム一覧ページ
+    "pageTitle" => "7コラム一覧",
+    "search_word" => "検索キーワード",
+    "search" => "検索",
+    "id" => "7コラムID",
+    "title" => "タイトル",
+    "content" => "内容",
+    "updated_day" => "更新日",
+    "detail" => "詳細",
+
+
+    // ７コラム作成ページ
     "createPageTitle" => "7コラム新規作成",
 
     "1-1_title" => "1-1 出来事のタイトル",
@@ -29,7 +41,16 @@ return [
 
     "button_create" => "作成",
     "button_back" => "戻る",
+
+    // 7コラム詳細ページ
+    "sevenShowPageTitle" => "7コラム詳細ページ",
+    "created_day" => "作成日",
+    "eventId" => "出来事ID",
+    "3colId" => "3コラムID",
+    "userId" => "ユーザID",
+    "emotion_change" => "感情の変化",
     
 
+    
     ]
 ?>
