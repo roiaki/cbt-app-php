@@ -15,4 +15,5 @@ yarn-error.log
 /.vscode
 vendor/
 db/
-# test
+Procfile
+/.settings/
