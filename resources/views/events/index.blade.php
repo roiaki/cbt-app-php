@@ -42,7 +42,7 @@
               {{ $event->content}}
               @endif
             </td>
-            <td>{{ date( 'Y n/d H:i', strtotime($event->updated_at) ) }}
+            <td>{{ date( 'Y n/j H:i', strtotime($event->updated_at) ) }}
               <p><a href="{{ route('events.show', $event->id) }}">{{ __('event.detail') }}</a></p>
             </td>
           </tr>

@@ -49,7 +49,7 @@
               @endif
             </td>
 
-            <td>{{ date( 'Y/m/d H:i', strtotime($seven_column->updated_at) ) }}
+            <td>{{ date( 'Y/n/j H:i', strtotime($seven_column->updated_at) ) }}
               <p><a href="{{ route('seven_columns.show', $seven_column->id) }}">{{ __('sevencolumn.detail') }}</a></p>
             </td>
           </tr>
