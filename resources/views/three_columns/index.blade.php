@@ -40,7 +40,7 @@
             <td>{{ $three_column->emotion_name }}</td>
             <td>
               @if (mb_strlen($three_column->thinking) > 25)
-              {{ $thinking = mb_substr($three_column->thinking, 0, 25 ) . "....."; }}
+              {{ $thinking = mb_substr($three_column->thinking, 0, 25 ) . "..."; }}
               @else
               {{ $three_column->thinking }}
               @endif

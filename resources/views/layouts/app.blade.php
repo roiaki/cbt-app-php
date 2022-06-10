@@ -1,13 +1,27 @@
 <?php
 
-$hour = date("H");
-if (5 <= $hour && $hour <= 12) {
-  $msg = "おはようございます";
-} else if (17 < $hour || $hour < 5) {
-  $msg = "こんばんは";
-} else {
-  $msg = "こんにちは";
+if (session()->get('applocale') == 'ja') {
+  $hour = date("H");
+  if (5 <= $hour && $hour <= 12) {
+    $msg = "おはようございます";
+  } else if (17 < $hour || $hour < 5) {
+    $msg = "こんばんは";
+  } else {
+    $msg = "こんにちは";
+  }
+} elseif(session()->get('applocale') == 'en') {
+  $hour = date("H");
+  if (5 <= $hour && $hour <= 12) {
+    $msg = "good morning";
+  } else if (17 < $hour || $hour < 5) {
+    $msg = "good evning";
+  } else {
+    $msg = "hello";
+  }
 }
+$data = session()->all();
+//var_dump($data);
+
 
 ?>
 
@@ -37,9 +51,9 @@ if (5 <= $hour && $hour <= 12) {
 
 <body>
 <div class="footerFixed">
-  <header class="">
+  <header>
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
-      <a class="navbar-brand fw-bold ml-5" href="/events">CBT APP</a>
+      <a class="navbar-brand font-weight-bold ml-5" href="/events">CBT APP</a>
 
       <!-- 横幅が狭い時に出るハンバーガーボタン -->
       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
@@ -52,16 +66,21 @@ if (5 <= $hour && $hour <= 12) {
           @if(Auth::check())
           
             <div class="d-flex align-items-center">
-              ID {!! $id = Auth::user()->id; !!} 番 {!! $name = Auth::user()->name; !!} さん、{{ $msg; }}
+              <p style="margin-right:10px">
+                ID {{ $id = Auth::user()->id; }}
+              </p> 
+              <p> {{ __('messages.en_mr_ms')}}
+                {{ $name = Auth::user()->name; }} {{ __('messages.ja_mr_ms') }} {{ $msg; }}
+              </p>
             </div>
           
-            <li class="nav-item">{!! link_to_route('users.info',  __('auth.info'), [], ['class' => 'nav-link']) !!}</li>
-            <li class="nav-item">{!! link_to_route('events', '出来事一覧', [], ['class' => 'nav-link']) !!}</li>
-            <li class="nav-item">{!! link_to_route('three_columns', '3コラム一覧', [], ['class' => 'nav-link']) !!}</li>
-            <li class="nav-item">{!! link_to_route('seven_columns', '7コラム一覧', [], ['class' => 'nav-link']) !!}</li>
+            <li class="nav-item font-weight-bold ml-3">{!! link_to_route('users.info',  __('messages.info'), [], ['class' => 'nav-link']) !!}</li>
+            <li class="nav-item font-weight-bold">{!! link_to_route('events', __('messages.event_list'), [], ['class' => 'nav-link']) !!}</li>
+            <li class="nav-item font-weight-bold">{!! link_to_route('three_columns', __('messages.3col_list') , [], ['class' => 'nav-link']) !!}</li>
+            <li class="nav-item font-weight-bold mr-3">{!! link_to_route('seven_columns', __('messages.7col_list'), [], ['class' => 'nav-link']) !!}</li>
 
             <!-- 言語切り替え -->
-            <li class="dropdown d-flex align-items-center" id="nav-lang">
+            <li class="dropdown d-flex align-items-center font-weight-bold" id="nav-lang">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 {{ Config::get('languages')[App::getLocale()] }}
                 <span class="caret"></span></a>
@@ -77,19 +96,19 @@ if (5 <= $hour && $hour <= 12) {
             </li>
             <!-- 言語切り替え -->
             
-            <div class="dropdown d-flex align-items-center mr-3">
-              <button class="btn btn-default dropdown-toggle" 
+            <div class="dropdown d-flex align-items-center mr-3 font-weight-bold">
+              <button class="btn btn-default dropdown-toggle font-weight-bold" 
                       type="button" 
                       id="dropdownMenu1" 
                       data-toggle="dropdown" 
                       aria-haspopup="true" 
                       aria-expanded="false">
-                アカウント
+                {{ __('messages.account') }}
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li>{!! link_to_route('logout.get', 'ログアウト', [], ['class' => 'nav-link']) !!}</li>
-                <li>{!! link_to_route('users.delete_confirm', '退会', [], ['class' => 'nav-link']) !!}</li>
+                <li>{!! link_to_route('logout.get', __('messages.logout'), [], ['class' => 'nav-link']) !!}</li>
+                <li>{!! link_to_route('users.delete_confirm', __('messages.withdrawal'), [], ['class' => 'nav-link']) !!}</li>
               </ul>
             </div>
 
@@ -112,8 +131,8 @@ if (5 <= $hour && $hour <= 12) {
             <!-- 言語切り替え -->
             
             <li class="nav-item">{!! link_to_route('top', 'TOP', [], ['class' => 'nav-link']) !!}</li>
-            <li class="nav-item">{!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link']) !!}</li>
-            <li class="nav-item">{!! link_to_route('signup.get', '会員登録', [], ['class' => 'nav-link']) !!}</li>
+            <li class="nav-item">{!! link_to_route('login', __('auth.Login'), [], ['class' => 'nav-link']) !!}</li>
+            <li class="nav-item">{!! link_to_route('signup.get', __('auth.Register'), [], ['class' => 'nav-link']) !!}</li>
 
           @endif
         </ul>

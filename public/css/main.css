@@ -15,10 +15,8 @@ th
     width: 15%;
 }
 
-td
-{
-    text-align: center;
-}
+
+
 
 div.columns 
 {
@@ -37,6 +35,7 @@ body
 {
     font-size: 17px;
     word-break: break-word;
+    
 }
 
 .wrap_thinking 
@@ -124,6 +123,7 @@ div.jumbotron
     height: 70px;
     background-color: #FFFFCC;
 }
+
 .footerFixed{
     min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
     position: relative;/* ←相対位置 */

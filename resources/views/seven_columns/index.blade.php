@@ -43,7 +43,7 @@
             
             <td>  
               @if (mb_strlen($seven_column->opposite_fact) > 25)
-                {{ $short_content = mb_substr($seven_column->opposite_fact, 0, 25 ) . "....."; }}
+                {{ $short_content = mb_substr($seven_column->opposite_fact, 0, 25 ) . "..."; }}
               @else
                 {{ $seven_column->opposite_fact }}
               @endif

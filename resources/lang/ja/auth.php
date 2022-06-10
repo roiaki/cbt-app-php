@@ -22,6 +22,7 @@ return [
     "E-Mail Address" => "メールアドレス",
     "Password" => "パスワード",
     "Remember Me" => "ログイン状態を保存",
+    
     // 登録ページ 
     "Register" => "新規登録",
     "Name" => "お名前",
@@ -30,18 +31,12 @@ return [
     "info" => "説明",
     "event_title" => "出来事一覧",
 
-   
-   
     "Forgot Your Password?" => "パスワードを忘れた場合",
     "Reset Password" => "パスワード再設定",
     "Send Password Reset Link" =>  "パスワード再設定URLを送信",
-
   
     "E-Mail Address" => "メールアドレス",
     
-
- 
-
     "Hello!" => "ご利用ありがとうございます。",
     "Reset Password Notification" =>  "パスワード再設定のお知らせ",
     "You are receiving this email because we received a password reset request for your account." => "あなたのアカウントでパスワード再発行のリクエストがありました。",
