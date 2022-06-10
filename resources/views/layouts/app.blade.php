@@ -18,6 +18,15 @@ if (session()->get('applocale') == 'ja') {
   } else {
     $msg = "hello";
   }
+} elseif(session()->get('applocale') == 'uk') {
+  $hour = date("H");
+  if (5 <= $hour && $hour <= 12) {
+    $msg = "good morning";
+  } else if (17 < $hour || $hour < 5) {
+    $msg = "good evning";
+  } else {
+    $msg = "hello";
+  }
 }
 $data = session()->all();
 //var_dump($data);
