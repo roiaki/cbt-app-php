@@ -1,5 +1,5 @@
 <?php
-
+/*
 if (session()->get('applocale') == 'ja') {
   $hour = date("H");
   if (5 <= $hour && $hour <= 12) {
@@ -29,7 +29,9 @@ if (session()->get('applocale') == 'ja') {
   }
 }
 $data = session()->all();
-//var_dump($data);
+//var_dump($data,$msg);
+
+*/
 
 
 ?>
@@ -78,8 +80,8 @@ $data = session()->all();
               <p style="margin-right:10px">
                 ID {{ $id = Auth::user()->id; }}
               </p> 
-              <p> {{ __('messages.en_mr_ms')}}
-                {{ $name = Auth::user()->name; }} {{ __('messages.ja_mr_ms') }} {{ $msg; }}
+              <p> {{ __('messages.en_mr_ms') }}
+                Welcom {{ $name = Auth::user()->name; }} {{ __('messages.ja_mr_ms') }} 
               </p>
             </div>
           
