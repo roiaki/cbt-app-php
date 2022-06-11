@@ -85,7 +85,7 @@ $data = session()->all();
               </p>
             </div>
           
-            <li class="nav-item font-weight-bold ml-3">{!! link_to_route('users.info',  __('messages.info'), [], ['class' => 'nav-link']) !!}</li>
+            <li class="nav-item font-weight-bold">{!! link_to_route('users.info',  __('messages.info'), [], ['class' => 'nav-link']) !!}</li>
             <li class="nav-item font-weight-bold">{!! link_to_route('events', __('messages.event_list'), [], ['class' => 'nav-link']) !!}</li>
             <li class="nav-item font-weight-bold">{!! link_to_route('three_columns', __('messages.3col_list') , [], ['class' => 'nav-link']) !!}</li>
             <li class="nav-item font-weight-bold mr-3">{!! link_to_route('seven_columns', __('messages.7col_list'), [], ['class' => 'nav-link']) !!}</li>
@@ -105,9 +105,9 @@ $data = session()->all();
                 @endforeach
               </ul>
             </li>
-            <!-- 言語切り替え -->
-            
-            <div class="dropdown d-flex align-items-center mr-3 font-weight-bold">
+            <!-- ここまで言語切り替え -->
+
+            <div class="dropdown font-weight-bold">
               <button class="btn btn-default dropdown-toggle font-weight-bold" 
                       type="button" 
                       id="dropdownMenu1" 
@@ -115,7 +115,7 @@ $data = session()->all();
                       aria-haspopup="true" 
                       aria-expanded="false">
                 {{ __('messages.account') }}
-                <span class="caret"></span>
+                
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <li>{!! link_to_route('logout.get', __('messages.logout'), [], ['class' => 'nav-link']) !!}</li>
@@ -125,7 +125,7 @@ $data = session()->all();
 
           @else
             <!-- 言語切り替え -->
-            <li class="dropdown d-flex align-items-center" id="nav-lang">
+            <li class="dropdown d-flex align-items-center font-weight-bold" id="nav-lang">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 {{ Config::get('languages')[App::getLocale()] }}
                 <span class="caret"></span></a>
@@ -141,9 +141,9 @@ $data = session()->all();
             </li>
             <!-- 言語切り替え -->
             
-            <li class="nav-item">{!! link_to_route('top', 'TOP', [], ['class' => 'nav-link']) !!}</li>
-            <li class="nav-item">{!! link_to_route('login', __('auth.Login'), [], ['class' => 'nav-link']) !!}</li>
-            <li class="nav-item">{!! link_to_route('signup.get', __('auth.Register'), [], ['class' => 'nav-link']) !!}</li>
+            <li class="nav-item font-weight-bold">{!! link_to_route('top', 'TOP', [], ['class' => 'nav-link']) !!}</li>
+            <li class="nav-item font-weight-bold">{!! link_to_route('login', __('auth.Login'), [], ['class' => 'nav-link']) !!}</li>
+            <li class="nav-item font-weight-bold">{!! link_to_route('signup.get', __('auth.Register'), [], ['class' => 'nav-link']) !!}</li>
 
           @endif
         </ul>
