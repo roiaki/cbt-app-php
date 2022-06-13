@@ -115,6 +115,35 @@ div.jumbotron
     margin-top: 40px;
 }
 
+.cbt-title {
+    margin: 8% auto;
+
+}
+.about-cbt {
+    padding: 80px, 30px;
+   
+    text-align: center;
+    background-color: #fff;
+    color: #333;
+}
+.heading {
+    position: relative;
+   
+    margin: 30px 0 15px;
+    letter-spacing: 2px;
+    font-size:2rem;
+
+}
+
+.about-text {
+    margin: 3% 23%;
+    line-height: 2.5;
+}
+
+.works {
+    background-color:  #383634;
+    padding: 80px 0;
+}
 
 .footer 
 {

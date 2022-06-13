@@ -127,7 +127,7 @@ $data = session()->all();
 
           @else
             <!-- 言語切り替え -->
-            <li class="dropdown font-weight-bold" id="nav-lang">
+            <li class="dropdown font-weight-bold pt-2" id="nav-lang">
               <a href="#" class="dropdown-toggle text-black-50" data-toggle="dropdown">
                 {{ Config::get('languages')[App::getLocale()] }}
                 <span class="caret"></span></a>
