@@ -162,8 +162,8 @@ $data = session()->all();
     @endif
           
     <!-- ページ　-->
-    <main>
-      <div class="container">
+    <main class="mb-5">
+      <div class="container mb-6">
         @yield('content')
       </div>
     </main>
