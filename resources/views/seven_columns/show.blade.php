@@ -100,7 +100,7 @@
       </tr>
       <tr>
         <td>{{ __('sevencolumn.emotion_name') }}</td>
-        <td>{{ __('sevencolumnprev_emotion_strength') }}</td>
+        <td>{{ __('sevencolumn.prev_emotion_strength') }}</td>
         <td>{{ __('sevencolumn.new_emotion_strength') }}</td>
       </tr>
       <tr>

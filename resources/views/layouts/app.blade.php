@@ -33,7 +33,6 @@ $data = session()->all();
 
 */
 
-
 ?>
 
 <!DOCTYPE html>
@@ -76,64 +75,56 @@ $data = session()->all();
 
           @if(Auth::check())
           
-            <div class="d-flex align-items-center">
-              <p style="margin-right:10px">
-                ID {{ $id = Auth::user()->id; }}
-              </p> 
-              <p> {{ __('messages.en_mr_ms') }}
-                Welcom {{ $name = Auth::user()->name; }} {{ __('messages.ja_mr_ms') }} 
-              </p>
+            <div class="d-flex align-items-center mr-4 pt-1 text-black-50 font-weight-bold">
+              <p clsss="text-primary">
+                ID : {{ $id = Auth::user()->id; }} {{ __('messages.en_mr_ms') }}&nbsp;
+               {{ $name = Auth::user()->name; }} {{ __('messages.ja_mr_ms') }} 
             </div>
-          
+
             <li class="nav-item font-weight-bold">{!! link_to_route('users.info',  __('messages.info'), [], ['class' => 'nav-link']) !!}</li>
             <li class="nav-item font-weight-bold">{!! link_to_route('events', __('messages.event_list'), [], ['class' => 'nav-link']) !!}</li>
             <li class="nav-item font-weight-bold">{!! link_to_route('three_columns', __('messages.3col_list') , [], ['class' => 'nav-link']) !!}</li>
             <li class="nav-item font-weight-bold mr-3">{!! link_to_route('seven_columns', __('messages.7col_list'), [], ['class' => 'nav-link']) !!}</li>
 
             <!-- 言語切り替え -->
-            <li class="dropdown d-flex align-items-center font-weight-bold" id="nav-lang">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <li class="dropdown font-weight-bold pt-2 mr-3" id="nav-lang">
+              <a href="#" class="dropdown-toggle text-black-50" data-toggle="dropdown" role="button">
                 {{ Config::get('languages')[App::getLocale()] }}
-                <span class="caret"></span></a>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                @foreach (Config::get('languages') as $lang => $language)
-                @if ($lang != App::getLocale())
-                <li>
-                  <a href="{{ route('lang.switch', $lang) }}">{{$language}}</a>
-                </li>
-                @endif
-                @endforeach
-              </ul>
+                <span class="caret"></span>
+              </a>
+                <ul class="dropdown-menu bg-light" aria-labelledby="dropdownMenu1">
+                  @foreach (Config::get('languages') as $lang => $language)
+                  @if ($lang != App::getLocale())
+                  <li>
+                    <a class="text-black-50" href="{{ route('lang.switch', $lang) }}">{{$language}}</a>
+                  </li>
+                  @endif
+                  @endforeach
+               </ul>
             </li>
             <!-- ここまで言語切り替え -->
-
-            <div class="dropdown font-weight-bold">
-              <button class="btn btn-default dropdown-toggle font-weight-bold" 
-                      type="button" 
-                      id="dropdownMenu1" 
-                      data-toggle="dropdown" 
-                      aria-haspopup="true" 
-                      aria-expanded="false">
+            <!-- アカウント -->
+            <li class="dropdown font-weight-bold pt-2" id="nav-lang">
+              <a href="#" class="dropdown-toggle text-black-50" data-toggle="dropdown">
                 {{ __('messages.account') }}
-                
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <span class="caret"></span></a>
+              <ul class="dropdown-menu bg-light text-black-50" aria-labelledby="dropdownMenu1">
                 <li>{!! link_to_route('logout.get', __('messages.logout'), [], ['class' => 'nav-link']) !!}</li>
                 <li>{!! link_to_route('users.delete_confirm', __('messages.withdrawal'), [], ['class' => 'nav-link']) !!}</li>
               </ul>
-            </div>
+            </li>
 
           @else
             <!-- 言語切り替え -->
-            <li class="dropdown d-flex align-items-center font-weight-bold" id="nav-lang">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <li class="dropdown font-weight-bold" id="nav-lang">
+              <a href="#" class="dropdown-toggle text-black-50" data-toggle="dropdown">
                 {{ Config::get('languages')[App::getLocale()] }}
                 <span class="caret"></span></a>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <ul class="dropdown-menu bg-light text-black-50" aria-labelledby="dropdownMenu1">
                 @foreach (Config::get('languages') as $lang => $language)
                 @if ($lang != App::getLocale())
                 <li>
-                  <a href="{{ route('lang.switch', $lang) }}">{{$language}}</a>
+                  <a class="text-black-50" href="{{ route('lang.switch', $lang) }}">{{$language}}</a>
                 </li>
                 @endif
                 @endforeach
