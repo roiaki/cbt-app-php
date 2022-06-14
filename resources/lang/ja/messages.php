@@ -5,7 +5,7 @@ return [
 
     // welcomeページ
     'welcome_title' => '認知行動療法的なWebアプリ',
-    'sentence01' => '3コラム、7コラムで思考の癖を把握して',
+    'sentence01' => '3コラム、7コラム法で自分の考え方を記入して',
     'sentence02' => '認知のゆがみを取りましょう',
     'register' => '会員登録',
     'about-cbt-title' => '認知行動療法とは',

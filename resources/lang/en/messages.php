@@ -5,7 +5,7 @@ return [
 
     // welcomeページ
     'welcome_title' => 'A like Cognitive-behavioral therapy web app',
-    'sentence01' => 'Grasp your thinking habits in columns 3 and 7',
+    'sentence01' => 'Fill in your thinking with the 3-column or 7-column method',
     'sentence02' => 'Lets get rid of cognitive distortion',
     'register' => 'Register',
     'about-cbt-title' => 'What is cognitive behavioral therapy?',
