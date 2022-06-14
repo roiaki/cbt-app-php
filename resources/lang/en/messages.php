@@ -8,6 +8,12 @@ return [
     'sentence01' => 'Grasp your thinking habits in columns 3 and 7',
     'sentence02' => 'Lets get rid of cognitive distortion',
     'register' => 'Register',
+    'about-cbt-title' => 'What is cognitive behavioral therapy?',
+    'about-cbt-message' => 'When we are in trouble as we live, sometimes we face various difficult situations and cannot solve problems or change our minds.
+    It is a psychotherapy that aims to solve problems from a "realistic and balanced" idea that is neither overly optimistic nor pessimistic.',
+    'about-thisapp-title' => 'About this app',
+    'about-thisapp-message' => 'In the course of our lives, we are sometimes faced with various difficult situations and are unable to solve problems or change our minds.
+    This psychotherapy aims to solve problems from a "realistic and balanced" perspective that is neither overly optimistic nor pessimistic.',
 
     // 説明ページ
     'info_title' => 'How to use this app',

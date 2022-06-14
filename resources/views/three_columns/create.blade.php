@@ -4,7 +4,7 @@
 
 <div class="row justify-content-center"> 
   <div class="col-sm-7">
-    <h3 class="title_head">{{ __('threecolumn.page_title') }}</h3>
+    <h3 class="title_head"><h3>{{ __('threecolumn.page_title') }}</h3>
       <!-- model 第一引数：Modelのインスタンス、第二引数：連想配列　-->
       <form action="{{ route('three_columns.store') }}" method="POST">
         @csrf
@@ -12,7 +12,7 @@
 
         <div class="form-group">
 
-          <label for="title">{{ __('threecolumn.1-1_title') }}</label>
+          <label for="title"><h5>{{ __('threecolumn.1-1_title') }}</h5></label>
           <input type="text"
                  class="form-control"
                  id="title"
@@ -33,7 +33,7 @@
 
         <div class="form-group">
           <!-- 内容 -->
-          <label for="content">{{ __('threecolumn.1-2_title') }}</label>
+          <label for="content"><h5>{{ __('threecolumn.1-2_title') }}</h5></label>
           <textarea class="form-control" 
                     id="content" 
                     name="content" 
