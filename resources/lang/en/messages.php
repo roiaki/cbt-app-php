@@ -12,7 +12,7 @@ return [
     'about-cbt-message' => 'When we are in trouble as we live, sometimes we face various difficult situations and cannot solve problems or change our minds.
     It is a psychotherapy that aims to solve problems from a "realistic and balanced" idea that is neither overly optimistic nor pessimistic.',
     'about-thisapp-title' => 'About this app',
-    'about-thisapp-message' => 'In the course of our lives, we are sometimes faced with various difficult situations and are unable to solve problems or change our minds.
+    'about-thisapp-message' => 'This application allows you to write down your own thoughts and feelings following the cognitive-behavioral therapy process (3-column or 7-column method). If they are difficult, they will be changed to favorable ones toward a solution. This is aimed at assisting in such problem solving.
     This psychotherapy aims to solve problems from a "realistic and balanced" perspective that is neither overly optimistic nor pessimistic.',
 
     // 説明ページ
