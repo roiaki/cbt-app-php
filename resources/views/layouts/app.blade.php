@@ -1,40 +1,3 @@
-<?php
-/*
-if (session()->get('applocale') == 'ja') {
-  $hour = date("H");
-  if (5 <= $hour && $hour <= 12) {
-    $msg = "おはようございます";
-  } else if (17 < $hour || $hour < 5) {
-    $msg = "こんばんは";
-  } else {
-    $msg = "こんにちは";
-  }
-} elseif(session()->get('applocale') == 'en') {
-  $hour = date("H");
-  if (5 <= $hour && $hour <= 12) {
-    $msg = "good morning";
-  } else if (17 < $hour || $hour < 5) {
-    $msg = "good evning";
-  } else {
-    $msg = "hello";
-  }
-} elseif(session()->get('applocale') == 'uk') {
-  $hour = date("H");
-  if (5 <= $hour && $hour <= 12) {
-    $msg = "good morning";
-  } else if (17 < $hour || $hour < 5) {
-    $msg = "good evning";
-  } else {
-    $msg = "hello";
-  }
-}
-$data = session()->all();
-//var_dump($data,$msg);
-
-*/
-
-?>
-
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -74,7 +37,7 @@ $data = session()->all();
 <div class="footerFixed">
   <header>
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
-      <a class="navbar-brand font-weight-bold ml-5" href="/events">CBT APP</a>
+      <a class="navbar-brand font-weight-bold ml-5" href="/">CBT APP</a>
 
       <!-- 横幅が狭い時に出るハンバーガーボタン -->
       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
@@ -126,7 +89,7 @@ $data = session()->all();
             </li>
 
           @else
-            <!-- 言語切り替え -->
+            <!-- ここから言語切り替え -->
             <li class="dropdown font-weight-bold pt-2" id="nav-lang">
               <a href="#" class="dropdown-toggle text-black-50" data-toggle="dropdown">
                 {{ Config::get('languages')[App::getLocale()] }}
@@ -141,7 +104,7 @@ $data = session()->all();
                 @endforeach
               </ul>
             </li>
-            <!-- 言語切り替え -->
+            <!-- ここまで言語切り替え -->
             
             <li class="nav-item font-weight-bold">{!! link_to_route('top', 'TOP', [], ['class' => 'nav-link']) !!}</li>
             <li class="nav-item font-weight-bold">{!! link_to_route('login', __('auth.Login'), [], ['class' => 'nav-link']) !!}</li>
