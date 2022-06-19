@@ -8,12 +8,10 @@
         <p style="margin-top:20px">{{ __('messages.sentence01') }}<br>{{ __('messages.sentence02') }}</p>
         <h3 style="margin-top:30px">May you have many Smiles!</h3>
         <div style="margin-top:310px">
-        <button class="btn btn-lg btn-secondary m-3"
-                type="button">
-        {{ __('messages.login') }}
-        </button>
-       
-        {!! link_to_route('signup.get', __('messages.register'), [], ['class' => 'btn btn-lg btn-primary']) !!}
+        @guest
+          {!! link_to_route('login', __('auth.Login'), [], ['class' => 'btn btn-lg btn-primary m-3']) !!}
+          {!! link_to_route('signup.get', __('messages.register'), [], ['class' => 'btn btn-lg btn-secondary']) !!}
+        @endguest
         </div>
       </div>
     </div>
