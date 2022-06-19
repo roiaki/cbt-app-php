@@ -4,7 +4,7 @@ return [
     'welcome_user' => 'ははは',
 
     // welcomeページ
-    'welcome_title' => '認知行動療法的的なWEBアプリ',
+    'welcome_title' => '認知行動療法的なWEBアプリ',
     'sentence01' => '3コラム、7コラム法で自分の考え方を記入して',
     'sentence02' => '認知のゆがみを取りませんか？',
     'register' => '会員登録',
