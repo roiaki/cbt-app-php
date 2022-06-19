@@ -6,8 +6,9 @@ return [
     // welcomeページ
     'welcome_title' => 'A like Cognitive-behavioral therapy web app',
     'sentence01' => 'Fill in your thinking with the 3-column or 7-column method',
-    'sentence02' => 'Lets get rid of cognitive distortion',
+    'sentence02' => 'Would you like to remove cognitive distortions?',
     'register' => 'Register',
+    'login' => 'Login',
     'about-cbt-title' => 'What is cognitive behavioral therapy?',
     'about-cbt-message' => 'When we are in trouble as we live, sometimes we face various difficult situations and cannot solve problems or change our minds.
     It is a psychotherapy that aims to solve problems from a "realistic and balanced" idea that is neither overly optimistic nor pessimistic.',
