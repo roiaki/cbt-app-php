@@ -12,7 +12,7 @@ return [
     "updated_day" => "Updated day",
     "detail" => "Detail",
  
-    // 3コラム作成ページ
+    // 7コラム作成ページ
     "createPageTitle" => "7 Column New page",
 
     "1-1_title" => "1-1 Event title",

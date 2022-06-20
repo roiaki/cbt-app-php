@@ -76,7 +76,7 @@ class EventsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|max:30',
-            'content' => 'required|max:255',
+            'content' => 'required|max:500',
         ]);
 
        $event = new Event;

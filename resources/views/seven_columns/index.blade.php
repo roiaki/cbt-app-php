@@ -30,8 +30,8 @@
         <thead>
           <tr class="table-primary">
             <th>{{ __('sevencolumn.id') }}</th>
-            <th>{{ __('sevencolumn.title') }}</th>
-            <th>{{ __('sevencolumn.content') }}</th>
+            <th>{{ __('sevencolumn.basis_thinking') }}</th>
+            <th>{{ __('sevencolumn.opposite_fact') }}</th>
             <th>{{ __('sevencolumn.updated_day') }}</th>
           </tr>
         </thead>

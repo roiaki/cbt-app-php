@@ -52,7 +52,7 @@ class ThreeColumnsController extends Controller
             [
                 'emotion_name_def' => 'required',
                 'emotion_strength_def' => 'required',
-                'thinking' => 'required',
+                'thinking' => 'required|max:500',
                 'habit' => 'required'
             ]
         );
@@ -87,7 +87,7 @@ class ThreeColumnsController extends Controller
         $this->validate($request, [
             'emotion_name' => 'required',
             'emotion_strength' => 'required',
-            'thinking' => 'required',
+            'thinking' => 'required|max:500',
             'habit' => 'required'
         ]);
         $threecolumns = new ThreeColumn;

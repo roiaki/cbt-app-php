@@ -44,9 +44,9 @@ class SevenColumnsController extends Controller
         $this->validate(
             $request,
             [
-                'basis_thinking' => 'required',
-                'opposite_fact' => 'required',
-                'new_thinking' => 'required',
+                'basis_thinking' => 'required|max:500',
+                'opposite_fact' => 'required|max:500',
+                'new_thinking' => 'required|max:500',
                 'new_emotion_strength' => 'required'
             ]
         );
@@ -80,9 +80,9 @@ class SevenColumnsController extends Controller
         $this->validate(
             $request,
             [
-                'basis_thinking' => 'required',
-                'opposite_fact' => 'required',
-                'new_thinking' => 'required',
+                'basis_thinking' => 'required|max:500',
+                'opposite_fact'  => 'required|max:500',
+                'new_thinking'   => 'required|max:500',
                 'new_emotion_strength' => 'required'
             ]
         );

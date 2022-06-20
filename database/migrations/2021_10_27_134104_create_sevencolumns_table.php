@@ -19,9 +19,9 @@ class CreateSevencolumnsTable extends Migration
             $table->integer('event_id')->unsigned()->index();
             $table->integer('threecol_id')->unsigned()->index();
 
-            $table->string('basis_thinking');
-            $table->string('opposite_fact');
-            $table->string('new_thinking');
+            $table->string('basis_thinking', 500); // 変更したので再マイグレーション
+            $table->string('opposite_fact', 500);
+            $table->string('new_thinking', 500);
 
             $table->string('new_emotion_name');
             $table->string('new_emotion_name00')->nullable();;

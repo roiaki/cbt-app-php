@@ -2,13 +2,13 @@
 
 return [
 
-    // 3コラム一覧ページ
+    // 7コラム一覧ページ
     "pageTitle" => "7コラム一覧",
     "search_word" => "検索キーワード",
     "search" => "検索",
     "id" => "7コラムID",
-    "title" => "タイトル",
-    "content" => "内容",
+    "basis_thinking" => "考えの根拠",
+    "opposite_fact" => "反証",
     "updated_day" => "更新日",
     "detail" => "詳細",
 
