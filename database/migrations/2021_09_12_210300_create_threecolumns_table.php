@@ -28,7 +28,7 @@ class CreateThreeColumnsTable extends Migration
             $table->integer('emotion_strength01')->nullable();
             $table->integer('emotion_strength02')->nullable();
 
-            $table->string('thinking', 1000);
+            $table->string('thinking', 500);
 
             $table->timestamps();
 
