@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 class Event extends Model
 {
     use HasFactory;
@@ -44,5 +48,120 @@ class Event extends Model
         // 第3引数：親を判別する値が格納された「親がもつ」カラム
         //return $this->hasOne(ThreeColumn::class, 'event_id', 'event_id');
         return $this->hasMany(ThreeColumn::class, 'event_id', 'id');
+    }
+
+    /** 
+     * 出来事一覧表示処理
+     * 
+     * ログイン済みならば表示させる。
+     * 
+     * @return array $data 
+     * 
+     */
+    public function showEventIndex()
+    {
+        $data = [];
+        if (Auth::check()) {
+            $user = Auth::user();
+            $events = $user->events()->orderBy('updated_at', 'desc')->paginate(5);
+
+            $data = [
+                'events' => $events,
+            ];
+        }
+        return $data;
+    }
+
+    /**
+     * 出来事一覧画面での検索処理
+     * 
+     * 検索ワードが空の時は更新日の降順で一覧表示する
+     * 
+     * @param Requset $request
+     * @return array $data
+     * 
+     */
+    public function serchIndex(Request $request)
+    {   
+        $keyword = $request->keyword;
+        $id = Auth::user()->id;
+      
+        if (isset($keyword)) {           
+            $events = DB::table('events')
+                ->where('user_id', $id)
+                ->where(function($query) use($keyword) {
+                    $query->where('title', 'like', '%' . $keyword . '%')
+                          ->orWhere('content', 'like', '%' . $keyword . '%');
+                  })
+                  ->orderBy('updated_at', 'desc')
+                  ->paginate(10);
+
+            $data = [
+                'events' => $events,
+                'keyword' => $keyword
+            ];
+            return $data;
+
+        } else {
+            $user = Auth::user();
+            $events = $user->events()->orderBy('updated_at', 'desc')->paginate(5);
+            
+            $data = [
+                'events' => $events,
+                'keyword' => $keyword
+            ];
+            return $data;
+        } 
+    }
+
+    /**
+     * 出来事保存処理
+     * 
+     * @param Request $request
+     * @return object $event
+     * 
+     */
+    public function eventStore(Request $request) 
+    {   
+        $event = new Event;
+        $event->title = $request->title;
+        $event->content = $request->content;
+        $event->user_id = Auth::id();
+
+        $event->save();
+
+        return $event;
+    }
+
+    /**
+     * 出来事更新処理
+     * 
+     * @param Request $request
+     * @param int $id
+     * @return objent $event
+     * 
+     */
+    public function eventUpdate(Request $request, $id)
+    {
+        $event = event::find($id);
+
+        $event->title = $request->title;
+        $event->content = $request->content;
+        $event->updated_at = date("Y-m-d G:i:s");
+        $event->save();
+    }
+
+    /**
+     * 出来事削除処理
+     * 
+     * @param int $id
+     * 
+     */
+    public function eventDelete($id)
+    {
+        $event = event::find($id);
+        if ($event) {
+            $event->delete();
+        }
     }
 }

@@ -20,8 +20,8 @@
     </div>
     <!--↑↑ 検索フォーム ↑↑-->
 
-    @if ( isset($events) )
-      @if ( count($events) > 0 )
+    @if (isset($events))
+      @if (count($events) > 0)
       <table class="table table-striped table-bordered">
         <thead>
           <tr class="table-primary">
@@ -49,7 +49,7 @@
           @endforeach
         </tbody>
       </table>
-      @endif
+      @endif    
     @endif
 
     {!! link_to_route('events.create', __('event.create_new'), [], ['class' => 'btn btn-primary btn-lg']) !!}

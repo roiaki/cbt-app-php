@@ -17,41 +17,17 @@ class EventsController extends Controller
     // event一覧表示
     public function index()
     {
-        $data = [];
-        if (Auth::check()) {
-            $user = Auth::user();
-            $events = $user->events()->orderBy('updated_at', 'desc')->paginate(5);
+        $Event = new Event();
+        $data = $Event->showEventIndex();
 
-            $data = [
-                'events' => $events,
-            ];
-        }
         return view('events.index', $data);
     }
 
     // 検索機能
     public function searchIndex(Request $request)
     {
-        $keyword = $request->keyword;
-        $id = Auth::user()->id;
-        
-        if (isset($keyword)) {           
-            $events = DB::table('events')
-                ->where('user_id', $id)
-                ->where(function($query) use($keyword) {
-                    $query->where('title', 'like', '%' . $keyword . '%')
-                          ->orWhere('content', 'like', '%' . $keyword . '%');
-                  })
-                  ->orderBy('updated_at', 'desc')
-                  ->paginate(10);
-                  
-        } else {
-            return view('events.index');
-        }
-        $data = [
-            'events' => $events,
-            'keyword' => $keyword
-        ];
+        $Event = new Event();
+        $data = $Event->serchIndex($request);
 
         return view('events.index', $data);
     }
@@ -74,14 +50,9 @@ class EventsController extends Controller
             ]
         );
 
-        $event = new Event;
-        $event->title = $request->title;
-        $event->content = $request->content;
-        $event->user_id = Auth::id();
+        $Event = new Event;
+        $event = $Event->eventStore($request);
 
-        $event->save();
-
-        // Session::flash('flash_message', '出来事作成しました。');
         return view('events.show', ['event' => $event]);
     }
 
@@ -108,12 +79,8 @@ class EventsController extends Controller
             'content' => 'required|max:255',
         ]);
 
-        $event = event::find($id);
-
-        $event->title = $request->title;
-        $event->content = $request->content;
-        $event->updated_at = date("Y-m-d G:i:s");
-        $event->save();
+       $event = new Event;
+       $event->eventUpdate($request, $id);
     
         return redirect('/events');
     }
@@ -121,31 +88,9 @@ class EventsController extends Controller
     // deleteでcolumn/id　にアクセスされた場合の「削除処理」
     public function destroy($id)
     {
-        $event = event::find($id);
-        if ($event) {
-            $event->delete();
-        }
+        $event = new Event;
+        $event->eventDelete($id);
+
         return redirect('events');
     }
-
-    public function info()
-    {
-        return view('/users/info');
-    }
-
-    public function testvue()
-    {
-        return view('events.testvue');
-    }
-   
-    # TODO: 
-    // ロールバック時のエラー制御メソッド
-    public function catchError($param) {
-        try {
-
-        } catch(Exception $e) {
-
-        }
-    }
-
 }
