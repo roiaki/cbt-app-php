@@ -32,7 +32,7 @@ return [
     "4_sentence" => "Point: Basis for the idea of 3. Best to be objective. To explain because when asked by a person",
     "5_sentence" => "Point: Let's look for points like [but ] 4 where we don't have to think about it.",  
     "6_sentence" => "Point: It can be thought of as 4, but it can also be thought of as 5.",
-    "7_sentence" => "Point: How did the strength of your emotions change when you think like ⑥ New Thoughts?",
+    "7_sentence" => "Point: How did the strength of your emotions change when you think like 6 New Thoughts?",
     
     "emotion_name" => "Emotion name",
     "prev_emotion_strength" => "Previous emotional strength",
