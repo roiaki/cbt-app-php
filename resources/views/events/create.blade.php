@@ -9,10 +9,12 @@
         @csrf
         <div class="form-group">
         
+          <!-- タイトル -->
           <label class="heading" for="title">{{ __('event.create_title') }}</label>
           <input type="text" class="form-control" id="title" name="title" value = "{{ old('title') }}">
+          <!-- /タイトル-->
 
-          <!-- バリデーションエラー表示-->
+          <!-- バリデーションエラー表示 -->
           @if($errors->has('title'))
             @foreach($errors->get('title') as $message)
             <ul>
@@ -20,9 +22,11 @@
             </ul>
             @endforeach
           @endif
+          <!-- /バリデーションエラー表示 -->
         </div>
 
         <div class="form-group">
+          
           <!-- 内容 -->
           <label class="heading" for="content">{{ __('event.create_contents') }}</label>
           <textarea class="form-control" 
@@ -30,8 +34,9 @@
                     name="content" 
                     cols="90" 
                     rows="7">{{ old('content') }}</textarea>
+          <!-- /内容 -->
 
-          <!-- バリデーションエラー表示-->
+          <!-- バリデーションエラー表示 -->
           @if($errors->has('content'))
             @foreach($errors->get('content') as $message)
             <ul>
@@ -39,6 +44,7 @@
             </ul>
             @endforeach
           @endif
+          <!-- /バリデーションエラー表示 -->
         </div>
 
         <input type="submit" value="{{ __('event.create_button') }}" class="btn btn-primary btn-lg"> 

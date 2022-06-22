@@ -25,13 +25,13 @@ return [
     "3-2_title" => "3-2 Thinking habits",
 
     "4_title" => "4 Grounds for your thoughts",
-    "5_title" => "5 The opposite fact",
-    "6_title" => "6 new ideas",
-    "7_title" => "7 new emotions",
+    "5_title" => "5 Counterfactual (refutation)",
+    "6_title" => "6 New ideas",
+    "7_title" => "7 New emotions",
 
-    "4_sentence" => "Point: Best to be objective. To explain because when asked by a person",
-    "5_sentence" => "Point: But you don't have to think so?",  
-    "6_sentence" => "Point: It can be thought of as ④, but it can also be thought of as ⑤.",
+    "4_sentence" => "Point: Basis for the idea of 3. Best to be objective. To explain because when asked by a person",
+    "5_sentence" => "Point: Let's look for points like [but ] 4 where we don't have to think about it.",  
+    "6_sentence" => "Point: It can be thought of as 4, but it can also be thought of as 5.",
     "7_sentence" => "Point: How did the strength of your emotions change when you think like ⑥ New Thoughts?",
     
     "emotion_name" => "Emotion name",
