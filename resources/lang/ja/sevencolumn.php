@@ -12,7 +12,6 @@ return [
     "updated_day" => "更新日",
     "detail" => "詳細",
 
-
     // ７コラム作成ページ
     "createPageTitle" => "7コラム新規作成",
 

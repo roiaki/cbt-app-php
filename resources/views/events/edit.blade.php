@@ -36,6 +36,7 @@
                   name="content" 
                   cols="50" 
                   rows="3">{{ $event->content }}</textarea>
+        <!--/内容-->
 
         <!-- バリデーションエラー表示-->
         @if($errors->has('content'))

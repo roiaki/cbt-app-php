@@ -62,10 +62,6 @@ return [
     // 3コラム編集ページ
     "editPageTitle" => "3コラム編集ページ",
     "buttonUpdate" => "更新",
-
-    // 7コラム作成ページ
-    
-    
 ];
 
 ?>

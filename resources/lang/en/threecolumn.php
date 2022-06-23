@@ -62,8 +62,6 @@ return [
 
      "editPageTitle" => "3 Column edit page",
      "buttonUpdate" => "Update",
-    
-     // 7コラム作成ページ
 ];
 
 ?>

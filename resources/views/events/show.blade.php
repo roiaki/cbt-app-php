@@ -61,6 +61,7 @@
     <div class="buttons">
       <button class="btn btn-primary btn-lg" onclick="history.back(-1)">{{ __('event.back') }}</button>
     </div>
+    
   </div>
 </div>
 @endsection
