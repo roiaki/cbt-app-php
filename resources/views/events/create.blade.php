@@ -11,7 +11,7 @@
         
           <!-- タイトル -->
           <label class="heading" for="title">{{ __('event.create_title') }}</label>
-          <input type="text" class="form-control" id="title" name="title" value = "{{ old('title') }}">
+          <input type="text" class="form-control" id="title" name="title" value = "{{ old('title') }}" required>
           <!-- /タイトル-->
 
           <!-- バリデーションエラー表示 -->
@@ -33,7 +33,7 @@
                     id="content" 
                     name="content" 
                     cols="90" 
-                    rows="7">{{ old('content') }}</textarea>
+                    rows="7" required>{{ old('content') }}</textarea>
           <!-- /内容 -->
 
           <!-- バリデーションエラー表示 -->

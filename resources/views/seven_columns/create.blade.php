@@ -83,7 +83,7 @@
                   id="basis_thinking" 
                   name="basis_thinking" 
                   cols="90" 
-                  rows="5"></textarea>
+                  rows="5" required></textarea>
 
         <!-- バリデーションエラーメッセージ-->
         @if($errors->has('basis_thinking'))
@@ -104,7 +104,7 @@
                   id="opposite_fact" 
                   name="opposite_fact" 
                   cols="90" 
-                  rows="5"></textarea>
+                  rows="5" required></textarea>
 
         <!-- バリデーションエラーメッセージ-->
         @if($errors->has('opposite_fact'))
@@ -125,7 +125,7 @@
                   id="new_thinking" 
                   name="new_thinking" 
                   cols="90" 
-                  rows="5"></textarea>
+                  rows="5" required></textarea>
         
         <!-- バリデーションエラーメッセージ-->
         @if($errors->has('new_thinking'))
@@ -167,7 +167,7 @@
                        class="form-control mt-1" 
                        id="new_emotion_strength" 
                        name="new_emotion_strength" 
-                >
+                       required>
               </td>
             </tr>
 
@@ -193,7 +193,7 @@
                         class="form-control mt-2" 
                         id="new_emotion_strength00" 
                         name="new_emotion_strength00"
-                  >
+                        required>
                 </td>
               @endif
             </tr>
@@ -223,7 +223,7 @@
                         class="form-control mt-2" 
                         id="new_emotion_strength01" 
                         name="new_emotion_strength01"
-                  >
+                        required>
                 </td>
               @endif
             </tr>
@@ -253,7 +253,7 @@
                          class="form-control mt-2" 
                          id="new_emotion_strength02" 
                          name="new_emotion_strength02"
-                  >
+                         required>
                </td>
               @endif
             </tr>

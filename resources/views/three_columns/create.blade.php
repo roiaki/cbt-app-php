@@ -63,8 +63,8 @@
                  class="form-control"
                  id="emotion_name_def"
                  name="emotion_name_def"
-                 value="{{ old('emotion_name_def') }}"
-          >
+                 value="{{ old('emotion_name_def') }}" 
+                 required>
 
           <!-- バリデーションエラー表示-->
           @if($errors->has('emotion_name_def'))
@@ -85,8 +85,8 @@
                  class="form-control"
                  id="emotion_strength_def"
                  name="emotion_strength_def"
-                 value="{{ old('emotion_strength_def') }}"
-          >
+                 value="{{ old('emotion_strength_def') }}" 
+                 required>
 
           <!-- バリデーションエラー表示-->
           @if($errors->has('emotion_strength_def'))
@@ -152,7 +152,7 @@
                   id="thinking" 
                   name="thinking" 
                   cols="90" 
-                  rows="5">{{ old('thinking') }}</textarea>
+                  rows="5" required>{{ old('thinking') }}</textarea>
 
         <!-- バリデーションエラー表示-->
         @if($errors->has('thinking'))
