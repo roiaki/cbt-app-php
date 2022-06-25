@@ -19,7 +19,7 @@ return [
     "back" => "BACK",
 
     // 詳細ページ
-    "event_detail_head" => "Detail Event  ",
+    "event_detail_head" => "Detail Event",
     "event_id" => "Event ID",
     "created_day" => "Created day",
     "updated_day" => "Updated day",
@@ -35,5 +35,5 @@ return [
     "event_edit_title" => "Title",
     "event_edit_content" => "Contnt",
     "update_button" => "UPDATE",
-    ""
+    
 ];

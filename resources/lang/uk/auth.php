@@ -20,18 +20,18 @@ return [
      "Remember Me" =>"Зберегти статус входу",
      
      // 登録ページ 
-     "Register" => "新規登録",
-     "Name" => "お名前",
-     "Confirm Password" => "パスワード(確認用)",
+     "Register" => "зареєструватися",
+     "Name" => "ім'я",
+     "Confirm Password" => "Для підтвердження пароля)",
      
-     "info" => "説明",
-     "event_title" => "出来事一覧",
+     "info" => "пояснення",
+     "event_title" => "Список подій",
  
     
     
-     "Forgot Your Password?" => "パスワードを忘れた場合",
-     "Reset Password" => "パスワード再設定",
-     "Send Password Reset Link" =>  "パスワード再設定URLを送信",
+     "Forgot Your Password?" => "Якщо ви забули свій пароль",
+     "Reset Password" => "Скидання пароля",
+     "Send Password Reset Link" =>  "Надіслати URL-адресу для скидання пароля",
  
 
     "Hello!" => "ご利用ありがとうございます。",

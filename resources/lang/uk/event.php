@@ -16,7 +16,25 @@ return [
     "create_title" => "титул",
     "create_contents" => "Зміст",
     "create_button" => "Створення події",
-    "back" => "повернутися"
+    "back" => "повернутися",
+
+    // 詳細ページ
+    "event_detail_head" => "Detail Event",
+    "event_id" => "Ідентифікатор події",
+    "created_day" => "Створений день",
+    "updated_day" => "Оновлений день",
+    //"title" => "TITLE",
+    "content" => "Зміст",
+
+    "create_threecolumn_button" => "НОВИНКА 3 КОЛОНКА",
+    "edit" => "РЕДАГУВАТИ",
+    "delete" => "ВИДАЛИТИ",
+
+    // 編集ページ
+    "event_edit_head" => "Сторінка редагування події",
+    "event_edit_title" => "Назва",
+    "event_edit_content" => "Зміст",
+    "update_button" => "ОНОВЛЕННЯ",
 ];
 
 ?>
