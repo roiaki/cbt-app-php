@@ -21,12 +21,12 @@ return [
     "2-1_title" => "2-1 Emotion name",
     "2-2_title" => "2-2 strength",
     
-    "3-1_title" => "3-1 What I thought at that time",
+    "3-1_title" => "3-1 What You thought at that time, automatic thinking (thoughts and images that came to my mind at that time)",
     "3-2_title" => "3-2 Thinking habits",
 
-    "4_title" => "4 Grounds for your thoughts",
-    "5_title" => "5 Counterfactual (refutation)",
-    "6_title" => "6 New ideas",
+    "4_title" => "4 Grounds for your thoughts (facts that support automatic thinking)",
+    "5_title" => "5 Counterfactual (refutation) Facts that contradict automatic thinking",
+    "6_title" => "6 New ideas(Adaptive thinking, well-balanced thinking)",
     "7_title" => "7 New emotions",
 
     "4_sentence" => "Point: Basis for the idea of 3. Best to be objective. To explain because when asked by a person",

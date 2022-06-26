@@ -97,7 +97,7 @@
       </div>
 
       <div id="app">  
-        <!-- 入力ボックスを表示する場所 ① -->
+        <!-- 入力ボックスを表示する場所 -->
         <div v-for="(text,index) in texts">
             <!-- 各入力ボックス -->
             <div class="row mt-3">
@@ -109,7 +109,6 @@
                        v-model="texts[index]"
                        @keypress.shift.enter="addInput">
               </div>
-                    <!-- 各入力ボックス -->
               <div class="form-group col">
                 <input ref="strength"
                        name="emotion_strength[]"
@@ -118,11 +117,10 @@
                        v-model="strength[index]"
                        @keypress.shift.enter="addInput">
               </div>
-            
             </div>   
         </div>
 
-        <!-- 入力ボックスを追加するボタン ② -->
+        <!-- 入力ボックスを追加するボタン -->
         <div class="btn-toolbar">
           <div class="btn-group">
             <button class="btn btn-info" type="button" @click="addInput" v-if="!isTextMax">
@@ -154,13 +152,15 @@
         <!-- バリデーションエラー表示-->
         @if($errors->has('thinking'))
           @foreach($errors->get('thinking') as $message)
-          <ul>
-            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-          </ul>
-        @endforeach
+            <ul>
+              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+            </ul>
+          @endforeach
         @endif
+        <!-- /バリデーションエラー表示-->
       </div>
 
+      <!-- 3-2考え方の癖 -->
       <label class="mt-3"><h5>{{ __('threecolumn.3-2_title') }}</h5></label>
       <p class="alert alert-success" role="alert">
         {{ __('threecolumn.3-2_sentence') }}
@@ -253,6 +253,7 @@
           @endforeach
         @endif
       </div>
+      <!-- /3-2考え方の癖 -->
 
       <input type="submit" class="btn btn-primary btn-lg" value="{{ __('threecolumn.buttonCreate') }}"> 
 

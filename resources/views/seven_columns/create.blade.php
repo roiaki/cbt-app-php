@@ -55,7 +55,6 @@
       
       <div class="form-group">
         <label for="thinking"><h5>{{ __('sevencolumn.3-1_title') }}</h5></label>
-        <p>ポイント：言い訳せずに簡単な言葉で表現する</p>
         <textarea class="form-control" 
                   id="thinking" 
                   name="thinking" 
