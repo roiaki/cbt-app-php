@@ -56,42 +56,6 @@
           @endforeach
         @endif
       </div>
-
-      <div class="form-group">
-        <label for="emotion-name">②-1  感情名</label>
-        <input type="text" 
-              class="form-control" 
-              name="emotion_name" 
-              readonly 
-              value="{{ $three_column->emotion_name }}">
-
-        <!-- 内容必須バリデーション表示-->
-        @if($errors->has('emotion_name'))
-        @foreach($errors->get('emotion_name') as $message)
-        <ul>
-          <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-        </ul>
-        @endforeach
-        @endif
-      </div>
-      
-      <div class="form-group">
-        <label for="emotion-strength">②-2  強さ</label>
-        <input type="number" 
-              class="form-control" 
-              name="emotion_strength" 
-              readonly 
-              value="{{ $three_column->emotion_strength }}">
-
-        <!-- 内容必須バリデーション表示-->
-        @if($errors->has('emotion_strength'))
-        @foreach($errors->get('emotion_strength') as $message)
-        <ul>
-          <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-        </ul>
-        @endforeach
-        @endif
-      </div>
       
       <div class="form-group">
         <label for="thinking"><h5>{{ __('sevencolumn.3-1_title') }}</h5></label>

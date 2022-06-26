@@ -141,6 +141,7 @@
         {{ __('sevencolumn.7_sentence') }}
         </p>
 
+        <!-- 感情の変化-->
         <div class="mt-3">
           <table class="table table-bordered">
             <tr>
@@ -269,7 +270,8 @@
           @endif
        
         </div>
-  
+        <!-- /感情の変化-->
+
         <input type="submit" 
                class="btn btn-primary btn-lg" 
                value="{{ __('sevencolumn.button_create') }}"
