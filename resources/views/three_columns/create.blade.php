@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="row justify-content-center"> 
-  <div class="col-sm-7">
+  <div class="col-sm-8">
     <h3 class="title_head"><h3>{{ __('threecolumn.page_title') }}</h3>
       <!-- model 第一引数：Modelのインスタンス、第二引数：連想配列　-->
       <form action="{{ route('three_columns.store') }}" method="POST">
@@ -185,7 +185,7 @@
             {{ __('threecolumn.habitName02') }}
           </label>
         </div>
-        <p>{{ __('threecolumn.habitContents02') }}</p>
+        <p class="mb-0">{{ __('threecolumn.habitContents02') }}</p>
         <p>{{ __('threecolumn.habitExamples02') }}</p>
         <!-- 癖２ -->
 
@@ -196,7 +196,7 @@
             {{ __('threecolumn.habitName03') }}
           </label>
         </div>
-        <p>{{ __('threecolumn.habitContents03') }}</p>
+        <p class="mb-0">{{ __('threecolumn.habitContents03') }}</p>
         <p>{{ __('threecolumn.habitExamples03') }}</p>
         <!-- /癖３ -->
 
@@ -207,7 +207,7 @@
             {{ __('threecolumn.habitName04') }}
           </label>
         </div>
-        <p>{{ __('threecolumn.habitContents04') }}</p>
+        <p class="mb-0">{{ __('threecolumn.habitContents04') }}</p>
         <p>{{ __('threecolumn.habitExamples04') }}</p>
         <!-- /癖４ -->
 
@@ -218,7 +218,7 @@
             {{ __('threecolumn.habitName05') }}
           </label>
         </div>
-        <p>{{ __('threecolumn.habitContents05') }}</p>
+        <p class="mb-0">{{ __('threecolumn.habitContents05') }}</p>
         <p>{{ __('threecolumn.habitExamples05') }}</p>
         <!-- /癖５ -->
 
@@ -229,7 +229,7 @@
             {{ __('threecolumn.habitName06') }}
           </label>
         </div>
-        <p>{{ __('threecolumn.habitContents06') }}</p>
+        <p class="mb-0">{{ __('threecolumn.habitContents06') }}</p>
         <p>{{ __('threecolumn.habitExamples06') }}</p>
         <!-- /癖６ -->
 
@@ -240,7 +240,7 @@
             {{ __('threecolumn.habitName07') }}
           </label>
         </div>
-        <p>{{ __('threecolumn.habitContents07') }}</p>
+        <p class="mb-0">{{ __('threecolumn.habitContents07') }}</p>
         <p>{{ __('threecolumn.habitExamples07') }}</p>
         <!-- /癖７ -->
 
