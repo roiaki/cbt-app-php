@@ -20,13 +20,13 @@ return [
      "2-1_title" => "2-1 Emotion name",
      "2-2_title" => "2-2 strength",
      
-     "3-1_title" => "3-1 What You thought at that time",
+     "3-1_title" => "3-1 What you thought at that time, automatic thinking (thoughts and images that came to my mind at that moment)",
      "3-2_title" => "3-2 The habit of thinking",
  
      "2-1_sentence" => "Point: How did you feel at that time?",
      "2-2_sentence" => "Point: How strong is that feeling?",
      
-     "3-1_sentence" => "Point: Choose the thought that has the most influence on your emotions (hot thinking)",
+     "3-1_sentence" => "Point: Choose the thought that has the most influence on your emotions (hot thinking). I tend to write it briefly if I think I know it myself, so let's write it in detail.",
      "3-2_sentence" => "Point: Check if there is a habit of being biased in thinking",
  
      "habitName01" => "Too generalized",

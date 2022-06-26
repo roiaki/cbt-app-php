@@ -14,7 +14,7 @@ return [
     // 新規作成ページ  
     "create_headtitle" => "Event new creation",
     "create_title" => "Title",
-    "create_contents" => "Contents",
+    "create_contents" => "Event The situation at that time",
     "create_button" => "New Create",
     "back" => "BACK",
 
@@ -24,7 +24,7 @@ return [
     "created_day" => "Created day",
     "updated_day" => "Updated day",
     //"title" => "TITLE",
-    "content" => "Content",
+    "content" => "Event The situation at that time",
 
     "create_threecolumn_button" => "NEW 3COLUMN",
     "edit" => "EDIT",
@@ -33,7 +33,7 @@ return [
     // 編集ページ
     "event_edit_head" => "Event Edit Page",
     "event_edit_title" => "Title",
-    "event_edit_content" => "Contnt",
+    "event_edit_content" => "Event The situation at that time",
     "update_button" => "UPDATE",
     
 ];

@@ -14,7 +14,7 @@ return [
     // 新規作成ページ
     "create_headtitle" => "Нове створення події",
     "create_title" => "титул",
-    "create_contents" => "Зміст",
+    "create_contents" => "Подія Ситуація на той час",
     "create_button" => "Створення події",
     "back" => "повернутися",
 
@@ -24,7 +24,7 @@ return [
     "created_day" => "Створений день",
     "updated_day" => "Оновлений день",
     //"title" => "TITLE",
-    "content" => "Зміст",
+    "content" => "Подія Ситуація на той час",
 
     "create_threecolumn_button" => "НОВИНКА 3 КОЛОНКА",
     "edit" => "РЕДАГУВАТИ",
@@ -33,7 +33,7 @@ return [
     // 編集ページ
     "event_edit_head" => "Сторінка редагування події",
     "event_edit_title" => "Назва",
-    "event_edit_content" => "Зміст",
+    "event_edit_content" => "Подія Ситуація на той час",
     "update_button" => "ОНОВЛЕННЯ",
 ];
 
