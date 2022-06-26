@@ -178,6 +178,7 @@
         <p>{{ __('threecolumn.habitExamples01') }}</p>
         <!-- /癖１ -->
 
+        <!-- 癖２ -->
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[1]" id="2">
           <label class="form-check-label" for="2">
@@ -186,7 +187,9 @@
         </div>
         <p>{{ __('threecolumn.habitContents02') }}</p>
         <p>{{ __('threecolumn.habitExamples02') }}</p>
+        <!-- 癖２ -->
 
+        <!-- 癖３ -->
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[2]" id="3">
           <label class="form-check-label" for="3">
@@ -195,7 +198,9 @@
         </div>
         <p>{{ __('threecolumn.habitContents03') }}</p>
         <p>{{ __('threecolumn.habitExamples03') }}</p>
+        <!-- /癖３ -->
 
+        <!-- 癖４ -->
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[3]" id="4">
           <label class="form-check-label" for="4">
@@ -204,7 +209,9 @@
         </div>
         <p>{{ __('threecolumn.habitContents04') }}</p>
         <p>{{ __('threecolumn.habitExamples04') }}</p>
+        <!-- /癖４ -->
 
+        <!-- 癖５ -->
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[4]" id="5">
           <label class="form-check-label" for="5">
@@ -213,7 +220,9 @@
         </div>
         <p>{{ __('threecolumn.habitContents05') }}</p>
         <p>{{ __('threecolumn.habitExamples05') }}</p>
+        <!-- /癖５ -->
 
+        <!-- 癖６ -->
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[5]" id="6">
           <label class="form-check-label" for="6">
@@ -222,7 +231,9 @@
         </div>
         <p>{{ __('threecolumn.habitContents06') }}</p>
         <p>{{ __('threecolumn.habitExamples06') }}</p>
+        <!-- /癖６ -->
 
+        <!-- 癖７ -->
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[6]" id="7">
           <label class="form-check-label" for="7">
@@ -231,14 +242,15 @@
         </div>
         <p>{{ __('threecolumn.habitContents07') }}</p>
         <p>{{ __('threecolumn.habitExamples07') }}</p>
+        <!-- /癖７ -->
 
         <!-- バリデーションエラー表示-->
         @if($errors->has('habit'))
-        @foreach($errors->get('habit') as $message)
-        <ul>
-          <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-        </ul>
-        @endforeach
+          @foreach($errors->get('habit') as $message)
+          <ul>
+            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+          </ul>
+          @endforeach
         @endif
       </div>
 
