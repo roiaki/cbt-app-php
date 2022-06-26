@@ -19,7 +19,7 @@
       @method('PUT')
         <div class="form-group">
           <!-- タイトル -->
-          <label for="title">①-1 タイトル</label>
+          <label for="title"><h5>{{ __('sevencolumn.1-1_title') }}</h5></label>
           <input type="text"
                 class="form-control"
                 id="title"
@@ -29,17 +29,17 @@
         
           <!-- タイトル必須バリデーション表示 課題：まとめてかけないか-->
           @if($errors->has('title'))
-          @foreach($errors->get('title') as $message)
-          <ul>
-            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-          </ul>
-          @endforeach
+            @foreach($errors->get('title') as $message)
+            <ul>
+              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+            </ul>
+            @endforeach
           @endif
         </div>
 
       <div class="form-group">
         <!-- 内容 -->
-        <label for="content">①-2  内容</label>
+        <label for="content"><h5>{{ __('sevencolumn.1-2_title') }}</h5></label>
         <textarea class="form-control" 
                   id="content" 
                   name="content" 
@@ -49,11 +49,11 @@
 
         <!-- 内容必須バリデーション表示-->
         @if($errors->has('content'))
-        @foreach($errors->get('content') as $message)
-        <ul>
-          <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-        </ul>
-        @endforeach
+          @foreach($errors->get('content') as $message)
+          <ul>
+            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+          </ul>
+          @endforeach
         @endif
       </div>
 
@@ -94,7 +94,7 @@
       </div>
       
       <div class="form-group">
-        <label for="thinking">③ その時考えたこと</label><br>
+        <label for="thinking"><h5>{{ __('sevencolumn.3-1_title') }}</h5></label>
         <textarea class="form-control" 
                   id="thinking" 
                   name="thinking" 
@@ -113,12 +113,12 @@
       </div>
 
       <div class="form-group">
-        <label for="basis_thinking">④  考えの根拠</label>
+        <label for="basis_thinking"><h5>{{ __('sevencolumn.4_title') }}</h5></label>
         <textarea class="form-control" 
                   id="basis_thinking" 
                   name="basis_thinking" 
                   cols="50" 
-                  rows="3">{{ $seven_column->basis_thinking }}</textarea>
+                  rows="3" required>{{ $seven_column->basis_thinking }}</textarea>
 
         <!-- 内容必須バリデーション表示-->
         @if($errors->has('basis_thinking'))
@@ -131,12 +131,12 @@
       </div>
 
       <div class="form-group">
-        <label for="opposite_fact">⑤  逆の事実</label>
+        <label for="opposite_fact"><h5>{{ __('sevencolumn.5_title') }}</h5></label>
         <textarea class="form-control" 
                   id="opposite_fact" 
                   name="opposite_fact" 
                   cols="50" 
-                  rows="3">{{ $seven_column->opposite_fact }}</textarea>
+                  rows="3" required>{{ $seven_column->opposite_fact }}</textarea>
 
         <!-- 内容必須バリデーション表示-->
         @if($errors->has('opposite_fact'))
@@ -149,12 +149,12 @@
       </div>
 
       <div class="form-group">
-        <label for="new_thinking">⑥  新しい考え</label>
+        <label for="new_thinking"><h5>{{ __('sevencolumn.6_title') }}</h5></label>
         <textarea class="form-control" 
                   id="new_thinking" 
                   name="new_thinking" 
                   cols="50" 
-                  rows="3">{{ $seven_column->new_thinking }}</textarea>
+                  rows="3" required>{{ $seven_column->new_thinking }}</textarea>
 
         <!-- 内容必須バリデーション表示-->
         @if($errors->has('new_thinking'))
@@ -166,13 +166,13 @@
         @endif
       </div>
 
+      <!-- ７新しい感情 -->
       <div class="form-group">
-        <label for="new_emotion">⑦  新しい感情</label>
-        
+        <h5>{{ __('sevencolumn.7_title') }}</h5>
         <!-- ここから　-->
         <div class="row mt-3">
         <div class="form-group col-3">
-          <label for="emotion_name">感情名</label>
+          <label for="emotion_name">{{ __('sevencolumn.emotion_name') }}</label>
           
           <ul class="list-group">
             <li class="list-group-item">{{$three_column->emotion_name }}</li>
@@ -208,8 +208,9 @@
 
         </div>
 
+        <!-- 以前の感情の強さ -->
         <div class="form-group col-3">
-          <label for="emotion_strength">以前の感情の強さ</label>
+          <label for="emotion_strength">{{ __('sevencolumn.prev_emotion_strength') }}</label>
           <ul class="list-group">
             <li class="list-group-item">{{$three_column->emotion_strength }}</li>
             
@@ -226,15 +227,17 @@
             @endif
           </ul>
         </div>
+        <!-- /以前の感情の強さ -->
 
+        <!-- 新しいの感情の強さ -->
         <div class="form-group col-3">
-          <label for="emotion_strength">新しい感情の強さ</label>
+          <label for="emotion_strength">{{ __('sevencolumn.new_emotion_strength') }}</label>
           <input type="number" 
                  class="form-control mt-1" 
                  id="new_emotion_strength" 
                  name="new_emotion_strength"
                  value="{{ $seven_column->new_emotion_strength }}"
-          >
+                 required>
 
           @if(isset($three_column->emotion_strength00))
           <input type="number" 
@@ -242,7 +245,7 @@
                  id="new_emotion_strength00" 
                  name="new_emotion_strength00"
                  value="{{ $seven_column->new_emotion_strength00 }}"
-          >
+                 required>
           @endif
 
           @if(isset($three_column->emotion_strength01))
@@ -251,7 +254,7 @@
                  id="new_emotion_strength01" 
                  name="new_emotion_strength01"
                  value="{{ $seven_column->new_emotion_strength01 }}"
-          >
+                 required>
           @endif
 
           @if(isset($three_column->emotion_strength02))
@@ -260,17 +263,19 @@
                  id="new_emotion_strength02" 
                  name="new_emotion_strength02"    
                  value="{{ $seven_column->new_emotion_strength02 }}"
-          >
+                 required>
           @endif
         </div>
+        <!-- /新しいの感情の強さ -->
       </div>
+      <!-- /７新しい感情 -->
 
         @if($errors->has('new_emotion'))
-        @foreach($errors->get('new_emotion') as $message)
-        <ul>
-          <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-        </ul>
-        @endforeach
+          @foreach($errors->get('new_emotion') as $message)
+          <ul>
+            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+          </ul>
+          @endforeach
         @endif
       
       </div>

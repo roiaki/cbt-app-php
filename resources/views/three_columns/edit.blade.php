@@ -66,7 +66,8 @@
                 class="form-control" 
                 id="emotion_name" 
                 name="emotion_name" 
-                value="{{$three_column->emotion_name }}">
+                value="{{$three_column->emotion_name }}"
+                required>
           
           <!-- 感情名必須バリデーション表示-->
           @if($errors->has('emotion_name'))
@@ -83,7 +84,8 @@
                 class="form-control mt-2" 
                 id="emotion_name_def" 
                 name="emotion_name00" 
-                value="{{$three_column->emotion_name00 }}">
+                value="{{$three_column->emotion_name00 }}" 
+                required>
           @endif
 
           <!-- 感情名必須バリデーション表示-->
@@ -101,7 +103,8 @@
                 class="form-control mt-2" 
                 id="emotion_name_def" 
                 name="emotion_name01" 
-                value="{{$three_column->emotion_name01 }}">
+                value="{{$three_column->emotion_name01 }}"
+                required>
           @endif
 
           <!-- 感情名必須バリデーション表示-->
@@ -119,7 +122,8 @@
                 class="form-control mt-2" 
                 id="emotion_name_def" 
                 name="emotion_name02" 
-                value="{{$three_column->emotion_name02 }}">
+                value="{{$three_column->emotion_name02 }}"
+                required>
           @endif
 
           <!-- 感情名必須バリデーション表示-->
@@ -138,7 +142,8 @@
                 class="form-control" 
                 id="emotion_strength" 
                 name="emotion_strength" 
-                value="{{ $three_column->emotion_strength }}">
+                value="{{ $three_column->emotion_strength }}"
+                required>
 
           <!-- 感情名必須バリデーション表示-->
           @if($errors->has('emotion_strength'))
@@ -154,7 +159,8 @@
                 class="form-control mt-2" 
                 id="emotion_strength_def" 
                 name="emotion_strength00" 
-                value="{{ $three_column->emotion_strength00 }}">
+                value="{{ $three_column->emotion_strength00 }}"
+                required>
           @endif
 
           @if(isset($three_column->emotion_strength01))
@@ -162,7 +168,8 @@
                 class="form-control mt-2" 
                 id="emotion_strength_def" 
                 name="emotion_strength01" 
-                value="{{ $three_column->emotion_strength01 }}">
+                value="{{ $three_column->emotion_strength01 }}"
+                required>
           @endif
 
           @if(isset($three_column->emotion_strength02))
@@ -170,7 +177,8 @@
                 class="form-control mt-2" 
                 id="emotion_strength_def" 
                 name="emotion_strength02" 
-                value="{{ $three_column->emotion_strength02 }}">
+                value="{{ $three_column->emotion_strength02 }}"
+                required>
           @endif
         </div>
       </div>
@@ -181,7 +189,7 @@
                   id="thinking" 
                   name="thinking" 
                   cols="90" 
-                  rows="7">{{$three_column->thinking }}</textarea>
+                  rows="7" required>{{$three_column->thinking }}</textarea>
 
         <!-- 感情名必須バリデーション表示-->
         @if($errors->has('thinking'))

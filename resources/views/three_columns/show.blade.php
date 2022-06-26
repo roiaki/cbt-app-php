@@ -15,8 +15,8 @@
       </tr>
 
       <tr>
-        <td>{{ $three_column->created_at}}</td>
-        <td>{{ $three_column->updated_at }}</td>
+        <td>{{ date('Y/n/j H:i', strtotime($three_column->created_at)) }}</td>
+        <td>{{ date('Y/n/j H:i', strtotime($three_column->updated_at)) }}</td>
         <td>{{ $user->id }}</td>
         <td>{{ $event->id }}</td>
         <td>{{ $three_column->id }}</td>

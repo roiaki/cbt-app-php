@@ -13,8 +13,8 @@
       </tr>
       <tr>
         <td>{{ $event->id }}</td>
-        <td>{{ date( 'Y/m/d H:i', strtotime($event->created_at) ) }}</td>
-        <td>{{ date( 'Y/m/d H:i', strtotime($event->updated_at) ) }}</td>
+        <td>{{ date( 'Y/n/d H:i', strtotime($event->created_at) ) }}</td>
+        <td>{{ date( 'Y/n/d H:i', strtotime($event->updated_at) ) }}</td>
       </tr>
 
     </table>
