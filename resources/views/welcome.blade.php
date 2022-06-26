@@ -18,8 +18,9 @@
 
     <section class="cbt-title">
       <h2 class="about-cbt">{{ __('messages.about-cbt-title') }}</h2>
-        <p class="about-text">{{ __('messages.about-cbt-message') }}</p>
-
+      <p class="about-text">{{ __('messages.about-cbt-message01') }}</p>
+      <p class="about-text">{{ __('messages.about-cbt-message02') }}</p>
+      <p class="about-text">{{ __('messages.about-cbt-message03') }}</p>
     </sectio>
 
     <section class="cbt-title">

@@ -4,7 +4,7 @@
 
 <div class="row justify-content-center">
   <div class="col-sm-7">  
-  <h3 class="title_head">7コラム編集ページ ( id={{ $seven_column->id }} )</h3>
+  <h3 class="title_head">{{ __('sevencolumn.sevencolEditPageTitle') }} ( id={{ $seven_column->id }} )</h3>
     <!-- 'route' => ['messages.update', $message->id] というルーティング指定になります。
         配列の2つ目に $message->id を入れることで 
         update の URL である /messages/{message} の {message} に id が入ります

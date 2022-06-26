@@ -48,6 +48,9 @@ return [
     "3colId" => "3コラムID",
     "userId" => "ユーザID",
     "emotion_change" => "感情の変化",
+
+    // 7コラム編集ページ
+    "sevencolEditPageTitle" => "7コラム編集ページ",
     
 
     
