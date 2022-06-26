@@ -22,10 +22,9 @@
     
     @if ( isset($three_columns) )
       @if (count($three_columns) > 0)
-      <table class="table table-striped table-bordered">
+      <table class="table table-bordered table-hover">
         <thead>
-          <tr class="table-primary">
-            <th>{{ __('threecolumn.threecolId') }}</th>
+          <tr class="table-info">
             <th>{{ __('threecolumn.emotion_name') }}</th>
             <th>{{ __('threecolumn.thinking') }}</th>
             <th>{{ __('threecolumn.updated_day') }}</th>
@@ -34,9 +33,6 @@
         <tbody>
           @foreach ($three_columns as $three_column)
           <tr>
-            <td>
-              <a href="{{ route('three_columns.show', $three_column->id) }}">{{ $three_column->id }}</a>
-            </td>
             <td>{{ $three_column->emotion_name }}</td>
             <td>
               @if (mb_strlen($three_column->thinking) > 25)

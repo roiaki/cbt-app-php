@@ -66,8 +66,7 @@
                 class="form-control" 
                 id="emotion_name" 
                 name="emotion_name" 
-                value="{{$three_column->emotion_name }}"
-          >
+                value="{{$three_column->emotion_name }}">
           
           <!-- 感情名必須バリデーション表示-->
           @if($errors->has('emotion_name'))
@@ -84,8 +83,7 @@
                 class="form-control mt-2" 
                 id="emotion_name_def" 
                 name="emotion_name00" 
-                value="{{$three_column->emotion_name00 }}"
-          >
+                value="{{$three_column->emotion_name00 }}">
           @endif
 
           <!-- 感情名必須バリデーション表示-->
@@ -103,8 +101,7 @@
                 class="form-control mt-2" 
                 id="emotion_name_def" 
                 name="emotion_name01" 
-                value="{{$three_column->emotion_name01 }}"
-          >
+                value="{{$three_column->emotion_name01 }}">
           @endif
 
           <!-- 感情名必須バリデーション表示-->
@@ -122,8 +119,7 @@
                 class="form-control mt-2" 
                 id="emotion_name_def" 
                 name="emotion_name02" 
-                value="{{$three_column->emotion_name02 }}"
-          >
+                value="{{$three_column->emotion_name02 }}">
           @endif
 
           <!-- 感情名必須バリデーション表示-->
@@ -134,9 +130,6 @@
             </ul>
             @endforeach
           @endif
-
-
-          
         </div>
 
         <div class="form-group col">
@@ -145,8 +138,7 @@
                 class="form-control" 
                 id="emotion_strength" 
                 name="emotion_strength" 
-                value="{{ $three_column->emotion_strength }}"
-          >
+                value="{{ $three_column->emotion_strength }}">
 
           <!-- 感情名必須バリデーション表示-->
           @if($errors->has('emotion_strength'))
@@ -162,8 +154,7 @@
                 class="form-control mt-2" 
                 id="emotion_strength_def" 
                 name="emotion_strength00" 
-                value="{{ $three_column->emotion_strength00 }}"
-          >
+                value="{{ $three_column->emotion_strength00 }}">
           @endif
 
           @if(isset($three_column->emotion_strength01))
@@ -171,8 +162,7 @@
                 class="form-control mt-2" 
                 id="emotion_strength_def" 
                 name="emotion_strength01" 
-                value="{{ $three_column->emotion_strength01 }}"
-          >
+                value="{{ $three_column->emotion_strength01 }}">
           @endif
 
           @if(isset($three_column->emotion_strength02))
@@ -180,11 +170,8 @@
                 class="form-control mt-2" 
                 id="emotion_strength_def" 
                 name="emotion_strength02" 
-                value="{{ $three_column->emotion_strength02 }}"
-          >
+                value="{{ $three_column->emotion_strength02 }}">
           @endif
-
-          
         </div>
       </div>
 
@@ -198,17 +185,18 @@
 
         <!-- 感情名必須バリデーション表示-->
         @if($errors->has('thinking'))
-        @foreach($errors->get('thinking') as $message)
-        <ul>
-          <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-        </ul>
-        @endforeach
+          @foreach($errors->get('thinking') as $message)
+          <ul>
+            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+          </ul>
+          @endforeach
         @endif
       </div>
 
-      
-      <div class="form-group">
-        <h5>{{ __('threecolumn.3-2_title') }}</h5>
+      <label class="mt-3"><h5>{{ __('threecolumn.3-2_title') }}</h5></label>  
+        <div class="form-group">
+          
+        <!-- 癖１ -->
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[0]" id="1" 
           <?php
@@ -217,11 +205,13 @@
             }
           ?>>
           <label class="form-check-label" for="1">
-          {{ __('threecolumn.habitName01') }}
+            {{ __('threecolumn.habitName01') }}
           </label>
         </div>
         <p>{{ __('threecolumn.habitContents01') }}</p>
+        <!-- /癖１-->
 
+        <!-- 癖２ -->
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[1]" id="2" 
           <?php
@@ -230,11 +220,13 @@
             }
           ?>>
           <label class="form-check-label" for="2">
-          {{ __('threecolumn.habitName02') }}
+            {{ __('threecolumn.habitName02') }}
           </label>
         </div>
         <p>{{ __('threecolumn.habitContents02') }}</p>
-
+        <!-- /癖２ -->
+        
+        <!-- 癖３ -->
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[2]" id="3" 
           <?php
@@ -243,11 +235,13 @@
             }
           ?>>
           <label class="form-check-label" for="3">
-          {{ __('threecolumn.habitName03') }}
+            {{ __('threecolumn.habitName03') }}
           </label>
         </div>
         <p>{{ __('threecolumn.habitContents03') }}</p>
+        <!-- /癖３ -->
 
+        <!-- 癖４ -->
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[3]" id="4" 
           <?php
@@ -256,11 +250,13 @@
             }
           ?>>
           <label class="form-check-label" for="4">
-          {{ __('threecolumn.habitName04') }}
+            {{ __('threecolumn.habitName04') }}
           </label>
         </div>
         <p>{{ __('threecolumn.habitContents04') }}</p>
+        <!-- /癖４ -->
 
+        <!-- 癖５ -->
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[4]" id="5" 
           <?php
@@ -269,11 +265,13 @@
             }
           ?>>
           <label class="form-check-label" for="5">
-          {{ __('threecolumn.habitName05') }}
+            {{ __('threecolumn.habitName05') }}
           </label>
         </div>
         <p>{{ __('threecolumn.habitContents05') }}</p>
+        <!-- /癖５ -->
 
+        <!-- 癖６ -->
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[5]" id="6" 
           <?php
@@ -282,11 +280,13 @@
             }
           ?>>
           <label class="form-check-label" for="6">
-          {{ __('threecolumn.habitName06') }}
+            {{ __('threecolumn.habitName06') }}
           </label>
         </div>
         <p>{{ __('threecolumn.habitContents06') }}</p>
+        <!-- /癖６ -->
 
+        <!-- 癖７ -->
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[6]" id="7" 
           <?php
@@ -295,22 +295,26 @@
             }
           ?>>
           <label class="form-check-label" for="7">
-          {{ __('threecolumn.habitName07') }}
+            {{ __('threecolumn.habitName07') }}
           </label>
         </div>
         <p>{{ __('threecolumn.habitContents07') }}</p>
-        
+        <!-- /癖７ -->
+
         <!-- 必須バリデーション表示-->
         @if($errors->has('habit'))
-        @foreach($errors->get('habit') as $message)
-        <ul>
-          <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-        </ul>
-        @endforeach
+          @foreach($errors->get('habit') as $message)
+          <ul>
+            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+          </ul>
+          @endforeach
         @endif
       </div>
+      <!-- /必須バリデーション表示-->
 
-      <input type="submit" class="btn btn-primary btn-lg" value="{{ __('threecolumn.buttonUpdate') }}">
+      <input type="submit" 
+             class="btn btn-primary btn-lg" 
+             value="{{ __('threecolumn.buttonUpdate') }}">
 
       <div class="buttons">
         <button type="button" class="btn btn-secondary btn-lg" onclick="history.back(-1)">{{ __('threecolumn.buttonBack') }}</button>

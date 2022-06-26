@@ -26,10 +26,9 @@
     
     @if ( isset($seven_columns) )
       @if ( count($seven_columns) > 0 )
-      <table class="table table-striped table-bordered">
-        <thead>
-          <tr class="table-primary">
-            <th>{{ __('sevencolumn.id') }}</th>
+      <table class="table table-bordered table-hover">
+        <thread>
+          <tr class="table-info">
             <th>{{ __('sevencolumn.basis_thinking') }}</th>
             <th>{{ __('sevencolumn.opposite_fact') }}</th>
             <th>{{ __('sevencolumn.updated_day') }}</th>
@@ -38,9 +37,7 @@
         <tbody>
           @foreach ($seven_columns as $seven_column)
           <tr>
-            <td>{{ $seven_column->id }}</td>
             <td>{{ $seven_column->basis_thinking }}</td>
-            
             <td>  
               @if (mb_strlen($seven_column->opposite_fact) > 25)
                 {{ $short_content = mb_substr($seven_column->opposite_fact, 0, 25 ) . "..."; }}
@@ -48,7 +45,6 @@
                 {{ $seven_column->opposite_fact }}
               @endif
             </td>
-
             <td>{{ date( 'Y/n/j H:i', strtotime($seven_column->updated_at) ) }}
               <p><a href="{{ route('seven_columns.show', $seven_column->id) }}">{{ __('sevencolumn.detail') }}</a></p>
             </td>

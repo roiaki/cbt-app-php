@@ -10,45 +10,47 @@
       @method('PUT')
       <div class="form-group">
         <!-- タイトル -->
-        <label for="title">{{ __('event.event_edit_title') }}</label>
+        <label for="title"><h5>{{ __('event.event_edit_title') }}</h5></label>
         <input type="text" 
                class="form-control" 
                id="title" 
                name="title" 
                value="{{ $event->title }}"
-        >
+               required>
 
         <!-- バリデーションエラー表示 課題：まとめてかけないか-->
         @if($errors->has('title'))
-        @foreach($errors->get('title') as $message)
-        <ul>
-          <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-        </ul>
-        @endforeach
+          @foreach($errors->get('title') as $message)
+          <ul>
+            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+          </ul>
+          @endforeach
         @endif
       </div>
 
       <div class="form-group">
         <!-- 内容 -->
-        <label for="content">{{ __('event.event_edit_content') }}</label>
+        <label for="content"><h5>{{ __('event.event_edit_content') }}</h5></label>
         <textarea class="form-control" 
                   id="content" 
                   name="content" 
                   cols="50" 
-                  rows="3">{{ $event->content }}</textarea>
+                  rows="3" required>{{ $event->content }}</textarea>
         <!--/内容-->
 
         <!-- バリデーションエラー表示-->
         @if($errors->has('content'))
-        @foreach($errors->get('content') as $message)
-        <ul>
-          <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-        </ul>
-        @endforeach
+          @foreach($errors->get('content') as $message)
+          <ul>
+            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+          </ul>
+          @endforeach
         @endif
       </div>
-      <input type="submit" class="btn btn-primary btn-lg" value="{{ __('event.update_button') }}">
-
+      <!-- 更新ボタン -->
+      <input type="submit" 
+             class="btn btn-primary btn-lg" 
+             value="{{ __('event.update_button') }}">
 
       <div class="buttons">
         <button type="button" class="btn btn-secondary btn-lg" onclick="history.back(-1)">{{ __('event.back') }}</button>

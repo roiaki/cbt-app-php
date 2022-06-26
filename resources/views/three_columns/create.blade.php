@@ -18,16 +18,15 @@
                  id="title"
                  name="title"
                  value="{{ $event->title }}"
-                 readonly
-          >
+                 readonly>
 
           <!-- バリデーションエラー表示-->
           @if($errors->has('title'))
-          @foreach($errors->get('title') as $message)
-          <ul>
-            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-          </ul>
-          @endforeach
+            @foreach($errors->get('title') as $message)
+            <ul>
+              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+            </ul>
+            @endforeach
           @endif
         </div>
 
@@ -39,21 +38,19 @@
                     name="content" 
                     cols="90" 
                     rows="5" 
-                    readonly
-          >{{ $event->content }}</textarea>
+                    readonly>{{ $event->content }}</textarea>
 
           <!-- バリデーションエラー表示-->
           @if($errors->has('content'))
-          @foreach($errors->get('content') as $message)
-          <ul>
-            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-          </ul>
-          @endforeach
+            @foreach($errors->get('content') as $message)
+            <ul>
+              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+            </ul>
+            @endforeach
           @endif
         </div>
 
       <div class="row">
-      
         <div class="form-group col">
           <label for="emotion_name"><h5>{{ __('threecolumn.2-1_title') }}</h5></label>
           <p class="alert alert-success" role="alert">
@@ -68,11 +65,11 @@
 
           <!-- バリデーションエラー表示-->
           @if($errors->has('emotion_name_def'))
-          @foreach($errors->get('emotion_name_def') as $message)
-          <ul>
-            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-          </ul>
-          @endforeach
+            @foreach($errors->get('emotion_name_def') as $message)
+            <ul>
+              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+            </ul>
+            @endforeach
           @endif
         </div>
 
@@ -90,11 +87,11 @@
 
           <!-- バリデーションエラー表示-->
           @if($errors->has('emotion_strength_def'))
-          @foreach($errors->get('emotion_strength_def') as $message)
-          <ul>
-            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-          </ul>
-          @endforeach
+            @foreach($errors->get('emotion_strength_def') as $message)
+            <ul>
+              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+            </ul>
+            @endforeach
           @endif
         </div>
       </div>
@@ -130,7 +127,7 @@
           <div class="btn-group">
             <button class="btn btn-info" type="button" @click="addInput" v-if="!isTextMax">
                 ＋
-                （残り<span v-text="remainingTextCount"></span>件）
+                <span v-text="remainingTextCount"></span>
             </button>
           </div>
 
@@ -156,10 +153,10 @@
 
         <!-- バリデーションエラー表示-->
         @if($errors->has('thinking'))
-        @foreach($errors->get('thinking') as $message)
-        <ul>
-          <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-        </ul>
+          @foreach($errors->get('thinking') as $message)
+          <ul>
+            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+          </ul>
         @endforeach
         @endif
       </div>
@@ -169,14 +166,17 @@
         {{ __('threecolumn.3-2_sentence') }}
       </p>
       <div class="form-group">
-      
+        
+        <!-- 癖１ -->
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[0]" id="1">
           <label class="form-check-label" for="1">
             {{ __('threecolumn.habitName01') }}
           </label> 
         </div>
-        <p>{{ __('threecolumn.habitContents01') }}</p>
+        <p class="mb-0">{{ __('threecolumn.habitContents01') }}</p>
+        <p>{{ __('threecolumn.habitExamples01') }}</p>
+        <!-- /癖１ -->
 
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[1]" id="2">
@@ -185,6 +185,7 @@
           </label>
         </div>
         <p>{{ __('threecolumn.habitContents02') }}</p>
+        <p>{{ __('threecolumn.habitExamples02') }}</p>
 
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[2]" id="3">
@@ -193,6 +194,7 @@
           </label>
         </div>
         <p>{{ __('threecolumn.habitContents03') }}</p>
+        <p>{{ __('threecolumn.habitExamples03') }}</p>
 
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[3]" id="4">
@@ -201,6 +203,7 @@
           </label>
         </div>
         <p>{{ __('threecolumn.habitContents04') }}</p>
+        <p>{{ __('threecolumn.habitExamples04') }}</p>
 
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[4]" id="5">
@@ -209,6 +212,7 @@
           </label>
         </div>
         <p>{{ __('threecolumn.habitContents05') }}</p>
+        <p>{{ __('threecolumn.habitExamples05') }}</p>
 
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[5]" id="6">
@@ -217,6 +221,7 @@
           </label>
         </div>
         <p>{{ __('threecolumn.habitContents06') }}</p>
+        <p>{{ __('threecolumn.habitExamples06') }}</p>
 
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" name="habit[6]" id="7">
@@ -225,6 +230,7 @@
           </label>
         </div>
         <p>{{ __('threecolumn.habitContents07') }}</p>
+        <p>{{ __('threecolumn.habitExamples07') }}</p>
 
         <!-- バリデーションエラー表示-->
         @if($errors->has('habit'))

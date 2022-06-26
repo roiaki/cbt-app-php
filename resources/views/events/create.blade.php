@@ -10,7 +10,7 @@
         <div class="form-group">
         
           <!-- タイトル -->
-          <label class="heading" for="title">{{ __('event.create_title') }}</label>
+          <label for="content"><h5>{{ __('event.create_title') }}</h5></label>
           <input type="text" class="form-control" id="title" name="title" value = "{{ old('title') }}" required>
           <!-- /タイトル-->
 
@@ -28,7 +28,7 @@
         <div class="form-group">
           
           <!-- 内容 -->
-          <label class="heading" for="content">{{ __('event.create_contents') }}</label>
+          <label for="content"><h5>{{ __('event.create_contents') }}</h5></label>
           <textarea class="form-control" 
                     id="content" 
                     name="content" 

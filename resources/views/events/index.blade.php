@@ -22,15 +22,14 @@
 
     @if (isset($events))
       @if (count($events) > 0)
-      <table class="table table-striped table-bordered">
+      <table class="table table-bordered table-hover">
         <thead>
-          <tr class="table-primary">
+          <tr class="table-info">
             <th>{{ __('event.title') }}</th>
             <th>{{ __('event.contents') }}</th>
             <th>{{ __('event.updated_day') }}</th>
           </tr>
         </thead>
-
         <tbody>
           @foreach ($events as $event)
           <tr>

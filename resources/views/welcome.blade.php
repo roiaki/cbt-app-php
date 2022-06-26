@@ -25,7 +25,7 @@
     <section class="cbt-title">
       <h2 class="about-cbt">{{ __('messages.about-thisapp-title') }}</h2>
       <p class="about-text">{{ __('messages.about-thisapp-message') }}</p>
-      <p class="about-text" style="color:#fff8ff;">愛する人よ安らかに</p>
+      
     </section>
    
 @endsection

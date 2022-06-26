@@ -22,8 +22,7 @@
                id="title" 
                name="title" 
                value="{{ $event->title }}"
-               readonly
-        >
+               readonly>
 
         <!-- タイトル必須バリデーション表示-->
         @if($errors->has('title'))
