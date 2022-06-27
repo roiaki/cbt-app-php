@@ -97,7 +97,7 @@ class SevenColumnsController extends Controller
     public function destroy($id)
     {
         $sevencolumn = new SevenColumn;
-        $sevencolumn->deleteSevencolumn;
+        $sevencolumn->deleteSevencolumn($id);
 
         return redirect('seven_columns');
     }
