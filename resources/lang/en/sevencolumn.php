@@ -7,8 +7,8 @@ return [
     "search_word" => "Search keyword",
     "search" => "search",
     "id" => "7 Column ID",
-    "title" => "Title",
-    "content" => "Content",
+    "basis_thinking" => "Basis of thinking",
+    "opposite_fact" => "opposite fact",
     "updated_day" => "Updated day",
     "detail" => "Detail",
  

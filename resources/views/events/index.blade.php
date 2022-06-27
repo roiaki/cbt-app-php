@@ -22,7 +22,7 @@
 
     @if (isset($events))
       @if (count($events) > 0)
-      <table class="table table-bordered table-hover">
+      <table class="table table-bordered table-hover table_border_radius">
         <thead>
           <tr class="table-info">
             <th>{{ __('event.title') }}</th>
