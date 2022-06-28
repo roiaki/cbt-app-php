@@ -58,7 +58,8 @@
             <li class="nav-item font-weight-bold">{!! link_to_route('users.info',  __('messages.info'), [], ['class' => 'nav-link']) !!}</li>
             <li class="nav-item font-weight-bold">{!! link_to_route('events', __('messages.event_list'), [], ['class' => 'nav-link']) !!}</li>
             <li class="nav-item font-weight-bold">{!! link_to_route('three_columns', __('messages.3col_list') , [], ['class' => 'nav-link']) !!}</li>
-            <li class="nav-item font-weight-bold mr-3">{!! link_to_route('seven_columns', __('messages.7col_list'), [], ['class' => 'nav-link']) !!}</li>
+            <li class="nav-item font-weight-bold">{!! link_to_route('seven_columns', __('messages.7col_list'), [], ['class' => 'nav-link']) !!}</li>
+            <li class="nav-item font-weight-bold mr-3">{!! link_to_route('solutions', __('messages.solution_list'), [], ['class' => 'nav-link']) !!}</li>
 
             <!-- 言語切り替え -->
             <li class="dropdown font-weight-bold pt-2 mr-3" id="nav-lang">

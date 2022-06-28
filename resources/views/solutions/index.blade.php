@@ -1,0 +1,61 @@
+@extends('layouts.app')
+
+@section('content')
+
+<div class="row justify-content-center">
+  <div class="col-sm-7">
+    <h3 class="title_head">{{ __('solution.pageTitle') }}</h3>
+    
+    <!--↓↓ 検索フォーム ↓↓-->
+    <div class="row">
+      <div class="col-sm-3 serch">
+        <form class="form-inline" action="{{ route('seven_columns.serch') }}" method="get">
+        @csrf
+          <div class="form-group">
+            <input type="text" 
+                   name="keyword" 
+                   value="@if ( !empty($keyword) ){{ $keyword }}@endif"
+                   class="form-control" placeholder="{{ __('sevencolumn.search_word') }}">
+                   
+            <input type="submit" value="{{ __('sevencolumn.search') }}" class="btn btn-info">
+          </div>          
+        </form>
+      </div>
+    </div>
+    <!--↑↑ 検索フォーム ↑↑-->
+    
+    @if ( isset($solutions) )
+      @if ( count($solutions) > 0 )
+      <table class="table table-bordered table-hover">
+        <thread>
+          <tr class="table-info">
+            <th>ID</th>
+            <th>困っている事</th>
+            <th>長所</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach ($solutions as $solution)
+          <tr>
+            <td>{{ $solution->trouble }}</td>
+            <td>  
+              
+            </td>
+            <td>{{ date( 'Y/n/j H:i', strtotime($solution->updated_at) ) }}
+            </td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+      
+
+      <div class="d-flex justify-content-center">
+        {{ $solutions->appends(request()->input())->links('pagination::bootstrap-4') }}
+      </div>
+      @endif
+    @endif
+    {!! link_to_route('solution.create', __('event.create_new'), [], ['class' => 'btn btn-primary btn-lg']) !!}
+  </div>
+</div>
+
+@endsection

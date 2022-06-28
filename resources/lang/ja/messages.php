@@ -31,6 +31,7 @@ return [
     'event_list' => '出来事一覧',
     '3col_list' => '3コラム一覧',
     '7col_list' => '7コラム一覧',
+    'solution_list' => '解決策',
     'ja_mr_ms' => 'さん',
     'en_mr_ms' => '',
     'account' => 'アカウント',

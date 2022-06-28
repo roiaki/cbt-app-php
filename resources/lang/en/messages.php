@@ -32,6 +32,7 @@ return [
     'event_list' => 'Event',
     '3col_list' => '3column',
     '7col_list' => '7column',
+    'solution_list' => 'solution',
     'ja_mr_ms' => '',
     'en_mr_ms' => 'Mr/Ms',
     'account' => 'Accout',

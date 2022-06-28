@@ -4,8 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
-class Solutions extends Model
+class Solution extends Model
 {
     use HasFactory;
 
@@ -21,5 +23,25 @@ class Solutions extends Model
         // 第3引数：親を判別する値が格納された「親がもつ」カラム
         //return $this->belongsTo(User::class, 'user_id', 'user_id');
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * 一覧表示処理
+     * 
+     * @return array $data
+     */
+    public function showSolutionIndex()
+    {
+        $data = [];
+        if (Auth::check()) {
+            $user = Auth::user();
+            $solutions = $user->solutions()->orderBy('updated_at', 'desc')->paginate(5);
+            
+            // @check
+            $data = [
+                'solutions' => $solutions,
+            ];
+        }
+        return $data;
     }
 }

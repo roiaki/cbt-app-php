@@ -85,4 +85,14 @@ class User extends Authenticatable
         return $this->hasMany(SevenColumn::class);
         
     }
+
+    // user->solutions()->get()　が書けるようになる　
+    // Solutionsモデルとの紐づけ
+    public function solutions() {
+
+        return $this->hasMany(Solution::class);
+        
+    }
+
+
 }

@@ -64,6 +64,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('seven_columns/{param}', 'App\Http\Controllers\SevenColumnsController@destroy')->name('seven_columns.destroy');
     Route::put('seven_columns/{param}', 'App\Http\Controllers\SevenColumnsController@update')->name('seven_columns.update');
 
+    // 解決策リストに関して
+    Route::get('solutions', 'App\Http\Controllers\SolutionsController@index')->name('solutions');
+    Route::get('solution/create', 'App\Http\Controllers\SolutionsController@create')->name('solution.create');
+
     // 使い方説明
     Route::get('users/info', 'App\Http\Controllers\ThreeColumnsController@info')->name('users.info');
 

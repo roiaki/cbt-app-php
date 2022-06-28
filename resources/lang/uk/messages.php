@@ -30,6 +30,7 @@ return [
     'event_list' => 'Подія',
     '3col_list' => '3 колонка',
     '7col_list' => '7 колонка',
+    'solution_list' => 'Рішення',
     'ja_mr_ms' => '',
     'en_mr_ms' => 'Пан/пані',
     'account' => 'Рахунок',
