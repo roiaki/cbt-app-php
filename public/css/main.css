@@ -26,8 +26,7 @@ div.columns {
 
 body {
     font-size: 17px;
-    word-break: break-word;
-    
+    word-break: break-word; 
 }
 
 .wrap_thinking {
@@ -38,7 +37,7 @@ p {
     line-height: 2.0;
 }
 
-.button_wrapper{
+.button_wrapper {
     text-align: right;
 }
 
@@ -96,6 +95,7 @@ div.jumbotron {
     margin: 15% 0% 30% 0%;
 
 }
+
 .about-cbt {
     padding: 80px, 30px;
     margin-bottom: 60px;
@@ -103,6 +103,7 @@ div.jumbotron {
     background-color: #fff;
     color: #333;
 }
+
 .heading {
     position: relative;
    
@@ -133,7 +134,6 @@ div.jumbotron {
 }
 
 .footerFixed {
-   
     min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
     position: relative;/* ←相対位置 */
     padding-bottom: 60px; /* ←フッターの高さを指定 */
