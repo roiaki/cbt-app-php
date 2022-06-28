@@ -9,50 +9,81 @@
         @csrf
     
         <table>
-        <!-- タイトル -->
+        <!-- 問題 -->
         <div class="form-group">
           <tr>  
-          <th><label for="content"><h5>困っている事</h5></label></th>
-          <td><input type="text" class="form-control" id="trouble" name="trouble" value = "{{ old('trouble') }}" required></td>
+            <th><label for="content"><h5>困っている事</h5></label></th>
+            <td>
+              <input type="text" 
+                     class="form-control" 
+                     id="trouble" 
+                     name="trouble" 
+                     value = "{{ old('trouble') }}" 
+                     required>
+            </td>
           </tr>
         </div>
-        <!-- /タイトル-->
+        <!-- /問題-->
 
-        <!-- タイトル -->
-        <tr>
+        <!-- 解決策 -->
         <div class="form-group">
-          <th><label for="content"><h5>解決策</h5></label></th>
-          <td><input type="text" class="form-control" id="solution" name="solution" value = "{{ old('solution') }}" required></td>
+          <tr>
+            <th><label for="content"><h5>解決策</h5></label></th>
+            <td>
+              <input type="text" 
+                     class="form-control" 
+                     id="solution" 
+                     name="solution" 
+                     value = "{{ old('solution') }}" 
+                     required>
+            </td>
+          </tr>
         </div>
-        </tr>
-        <!-- /タイトル-->
+        <!-- /解決策 -->
         
-        <!-- タイトル -->
-        <tr>
+        <!-- 長所 -->
         <div class="form-group">
-          <th><label for="content"><h5>長所</h5></label></th>
-          <td><input type="text" class="form-control" id="merit" name="merit" value = "{{ old('merit') }}" required></td>
-        <!-- /タイトル-->
+          <tr>
+            <th><label for="content"><h5>長所</h5></label></th>
+            <td>
+              <input type="text" 
+                     class="form-control" 
+                     id="merit" 
+                     name="merit" 
+                     value = "{{ old('merit') }}" 
+                     required>
+            </td>
+          </tr>
         </div>
-        </tr>
-        <tr>
-        <!-- タイトル -->
+        <!-- /長所-->
+        
+        <!-- 短所 -->
         <div class="form-group">
-          <th><label for="content"><h5>短所</h5></label></th>
-          <td><input type="text" class="form-control" id="demerit" name="demerit" value = "{{ old('demerit') }}" required></td>
+          <tr>
+            <th><label for="content"><h5>短所</h5></label></th>
+            <td>
+              <input type="text" 
+                     class="form-control" 
+                     id="demerit" 
+                     name="demerit" 
+                     value = "{{ old('demerit') }}" 
+                     required>
+            </td>
+          </tr>
         </div>
-        </tr>
-        <!-- /タイトル-->
+        <!-- /短所 -->
+
         </table>
+
         <!-- バリデーションエラー表示 -->
         @if($errors->has('title'))
-        @foreach($errors->get('title') as $message)
-        <ul>
-            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-        </ul>
-        @endforeach
+            @foreach($errors->get('title') as $message)
+            <ul>
+                <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+            </ul>
+            @endforeach
         @endif
-    
+        <!-- /バリデーションエラー表示 -->
 
         <input type="submit" value="作成" class="btn btn-primary btn-lg"> 
         
