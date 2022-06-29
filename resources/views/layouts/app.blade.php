@@ -10,9 +10,11 @@
 
   <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
   
-  <!-- Vue.js を読み込む -->
+  <!-- Vue.js を読み込む(最新バージョン) -->
   <script src="https://unpkg.com/vue@next"></script>
   
+  <!-- jQuery読み込みしてからBootstrapの順番 -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <!-- bootstrap読み込み　-->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
@@ -143,8 +145,7 @@
     <script src="{{ asset('/js/main.js') }}"></script>
     <script src="{{ mix('/js/app.js') }}"></script>
 
-    <!-- jQuery読み込み -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+ 
 
     <!-- Propper.js読み込み -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>

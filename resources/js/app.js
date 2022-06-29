@@ -66,5 +66,43 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
     }
 });
 
+new Vue({
+    el: '#app01',
+    data: {
+        texts: [],    // 複数入力のデータ（配列）
+        strength: [], // 複数入力のデータ（配列）
+        maxTextCount: 3
+    },
+    methods: {
+        // ボタンをクリックしたときのイベント ①〜③
+        addInput() {
+
+            if(this.isTextMax) {
+                return;
+            }
+
+            this.texts.push(''); // 配列に１つ空データを追加する
+
+            Vue.nextTick(() => {
+                const maxIndex = this.texts.length - 1;
+                console.log(maxIndex)
+                this.$refs['texts'][maxIndex].focus(); // 追加された入力ボックスにフォーカスする
+            });
+        },
+        removeInput(index) {
+            this.texts.splice(index, 1);
+            this.strength.splice(index, 1);
+        },
+    },
+    computed: {
+        isTextMax() {
+            return (this.texts.length >= this.maxTextCount);
+        },
+        remainingTextCount() {
+            return this.maxTextCount - this.texts.length; // 追加できる残り件数
+        }
+    }
+});
+
  
   
