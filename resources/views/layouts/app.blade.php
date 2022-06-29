@@ -5,9 +5,7 @@
   <meta charset="utf-8">
   <title>CBT APP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{asset('css/main.css')}}">
-
   <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
   
   <!-- Vue.js を読み込む(最新バージョン) -->
@@ -15,13 +13,14 @@
   
   <!-- jQuery読み込みしてからBootstrapの順番 -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  
   <!-- bootstrap読み込み　-->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-B417VSZPK0"></script>
   <script>
@@ -31,7 +30,6 @@
 
     gtag('config', 'G-B417VSZPK0');
   </script>
-
 
 </head>
 
