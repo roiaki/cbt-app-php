@@ -72,7 +72,8 @@
         <!-- /短所 -->
 
         </table>
-        <div id="app">  
+
+        <div id="app01">  
         <!-- 入力ボックスを表示する場所 -->
         <div v-for="(text,index) in texts">
             <!-- 各入力ボックス -->
@@ -103,11 +104,11 @@
               </div>
 
               <div class="btn-group ml-auto">
-            <button type="button" 
-                    class="btn btn-outline-danger mr-auto" 
-                    v-if="remainingTextCount < 3"
-                    @click="removeInput(index)">×</button>
-            </div>
+                    <button type="button" 
+                        class="btn btn-outline-danger mr-auto" 
+                        v-if="remainingTextCount < 3"
+                        @click="removeInput(index)">×</button>
+              </div>
             </div>   
         </div>
 

@@ -71,7 +71,7 @@ new Vue({
     data: {
         texts: [],    // 複数入力のデータ（配列）
         strength: [], // 複数入力のデータ（配列）
-        maxTextCount: 3
+        maxTextCount: 8
     },
     methods: {
         // ボタンをクリックしたときのイベント ①〜③
@@ -103,6 +103,13 @@ new Vue({
         }
     }
 });
+
+var app = new Vue({
+    el: "#example",
+    data: {
+      greeting: "Hello Vue.js!"
+    }
+  });
 
  
   

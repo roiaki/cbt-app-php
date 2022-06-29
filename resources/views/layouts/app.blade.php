@@ -5,21 +5,23 @@
   <meta charset="utf-8">
   <title>CBT APP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <!-- bootstrap読み込み　-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  
+  <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
   <link rel="stylesheet" href="{{asset('css/main.css')}}">
   <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
   
-  <!-- Vue.js を読み込む(最新バージョン) -->
+  <!-- Vue.js を読み込む -->
   <script src="https://unpkg.com/vue@next"></script>
   
-  <!-- jQuery読み込みしてからBootstrapの順番 -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-  
   <!-- bootstrap読み込み　-->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>-->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-B417VSZPK0"></script>
@@ -143,7 +145,7 @@
     <script src="{{ asset('/js/main.js') }}"></script>
     <script src="{{ mix('/js/app.js') }}"></script>
 
- 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <!-- Propper.js読み込み -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
