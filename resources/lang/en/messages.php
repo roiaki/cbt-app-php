@@ -14,8 +14,7 @@ return [
     'about-cbt-message02' => 'It is also said that when people are exposed to long-term stress, they tend to fall into extreme thinking. This is called psychological narrowing of vision.',
     'about-cbt-message03' => 'This psychotherapy aims to solve problems from a "realistic and balanced" perspective that is neither overly optimistic nor pessimistic at such times.',
     'about-thisapp-title' => 'About this app',
-    'about-thisapp-message' => 'This application allows you to write down your own thoughts and feelings following the cognitive-behavioral therapy process (3-column or 7-column method). If they are difficult, they will be changed to favorable ones toward a solution. This is aimed at assisting in such problem solving.
-    This psychotherapy aims to solve problems from a "realistic and balanced" perspective that is neither overly optimistic nor pessimistic.',
+    'about-thisapp-message' => 'This application allows you to write down your own thoughts and feelings following the cognitive-behavioral therapy process (3-column or 7-column method). If they are difficult, they will be changed to favorable ones toward a solution. This is intended to assist in such problem solving. This application is only intended to assist. If you are not feeling well or have a serious condition, please consult a trusted psychologist or medical institution.',
 
     // 説明ページ
     'info_title' => 'How to use this app',
