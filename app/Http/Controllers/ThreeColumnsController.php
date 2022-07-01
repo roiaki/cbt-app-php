@@ -108,6 +108,7 @@ class ThreeColumnsController extends Controller
     // 説明ページ表示
     public function info()
     {
-        return view('/users/info');
+        return view('users.info');
+        //return redirect('three_columns');
     }
 }

@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+use Illuminate\Support\Facades\Auth;
+
 class LoginController extends Controller
 {
     /*
@@ -41,6 +43,22 @@ class LoginController extends Controller
         // guest とは、ログイン認証されていない閲覧者
         $this->middleware('guest')->except('logout');
     }
+
+    /**
+     * ゲストログイン機能
+     * 
+     */ 
+    public function guestLogin()
+    {
+        $email = 'testuser123@test.com';
+        $password = 'testtest';
+
+        if(Auth::attempt(['email' => $email, 'password' => $password])) {
+            return redirect('users/info');
+        }
+        //return redirect('/');
+    }
+
 
  
 }

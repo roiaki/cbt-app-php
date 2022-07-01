@@ -15,6 +15,7 @@ return [
     
      // ログインページ
      "Login" => "Увійти",
+     "GuestLogin" => "Гість Вхід",
      "E-Mail Address" => "Поштова адреса",
      "Password" => "пароль",
      "Remember Me" =>"Зберегти статус входу",

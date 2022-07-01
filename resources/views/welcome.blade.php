@@ -9,6 +9,7 @@
         <h3 style="margin-top:30px">May you have many Smiles!</h3>
         <div style="margin-top:310px">
         @guest
+          {!! link_to_route('guest.login',  __('auth.GuestLogin'), [], ['class' => 'btn btn-lg btn-success m-3']) !!}
           {!! link_to_route('login', __('auth.Login'), [], ['class' => 'btn btn-lg btn-primary m-3']) !!}
           {!! link_to_route('signup.get', __('messages.register'), [], ['class' => 'btn btn-lg btn-secondary m-3']) !!}
         @endguest

@@ -19,6 +19,7 @@ return [
 
      // ログインページ
     "Login" => "Login",
+    "GuestLogin" => "GuestLogin",
     "E-Mail Address" => "E-Mail Address",
     "Password" => "Password",
     "Remember Me" => "Remenber Me",

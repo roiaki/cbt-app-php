@@ -25,6 +25,9 @@ Route::post('signup', 'App\Http\Controllers\Auth\RegisterController@register')->
 Route::get('login', 'App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'App\Http\Controllers\Auth\LoginController@login')->name('login.post');
 
+// ゲストログイン機能
+Route::get('login/guest', 'App\Http\Controllers\Auth\LoginController@guestLogin')->name('guest.login');
+
 // 言語切り替え
 Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'App\Http\Controllers\LanguageController@switchLang']);
 
