@@ -152,7 +152,7 @@ class ThreeColumn extends Model
      * 3コラム保存処理
      * 
      * @param Request $request
-     * 
+     * @return object $three_column
      */
     public function storeThreecolumn($request)
     {
@@ -243,6 +243,7 @@ class ThreeColumn extends Model
             $three_column->save();
         });
         // end transaction
+        return $three_column;
     }
 
     /**
