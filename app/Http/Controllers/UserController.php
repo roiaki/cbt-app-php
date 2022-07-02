@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;    // 追加
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -26,5 +27,21 @@ class UserController extends Controller
     public function delete_confirm() {
 
         return view('users.delete_confirm');
+    }
+
+    // ゲストユーザーログイン処理
+    public function guestUserCreate() {
+        $email = uniqid();
+        $name = "GuestUser";
+        
+        $user = new User();
+        $user->name = $name;
+        $user->email = $email . "@test.com";
+        $user->password =  Hash::make('testtest');
+        $user->save();
+
+        Auth::login($user);
+        
+        return view('events.index');
     }
 }

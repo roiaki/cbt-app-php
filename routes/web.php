@@ -26,7 +26,10 @@ Route::get('login', 'App\Http\Controllers\Auth\LoginController@showLoginForm')->
 Route::post('login', 'App\Http\Controllers\Auth\LoginController@login')->name('login.post');
 
 // ゲストログイン機能
-Route::get('login/guest', 'App\Http\Controllers\Auth\LoginController@guestLogin')->name('guest.login');
+//Route::get('login/guest', 'App\Http\Controllers\Auth\LoginController@guestLogin')->name('guest.login');
+
+// ゲストユーザー登録
+Route::get('signup/guest', 'App\Http\Controllers\UserController@guestUserCreate')->name('guest.signup');
 
 // 言語切り替え
 Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'App\Http\Controllers\LanguageController@switchLang']);
