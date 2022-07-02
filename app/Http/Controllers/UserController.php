@@ -29,7 +29,11 @@ class UserController extends Controller
         return view('users.delete_confirm');
     }
 
-    // ゲストユーザー作成とログイン処理
+    /**
+     * ゲストユーザーを作成するメソッド
+     * 簡易ゲストユーザー（名前はGuestUser、メアドはランダム）を作成しログインする
+     * @return view('events.index'); 
+     */
     public function guestUserCreate() {
         $email = uniqid();
         $name = "GuestUser";
