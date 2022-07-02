@@ -46,6 +46,6 @@ class UserController extends Controller
 
         Auth::login($user);
         
-        return view('events.index');
+        return view('users.info');
     }
 }
