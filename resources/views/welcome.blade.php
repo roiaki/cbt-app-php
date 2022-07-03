@@ -21,12 +21,11 @@
           {!! link_to_route('login', __('auth.Login'), [], ['class' => 'btn btn-primary m-3']) !!}
           {!! link_to_route('signup.get', __('messages.register'), [], ['class' => 'btn btn-secondary m-3']) !!}
         @endguest
-        
         </div>
       </div>
     </div>
     <div>
-      <audio controls src="images/bgm.mp3" loop></audio>
+      <audio controls autoplay src="images/bgm.mp3" loop></audio>
     </div>
     <section class="cbt-title">
       <h2 class="about-cbt">{{ __('messages.about-cbt-title') }}</h2>
