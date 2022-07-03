@@ -13,6 +13,7 @@
             <span class="message animate__animated animate__fadeIn animate__delay-3s">have</span>
             <span class="message animate__animated animate__fadeIn animate__delay-4s">many Smiles!</span>
           </h3>
+          
         </div>
         <div style="margin-top:310px">
         @guest
@@ -20,10 +21,13 @@
           {!! link_to_route('login', __('auth.Login'), [], ['class' => 'btn btn-primary m-3']) !!}
           {!! link_to_route('signup.get', __('messages.register'), [], ['class' => 'btn btn-secondary m-3']) !!}
         @endguest
+        
         </div>
       </div>
     </div>
-
+    <div>
+      <audio controls src="images/bgm.mp3" loop></audio>
+    </div>
     <section class="cbt-title">
       <h2 class="about-cbt">{{ __('messages.about-cbt-title') }}</h2>
       <p class="about-text">{{ __('messages.about-cbt-message01') }}</p>
