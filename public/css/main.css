@@ -141,11 +141,12 @@ div.jumbotron {
     box-sizing: border-box;
     /* ↑ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
 }
+
 h1.outline {
     font-family: cursive;
     display        : inline-block;
     color          : rgba(255, 255, 255, 0.97);            /* 文字の色 */
-    font-size      : 38pt;               /* 文字のサイズ */
+    font-size      : 35pt;               /* 文字のサイズ */
     letter-spacing : 6px;                /* 文字間 */
     text-shadow    : 
          2px  2px 2px rgba(245, 234, 234, 0.25),
@@ -157,6 +158,7 @@ h1.outline {
         -2px  0px 2px rgba(0, 0, 0, 0.25),
          0px -2px 2px rgba(0, 0, 0, 0.25);        /* 文字の影 */
 }
+
 .message {
     color:#e6e6fa;
     margin-top:30px;
@@ -193,21 +195,18 @@ h1.outline {
     bottom:0;
     overflow: hidden;
 }
+
 .video-container {
     position: relative;
-  }
+}
   
-  .video-sidebar {
+.video-sidebar {
     position: absolute;
     top: 0;
     
     width: 100%;
     height: 100%;
     
-  }
-  
-  video {
-    width: 100%;
-  }
+}
 
 

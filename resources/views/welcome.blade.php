@@ -2,10 +2,9 @@
 
 @section('content')
 
-
     <div class="jumbotron" style="background-color:#FFF0F5; background-size:cover;">
       <div class="text-center">
-        <p style="font-family: cursive;">{{ __('messages.sentence01') }}<br>{{ __('messages.sentence02') }}</p>
+        <p style="font-family:cursive;">{{ __('messages.sentence01') }}<br>{{ __('messages.sentence02') }}</p>
         <h1 class="outline">{{ __('messages.welcome_title') }}</h1><br>
         <div>
           <h3 style="font-family: cursive;">
@@ -16,17 +15,19 @@
           </h3>
           
         </div>
-        <div style="margin-top:310px">
+        
         @guest
+        <div class="SP_Flex_container" style="margin-top:300px">
           {!! link_to_route('guest.signup',  __('auth.GuestLogin'), [], ['class' => 'btn btn-success m-3 animate__animated animate__swing animate__delay-5s']) !!}
           {!! link_to_route('login', __('auth.Login'), [], ['class' => 'btn btn-primary m-3']) !!}
           {!! link_to_route('signup.get', __('messages.register'), [], ['class' => 'btn btn-secondary m-3']) !!}
-        @endguest
         </div>
+        @endguest
+       
       </div>
     </div>
     <div>
-      <audio controlslist="nodownload" controls autoplay src="images/bgm.mp3" loop></audio>
+      <!--<audio controlslist="nodownload" controls autoplay src="images/bgm.mp3" loop></audio>-->
     </div>
     <section class="cbt-title">
       <h2 class="about-cbt">{{ __('messages.about-cbt-title') }}</h2>
