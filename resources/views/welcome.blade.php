@@ -4,10 +4,10 @@
 
     <div class="jumbotron" style="background:url(images/welcome_image.png); background-size:cover;">
       <div class="text-center">
-        <p >{{ __('messages.sentence01') }}<br>{{ __('messages.sentence02') }}</p>
+        <p style="font-family: cursive;">{{ __('messages.sentence01') }}<br>{{ __('messages.sentence02') }}</p>
         <h1 class="outline">{{ __('messages.welcome_title') }}</h1><br>
         <div>
-          <h3>
+          <h3 style="font-family: cursive;">
             <span class="message animate__animated animate__fadeIn animate__delay-1s">May</span>
             <span class="message animate__animated animate__fadeIn animate__delay-2s">you</span>
             <span class="message animate__animated animate__fadeIn animate__delay-3s">have</span>

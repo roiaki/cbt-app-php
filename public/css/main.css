@@ -26,7 +26,8 @@ div.columns {
 
 body {
     font-size: 17px;
-    word-break: break-word; 
+    word-break: break-word;
+    
 }
 
 .wrap_thinking {
@@ -141,6 +142,7 @@ div.jumbotron {
     /* ↑ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
 }
 h1.outline {
+    font-family: cursive;
     display        : inline-block;
     color          : rgba(255, 255, 255, 0.97);            /* 文字の色 */
     font-size      : 38pt;               /* 文字のサイズ */
