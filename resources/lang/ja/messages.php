@@ -4,9 +4,9 @@ return [
     'welcome_user' => 'ははは',
 
     // welcomeページ
-    'welcome_title' => '認知行動療法的なWEBアプリ',
-    'sentence01' => '3コラム、7コラム法で自分の考え方を記入して',
-    'sentence02' => '認知のゆがみを取りませんか？',
+    'welcome_title' => 'ココロ フワリ',
+    'sentence01' => '認知行動療法のアプローチで',
+    'sentence02' => '気持ちすっきり',
     'register' => '会員登録',
     'login' => 'ログイン',
     'about-cbt-title' => '認知行動療法とは',

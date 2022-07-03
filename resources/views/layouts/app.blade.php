@@ -5,13 +5,13 @@
   <meta charset="utf-8">
   <title>CBT APP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  <link rel="stylesheet" href="{{asset('css/main.css')}}">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   
 
   <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
-  <link rel="stylesheet" href="{{asset('css/main.css')}}">
+
 
   
   <!-- Vue.js を読み込む -->

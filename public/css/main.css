@@ -140,3 +140,19 @@ div.jumbotron {
     box-sizing: border-box;
     /* ↑ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
 }
+h1.outline {
+    display        : inline-block;
+    color          : rgba(255, 255, 255, 0.97);            /* 文字の色 */
+    font-size      : 36pt;               /* 文字のサイズ */
+    letter-spacing : 4px;                /* 文字間 */
+    text-shadow    : 
+         2px  2px 2px rgba(0, 0, 0, 0.25),
+        -2px  2px 2px rgba(0, 0, 0, 0.25),
+         2px -2px 2px rgba(0, 0, 0, 0.25),
+        -2px -2px 2px rgba(0, 0, 0, 0.25),
+         2px  0px 2px rgba(0, 0, 0, 0.25),
+         0px  2px 2px rgba(0, 0, 0, 0.25),
+        -2px  0px 2px rgba(0, 0, 0, 0.25),
+         0px -2px 2px rgba(0, 0, 0, 0.25);        /* 文字の影 */
+  }
+}
