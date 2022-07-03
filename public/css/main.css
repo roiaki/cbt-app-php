@@ -154,5 +154,9 @@ h1.outline {
          0px  2px 2px rgba(0, 0, 0, 0.25),
         -2px  0px 2px rgba(0, 0, 0, 0.25),
          0px -2px 2px rgba(0, 0, 0, 0.25);        /* 文字の影 */
-  }
 }
+.message {
+    color : #FFB6C1;
+    margin-top:30px
+}
+
