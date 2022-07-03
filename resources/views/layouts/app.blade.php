@@ -11,11 +11,9 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   
-
   <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
 
 
-  
   <!-- Vue.js を読み込む -->
   <script src="https://unpkg.com/vue@next"></script>
   
