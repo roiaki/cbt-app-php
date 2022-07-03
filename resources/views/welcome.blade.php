@@ -25,7 +25,7 @@
       </div>
     </div>
     <div>
-      <audio controls autoplay src="images/bgm.mp3" loop></audio>
+      <audio controlslist="nodownload" controls autoplay src="images/bgm.mp3" loop></audio>
     </div>
     <section class="cbt-title">
       <h2 class="about-cbt">{{ __('messages.about-cbt-title') }}</h2>
