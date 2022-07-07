@@ -22,118 +22,33 @@
           </tr>
         </div>
         <!-- /問題-->
-        <table class="table table-bordered table-hover">
-        <!-- 解決策 -->
-        <div class="form-group">
-          <tr>
-            <th><label for="content"><h5>解決策</h5></label></th>
-            <td>
-              <input type="text"
-                     class="form-control"
-                     id="solution"
-                     name="solution"
-                     value = "{{ old('solution') }}"
-                     required>
-            </td>
-          </tr>
-        </div>
-        <!-- /解決策 -->
-        
-        <!-- 長所 -->
-        <div class="form-group">
-          <tr>
-            <th><label for="content"><h5>長所</h5></label></th>
-            <td>
-              <input type="text" 
-                     class="form-control" 
-                     id="merit" 
-                     name="merit" 
-                     value = "{{ old('merit') }}" 
-                     required>
-            </td>
-          </tr>
-        </div>
-        <!-- /長所-->
-        
-        <!-- 短所 -->
-        <div class="form-group">
-          <tr>
-            <th><label for="content"><h5>短所</h5></label></th>
-            <td>
-              <input type="text" 
-                     class="form-control" 
-                     id="demerit" 
-                     name="demerit" 
-                     value = "{{ old('demerit') }}" 
-                     required>
-            </td>
-          </tr>
-        </div>
-        <!-- /短所 -->
 
-        </table>
-        <div id="app">
-        <p>ここ</p>
-
-        <p>@{{ message }}</p>
-        
-        </div>
-
-        <!--<div id="app01">  -->
-        <!-- 入力ボックスを表示する場所 -->
-        <!--
-        <div v-for="(text,index) in texts">
--->
-            <!-- 各入力ボックス -->
-            <!--
-            <div class="row mt-3">
-              <div class="form-group col">
-                <input ref="texts"
-                       name="emotion_name[]"
-                       class="form-control"
-                       type="text"
-                       v-model="texts[index]"
-                       @keypress.shift.enter="addInput">
-              </div>
-              <div class="form-group col">
-                <input ref="strength"
-                       name="emotion_strength[]"
-                       class="form-control"
-                       type="text"
-                       v-model="strength[index]"
-                       @keypress.shift.enter="addInput">
-              </div>
-              <div class="form-group col">
-                <input ref="strength"
-                       name="emotion_strength[]"
-                       class="form-control"
-                       type="text"
-                       v-model="strength[index]"
-                       @keypress.shift.enter="addInput">
-              </div>
-
-              <div class="btn-group ml-auto">
-                    <button type="button" 
-                        class="btn btn-outline-danger mr-auto" 
-                        v-if="remainingTextCount < 3"
-                        @click="removeInput(index)">×</button>
-              </div>
-            </div>   
-        </div>
--->
-        <!-- 入力ボックスを追加するボタン -->
-        <!--
-        <div class="btn-toolbar">
-          <div class="btn-group">
-            <button class="btn btn-info" type="button" @click="addInput" v-if="!isTextMax">
-                ＋
-                <span v-text="remainingTextCount"></span>
-            </button>
+        <!-- 解決策長所短所 -->
+        <div class="row">
+          <div class="col-4">
+            <label for="emotion_name"><h5>解決策</h5></label>
+              <p class="alert alert-success" role="alert">
+                解決策
+              </p>
           </div>
-
+          <div class="col-4">
+            <label for="emotion_name"><h5>長所</h5></label>
+              <p class="alert alert-success" role="alert">
+                長所
+              </p>
+          </div>
+          <div class="col-4">
+            <label for="emotion_name"><h5>短所</h5></label>
+              <p class="alert alert-success" role="alert">
+                短所
+              </p>
           </div>
         </div>
--->
+        <div id="app"> 
+          <addsolution></addsolution>
+        </div>
+        <!-- /解決策長所短所 -->
+
         <!-- バリデーションエラー表示 -->
         @if($errors->has('title'))
             @foreach($errors->get('title') as $message)
@@ -144,10 +59,10 @@
         @endif
         <!-- /バリデーションエラー表示 -->
 
-        <input type="submit" value="作成" class="btn btn-primary btn-lg"> 
+        <input type="submit" value="作成" class="btn btn-primary btn-lg mt-5"> 
         
         <div class="buttons">
-          <button type="button" class="btn btn-secondary btn-lg" onclick="history.back(-1)">{{ __('event.back')}}</button>
+          <button type="button" class="btn btn-secondary btn-lg mt-5" onclick="history.back(-1)">{{ __('event.back')}}</button>
         </div>
         
       </form>
