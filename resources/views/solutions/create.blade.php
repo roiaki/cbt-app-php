@@ -72,11 +72,20 @@
         <!-- /短所 -->
 
         </table>
+        <div id="app">
+        <p>ここ</p>
 
-        <div id="app01">  
+        <p>@{{ message }}</p>
+        
+        </div>
+
+        <!--<div id="app01">  -->
         <!-- 入力ボックスを表示する場所 -->
+        <!--
         <div v-for="(text,index) in texts">
+-->
             <!-- 各入力ボックス -->
+            <!--
             <div class="row mt-3">
               <div class="form-group col">
                 <input ref="texts"
@@ -111,8 +120,9 @@
               </div>
             </div>   
         </div>
-
+-->
         <!-- 入力ボックスを追加するボタン -->
+        <!--
         <div class="btn-toolbar">
           <div class="btn-group">
             <button class="btn btn-info" type="button" @click="addInput" v-if="!isTextMax">
@@ -123,7 +133,7 @@
 
           </div>
         </div>
-
+-->
         <!-- バリデーションエラー表示 -->
         @if($errors->has('title'))
             @foreach($errors->get('title') as $message)

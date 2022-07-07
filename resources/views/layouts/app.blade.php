@@ -15,7 +15,11 @@
 
 
   <!-- Vue.js を読み込む -->
-  <script src="https://unpkg.com/vue@next"></script>
+  <!--<script src="https://unpkg.com/vue@next"></script>-->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
+  <!-- 開発バージョン、便利なコンソールの警告が含まれています -->
+  <!--<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>-->
   
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS, then Font Awesome -->
@@ -65,8 +69,8 @@
             <li class="nav-item font-weight-bold">{!! link_to_route('events', __('messages.event_list'), [], ['class' => 'nav-link']) !!}</li>
             <li class="nav-item font-weight-bold">{!! link_to_route('three_columns', __('messages.3col_list') , [], ['class' => 'nav-link']) !!}</li>
             <li class="nav-item font-weight-bold">{!! link_to_route('seven_columns', __('messages.7col_list'), [], ['class' => 'nav-link']) !!}</li>
-            <!--<li class="nav-item font-weight-bold mr-3">{!! link_to_route('solutions', __('messages.solution_list'), [], ['class' => 'nav-link']) !!}</li>
--->
+            <li class="nav-item font-weight-bold mr-3">{!! link_to_route('solutions', __('messages.solution_list'), [], ['class' => 'nav-link']) !!}</li>
+
             <!-- 言語切り替え -->
             <li class="dropdown font-weight-bold pt-2 mr-3" id="nav-lang">
               <a href="#" class="dropdown-toggle text-black-50" data-toggle="dropdown" role="button">
@@ -146,8 +150,7 @@
     <!-- Copyright -->
   </footer>
 
-  <script src="{{ asset('/js/main.js') }}"></script>
-  <script src="{{ mix('/js/app.js') }}"></script>
+  
 
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>-->
 
@@ -157,5 +160,7 @@
   <!--<script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>-->
 
 </div>
+  <script src="{{ asset('/js/main.js') }}"></script>
+  <script src="{{ mix('/js/app.js') }}"></script>
 </body>
 </html>
