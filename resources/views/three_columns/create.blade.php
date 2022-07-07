@@ -96,12 +96,9 @@
         </div>
       </div>
 
-      <div id="app1">
-      <p>@{{ message }}</p>
-      </div>
+      <!-- 動的に増えるフォーム-->
       <div id="app">
-        <addform></addform>  
-      
+        <add></add>  
       </div>
 
       <div class="form-group mt-4">
