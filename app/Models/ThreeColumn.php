@@ -25,11 +25,9 @@ class ThreeColumn extends Model
      */
     protected $table = 'threecolumns';
 
-    // ホワイトリスト　
-    protected $fillable = [
+    // ブラックリスト
+    protected $guarded = ['id'];
     
-    ];
-
     public function user()
     {
         // belongsTo 子から親へ　従から主へ
@@ -180,7 +178,7 @@ class ThreeColumn extends Model
                 $three_column->emotion_name02 = $request->emotion_name[2];
             }
 
-            if( isset($request->emotion_strength[0])) {
+            if(isset($request->emotion_strength[0])) {
                 $three_column->emotion_strength00 = $request->emotion_strength[0];
             }
 

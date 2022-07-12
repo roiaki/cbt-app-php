@@ -21,10 +21,8 @@ class Event extends Model
     //protected $primaryKey = 'event_id';
     
     // fillableに指定したカラムのみ、create()やfill()、update()で値が代入されます。
-    protected $fillable = [
-        'title',
-        'content'   
-    ];
+    // ブラックリスト
+    protected $guarded = ['id'];
 
     /*
      * 1対多（逆）所属

@@ -44,4 +44,40 @@ class Solution extends Model
         }
         return $data;
     }
+
+    /**
+     * 解決策保存処理
+     * 
+     */
+    public function solutionStore($request)
+    {
+        $solution = new Solution;
+
+        $solution->user_id = Auth::id();
+        
+        $solution->trouble = $request->trouble;
+        
+        if(isset($request->solution[0])) {
+            $solution->solution00 = $request->solution[0];
+        }
+        if(isset($request->solution[1])) {
+            $solution->solution00 = $request->solution[1];
+        }
+        if(isset($request->solution[2])) {
+            $solution->solution00 = $request->solution[2];
+        }
+        if(isset($request->solution[3])) {
+            $solution->solution00 = $request->solution[3];
+        }
+        if(isset($request->solution[4])) {
+            $solution->solution00 = $request->solution[4];
+        }
+
+
+        $solution->solution00 = $request->solution00;
+        $solution->solution01 = $request->solution01;
+        $solution->solution02 = $request->solution02;
+        $solution->solution03 = $request->solution03;
+
+    }
 }

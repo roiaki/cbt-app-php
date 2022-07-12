@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class SevenColumn extends Model
 {
     // ブラックリスト
-    protected $guarded = [];
+    protected $guarded = ['id'];
 
     // テーブルの紐付け(テーブル名がモデル名の複数形の場合は記述の必要なし)
     protected $table = 'sevencolumns';

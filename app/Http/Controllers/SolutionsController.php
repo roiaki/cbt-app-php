@@ -23,4 +23,25 @@ class SolutionsController extends Controller
         return view('solutions.create');
     }
 
+    /**
+     * 解決策保存処理
+     * 
+     */
+    public function store(Request $request) 
+    {
+        $this->validate(
+            $request,
+            [
+                'trouble' => 'required|max:500',
+                'solution00' => 'required|max:500',
+                'merit00' => 'required|max:500',
+                'demerit00' => 'required|max:500',
+            ]
+        );
+
+        $Solution = new Solution;
+        $solution = $Solution->solutionStore($request);
+        
+    }
+
 }
