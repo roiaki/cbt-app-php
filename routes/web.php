@@ -72,7 +72,8 @@ Route::group(['middleware' => ['auth']], function () {
     // 解決策リストに関して
     Route::get('solutions', 'App\Http\Controllers\SolutionsController@index')->name('solutions');
     Route::get('solution/create', 'App\Http\Controllers\SolutionsController@create')->name('solution.create');
-
+    Route::post('solutions', 'App\Http\Controllers\SolutionsController@store')->name('solutions.store');
+    
     // 使い方説明
     Route::get('users/info', 'App\Http\Controllers\ThreeColumnsController@info')->name('users.info');
 
