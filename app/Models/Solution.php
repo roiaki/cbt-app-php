@@ -73,11 +73,41 @@ class Solution extends Model
             $solution->solution00 = $request->solution[4];
         }
 
+        if(isset($request->merit[0])) {
+            $solution->merit00 = $request->merit[0];
+        }
+        if(isset($request->merit[1])) {
+            $solution->merit01 = $request->merit[1];
+        }
+        if(isset($request->merit[2])) {
+            $solution->merit02 = $request->merit[2];
+        }
+        if(isset($request->merit[3])) {
+            $solution->merit03 = $request->merit[3];
+        }
+        if(isset($request->merit[4])) {
+            $solution->merit04 = $request->merit[4];
+        }
 
-        $solution->solution00 = $request->solution00;
-        $solution->solution01 = $request->solution01;
-        $solution->solution02 = $request->solution02;
-        $solution->solution03 = $request->solution03;
+        if(isset($request->demerit[0])) {
+            $solution->demerit00 = $request->demerit[0];
+        }
+        if(isset($request->demerit[1])) {
+            $solution->demerit01 = $request->demerit[1];
+        }
+        if(isset($request->demerit[2])) {
+            $solution->demerit02 = $request->demerit[2];
+        }
+        if(isset($request->demerit[3])) {
+            $solution->demerit03 = $request->demerit[3];
+        }
+        if(isset($request->demerit[4])) {
+            $solution->demerit04 = $request->demerit[4];
+        }
+
+        $solution->sage();
+
+        return $solution;
 
     }
 }
