@@ -57,20 +57,21 @@ class Solution extends Model
         
         $solution->trouble = $request->trouble;
         
+        // @cheack create()　fill() マルチカラムアトリビュート対策の検討
         if(isset($request->solution[0])) {
             $solution->solution00 = $request->solution[0];
         }
         if(isset($request->solution[1])) {
-            $solution->solution00 = $request->solution[1];
+            $solution->solution01 = $request->solution[1];
         }
         if(isset($request->solution[2])) {
-            $solution->solution00 = $request->solution[2];
+            $solution->solution02 = $request->solution[2];
         }
         if(isset($request->solution[3])) {
-            $solution->solution00 = $request->solution[3];
+            $solution->solution03 = $request->solution[3];
         }
         if(isset($request->solution[4])) {
-            $solution->solution00 = $request->solution[4];
+            $solution->solution04 = $request->solution[4];
         }
 
         if(isset($request->merit[0])) {
@@ -105,9 +106,14 @@ class Solution extends Model
             $solution->demerit04 = $request->demerit[4];
         }
 
-        $solution->sage();
+        $solution->save();
 
         return $solution;
 
+    }
+
+    public function updateSolution()
+    {
+        
     }
 }

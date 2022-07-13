@@ -29,6 +29,7 @@ class SolutionsController extends Controller
      */
     public function store(Request $request) 
     {
+        /*
         $this->validate(
             $request,
             [
@@ -38,10 +39,51 @@ class SolutionsController extends Controller
                 'demerit00' => 'required|max:500',
             ]
         );
+        */
 
         $Solution = new Solution;
         $solution = $Solution->solutionStore($request);
+       // dd('test');
+        $data = ['solution' => $solution];
+
+        return view('solutions.show', $data);
+    }
+
+    // 詳細ページ表示処理
+    public function show($id)
+    {
+        $solution = Solution::find($id);
+        $data = [
+            'solution' => $solution,
+        ];
+//dd($data);
+        return view('solutions.show', $data);
+    }
+
+    // 編集ページ表示処理
+    public function edit($id)
+    {
+        $solution = Solution::find($id);
+        $data = [
+            'solution' => $solution,
+        ];
+        return view('solutions.edit', $data);
+    }
+
+    /**
+     * 解決策更新処理
+     * 
+     * @param Request $request
+     * @param int $id
+     * @return redirect('/three_columns');
+     */
+    public function update(Request $request, $id)
+    {
         
+        $solution = new ThreeColumn;
+        $solution->updateSolution($request, $id);
+
+        return redirect('/solutions');
     }
 
 }

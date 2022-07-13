@@ -37,11 +37,13 @@
         <tbody>
           @foreach ($solutions as $solution)
           <tr>
-            <td>{{ $solution->trouble }}</td>
+            <td>{{ $solution->id }}</td>
             <td>  
-              
+            {{ $solution->trouble }}
             </td>
-            <td>{{ date( 'Y/n/j H:i', strtotime($solution->updated_at) ) }}
+            <td>
+              {{ date( 'Y/n/j H:i', strtotime($solution->updated_at) ) }}
+              <p><a href="{{ route('solutions.show', $solution->id) }}">{{ __('event.detail') }}</a></p>
             </td>
           </tr>
           @endforeach
