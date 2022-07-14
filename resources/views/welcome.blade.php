@@ -2,13 +2,6 @@
 
 @section('content')
 
-<div id="app">
-  <test-vue></test-vue>
-  <example-component></example-component>
-  <user-information></user-information>
-  <add></add>
-</div>
-
     <div class="jumbotron" style="background-color:#FFF0F5; background-size:cover;">
       <div class="text-center">
         <p style="font-family:cursive;">{{ __('messages.sentence01') }}<br>{{ __('messages.sentence02') }}</p>

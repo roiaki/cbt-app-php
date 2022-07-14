@@ -117,51 +117,76 @@
               </label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="habit[0]" id="1" <?php
-                                                                                      if (in_array(3, $habit_id)) {
-                                                                                        echo 'checked';
-                                                                                      }
-                                                                                      ?>>
+              <input class="form-check-input" 
+                     type="checkbox" 
+                     name="habit[0]" 
+                     id="1" 
+                     <?php
+                      if (in_array(3, $habit_id)) {
+                        echo 'checked';
+                      }
+                     ?>
+              >
               <label class="form-check-label" for="1">
                 {{ __('threecolumn.habitName03') }}              
               </label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="habit[0]" id="1" <?php
-                                                                                      if (in_array(4, $habit_id)) {
-                                                                                        echo 'checked';
-                                                                                      }
-                                                                                      ?>>
+              <input class="form-check-input" 
+                     type="checkbox" 
+                     name="habit[0]" 
+                     id="1" 
+                     <?php
+                      if (in_array(4, $habit_id)) {
+                        echo 'checked';
+                      }
+                     ?>
+              >
               <label class="form-check-label" for="1">
                 {{ __('threecolumn.habitName04') }}
               </label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="habit[0]" id="1" <?php
-                                                                                      if (in_array(5, $habit_id)) {
-                                                                                        echo 'checked';
-                                                                                      }
-                                                                                      ?>>
+              <input class="form-check-input" 
+                     type="checkbox" 
+                     name="habit[0]" 
+                     id="1" 
+                     <?php
+                      if (in_array(5, $habit_id)) {
+                        echo 'checked';
+                      }
+                     ?>
+              >
               <label class="form-check-label" for="1">
                 {{ __('threecolumn.habitName05') }}
               </label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="habit[0]" id="1" <?php
-                                                                                      if (in_array(6, $habit_id)) {
-                                                                                        echo 'checked';
-                                                                                      }
-                                                                                      ?>>
+              <input class="form-check-input" 
+                     type="checkbox" 
+                     name="habit[0]" 
+                     id="1" 
+                     <?php
+                      if (in_array(6, $habit_id)) {
+                        echo 'checked';
+                      }
+                     ?>
+              >
               <label class="form-check-label" for="1">
                 {{ __('threecolumn.habitName06') }}
               </label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="habit[0]" id="1" <?php
-                                                                                      if (in_array(7, $habit_id)) {
-                                                                                        echo 'checked';
-                                                                                      }
-                                                                                      ?>>
+              <input class="form-check-input" 
+                     type="checkbox" 
+                     name="habit[0]" 
+                     id="1" 
+                     <?php
+                      if (in_array(7, $habit_id)) {
+                        echo 'checked';
+                      }
+                     ?>
+              >
               <label class="form-check-label" for="1">
                 {{ __('threecolumn.habitName07') }}
               </label>
@@ -174,21 +199,21 @@
 
     <div class="buttons-first">
       <form action="{{ route('seven_columns.create', ['id' => $three_column->id]) }}" method="get">
-        @CSRF
+        @csrf
         <button type="submit" class="btn btn-success btn-lg">{{ __('threecolumn.buttonCreate7') }}</button>
       </form>
     </div>
 
     <div class="buttons">
       <form action="{{ route('three_columns.edit', ['param' => $three_column->id] ) }}" method="get">
-        @CSRF
+        @csrf
         <button type="submit" class="btn btn-secondary btn-lg">{{ __('threecolumn.buttonEdit') }}</button>
       </form>
     </div>
 
     <div class="buttons">
       <form action="{{ route('three_columns.destroy', ['param' => $three_column->id] ) }}" method="post">
-        @CSRF
+        @csrf
         <button type="submit" class="btn btn-danger btn-lg" onclick="return confirmDelete();">{{ __('threecolumn.buttonDelete') }}</button>
       </form>
     </div>
