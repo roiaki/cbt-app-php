@@ -157,7 +157,7 @@
         </div>
         @endif
 
-        <input type="submit" value="作成" class="btn btn-primary btn-lg mt-5"> 
+        <input type="submit" value="更新" class="btn btn-primary btn-lg mt-5"> 
         
         <div class="buttons">
           <button type="button" class="btn btn-secondary btn-lg mt-5" onclick="history.back(-1)">{{ __('event.back')}}</button>
