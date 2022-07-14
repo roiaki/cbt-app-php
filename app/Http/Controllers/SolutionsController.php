@@ -79,9 +79,22 @@ class SolutionsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        $solution = new ThreeColumn;
+        $solution = new Solution;
         $solution->updateSolution($request, $id);
+
+        return redirect('/solutions');
+    }
+
+    /**
+     * 解決策削除処理
+     * 
+     * @param int $id
+     * @return redirect('/solutions');
+     */
+    public function destroy($id)
+    {
+        $solution = new Solution;
+        $solution->deleteSolution($id);
 
         return redirect('/solutions');
     }

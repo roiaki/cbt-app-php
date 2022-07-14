@@ -76,8 +76,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('solutions', 'App\Http\Controllers\SolutionsController@store')->name('solutions.store');
     Route::get('solution/{param}', 'App\Http\Controllers\SolutionsController@show')->name('solutions.show');
     Route::get('solution/{param}/edit', 'App\Http\Controllers\SolutionsController@edit')->name('solutions.edit');
-    Route::put('solution/{param}', 'App\Http\Controllers\SolutionsController@update')->name('solutions.update');
-
+    Route::put('solution/{param}', 'App\Http\Controllers\SolutionsController@update')->name('solution.update');
+    Route::post('solution/{param}', 'App\Http\Controllers\SolutionsController@destroy')->name('solution.destroy');
     
     // 使い方説明
     Route::get('users/info', 'App\Http\Controllers\ThreeColumnsController@info')->name('users.info');

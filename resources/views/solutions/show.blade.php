@@ -78,8 +78,10 @@
     </div>
 
     <div class="buttons">
-        @method('DELETE')
+      <form action="{{ route('solution.destroy', ['param' => $solution->id] ) }}" method="post">
+        @csrf
         <button type="submit" class="btn btn-danger btn-lg" onclick="return confirmDelete();">{{ __('event.delete') }}</button>
+      </form>
     </div>
 
     <div class="buttons">

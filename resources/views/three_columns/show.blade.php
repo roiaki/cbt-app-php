@@ -188,7 +188,7 @@
 
     <div class="buttons">
       <form action="{{ route('three_columns.destroy', ['param' => $three_column->id] ) }}" method="post">
-        @CSRF
+        @csrf
         <button type="submit" class="btn btn-danger btn-lg" onclick="return confirmDelete();">{{ __('threecolumn.buttonDelete') }}</button>
       </form>
     </div>
