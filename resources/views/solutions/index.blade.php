@@ -6,7 +6,7 @@
   <div class="col-sm-7">
     <h3 class="title_head">{{ __('solution.pageTitle') }}</h3>
     
-    <!--↓↓ 検索フォーム ↓↓-->
+    <!-- 検索フォーム -->
     <div class="row">
       <div class="col-sm-3 serch">
         <form class="form-inline" action="{{ route('seven_columns.serch') }}" method="get">
@@ -22,7 +22,7 @@
         </form>
       </div>
     </div>
-    <!--↑↑ 検索フォーム ↑↑-->
+    <!-- /検索フォーム -->
     
     @if ( isset($solutions) )
       @if ( count($solutions) > 0 )
