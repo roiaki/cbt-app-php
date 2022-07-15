@@ -4,7 +4,7 @@
 
 <div class="row justify-content-center">
   <div class="col-sm-7">   
-    <h3 class="title_head">解決策更新</h3>
+    <h3 class="title_head">解決策 更新ページ</h3>
     <form action="{{ route('solution.update', ['param' => $solution->id] ) }}" method="POST">
       @csrf
       @method('PUT')

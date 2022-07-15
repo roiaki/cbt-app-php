@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="jumbotron" style="background-color:#FFF0F5; background-size:cover;">
+    <div class="jumbotron" style="background-color:#FFF0F5; background-size:auto;">
       <div class="text-center">
         <p style="font-family:cursive;">{{ __('messages.sentence01') }}<br>{{ __('messages.sentence02') }}</p>
         <h1 class="outline">{{ __('messages.welcome_title') }}</h1><br>
@@ -13,7 +13,6 @@
             <span class="message animate__animated animate__fadeIn animate__delay-3s">have</span>
             <span class="message animate__animated animate__fadeIn animate__delay-4s">many Smiles!</span>
           </h3>
-          
         </div>
         
         @guest

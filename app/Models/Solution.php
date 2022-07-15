@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\DB;
 class Solution extends Model
 {
     use HasFactory;
+    
+    // ブラックリスト
+    protected $guarded = ['id'];
 
     /*
      * 1対多（逆）所属

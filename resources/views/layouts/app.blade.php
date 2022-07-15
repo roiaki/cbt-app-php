@@ -43,7 +43,6 @@
 </head>
 
 <body>
-
 <div class="footerFixed">
   <header>
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
@@ -149,8 +148,6 @@
     </div>
     <!-- Copyright -->
   </footer>
-
-  
 
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>-->
 
