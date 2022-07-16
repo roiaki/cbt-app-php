@@ -161,9 +161,9 @@ return [
         'new_emotion' => '新しい感情',
         'new_emotion_strength' => '新しい感情の強さ',
         
-        'solution.*' => '解決策',
-        'merit.*' => 'メリット',
-        'demerit.*' => 'デメリット',
+        'solution' => '解決策',
+        'merit' => 'メリット',
+        'demerit' => 'デメリット',
     ],
 
 ];

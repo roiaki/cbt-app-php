@@ -80,6 +80,7 @@
     <div class="buttons">
       <form action="{{ route('solution.destroy', ['param' => $solution->id] ) }}" method="post">
         @csrf
+        @method('DELETE')
         <button type="submit" class="btn btn-danger btn-lg" onclick="return confirmDelete();">{{ __('event.delete') }}</button>
       </form>
     </div>
