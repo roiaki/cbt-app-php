@@ -273,6 +273,8 @@ class SevenColumn extends Model
     public function deleteSevencolumn($id)
     {
         $seven_column = SevenColumn::find($id);
-        $seven_column->delete();
+        if(Auth::id() === $seven_column->user_id) {
+            $seven_column->delete();
+        }
     }
 }

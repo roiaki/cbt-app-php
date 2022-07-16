@@ -185,10 +185,13 @@ class Solution extends Model
 
     /**
      * 解決策削除処理
+     * @param $id
      */
     public function deleteSolution($id)
     {
         $solution = Solution::find($id);
-        $solution->delete();
+        if(Auth::id() === $solution->user_id) {
+            $solution->delete();
+        }
     }
 }

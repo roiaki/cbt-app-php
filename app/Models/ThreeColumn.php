@@ -422,7 +422,10 @@ class ThreeColumn extends Model
     public function deleteThreecolumn($id)
     {
         $three_column = ThreeColumn::find($id);
-        $three_column->delete();
+        if(Auth::id() === $three_column->user_id) {
+            $three_column->delete();
+        }
+       
     }
 }
 

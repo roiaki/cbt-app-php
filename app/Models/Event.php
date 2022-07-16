@@ -158,7 +158,7 @@ class Event extends Model
     public function eventDelete($id)
     {
         $event = event::find($id);
-        if ($event) {
+        if(Auth::id() === $event->user_id){
             $event->delete();
         }
     }
