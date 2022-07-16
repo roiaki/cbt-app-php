@@ -151,9 +151,6 @@ return [
         'title' => 'タイトル',
         'content' => '内容',
         'emotion_name' => '感情名',
-        'emotion_name00' => '2番目の感情名',
-        'emotion_name01' => '3番目の感情名',
-        'emotion_name02' => '4番目の感情名',
         
         'emotion_strength' => '感情の強さ',
         'thinking' => '考えたこと',
@@ -162,7 +159,11 @@ return [
         'opposite_fact' => '逆の事実',
         'new_thinking' => '新しい考え',
         'new_emotion' => '新しい感情',
-        'new_emotion_strength' => '新しい感情の強さ'
+        'new_emotion_strength' => '新しい感情の強さ',
+        
+        'solution.*' => '解決策',
+        'merit.*' => 'メリット',
+        'demerit.*' => 'デメリット',
     ],
 
 ];

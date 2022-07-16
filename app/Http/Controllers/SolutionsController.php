@@ -29,21 +29,20 @@ class SolutionsController extends Controller
      */
     public function store(Request $request) 
     {
-        /*
+        
         $this->validate(
             $request,
             [
                 'trouble' => 'required|max:500',
-                'solution00' => 'required|max:500',
-                'merit00' => 'required|max:500',
-                'demerit00' => 'required|max:500',
+                'solution.*' => 'required|max:500',
+                'merit.*' => 'required|max:500',
+                'demerit.*' => 'required|max:500',
             ]
         );
-        */
-
+        
         $Solution = new Solution;
         $solution = $Solution->solutionStore($request);
-       // dd('test');
+
         $data = ['solution' => $solution];
 
         return view('solutions.show', $data);
@@ -56,7 +55,7 @@ class SolutionsController extends Controller
         $data = [
             'solution' => $solution,
         ];
-//dd($data);
+
         return view('solutions.show', $data);
     }
 
