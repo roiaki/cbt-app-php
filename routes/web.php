@@ -55,7 +55,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('three_columns', 'ThreeColumnsController@store')->name('three_columns.store');
     Route::get('three_columns/{param}', 'ThreeColumnsController@show')->name('three_columns.show');
     Route::get('three_columns/{param}/edit', 'ThreeColumnsController@edit')->name('three_columns.edit');
-    Route::post('three_columns/{param}','ThreeColumnsController@destroy')->name('three_columns.destroy');
+    Route::delete('three_columns/{param}','ThreeColumnsController@destroy')->name('three_columns.destroy');
     Route::put('three_columns/{param}', 'ThreeColumnsController@update')->name('three_columns.update');
 
 
@@ -66,7 +66,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('seven_columns/store', 'SevenColumnsController@store')->name('seven_columns.store');
     Route::get('seven_columns/{param}', 'SevenColumnsController@show')->name('seven_columns.show');
     Route::get('seven_columns/{param}/edit', 'SevenColumnsController@edit')->name('seven_columns.edit');
-    Route::post('seven_columns/{param}', 'SevenColumnsController@destroy')->name('seven_columns.destroy');
+    Route::delete('seven_columns/{param}', 'SevenColumnsController@destroy')->name('seven_columns.destroy');
     Route::put('seven_columns/{param}', 'SevenColumnsController@update')->name('seven_columns.update');
 
     
@@ -77,7 +77,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('solution/{param}', 'SolutionsController@show')->name('solutions.show');
     Route::get('solution/{param}/edit', 'SolutionsController@edit')->name('solutions.edit');
     Route::put('solution/{param}', 'SolutionsController@update')->name('solution.update');
-    Route::post('solution/{param}', 'SolutionsController@destroy')->name('solution.destroy');
+    Route::delete('solution/{param}', 'SolutionsController@destroy')->name('solution.destroy');
     
     // 使い方説明
     Route::get('users/info', 'ThreeColumnsController@info')->name('users.info');

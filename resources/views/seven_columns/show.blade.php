@@ -135,14 +135,15 @@
 
     <div class="buttons-first">
       <form action="{{ route('seven_columns.edit', ['param' => $seven_column->id] ) }}" , method="GET">
-        @CSRF
+        @csrf
         <button type="submit" class="btn btn-secondary btn-lg">編集</button>
       </form>
     </div>
 
     <div class="buttons">
       <form action="{{ route('seven_columns.destroy', ['param' => $seven_column->id] ) }}" method="POST">
-        @CSRF
+        @csrf
+        @method('DELETE')
         <button type="submit" class="btn btn-danger btn-lg" onclick="return confirmDelete();">削除</button>
       </form>
     </div>
