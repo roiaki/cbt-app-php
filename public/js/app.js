@@ -15265,7 +15265,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       },
       onKeypress: _cache[0] || (_cache[0] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
         return $options.addInput && $options.addInput.apply($options, arguments);
-      }, ["shift"]), ["enter"]))
+      }, ["shift"]), ["enter"])),
+      required: ""
     }, null, 40
     /* PROPS, HYDRATE_EVENTS */
     , _hoisted_3), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.texts[index]]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
@@ -15279,7 +15280,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       },
       onKeypress: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
         return $options.addInput && $options.addInput.apply($options, arguments);
-      }, ["shift"]), ["enter"]))
+      }, ["shift"]), ["enter"])),
+      required: ""
     }, null, 40
     /* PROPS, HYDRATE_EVENTS */
     , _hoisted_5), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.merit[index]]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
@@ -15293,7 +15295,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       },
       onKeypress: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)((0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
         return $options.addInput && $options.addInput.apply($options, arguments);
-      }, ["shift"]), ["enter"]))
+      }, ["shift"]), ["enter"])),
+      required: ""
     }, null, 40
     /* PROPS, HYDRATE_EVENTS */
     , _hoisted_7), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.demerit[index]]])])])]);

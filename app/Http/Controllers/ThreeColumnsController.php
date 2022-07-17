@@ -39,6 +39,7 @@ class ThreeColumnsController extends Controller
         return view('three_columns.index', $data);
     }
 
+
     /**
      * 3コラム新規作成画面への遷移処理
      * 
@@ -58,6 +59,7 @@ class ThreeColumnsController extends Controller
 
         return view('three_columns.create', $data);
     }
+
 
     /**
      * 3コラム保存処理
@@ -86,6 +88,7 @@ class ThreeColumnsController extends Controller
         return view('three_columns.show', $data);
     }
 
+
     /**
      * 3コラム詳細画面へ遷移処理
      * 
@@ -97,8 +100,14 @@ class ThreeColumnsController extends Controller
         $threecolumn = new ThreeColumn;
         $data = $threecolumn->showDetailThreecolumn($id);
 
-        return view('three_columns.show', $data);
+        if($data != null) {
+            return view('three_columns.show', $data);
+        } else {
+            return redirect('/three_columns');
+        }
+       
     }
+
 
     /**
      * 3コラム編集画面へ遷移処理
@@ -111,9 +120,15 @@ class ThreeColumnsController extends Controller
         $threecolumn = new ThreeColumn;
         $data = $threecolumn->showEditThreecolumn($id);
 
-        return view('three_columns.edit', $data);
+        if($data != null) {
+            return view('three_columns.edit', $data);
+        } else {
+            return redirect('/three_columns');
+        }
+        
     }
    
+
     /**
      * 3コラム更新処理
      * 
@@ -129,11 +144,15 @@ class ThreeColumnsController extends Controller
             'thinking' => 'required|max:500',
             'habit' => 'required'
         ]);
-        $threecolumns = new ThreeColumn;
-        $threecolumns->updateThreecolumn($request, $id);
+        
+        $threecolumun = ThreeColumn::find($id);
 
+        if(Auth::id() === $threecolumun->user_id) {
+            $threecolumns->updateThreecolumn($request, $id);
+        }
         return redirect('/three_columns');
     }
+
 
     /**
      * 3コラム削除処理
@@ -143,11 +162,13 @@ class ThreeColumnsController extends Controller
      */
     public function destroy($id)
     {
-        $threecolumn = new ThreeColumn;
-        $threecolumn->deleteThreecolumn($id);
-
+        $threecolumn = ThreeColumn::find($id);
+        if(Auth::id() === $threecolumn->user_id) {
+            $threecolumn->deleteThreecolumn($id);
+        }
         return redirect('/three_columns');
     }
+
 
     /**
      * 説明画面遷移処理
@@ -157,6 +178,5 @@ class ThreeColumnsController extends Controller
     public function info()
     {
         return view('users.info');
-        //return redirect('three_columns');
     }
 }

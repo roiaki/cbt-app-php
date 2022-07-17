@@ -184,26 +184,25 @@ class SevenColumn extends Model
     public function showDetailSevencolumn($id)
     {
         $seven_column = SevenColumn::find($id);
-        
-        $threecol_id = $seven_column->threecol_id;
-        $three_column = ThreeColumn::find($threecol_id);
-
-        $event_id = $seven_column->event_id;
-        $event = Event::find($event_id);
-
-        $habit_names = [];
-        // 考え方の癖 取得
-        foreach ($three_column->habit as $habit) {
-            $habit_names[] = $habit->habit_name;
+        if(Auth::id() === $seven_column->user_id) {
+            $threecol_id = $seven_column->threecol_id;
+            $three_column = ThreeColumn::find($threecol_id);
+            $event_id = $seven_column->event_id;
+            $event = Event::find($event_id);
+    
+            $habit_names = [];
+            // 考え方の癖 取得
+            foreach ($three_column->habit as $habit) {
+                $habit_names[] = $habit->habit_name;
+            }
+            $data = [
+                'event' => $event,
+                'three_column' => $three_column,
+                'seven_column' => $seven_column,
+                'habit_names'  => $habit_names
+            ];
+            return $data;
         }
-
-        $data = [
-            'event' => $event,
-            'three_column' => $three_column,
-            'seven_column' => $seven_column,
-            'habit_names'  => $habit_names
-        ];
-        return $data;
     }
 
     /**
@@ -216,20 +215,20 @@ class SevenColumn extends Model
     public function showEditSevencolumn($id)
     {
         $seven_column = SevenColumn::find($id);
-
-        $threecol_id = $seven_column->threecol_id;
-        $event_id = $seven_column->event_id;
-
-        $three_column = ThreeColumn::find($threecol_id);
-        $event = Event::find($event_id);
-
-        $data = [
-            'event' => $event,
-            'three_column' => $three_column,
-            'seven_column' => $seven_column  
-        ];
-
-        return $data;
+        if(isset($seven_column)) {
+            if(Auth::id() === $seven_column->user_id) {
+                $threecol_id = $seven_column->threecol_id;
+                $event_id = $seven_column->event_id;
+                $three_column = ThreeColumn::find($threecol_id);
+                $event = Event::find($event_id);
+                $data = [
+                    'event' => $event,
+                    'three_column' => $three_column,
+                    'seven_column' => $seven_column  
+                ];
+                return $data;
+            }
+        } 
     }
 
     /**

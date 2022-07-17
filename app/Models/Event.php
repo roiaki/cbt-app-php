@@ -141,12 +141,13 @@ class Event extends Model
      */
     public function eventUpdate(Request $request, $id)
     {
-        $event = event::find($id);
-
-        $event->title = $request->title;
-        $event->content = $request->content;
-        $event->updated_at = date("Y-m-d G:i:s");
-        $event->save();
+        $event = Event::find($id);
+        if(Auth::id() === $event->user_id) {
+            $event->title = $request->title;
+            $event->content = $request->content;
+            $event->updated_at = date("Y-m-d G:i:s");
+            $event->save();
+        }
     }
 
     /**
@@ -157,9 +158,23 @@ class Event extends Model
      */
     public function eventDelete($id)
     {
-        $event = event::find($id);
+        $event = Event::find($id);
         if(Auth::id() === $event->user_id){
             $event->delete();
+        }
+    }
+
+    /**
+     * 出来事のuser_idがログインユーザーとidと同一か判定するメソッド
+     * 
+     */
+    public function examiningUser($id)
+    {
+        $event = Event::find($id);
+        if(Auth::id() === $event->user_id) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

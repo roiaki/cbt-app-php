@@ -11,23 +11,25 @@
         <div class="form-group">
             
             <label for="content"><h5>困っている事</h5></label>
-              <p class="alert alert-success" role="alert">
-                自分が現在何ができなくて困っているかをはっきりさせます。漠然と主観的に記入するのではなく感情を分けて客観的かつ具体的に記入しましょう。
-              </p>
-              <input type="text" 
-                     class="form-control" 
-                     id="trouble" 
-                     name="trouble" 
-                     value = "{{ old('trouble') }}" 
-                     required>
+            <p class="alert alert-success" role="alert">
+              自分が現在何ができなくて困っているかをはっきりさせます。
+              漠然と主観的に記入するのではなく感情を分けて客観的かつ具体的に記入しましょう。
+            </p>
+            <textarea type="text" 
+                    class="form-control" 
+                    id="trouble" 
+                    name="trouble" 
+                    value = "{{ old('trouble') }}" 
+                    required></textarea>
         </div>
         <!-- /問題-->
 
-        <!-- 解決策長所短所 -->
+        <!-- 解決策 長所 短所 -->
         <div class="row">
           <div class="col-12">
             <p class="alert alert-success" role="alert">
-                「こんな事は無理だ」と思うような事があっても決めつけずにできるだけ多くの案を出してみましょう。この点は良いかもしれないというポイント。自分にとってどうか。周囲の人にとってはどうか。長期的にはどうか。短期的にはどうか。
+           「こんな事は無理だ」と思うような事があっても決めつけずにできるだけ多くの案を出してみましょう。
+            この点は良いかもしれないというポイント。自分にとってどうか。周囲の人にとってはどうか。長期的にはどうか。短期的にはどうか。
             </p>
           </div>
           <div class="col-4">
@@ -46,10 +48,9 @@
         <div id="app"> 
           <addsolution></addsolution>
         </div>
-        <!-- /解決策長所短所 -->
+        <!-- /解決策 長所 短所 -->
 
         <!-- バリデーションエラー表示 -->
-       
         @if($errors->has('solution.*'))
             @foreach($errors->get('solution') as $message)
             <ul>
