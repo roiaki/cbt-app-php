@@ -98,7 +98,7 @@ class ThreeColumnsController extends Controller
     public function show($id)
     {
         $threecolumn = new ThreeColumn;
-        $data = $threecolumn->showDetailThreecolumn($id);
+        $data = $threecolumn->getThreecolumn($id);
 
         if($data != null) {
             return view('three_columns.show', $data);
@@ -144,7 +144,7 @@ class ThreeColumnsController extends Controller
             'thinking' => 'required|max:500',
             'habit' => 'required'
         ]);
-        
+
         $threecolumun = ThreeColumn::find($id);
 
         if(Auth::id() === $threecolumun->user_id) {

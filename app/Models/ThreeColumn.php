@@ -120,8 +120,8 @@ class ThreeColumn extends Model
                               ->orWhere('thinking', 'like', '%' . $keyword . '%');
                        
                     })
-                ->orderBy('updated_at', 'desc')
-                ->paginate(5);
+                    ->orderBy('updated_at', 'desc')
+                    ->paginate(5);
 
                 $data = [
                     'three_columns' => $three_columns,
@@ -392,7 +392,7 @@ class ThreeColumn extends Model
      * @param int $id
      * @return array $data
      */
-    public function showEditThreecolumn($id)
+    public function getThreecolumn($id)
     {
         $three_column = ThreeColumn::find($id);
         if(Auth::id() === $three_column->user_id) {
