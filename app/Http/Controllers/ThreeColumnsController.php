@@ -97,15 +97,13 @@ class ThreeColumnsController extends Controller
      */
     public function show($id)
     {
-        $threecolumn = new ThreeColumn;
-        $data = $threecolumn->getThreecolumn($id);
-
-        if($data != null) {
+        $threecolumn = ThreeColumn::find($id);
+        if(Auth::id() === $threecolumn->user_id) {
+            $data = $threecolumn->showDetailThreecolumn($id);
             return view('three_columns.show', $data);
         } else {
             return redirect('/three_columns');
         }
-       
     }
 
 
@@ -117,15 +115,13 @@ class ThreeColumnsController extends Controller
      */
     public function edit($id)
     {
-        $threecolumn = new ThreeColumn;
-        $data = $threecolumn->showEditThreecolumn($id);
-
-        if($data != null) {
+        $threecolumn = ThreeColumn::find($id);
+        if(Auth::id() === $threecolumn->user_id) {
+            $data = $threecolumn->getThreecolumn($id);
             return view('three_columns.edit', $data);
         } else {
             return redirect('/three_columns');
         }
-        
     }
    
 
@@ -145,10 +141,10 @@ class ThreeColumnsController extends Controller
             'habit' => 'required'
         ]);
 
-        $threecolumun = ThreeColumn::find($id);
+        $threecolumn = ThreeColumn::find($id);
 
-        if(Auth::id() === $threecolumun->user_id) {
-            $threecolumns->updateThreecolumn($request, $id);
+        if(Auth::id() === $threecolumn->user_id) {
+            $threecolumn->updateThreecolumn($request, $id);
         }
         return redirect('/three_columns');
     }
@@ -163,6 +159,7 @@ class ThreeColumnsController extends Controller
     public function destroy($id)
     {
         $threecolumn = ThreeColumn::find($id);
+
         if(Auth::id() === $threecolumn->user_id) {
             $threecolumn->deleteThreecolumn($id);
         }
