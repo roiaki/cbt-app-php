@@ -133,9 +133,10 @@
       {{session('flash_message')}}
     </div>
   @endif
-        
+  
   <!-- ページ　-->
   <main class="mb-5">
+    @yield('content1')
     <div class="container mb-6">
       @yield('content')
     </div>
