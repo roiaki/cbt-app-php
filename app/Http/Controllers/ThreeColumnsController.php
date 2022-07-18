@@ -141,10 +141,10 @@ class ThreeColumnsController extends Controller
             'habit' => 'required'
         ]);
 
-        $threecolumun = ThreeColumn::find($id);
+        $threecolumn = ThreeColumn::find($id);
 
-        if(Auth::id() === $threecolumun->user_id) {
-            $threecolumns->updateThreecolumn($request, $id);
+        if(Auth::id() === $threecolumn->user_id) {
+            $threecolumn->updateThreecolumn($request, $id);
         }
         return redirect('/three_columns');
     }
@@ -159,7 +159,7 @@ class ThreeColumnsController extends Controller
     public function destroy($id)
     {
         $threecolumn = ThreeColumn::find($id);
-        
+
         if(Auth::id() === $threecolumn->user_id) {
             $threecolumn->deleteThreecolumn($id);
         }

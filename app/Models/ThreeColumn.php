@@ -289,7 +289,7 @@ class ThreeColumn extends Model
         $three_column = ThreeColumn::find($id);
         if(Auth::id() === $three_column->user_id) {
             // クロージャでトランザクション処理開始
-            DB::transaction(function () use ($request, $id) {
+            DB::transaction(function () use ($request, $id, $three_column) {
                 
                 $three_column->emotion_name = $request->emotion_name;
                 $three_column->emotion_strength = $request->emotion_strength;
@@ -318,7 +318,6 @@ class ThreeColumn extends Model
                     $three_column->emotion_strength02 = $request->emotion_strength02;
                 }
     
-                
                 $three_column->thinking = $request->thinking;
     
                 $three_column->updated_at = date("Y-m-d G:i:s");

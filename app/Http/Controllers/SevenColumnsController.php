@@ -73,7 +73,7 @@ class SevenColumnsController extends Controller
     public function edit($id)
     {
         $sevencolumn = SevenColumn::find($id);
-        
+
         if(Auth::id() === $sevencolumn->user_id) {
             $data = $sevencolumn->showEditSevencolumn($id);
             return view('seven_columns.edit', $data);
@@ -104,9 +104,11 @@ class SevenColumnsController extends Controller
     // 7コラム削除処理
     public function destroy($id)
     {
-        $sevencolumn = new SevenColumn;
-        $sevencolumn->deleteSevencolumn($id);
-
+        $sevencolumn = SevenColumn::find($id);
+        if(Auth::id() === $sevencolumn->user_id) {
+            $sevencolumn->deleteSevencolumn($id);
+        }
+       
         return redirect('seven_columns');
     }
 }
