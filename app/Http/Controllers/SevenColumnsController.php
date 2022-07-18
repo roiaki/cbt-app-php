@@ -59,22 +59,23 @@ class SevenColumnsController extends Controller
     // 7コラム詳細ページ表示処理
     public function show($id)
     {
-        $sevencolumn = new SevenColumn;
-        $data = $sevencolumn->showDetailSevencolumn($id);
-        if($data != null) {
+        $sevencolumn = SevenColumn::find($id);
+
+        if(Auth::id() === $sevencolumn->user_id) {
+            $data = $sevencolumn->showDetailSevencolumn($id);
             return view('seven_columns.show', $data);
         } else {
             return redirect('seven_columns');
-        }
-        
+        }    
     }
 
     // 7コラム編集画面表示処理
     public function edit($id)
     {
-        $sevencolumn = new SevenColumn;
-        $data = $sevencolumn->showEditSevencolumn($id);
-        if(isset($data)) {
+        $sevencolumn = SevenColumn::find($id);
+        
+        if(Auth::id() === $sevencolumn->user_id) {
+            $data = $sevencolumn->showEditSevencolumn($id);
             return view('seven_columns.edit', $data);
         } else {
             return redirect('seven_columns');
