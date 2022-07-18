@@ -15,7 +15,7 @@
 
 
   <!-- Vue.js を読み込む -->
-  <!--<script src="https://unpkg.com/vue@next"></script>-->
+  <script src="https://unpkg.com/vue@next"></script>
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <!-- 開発バージョン、便利なコンソールの警告が含まれています -->
