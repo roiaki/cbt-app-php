@@ -1,5 +1,5 @@
 <template>
-<p>{{ message }}</p>
+
   <!-- 入力ボックスを表示する場所 -->
   <div v-for="(text,index) in texts">
     <!-- 各入力ボックス -->
@@ -47,7 +47,6 @@
 export default {
     data:function() {
       return {
-        message: 'Hello World!',
         texts: [],    
         strength: [],
         maxTextCount: 3
