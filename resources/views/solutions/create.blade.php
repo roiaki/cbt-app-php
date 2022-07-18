@@ -9,49 +9,66 @@
         @csrf
         <!-- 問題 -->
         <div class="form-group">
-          <tr>  
-            <th><label for="content"><h5>困っている事</h5></label></th>
-            <td>
-              <input type="text" 
-                     class="form-control" 
-                     id="trouble" 
-                     name="trouble" 
-                     value = "{{ old('trouble') }}" 
-                     required>
-            </td>
-          </tr>
+            
+            <label for="content"><h5>困っている事</h5></label>
+            <p class="alert alert-success" role="alert">
+              自分が現在何ができなくて困っているかをはっきりさせます。
+              漠然と主観的に記入するのではなく感情を分けて客観的かつ具体的に記入しましょう。
+            </p>
+            <textarea type="text" 
+                    class="form-control" 
+                    id="trouble" 
+                    name="trouble" 
+                    value = "{{ old('trouble') }}" 
+                    required></textarea>
         </div>
         <!-- /問題-->
 
-        <!-- 解決策長所短所 -->
+        <!-- 解決策 長所 短所 -->
         <div class="row">
+          <div class="col-12">
+            <p class="alert alert-success" role="alert">
+           「こんな事は無理だ」と思うような事があっても決めつけずにできるだけ多くの案を出してみましょう。
+            この点は良いかもしれないというポイント。自分にとってどうか。周囲の人にとってはどうか。長期的にはどうか。短期的にはどうか。
+            </p>
+          </div>
           <div class="col-4">
             <label for="emotion_name"><h5>解決策</h5></label>
-              <p class="alert alert-success" role="alert">
-                解決策
-              </p>
+              
           </div>
           <div class="col-4">
             <label for="emotion_name"><h5>長所</h5></label>
-              <p class="alert alert-success" role="alert">
-                長所
-              </p>
+              
           </div>
           <div class="col-4">
             <label for="emotion_name"><h5>短所</h5></label>
-              <p class="alert alert-success" role="alert">
-                短所
-              </p>
+              
           </div>
         </div>
         <div id="app"> 
           <addsolution></addsolution>
         </div>
-        <!-- /解決策長所短所 -->
+        <!-- /解決策 長所 短所 -->
 
         <!-- バリデーションエラー表示 -->
-        @if($errors->has('title'))
-            @foreach($errors->get('title') as $message)
+        @if($errors->has('solution.*'))
+            @foreach($errors->get('solution') as $message)
+            <ul>
+                <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+            </ul>
+            @endforeach
+        @endif
+
+        @if($errors->has('merit.*'))
+            @foreach($errors->get('merit') as $message)
+            <ul>
+                <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+            </ul>
+            @endforeach
+        @endif
+
+        @if($errors->has('demerit.*'))
+            @foreach($errors->get('demerit') as $message)
             <ul>
                 <li class="ml-2 my-1 text-danger">{{ $message }}</li>
             </ul>

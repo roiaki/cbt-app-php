@@ -120,8 +120,8 @@ class ThreeColumn extends Model
                               ->orWhere('thinking', 'like', '%' . $keyword . '%');
                        
                     })
-                ->orderBy('updated_at', 'desc')
-                ->paginate(5);
+                    ->orderBy('updated_at', 'desc')
+                    ->paginate(5);
 
                 $data = [
                     'three_columns' => $three_columns,
@@ -253,27 +253,29 @@ class ThreeColumn extends Model
     public function showDetailThreecolumn($id)
     {
         $three_column = ThreeColumn::find($id);
-        $event_id = $three_column->event_id;
-        $event = Event::find($event_id);
-        $habit_id = [];
-
-        // 考え方の癖 id 取得
-        foreach ($three_column->habit as $habit) {
-            $habit_id[] = $habit->id;
+        if(Auth::id() === $three_column->user_id) {
+            $event_id = $three_column->event_id;
+            $event = Event::find($event_id);
+            $habit_id = [];
+    
+            // 考え方の癖 id 取得
+            foreach ($three_column->habit as $habit) {
+                $habit_id[] = $habit->id;
+            }
+    
+            $user = Auth::user();
+    
+            $data = [
+                'user' => $user,
+                'event' => $event,
+                'habit_id' => $habit_id,
+                'three_column' => $three_column
+            ];
+    
+            // $data 配列そのまま渡すか、連想配列として渡すかでbladeでのアクセス方法が変わる
+            // return view('three_columns, ['data' => $data]);
+            return $data;
         }
-
-        $user = Auth::user();
-
-        $data = [
-            'user' => $user,
-            'event' => $event,
-            'habit_id' => $habit_id,
-            'three_column' => $three_column
-        ];
-
-        // $data 配列そのまま渡すか、連想配列として渡すかでbladeでのアクセス方法が変わる
-        // return view('three_columns, ['data' => $data]);
-        return $data;
     }
 
     /**
@@ -284,104 +286,104 @@ class ThreeColumn extends Model
      */
     public function updateThreecolumn($request, $id)
     {
-        // クロージャでトランザクション処理開始
-        DB::transaction(function () use ($request, $id) {
-
-            $three_column = ThreeColumn::find($id);
-
-            $three_column->emotion_name = $request->emotion_name;
-            $three_column->emotion_strength = $request->emotion_strength;
-
-            if(isset($request->emotion_name00)) {
-                $three_column->emotion_name00 = $request->emotion_name00;
-            }
-            
-            if(isset($request->emotion_name01)) {
-                $three_column->emotion_name01 = $request->emotion_name01;
-            }
-            
-            if(isset($request->emotion_name02)) {
-                $three_column->emotion_name02 = $request->emotion_name02;
-            }
-
-            if(isset($request->emotion_strength00)) {
-                $three_column->emotion_strength00 = $request->emotion_strength00;
-            }
-
-            if(isset($request->emotion_strength01)) {
-                $three_column->emotion_strength01 = $request->emotion_strength01;
-            }
-
-            if(isset($request->emotion_strength02)) {
-                $three_column->emotion_strength02 = $request->emotion_strength02;
-            }
-
-            
-            $three_column->thinking = $request->thinking;
-
-            $three_column->updated_at = date("Y-m-d G:i:s");
-
-            $three_column->save();
-
-            // 考えの癖を中間テーブルで更新
-            if (isset($request->habit[0])) {
-                if ($request->habit[0] == "on") {
-                    $three_column->habit()->syncWithoutDetaching(1);
+        $three_column = ThreeColumn::find($id);
+        if(Auth::id() === $three_column->user_id) {
+            // クロージャでトランザクション処理開始
+            DB::transaction(function () use ($request, $id) {
+                
+                $three_column->emotion_name = $request->emotion_name;
+                $three_column->emotion_strength = $request->emotion_strength;
+    
+                if(isset($request->emotion_name00)) {
+                    $three_column->emotion_name00 = $request->emotion_name00;
                 }
-            } else {
-                $three_column->habit()->detach(1);
-            }
-
-            if (isset($request->habit[1])) {
-                if ($request->habit[1] == "on") {
-                    $three_column->habit()->syncWithoutDetaching(2);
+                
+                if(isset($request->emotion_name01)) {
+                    $three_column->emotion_name01 = $request->emotion_name01;
                 }
-            } else {
-                $three_column->habit()->detach(2);
-            }
-
-            if (isset($request->habit[2])) {
-                if ($request->habit[2] == "on") {
-                    $three_column->habit()->syncWithoutDetaching(3);
+                
+                if(isset($request->emotion_name02)) {
+                    $three_column->emotion_name02 = $request->emotion_name02;
                 }
-            } else {
-                $three_column->habit()->detach(3);
-            }
-
-            if (isset($request->habit[3])) {
-                if ($request->habit[3] == "on") {
-                    $three_column->habit()->syncWithoutDetaching(4);
+    
+                if(isset($request->emotion_strength00)) {
+                    $three_column->emotion_strength00 = $request->emotion_strength00;
                 }
-            } else {
-                $three_column->habit()->detach(4);
-            }
-
-            if (isset($request->habit[4])) {
-                if ($request->habit[4] == "on") {
-                    $three_column->habit()->syncWithoutDetaching(5);
+    
+                if(isset($request->emotion_strength01)) {
+                    $three_column->emotion_strength01 = $request->emotion_strength01;
                 }
-            } else {
-                $three_column->habit()->detach(5);
-            }
-
-            if (isset($request->habit[5])) {
-                if ($request->habit[5] == "on") {
-                    $three_column->habit()->syncWithoutDetaching(6);
+    
+                if(isset($request->emotion_strength02)) {
+                    $three_column->emotion_strength02 = $request->emotion_strength02;
                 }
-            } else {
-                $three_column->habit()->detach(6);
-            }
-
-            if (isset($request->habit[6])) {
-                if ($request->habit[6] == "on") {
-                    $three_column->habit()->syncWithoutDetaching(7);
+    
+                
+                $three_column->thinking = $request->thinking;
+    
+                $three_column->updated_at = date("Y-m-d G:i:s");
+    
+                $three_column->save();
+        
+                // 考えの癖を中間テーブルで更新
+                if (isset($request->habit[0])) {
+                    if ($request->habit[0] == "on") {
+                        $three_column->habit()->syncWithoutDetaching(1);
+                    }
+                } else {
+                    $three_column->habit()->detach(1);
                 }
-            } else {
-                $three_column->habit()->detach(7);
-            }
-            //dd($three_column->habit());
-        });
-        // end transaction
+    
+                if (isset($request->habit[1])) {
+                    if ($request->habit[1] == "on") {
+                        $three_column->habit()->syncWithoutDetaching(2);
+                    }
+                } else {
+                    $three_column->habit()->detach(2);
+                }
+    
+                if (isset($request->habit[2])) {
+                    if ($request->habit[2] == "on") {
+                        $three_column->habit()->syncWithoutDetaching(3);
+                    }
+                } else {
+                    $three_column->habit()->detach(3);
+                }
+
+                if (isset($request->habit[3])) {
+                    if ($request->habit[3] == "on") {
+                        $three_column->habit()->syncWithoutDetaching(4);
+                    }
+                } else {
+                    $three_column->habit()->detach(4);
+                }
+    
+                if (isset($request->habit[4])) {
+                    if ($request->habit[4] == "on") {
+                        $three_column->habit()->syncWithoutDetaching(5);
+                    }
+                } else {
+                    $three_column->habit()->detach(5);
+                }
+    
+                if (isset($request->habit[5])) {
+                    if ($request->habit[5] == "on") {
+                        $three_column->habit()->syncWithoutDetaching(6);
+                    }
+                } else {
+                    $three_column->habit()->detach(6);
+                }
+
+                if (isset($request->habit[6])) {
+                    if ($request->habit[6] == "on") {
+                        $three_column->habit()->syncWithoutDetaching(7);
+                    }
+                } else {
+                    $three_column->habit()->detach(7);
+                }
+            });
+            // end transaction
+        }
     }
 
     /**
@@ -390,27 +392,27 @@ class ThreeColumn extends Model
      * @param int $id
      * @return array $data
      */
-    public function showEditThreecolumn($id)
+    public function getThreecolumn($id)
     {
         $three_column = ThreeColumn::find($id);
-
-        $event_id = $three_column->event_id;
-        $event = Event::find($event_id);
-
-        $habit_id = [];
-        
-        // 考え方の癖 id 取得
-        foreach ($three_column->habit as $habit) {
-            $habit_id[] = $habit->id;
-        }
-
-        $data = [
-            'three_column' => $three_column,
-            'habit_id' => $habit_id,
-            'event' => $event
-        ];
-
-        return $data;
+        if(Auth::id() === $three_column->user_id) {
+            $event_id = $three_column->event_id;
+            $event = Event::find($event_id);
+    
+            $habit_id = [];
+            
+            // 考え方の癖 id 取得
+            foreach ($three_column->habit as $habit) {
+                $habit_id[] = $habit->id;
+            }
+    
+            $data = [
+                'three_column' => $three_column,
+                'habit_id' => $habit_id,
+                'event' => $event
+            ];
+            return $data;
+        } 
     }
 
     /**
@@ -422,7 +424,10 @@ class ThreeColumn extends Model
     public function deleteThreecolumn($id)
     {
         $three_column = ThreeColumn::find($id);
-        $three_column->delete();
+        if(Auth::id() === $three_column->user_id) {
+            $three_column->delete();
+        }
+       
     }
 }
 

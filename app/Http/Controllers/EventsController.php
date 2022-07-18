@@ -32,6 +32,7 @@ class EventsController extends Controller
         return view('events.index', $data);
     }
 
+
     // getでevents/createにアクセスされた場合の「新規登録画面表示処理」
     public function create()
     {
@@ -61,16 +62,21 @@ class EventsController extends Controller
     public function show($id)
     {
         $event = Event::find($id);
-        
-        return view('events.show', ['event' => $event]);
+        if(Auth::id() === $event->user_id) {
+            return view('events.show', ['event' => $event]);
+        }
     }
+
 
     // 編集処理
     public function edit($id)
     {
         $event = Event::find($id);
-        return view('events.edit', ['event' => $event]);
+        if(Auth::id() === $event->user_id) {
+            return view('events.edit', ['event' => $event]);
+        }
     }
+
 
     // 出来事更新処理
     public function update(Request $request, $id)
@@ -80,18 +86,22 @@ class EventsController extends Controller
             'content' => 'required|max:500',
         ]);
 
-       $event = new Event;
-       $event->eventUpdate($request, $id);
-    
+        $event = Event::find($id);
+        if(Auth::id() === $event->user_id) {
+            $event->eventUpdate($request, $id);
+        }
         return redirect('/events');
     }
+
 
     // deleteでcolumn/id　にアクセスされた場合の「削除処理」
     public function destroy($id)
     {
-        $event = new Event;
-        $event->eventDelete($id);
-
+        $event = Event::find($id);
+        if(Auth::id() === $event->user_id) {
+            $event->eventDelete($id);
+        }
         return redirect('events');
+        
     }
 }

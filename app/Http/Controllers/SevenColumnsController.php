@@ -61,8 +61,12 @@ class SevenColumnsController extends Controller
     {
         $sevencolumn = new SevenColumn;
         $data = $sevencolumn->showDetailSevencolumn($id);
-
-        return view('seven_columns.show', $data);
+        if($data != null) {
+            return view('seven_columns.show', $data);
+        } else {
+            return redirect('seven_columns');
+        }
+        
     }
 
     // 7コラム編集画面表示処理
@@ -70,8 +74,11 @@ class SevenColumnsController extends Controller
     {
         $sevencolumn = new SevenColumn;
         $data = $sevencolumn->showEditSevencolumn($id);
-        
-        return view('seven_columns.edit', $data);
+        if(isset($data)) {
+            return view('seven_columns.edit', $data);
+        } else {
+            return redirect('seven_columns');
+        } 
     }
 
     // 7コラム更新処理

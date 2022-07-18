@@ -10,7 +10,7 @@
                   class="form-control"
                   type="text"
                   v-model="texts[index]"
-                  @keypress.shift.enter="addInput"></textarea>
+                  @keypress.shift.enter="addInput" required></textarea>
       </div>
       <div class="form-group col">
         <textarea ref="merit"
@@ -18,7 +18,7 @@
                   class="form-control"
                   type="text"
                   v-model="merit[index]"
-                  @keypress.shift.enter="addInput"></textarea>
+                  @keypress.shift.enter="addInput" required></textarea>
       </div>
       <div class="form-group col">
         <textarea ref="demerit"
@@ -26,7 +26,7 @@
                   class="form-control"
                   type="text"
                   v-model="demerit[index]"
-                  @keypress.shift.enter="addInput"></textarea>
+                  @keypress.shift.enter="addInput" required></textarea>
       </div>
     </div>   
   </div>

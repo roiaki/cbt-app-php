@@ -4,13 +4,13 @@
 
 <div class="row justify-content-center">
   <div class="col-sm-7">
-    <h3 class="title_head">解決策詳細 (id = {{ $solution->id }} ) </h3>
+    <h3 class="title_head">{{ __('solution.DetailPage')}} (id = {{ $solution->id }} ) </h3>
 
     <table class="table table-bordered">
       <tr>
         <th>解決策ID</th>
-        <th>作成日</th>
-        <th>更新日</th>
+        <th>{{ __('solution.createDay')}}</th>
+        <th>{{ __('solution.updateDay')}}</th>
       </tr>
       <tr>
        <td>{{ $solution->id }}</td>
@@ -22,7 +22,7 @@
 
     <table class="table table-bordered">
       <tr>
-        <th>困っている事</th>
+        <th>{{ __('solution.trouble') }}</th>
       </tr>
       <tr>
         <td>{{ $solution->trouble }}</td>
@@ -31,9 +31,9 @@
 
       <table class="table table-bordered">
       <tr>
-        <th>解決策</th>
-        <th>メリット</th>
-        <th>デメリット</th>
+        <th>{{ __('solution.solution') }}</th>
+        <th>{{ __('solution.merit') }}</th>
+        <th>{{ __('solution.demerit') }}</th>
       </tr>
       <tr>
         <td>{{ $solution->solution00 }}</td>
@@ -73,13 +73,14 @@
     <div class="buttons-first">
       <form action="{{ route('solutions.edit', ['param' => $solution->id]) }}" method="get">
         @csrf
-        <button type="submit" class="btn btn-secondary btn-lg">編集</button>
+        <button type="submit" class="btn btn-secondary btn-lg">{{ __('solution.edit')}}</button>
       </form>
     </div>
 
     <div class="buttons">
       <form action="{{ route('solution.destroy', ['param' => $solution->id] ) }}" method="post">
         @csrf
+        @method('DELETE')
         <button type="submit" class="btn btn-danger btn-lg" onclick="return confirmDelete();">{{ __('event.delete') }}</button>
       </form>
     </div>
