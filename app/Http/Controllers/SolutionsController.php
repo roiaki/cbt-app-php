@@ -29,7 +29,7 @@ class SolutionsController extends Controller
      */
     public function store(Request $request) 
     {
-        //dd($request);
+        // @cheack バリデーションがきかない
         $this->validate(
             $request,
             [
@@ -41,11 +41,15 @@ class SolutionsController extends Controller
         );
         
         $Solution = new Solution;
-        $solution = $Solution->solutionStore($request);
-
-        $data = ['solution' => $solution];
-
-        return view('solutions.show', $data);
+        //dd($request);
+        if(isset($request->solution[0])) {
+            $solution = $Solution->solutionStore($request);
+            $data = ['solution' => $solution];
+            return view('solutions.show', $data);
+        } else {
+            return redirect('/solution/create');
+        }
+        
     }
 
     // 詳細ページ表示処理
