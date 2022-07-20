@@ -97,6 +97,11 @@ class ThreeColumnsController extends Controller
     public function show($id)
     {
         $threecolumn = ThreeColumn::find($id);
+
+        if(!isset($threecolumn)) {
+            return redirect('/three_columns');
+        }
+
         if(Auth::id() === $threecolumn->user_id) {
             $data = $threecolumn->showDetailThreecolumn($id);
             return view('three_columns.show', $data);
@@ -115,6 +120,11 @@ class ThreeColumnsController extends Controller
     public function edit($id)
     {
         $threecolumn = ThreeColumn::find($id);
+
+        if(!isset($threecolumn)) {
+            return redirect('/three_columns');
+        }
+
         if(Auth::id() === $threecolumn->user_id) {
             $data = $threecolumn->getThreecolumn($id);
             return view('three_columns.edit', $data);
@@ -142,6 +152,10 @@ class ThreeColumnsController extends Controller
 
         $threecolumn = ThreeColumn::find($id);
 
+        if(!isset($threecolumn)) {
+            return redirect('/three_columns');
+        }
+
         if(Auth::id() === $threecolumn->user_id) {
             $threecolumn->updateThreecolumn($request, $id);
         }
@@ -158,6 +172,10 @@ class ThreeColumnsController extends Controller
     public function destroy($id)
     {
         $threecolumn = ThreeColumn::find($id);
+
+        if(!isset($threecolumn)) {
+            return redirect('/three_columns');
+        }
 
         if(Auth::id() === $threecolumn->user_id) {
             $threecolumn->deleteThreecolumn($id);
