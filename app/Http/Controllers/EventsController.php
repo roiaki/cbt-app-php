@@ -62,9 +62,16 @@ class EventsController extends Controller
     public function show($id)
     {
         $event = Event::find($id);
+
+        if(!isset($event)) {
+            return redirect('/events');
+        }
+
         if(Auth::id() === $event->user_id) {
             return view('events.show', ['event' => $event]);
         }
+
+        return redirect('/events');
     }
 
 
@@ -72,9 +79,16 @@ class EventsController extends Controller
     public function edit($id)
     {
         $event = Event::find($id);
+
+        if(!isset($event)) {
+            return redirect('/events');
+        }
+
         if(Auth::id() === $event->user_id) {
             return view('events.edit', ['event' => $event]);
         }
+
+        return redirect('/events');
     }
 
 
@@ -87,9 +101,15 @@ class EventsController extends Controller
         ]);
 
         $event = Event::find($id);
+
+        if(!isset($event)) {
+            return redirect('/events');
+        }
+
         if(Auth::id() === $event->user_id) {
             $event->eventUpdate($request, $id);
         }
+        
         return redirect('/events');
     }
 
@@ -98,10 +118,15 @@ class EventsController extends Controller
     public function destroy($id)
     {
         $event = Event::find($id);
+
+        if(!isset($event)) {
+            return redirect('events');
+        }
+
         if(Auth::id() === $event->user_id) {
             $event->eventDelete($id);
         }
+
         return redirect('events');
-        
     }
 }

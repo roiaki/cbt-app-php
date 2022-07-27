@@ -61,6 +61,10 @@ class SevenColumnsController extends Controller
     {
         $sevencolumn = SevenColumn::find($id);
 
+        if(!isset($sevencolumn)) {
+            return redirect('seven_columns');
+        }
+
         if(Auth::id() === $sevencolumn->user_id) {
             $data = $sevencolumn->showDetailSevencolumn($id);
             return view('seven_columns.show', $data);
@@ -73,6 +77,10 @@ class SevenColumnsController extends Controller
     public function edit($id)
     {
         $sevencolumn = SevenColumn::find($id);
+
+        if(!isset($sevencolumn)) {
+            return redirect('seven_columns');
+        }
 
         if(Auth::id() === $sevencolumn->user_id) {
             $data = $sevencolumn->showEditSevencolumn($id);
@@ -96,6 +104,11 @@ class SevenColumnsController extends Controller
         );
 
         $sevencolumn = new SevenColumn;
+
+        if(!isset($sevencolumn)) {
+            return redirect('seven_columns');
+        }
+
         $sevencolumn->updateSevencolumn($request, $id);
 
         return redirect('seven_columns');
@@ -105,6 +118,11 @@ class SevenColumnsController extends Controller
     public function destroy($id)
     {
         $sevencolumn = SevenColumn::find($id);
+
+        if(!isset($sevencolumn)) {
+            return redirect('seven_columns');
+        }
+        
         if(Auth::id() === $sevencolumn->user_id) {
             $sevencolumn->deleteSevencolumn($id);
         }
