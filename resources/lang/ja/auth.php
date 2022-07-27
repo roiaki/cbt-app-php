@@ -12,12 +12,12 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
+    
+    // ログインページ
     'failed' => 'ログインできません。入力した情報に誤りがないかご確認ください。',
     'password' => '提供されたパスワードが正しくありません。',
     'throttle' => '何度もログインに失敗したため、=>seconds秒後に再度お試しください。',
 
-    // ログインページ
     "Login" => "ログイン", 
     "GuestLogin" => "ゲストログイン",
     "E-Mail Address" => "メールアドレス",

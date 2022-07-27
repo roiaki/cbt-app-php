@@ -12,17 +12,18 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
+    
+    // ログインページ
     'failed' => 'These credentials do not match our records.',
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
-     // ログインページ
     "Login" => "Login",
     "GuestLogin" => "GuestLogin",
     "E-Mail Address" => "E-Mail Address",
     "Password" => "Password",
     "Remember Me" => "Remenber Me",
+    
     // 登録ページ
     "Register" => "Register",
     "Name" => "Name",
@@ -31,11 +32,6 @@ return [
     "Reset Password" => "パスワード再設定",
     "Send Password Reset Link" =>  "パスワード再設定URLを送信",
 
-    
-    
-    
-   
-  
 
     "Hello!" => "ご利用ありがとうございます。",
     "Reset Password Notification" =>  "パスワード再設定のお知らせ",
