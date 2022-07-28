@@ -138,7 +138,7 @@ class Event extends Model
      * @return objent $event
      * 
      */
-    public function eventUpdate(Request $request, $id)
+    public function updateEvent(Request $request, $id)
     {
         $event = Event::find($id);
         if(Auth::id() === $event->user_id) {

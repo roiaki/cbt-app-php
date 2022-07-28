@@ -99,7 +99,7 @@ class EventsController extends Controller
         }
 
         if(Auth::id() === $event->user_id) {
-            $event->eventUpdate($request, $id);
+            $event->updateEvent($request, $id);
         }
         
         return redirect('/events');
