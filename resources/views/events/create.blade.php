@@ -17,11 +17,11 @@
           <!-- バリデーションエラー表示 -->
           @if($errors->has('title'))
             @foreach($errors->get('title') as $message)
-            <div class="alert alert-danger mt-3" role="alert">
-              <ul>
-                <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-              </ul>
-            </div>
+              <div class="alert alert-danger mt-3" role="alert">
+                <ul>
+                  <li class="text-danger">{{ $message }}</li>
+                </ul>
+              </div>
             @endforeach
           @endif
           <!-- /バリデーションエラー表示 -->
@@ -41,11 +41,11 @@
           <!-- バリデーションエラー表示 -->
           @if($errors->has('content'))
             @foreach($errors->get('content') as $message)
-            <div class="alert alert-danger mt-3" role="alert">
-              <ul>
-                <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-              </ul>
-            </div>
+              <div class="alert alert-danger mt-3" role="alert">
+                <ul>
+                  <li class="text-danger">{{ $message }}</li>
+                </ul>
+              </div>
             @endforeach
           @endif
           <!-- /バリデーションエラー表示 -->
