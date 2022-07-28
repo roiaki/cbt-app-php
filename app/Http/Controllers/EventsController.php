@@ -52,7 +52,7 @@ class EventsController extends Controller
         );
 
         $Event = new Event;
-        $event = $Event->eventStore($request);
+        $event = $Event->storeEvent($request);
 
         return view('events.show', ['event' => $event]);
     }

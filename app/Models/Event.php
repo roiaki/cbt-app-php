@@ -95,7 +95,7 @@ class Event extends Model
                   ->paginate(10);
 
             $data = [
-                'events' => $events,
+                'events'  => $events,
                 'keyword' => $keyword
             ];
             return $data;
@@ -105,7 +105,7 @@ class Event extends Model
             $events = $user->events()->orderBy('updated_at', 'desc')->paginate(5);
             
             $data = [
-                'events' => $events,
+                'events'  => $events,
                 'keyword' => $keyword
             ];
             return $data;
@@ -119,14 +119,13 @@ class Event extends Model
      * @return object $event
      * 
      */
-    public function eventStore(Request $request) 
+    public function storeEvent(Request $request) 
     {   
-        $event = new Event;
-        $event->title = $request->title;
-        $event->content = $request->content;
-        $event->user_id = Auth::id();
-
-        $event->save();
+        $event = Event::create([
+            'title'   => $request->input('title'),
+            'content' => $request->input('content'),
+            'user_id' => Auth::id(),
+        ]);
 
         return $event;
     }
@@ -143,9 +142,10 @@ class Event extends Model
     {
         $event = Event::find($id);
         if(Auth::id() === $event->user_id) {
-            $event->title = $request->title;
-            $event->content = $request->content;
+            $event->title      = $request->input('title');
+            $event->content    = $request->input('content');
             $event->updated_at = date("Y-m-d G:i:s");
+
             $event->save();
         }
     }
