@@ -11,15 +11,17 @@
         
           <!-- タイトル -->
           <label for="content"><h5>{{ __('event.create_title') }}</h5></label>
-          <input type="text" class="form-control" id="title" name="title" value = "{{ old('title') }}" required>
+          <input type="text" class="form-control" id="title" name="title" value = "{{ old('title') }}" >
           <!-- /タイトル-->
 
           <!-- バリデーションエラー表示 -->
           @if($errors->has('title'))
             @foreach($errors->get('title') as $message)
-            <ul>
-              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-            </ul>
+            <div class="alert alert-danger mt-3" role="alert">
+              <ul>
+                <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+              </ul>
+            </div>
             @endforeach
           @endif
           <!-- /バリデーションエラー表示 -->
@@ -33,15 +35,17 @@
                     id="content" 
                     name="content" 
                     cols="90" 
-                    rows="7" required>{{ old('content') }}</textarea>
+                    rows="7">{{ old('content') }}</textarea>
           <!-- /内容 -->
 
           <!-- バリデーションエラー表示 -->
           @if($errors->has('content'))
             @foreach($errors->get('content') as $message)
-            <ul>
-              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-            </ul>
+            <div class="alert alert-danger mt-3" role="alert">
+              <ul>
+                <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+              </ul>
+            </div>
             @endforeach
           @endif
           <!-- /バリデーションエラー表示 -->
