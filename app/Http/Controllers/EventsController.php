@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-
 use App\Models\Event;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Exception;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
+use App\Http\Requests\CreateEventRequest;
+use Exception;
+
 use Session;
 
 class EventsController extends Controller
@@ -41,18 +41,10 @@ class EventsController extends Controller
 
 
     // 保存処理
-    public function store(Request $request)
+    public function store(CreateEventRequest $request)
     {
-        $this->validate(
-            $request,
-            [
-                'title' => 'required|max:30',
-                'content' => 'required|max:500',
-            ]
-        );
-
         $Event = new Event;
-        $event = $Event->eventStore($request);
+        $event = $Event->storeEvent($request);
 
         return view('events.show', ['event' => $event]);
     }
@@ -107,7 +99,7 @@ class EventsController extends Controller
         }
 
         if(Auth::id() === $event->user_id) {
-            $event->eventUpdate($request, $id);
+            $event->updateEvent($request, $id);
         }
         
         return redirect('/events');
