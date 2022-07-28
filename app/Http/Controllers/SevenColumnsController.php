@@ -59,22 +59,31 @@ class SevenColumnsController extends Controller
     // 7コラム詳細ページ表示処理
     public function show($id)
     {
-        $sevencolumn = new SevenColumn;
-        $data = $sevencolumn->showDetailSevencolumn($id);
-        if($data != null) {
+        $sevencolumn = SevenColumn::find($id);
+
+        if(!isset($sevencolumn)) {
+            return redirect('seven_columns');
+        }
+
+        if(Auth::id() === $sevencolumn->user_id) {
+            $data = $sevencolumn->showDetailSevencolumn($id);
             return view('seven_columns.show', $data);
         } else {
             return redirect('seven_columns');
-        }
-        
+        }    
     }
 
     // 7コラム編集画面表示処理
     public function edit($id)
     {
-        $sevencolumn = new SevenColumn;
-        $data = $sevencolumn->showEditSevencolumn($id);
-        if(isset($data)) {
+        $sevencolumn = SevenColumn::find($id);
+
+        if(!isset($sevencolumn)) {
+            return redirect('seven_columns');
+        }
+
+        if(Auth::id() === $sevencolumn->user_id) {
+            $data = $sevencolumn->showEditSevencolumn($id);
             return view('seven_columns.edit', $data);
         } else {
             return redirect('seven_columns');
@@ -95,6 +104,11 @@ class SevenColumnsController extends Controller
         );
 
         $sevencolumn = new SevenColumn;
+
+        if(!isset($sevencolumn)) {
+            return redirect('seven_columns');
+        }
+
         $sevencolumn->updateSevencolumn($request, $id);
 
         return redirect('seven_columns');
@@ -103,9 +117,16 @@ class SevenColumnsController extends Controller
     // 7コラム削除処理
     public function destroy($id)
     {
-        $sevencolumn = new SevenColumn;
-        $sevencolumn->deleteSevencolumn($id);
+        $sevencolumn = SevenColumn::find($id);
 
+        if(!isset($sevencolumn)) {
+            return redirect('seven_columns');
+        }
+        
+        if(Auth::id() === $sevencolumn->user_id) {
+            $sevencolumn->deleteSevencolumn($id);
+        }
+       
         return redirect('seven_columns');
     }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Solution;
+use Illuminate\Support\Facades\Auth;
+use Session;
 
 class SolutionsController extends Controller
 {
@@ -29,7 +31,7 @@ class SolutionsController extends Controller
      */
     public function store(Request $request) 
     {
-        //dd($request);
+        // @cheack バリデーションがきかない
         $this->validate(
             $request,
             [
@@ -41,32 +43,50 @@ class SolutionsController extends Controller
         );
         
         $Solution = new Solution;
-        $solution = $Solution->solutionStore($request);
-
-        $data = ['solution' => $solution];
-
-        return view('solutions.show', $data);
+        //dd($request);
+        if(isset($request->solution[0])) {
+            $solution = $Solution->solutionStore($request);
+            $data = ['solution' => $solution];
+            return view('solutions.show', $data);
+        } else {
+            return redirect('/solution/create');
+        }
+        
     }
 
     // 詳細ページ表示処理
     public function show($id)
     {
         $solution = Solution::find($id);
-        $data = [
-            'solution' => $solution,
-        ];
+        
+        if(!isset($solution)) {
+            return redirect('/solutions');
+        }
 
-        return view('solutions.show', $data);
+        if(Auth::id() === $solution->user_id) {
+            $data = [
+                'solution' => $solution,
+            ];
+            return view('solutions.show', $data);
+        }
+        return redirect('/solutions');
     }
 
     // 編集ページ表示処理
     public function edit($id)
     {
         $solution = Solution::find($id);
-        $data = [
-            'solution' => $solution,
-        ];
-        return view('solutions.edit', $data);
+        
+        if(!isset($solution)) {
+            return redirect('/solutions');
+        }
+
+        if(Auth::id() === $solution->user_id) {
+            $data = [
+                'solution' => $solution,
+            ];
+            return view('solutions.edit', $data);
+        }
     }
 
     /**
@@ -78,9 +98,16 @@ class SolutionsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $solution = new Solution;
-        $solution->updateSolution($request, $id);
+        $solution = Solution::find($id);
 
+        if(!isset($solution)) {
+            return redirect('/solutions');
+        }
+        
+        if(Auth::id() === $solution->user_id) {
+            $solution->updateSolution($request, $id);
+            return redirect('/solutions');
+        }
         return redirect('/solutions');
     }
 
@@ -92,9 +119,10 @@ class SolutionsController extends Controller
      */
     public function destroy($id)
     {
-        $solution = new Solution;
-        $solution->deleteSolution($id);
-
+        $solution = Solution::find($id);
+        if(Auth::id() === $solution->user_id) {
+            $solution->deleteSolution($id);
+        }
         return redirect('/solutions');
     }
 
