@@ -15,3 +15,6 @@ var s = $('#flash').fadeOut(2000, function() {
   $(this).remove();
 });
 
+
+// 出来事新規作成バリデーション
+
