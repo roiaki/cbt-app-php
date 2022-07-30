@@ -5,15 +5,17 @@
 <div class="row justify-content-center">
   <div class="col-sm-7">   
     <h3 class="title_head">{{ __('event.create_headtitle') }}</h3>
-      <form action="{{ route('events.store') }}" method="post">
+      <form action="{{ route('events.store') }}" method="post" onsubmit="return eventValidation();">
         @csrf
         <div class="form-group">
-        
           <!-- タイトル -->
-          <label for="content"><h5>{{ __('event.create_title') }}</h5></label>
-          <input type="text" class="form-control" id="title" name="title" value = "{{ old('title') }}" >
+          <label for="eventTitle"><h5>{{ __('event.create_title') }}</h5></label>
+          <input type="text" class="form-control" id="eventTitle" name="title" value = "{{ old('title') }}" >
           <!-- /タイトル-->
 
+          <!-- フロントバリデーションエラーメッセージ -->
+          <div class="err-msg-name01 mt-3"></div>
+          
           <!-- バリデーションエラー表示 -->
           @if($errors->has('title'))
             @foreach($errors->get('title') as $message)
@@ -28,15 +30,17 @@
         </div>
 
         <div class="form-group">
-          
           <!-- 内容 -->
-          <label for="content"><h5>{{ __('event.create_contents') }}</h5></label>
+          <label for="eventContent"><h5>{{ __('event.create_contents') }}</h5></label>
           <textarea class="form-control" 
-                    id="content" 
+                    id="eventContent" 
                     name="content" 
                     cols="90" 
                     rows="7">{{ old('content') }}</textarea>
           <!-- /内容 -->
+
+          <!-- フロントバリデーションエラーメッセージ -->
+          <div class="err-msg-name02 mt-3"></div>
 
           <!-- バリデーションエラー表示 -->
           @if($errors->has('content'))
@@ -50,15 +54,20 @@
           @endif
           <!-- /バリデーションエラー表示 -->
         </div>
-
-        <input type="submit" value="{{ __('event.create_button') }}" class="btn btn-primary btn-lg"> 
+         
+        <input type="submit" 
+               id="eventSubmit" 
+               value="{{ __('event.create_button') }}" 
+               class="btn btn-primary btn-lg"> 
         
         <div class="buttons">
-          <button type="button" class="btn btn-secondary btn-lg" onclick="history.back(-1)">{{ __('event.back')}}</button>
+          <button type="button" 
+                  class="btn btn-secondary btn-lg" 
+                  onclick="history.back(-1)">{{ __('event.back')}}</button>
         </div>
         
       </form>
-
+      
   </div>
 </div>
 

@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const Manifest = require('laravel-mix/src/Manifest');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,5 +12,7 @@ const mix = require('laravel-mix');
  |
  */
  mix.js('resources/js/app.js', 'public/js')
- .postCss('resources/css/app.css', 'public/css', [
- ]).vue()
+  .js('resources/js/main.js', 'public/js')
+  .js('resources/js/sample01.js', 'public/js')
+  .postCss('resources/css/app.css', 'public/css', [
+ ]).vue();
