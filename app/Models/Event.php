@@ -126,6 +126,9 @@ class Event extends Model
             'content' => $request->input('content'),
             'user_id' => Auth::id(),
         ]);
+        
+        // 二重送信対策
+        $request->session()->regenerateToken();
 
         return $event;
     }
@@ -145,6 +148,9 @@ class Event extends Model
             $event->title      = $request->input('title');
             $event->content    = $request->input('content');
             $event->updated_at = date("Y-m-d G:i:s");
+            
+            // 二重送信対策
+            $request->session()->regenerateToken();
 
             $event->save();
         }
