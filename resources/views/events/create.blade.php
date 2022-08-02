@@ -2,10 +2,7 @@
 
 @section('content')
 <?php 
-echo $locale;
-
-$json_array = json_encode($locale);
-
+  $json_array = json_encode($locale);
 ?>
 <script>
 	let locale = <?php echo $json_array; ?>
@@ -75,7 +72,6 @@ $json_array = json_encode($locale);
         </div>
         
       </form>
-      
   </div>
 </div>
 

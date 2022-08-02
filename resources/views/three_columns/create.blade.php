@@ -1,12 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
+<?php
+  $locale = App::currentLocale();
+  $json_array = json_encode($locale);
+  var_dump($locale);  
+?>
+<script>
+	let locale = <?php echo $json_array; ?>
+</script>
 
 <div class="row justify-content-center"> 
   <div class="col-sm-8">
     <h3 class="title_head"><h3>{{ __('threecolumn.page_title') }}</h3>
       <!-- model 第一引数：Modelのインスタンス、第二引数：連想配列　-->
-      <form action="{{ route('three_columns.store') }}" method="POST" onsubmit="return threecolumnValidation();">
+      <form action="{{ route('three_columns.store') }}" 
+            method="post" 
+            onsubmit="return threecolumnValidation(locale);">
         @csrf
         <input type="hidden" name="eventid" value="{{ $event->id }}">
 
