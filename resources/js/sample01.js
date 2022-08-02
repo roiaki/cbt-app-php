@@ -37,7 +37,7 @@ function checkTitleRequired(locale) {
     eventTitle.classList.add('border-danger');
     errMsgName01.classList.add('alert');
     errMsgName01.classList.add('alert-danger');
-    errTitleCount += 1;
+    errTitleCount = 1;
   }
   return errTitleCount;
 }
@@ -74,62 +74,61 @@ function checkTitleMaxNumber(locale) {
     eventTitle.classList.add('border-danger');
     errMsgName01.classList.add('alert');
     errMsgName01.classList.add('alert-danger');
-    errTitleCount += 1;
+    errTitleCount = 1;
   }
   return errTitleCount;
 }
 
-// 出来事バリデーション
-window.eventValidation = function (locale) {
-  
-console.log(locale);
-  // フォームの要素を取得
-  const eventTitle = document.querySelector('#eventTitle');
-  // エラーメッセージを表示させる要素を取得
-  const errMsgName01 = document.querySelector('.err-msg-name01');
+/**
+ * 内容の入力必須をチェック
+ * 
+ * @param {} locale 
+ * @returns 
+ */
+function checkContentRequired(locale) {
+  const eventContent = document.querySelector('#eventContent');
   const errMsgName02 = document.querySelector('.err-msg-name02');
-  var errTitleCount   = 0;
+
   var errContentCount = 0;
- 
-  errTitleCount += checkTitleRequired(locale);
-  errTitleCount += checkTitleMaxNumber(locale);
 
-
-  if(errTitleCount === 0) {
-    // エラーメッセージのテキストに空文字を代入
-    errMsgName01.textContent ='';
-    // クラスを削除
-    eventTitle.classList.remove('border-danger');
-    errMsgName01.classList.remove('alert');
-    errMsgName01.classList.remove('alert-danger');
+ if(!eventContent.value) {
+  // クラスを追加(エラーメッセージを表示する)
+  errMsgName02.classList.add('form-invalid');
+  
+  // エラーメッセージのテキスト
+  if(locale === "ja") {
+    errMsgName02.textContent = '入力してください';
   }
 
-  // 内容の入力必須バリデーション
-  if(!eventContent.value) {
-    // クラスを追加(エラーメッセージを表示する)
-    errMsgName02.classList.add('form-invalid');
-    
-    // エラーメッセージのテキスト
-    if(locale === "ja") {
-      errMsgName02.textContent = '入力してください';
-    }
-
-    if(locale === "en") {
-      errMsgName02.textContent = 'Please input';
-    }
-
-    if(locale === "uk") {
-      errMsgName02.textContent = 'будь ласка, введіть';
-    }
-    // クラスを追加(フォームの枠線を赤くする)
-    eventContent.classList.add('border-danger');
-    errMsgName02.classList.add('alert');
-    errMsgName02.classList.add('alert-danger');
-    errContentCount += 1;
-    
+  if(locale === "en") {
+    errMsgName02.textContent = 'Please input';
   }
 
-  // 内容最大文字数バリデーション
+  if(locale === "uk") {
+    errMsgName02.textContent = 'будь ласка, введіть';
+  }
+  // クラスを追加(フォームの枠線を赤くする)
+  eventContent.classList.add('border-danger');
+  errMsgName02.classList.add('alert');
+  errMsgName02.classList.add('alert-danger');
+  errContentCount = 1;
+  }
+  return errContentCount;
+}
+
+/**
+ * 内容の最大文字数をチェック
+ * 
+ * @param {*} locale 
+ * @returns 
+ */
+function checkContentMaxNumber(locale) {
+  
+  const eventContent = document.querySelector('#eventContent');
+  const errMsgName02 = document.querySelector('.err-msg-name02');
+
+  var errContentCount = 0;
+
   if(eventContent.value.length > 500) {
     errMsgName02.classList.add('form-invalid');
     
@@ -150,8 +149,38 @@ console.log(locale);
     eventContent.classList.add('border-danger');
     errMsgName02.classList.add('alert');
     errMsgName02.classList.add('alert-danger');
-    errContentCount += 1;
+    errContentCount = 1;
   } 
+  return errContentCount;
+}
+
+// 出来事バリデーション
+window.eventValidation = function (locale) {
+  
+console.log(locale);
+
+  // エラーメッセージを表示させる要素を取得
+  const errMsgName01 = document.querySelector('.err-msg-name01');
+  const errMsgName02 = document.querySelector('.err-msg-name02');
+  var errTitleCount   = 0;
+  var errContentCount = 0;
+  var errCount        = 0;
+ 
+  errTitleCount += checkTitleRequired(locale);
+  errTitleCount += checkTitleMaxNumber(locale);
+
+  errContentCount += checkContentRequired(locale);
+  errContentCount += checkContentMaxNumber(locale);
+
+
+  if(errTitleCount === 0) {
+    // エラーメッセージのテキストに空文字を代入
+    errMsgName01.textContent ='';
+    // クラスを削除
+    eventTitle.classList.remove('border-danger');
+    errMsgName01.classList.remove('alert');
+    errMsgName01.classList.remove('alert-danger');
+  }
 
   if(errContentCount === 0) {
     // エラーメッセージのテキストに空文字を代入
@@ -161,8 +190,9 @@ console.log(locale);
     errMsgName02.classList.remove('alert');
     errMsgName02.classList.remove('alert-danger');
   }
+  errCount = errTitleCount + errContentCount;
 
-  if(errTitleCount > 0 || errContentCount > 0) {
+  if(errCount > 0) {
     return false;
   }
 }
