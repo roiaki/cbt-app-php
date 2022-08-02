@@ -4,7 +4,7 @@
 
     <div class="jumbotron" style="background-color:#f7f7f7; background-size:auto;">
       <div class="text-center">
-        <p style="font-family:cursive;">{{ __('messages.sentence01') }}<br>{{ __('messages.sentence02') }}</p>
+        <p>{{ __('messages.sentence01') }}<br>{{ __('messages.sentence02') }}</p>
         <h1 class="outline">{{ __('messages.welcome_title') }}</h1><br>
         <div>
           <h3 style="font-family: cursive;">
