@@ -11,7 +11,7 @@ window.confirmDelete = function () {
  * 
  * @param {*} locale 
  * @returns int errTitleCount 
- */
+*/
 function checkTitleRequired(locale) {
  
   const eventTitle   = document.querySelector('#eventTitle');
