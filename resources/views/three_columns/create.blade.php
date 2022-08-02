@@ -3,8 +3,7 @@
 @section('content')
 <?php
   $locale = App::currentLocale();
-  $json_array = json_encode($locale);
-  var_dump($locale);  
+  $json_array = json_encode($locale);  
 ?>
 <script>
 	let locale = <?php echo $json_array; ?>
