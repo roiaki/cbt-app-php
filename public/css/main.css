@@ -205,4 +205,14 @@ h1.outline {
     
 }
 
+.input-invalid {
+    border: 1px solid #f50000;
+}
+
+.form-invalid {
+    color: #f50000;
+    font-size: 15px;
+    padding-left: 12px;
+}
+
 

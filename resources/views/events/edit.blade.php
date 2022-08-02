@@ -5,7 +5,10 @@
 <div class="row justify-content-center">
   <div class="col-sm-7">
   <h3 class="title_head">{{ __("event.event_edit_head") }}( id={{ $event->id }} )</h3>
-    <form action="{{ route('events.update', ['event' => $event->id] ) }}" method="POST">
+    <form action="{{ route('events.update', ['event' => $event->id] ) }}" 
+          method="post" 
+          onsubmit="return eventValidation();">
+
       @csrf
       @method('PUT')
       <div class="form-group">
@@ -13,10 +16,12 @@
         <label for="title"><h5>{{ __('event.event_edit_title') }}</h5></label>
         <input type="text" 
                class="form-control" 
-               id="title" 
+               id="eventTitle" 
                name="title" 
-               value="{{ $event->title }}"
-               required>
+               value="{{ $event->title }}">
+
+        <!-- フロントバリデーションエラーメッセージ -->
+        <div class="err-msg-name01 mt-3"></div>
 
         <!-- バリデーションエラー表示 課題：まとめてかけないか-->
         @if($errors->has('title'))
@@ -32,11 +37,14 @@
         <!-- 内容 -->
         <label for="content"><h5>{{ __('event.event_edit_content') }}</h5></label>
         <textarea class="form-control" 
-                  id="content" 
+                  id="eventContent" 
                   name="content" 
                   cols="50" 
-                  rows="3" required>{{ $event->content }}</textarea>
+                  rows="3">{{ $event->content }}</textarea>
         <!--/内容-->
+        
+        <!-- フロントバリデーションエラーメッセージ -->
+        <div class="err-msg-name02 mt-3"></div>
 
         <!-- バリデーションエラー表示-->
         @if($errors->has('content'))

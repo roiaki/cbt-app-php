@@ -39,7 +39,7 @@
 
     gtag('config', 'G-B417VSZPK0');
   </script>
-
+  
 </head>
 
 <body>
@@ -158,7 +158,9 @@
   <!--<script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>-->
 
 </div>
-  <script src="{{ asset('/js/main.js') }}"></script>
-  <script src="{{ mix('/js/app.js') }}"></script>
+  <script src="{{ mix('/js/app.js') }}"> </script>
+  <script src="{{ mix('/js/main.js') }}"></script>
+  <script src="{{ mix('/js/sample01.js') }}"> </script>
+ 
 </body>
 </html>

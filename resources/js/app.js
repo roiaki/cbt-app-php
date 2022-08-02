@@ -1,4 +1,5 @@
 require('./bootstrap');
+require('./main');
 
 import { createApp } from 'vue'
 import TestVue from './components/TestVue.vue';
