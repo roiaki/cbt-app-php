@@ -17,7 +17,6 @@ console.log(locale);
   const errMsgName02 = document.querySelector('.err-msg-name02');
   var errTitleCount = 0;
   var errContentCount = 0;
-  //var a = window.sessionStorage.getItem([key01]); // キーkey-1をもつセッションの値を取得
  
   // タイトルの入力必須バリデーション
   // null 空文字　空配列　空のcountableオブジェクト　値がパスのないアップロード済みファイル
@@ -45,8 +44,20 @@ console.log(locale);
   // タイトル最大文字数バリデーション
   if(eventTitle.value.length >30) {
     errMsgName01.classList.add('form-invalid');
+    
     // エラーメッセージのテキスト
-    errMsgName01.textContent = '30文字以内で入力してください';
+    if(locale === "ja") {
+      errMsgName01.textContent = '30文字以内で入力してください';
+    }
+
+    if(locale === "en") {
+      errMsgName01.textContent = 'Please enter up to 30 characters';
+    }
+
+    if(locale === "uk") {
+      errMsgName01.textContent = 'Введіть до 30 символів';
+    }
+
     // クラスを追加(フォームの枠線を赤くする)
     eventTitle.classList.add('border-danger');
     errMsgName01.classList.add('alert');
@@ -63,20 +74,20 @@ console.log(locale);
     errMsgName01.classList.remove('alert-danger');
   }
 
-
-
-
   // 内容の入力必須バリデーション
   if(!eventContent.value) {
     // クラスを追加(エラーメッセージを表示する)
     errMsgName02.classList.add('form-invalid');
+    
     // エラーメッセージのテキスト
     if(locale === "ja") {
       errMsgName02.textContent = '入力してください';
     }
+
     if(locale === "en") {
       errMsgName02.textContent = 'Please input';
     }
+
     if(locale === "uk") {
       errMsgName02.textContent = 'будь ласка, введіть';
     }
@@ -89,12 +100,24 @@ console.log(locale);
   }
 
   // 内容最大文字数バリデーション
-  if(eventTitle.value.length > 500) {
+  if(eventContent.value.length > 500) {
     errMsgName02.classList.add('form-invalid');
+    
     // エラーメッセージのテキスト
-    errMsgName02.textContent = '500文字以内で入力してください';
+    if(locale === "ja") {
+      errMsgName02.textContent = '500文字以内で入力してください';
+    }
+
+    if(locale === "en") {
+      errMsgName02.textContent = 'Please enter up to 500 characters';
+    }
+
+    if(locale === "uk") {
+      errMsgName02.textContent = 'Введіть до 500 символів';
+    }
+
     // クラスを追加(フォームの枠線を赤くする)
-    eventTitle.classList.add('border-danger');
+    eventContent.classList.add('border-danger');
     errMsgName02.classList.add('alert');
     errMsgName02.classList.add('alert-danger');
     errContentCount += 1;
@@ -109,11 +132,9 @@ console.log(locale);
     errMsgName02.classList.remove('alert-danger');
   }
 
-
-  if (errTitleCount > 0 || errContentCount > 0) {
+  if(errTitleCount > 0 || errContentCount > 0) {
     return false;
   }
-  
 }
 
 // 3コラムバリデーション

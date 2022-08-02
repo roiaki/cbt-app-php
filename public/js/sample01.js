@@ -20,8 +20,7 @@ window.eventValidation = function (locale) {
   var errMsgName01 = document.querySelector('.err-msg-name01');
   var errMsgName02 = document.querySelector('.err-msg-name02');
   var errTitleCount = 0;
-  var errContentCount = 0; //var a = window.sessionStorage.getItem([key01]); // キーkey-1をもつセッションの値を取得
-  // タイトルの入力必須バリデーション
+  var errContentCount = 0; // タイトルの入力必須バリデーション
   // null 空文字　空配列　空のcountableオブジェクト　値がパスのないアップロード済みファイル
 
   if (!eventTitle.value) {
@@ -51,7 +50,18 @@ window.eventValidation = function (locale) {
   if (eventTitle.value.length > 30) {
     errMsgName01.classList.add('form-invalid'); // エラーメッセージのテキスト
 
-    errMsgName01.textContent = '30文字以内で入力してください'; // クラスを追加(フォームの枠線を赤くする)
+    if (locale === "ja") {
+      errMsgName01.textContent = '30文字以内で入力してください';
+    }
+
+    if (locale === "en") {
+      errMsgName01.textContent = 'Please enter up to 30 characters';
+    }
+
+    if (locale === "uk") {
+      errMsgName01.textContent = 'Введіть до 30 символів';
+    } // クラスを追加(フォームの枠線を赤くする)
+
 
     eventTitle.classList.add('border-danger');
     errMsgName01.classList.add('alert');
@@ -93,12 +103,23 @@ window.eventValidation = function (locale) {
   } // 内容最大文字数バリデーション
 
 
-  if (eventTitle.value.length > 500) {
+  if (eventContent.value.length > 500) {
     errMsgName02.classList.add('form-invalid'); // エラーメッセージのテキスト
 
-    errMsgName02.textContent = '500文字以内で入力してください'; // クラスを追加(フォームの枠線を赤くする)
+    if (locale === "ja") {
+      errMsgName02.textContent = '500文字以内で入力してください';
+    }
 
-    eventTitle.classList.add('border-danger');
+    if (locale === "en") {
+      errMsgName02.textContent = 'Please enter up to 500 characters';
+    }
+
+    if (locale === "uk") {
+      errMsgName02.textContent = 'Введіть до 500 символів';
+    } // クラスを追加(フォームの枠線を赤くする)
+
+
+    eventContent.classList.add('border-danger');
     errMsgName02.classList.add('alert');
     errMsgName02.classList.add('alert-danger');
     errContentCount += 1;
