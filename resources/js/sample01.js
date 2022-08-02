@@ -93,53 +93,7 @@ console.log(locale);
  
   errTitleCount += checkTitleRequired(locale);
   errTitleCount += checkTitleMaxNumber(locale);
-  // タイトルの入力必須バリデーション
-  // null 空文字　空配列　空のcountableオブジェクト　値がパスのないアップロード済みファイル
-  /*
-  if(!eventTitle.value) {
-    // クラスを追加(エラーメッセージを表示する)
-    errMsgName01.classList.add('form-invalid');
-    // エラーメッセージのテキスト
-    if(locale === "ja") {
-      errMsgName01.textContent = '入力してください';
-    }
-    if(locale === "en") {
-      errMsgName01.textContent = 'Please input';
-    }
-    if(locale === "uk") {
-      errMsgName01.textContent = 'будь ласка, введіть';
-    }
-    
-    // クラスを追加(フォームの枠線を赤くする)
-    eventTitle.classList.add('border-danger');
-    errMsgName01.classList.add('alert');
-    errMsgName01.classList.add('alert-danger');
-    errTitleCount += 1; 
-  } */
 
-  // タイトル最大文字数バリデーション
-  if(eventTitle.value.length >30) {
-    errMsgName01.classList.add('form-invalid');
-    
-    // エラーメッセージのテキスト
-    if(locale === "ja") {
-      errMsgName01.textContent = '30文字以内で入力してください';
-    }
-
-    if(locale === "en") {
-      errMsgName01.textContent = 'Please enter up to 30 characters';
-    }
-
-    if(locale === "uk") {
-      errMsgName01.textContent = 'Введіть до 30 символів';
-    }
-
-    // クラスを追加(フォームの枠線を赤くする)
-    eventTitle.classList.add('border-danger');
-    errMsgName01.classList.add('alert');
-    errMsgName01.classList.add('alert-danger');
-    errTitleCount += 1;
-  } 
 
   if(errTitleCount === 0) {
     // エラーメッセージのテキストに空文字を代入
