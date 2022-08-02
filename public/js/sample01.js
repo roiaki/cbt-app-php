@@ -137,76 +137,96 @@ window.eventValidation = function (locale) {
   if (errTitleCount > 0 || errContentCount > 0) {
     return false;
   }
-}; // 3コラムバリデーション
+};
+/**
+ * 3コラムバリデーション
+ * @param locale 言語切り替え
+ */
 
 
-window.threecolumnValidation = function () {
-  console.log("test"); // フォームの要素を取得
+window.threecolumnValidation = function (locale) {
+  console.log(locale); // フォームの要素を取得
 
   var emotion_name = document.querySelector('#emotion_name_def');
   var emotion_strength = document.querySelector('#emotion_strength_def');
   var thinking = document.querySelector('#thinking');
-  console.log(emotion_strength);
   var errMsgName01 = document.querySelector('.err-msg-name01');
   var errMsgName02 = document.querySelector('.err-msg-name02');
   var errMsgName03 = document.querySelector('.err-msg-name03');
-  var errCount = 0; // 感情名入力必須バリデーション
+  var errCount = 0;
+  var errEmotionNameCount = 0;
+  var errEmotionStrengthCount = 0;
+  var errThinkingCount = 0; // 感情名入力必須バリデーション
 
   if (!emotion_name.value) {
     errMsgName01.classList.add('form-invalid'); // エラーメッセージのテキスト
 
-    errMsgName01.textContent = '入力してください'; // クラスを追加(フォームの枠線を赤くする)
+    if (locale === "ja") {
+      errMsgName01.textContent = '入力してください';
+    }
+
+    if (locale === "en") {
+      errMsgName01.textContent = 'Please input';
+    }
+
+    if (locale === "uk") {
+      errMsgName01.textContent = 'будь ласка, введіть';
+    } // クラスを追加(フォームの枠線を赤くする)
+
 
     emotion_name.classList.add('border-danger');
     errMsgName01.classList.add('alert');
     errMsgName01.classList.add('alert-danger');
-    errCount += 1;
-  } else {
-    // エラーメッセージのテキストに空文字を代入
-    errMsgName01.textContent = ''; // クラスを削除
-
-    emotion_name.classList.remove('border-danger');
-    errMsgName01.classList.remove('alert');
-    errMsgName01.classList.remove('alert-danger');
+    errEmotionNameCount += 1;
   } // 感情の強さ入力必須バリデーション
 
 
   if (!emotion_strength.value) {
     errMsgName02.classList.add('form-invalid'); // エラーメッセージのテキスト
 
-    errMsgName02.textContent = '入力してください'; // クラスを追加(フォームの枠線を赤くする)
+    if (locale === "ja") {
+      errMsgName02.textContent = '入力してください';
+    }
+
+    if (locale === "en") {
+      errMsgName02.textContent = 'Please input';
+    }
+
+    if (locale === "uk") {
+      errMsgName02.textContent = 'будь ласка, введіть';
+    } // クラスを追加(フォームの枠線を赤くする)
+
 
     emotion_strength.classList.add('border-danger');
     errMsgName02.classList.add('alert');
     errMsgName02.classList.add('alert-danger');
-    errCount += 1;
-  } else {
-    // エラーメッセージのテキストに空文字を代入
-    errMsgName02.textContent = ''; // クラスを削除
-
-    emotion_strength.classList.remove('border-danger');
-    errMsgName02.classList.remove('alert');
-    errMsgName02.classList.remove('alert-danger');
+    errEmotionStrengthCount += 1;
   } // 自動思考の入力必須バリデーション
 
 
   if (!thinking.value) {
     errMsgName03.classList.add('form-invalid'); // エラーメッセージのテキスト
 
-    errMsgName03.textContent = '入力してください'; // クラスを追加(フォームの枠線を赤くする)
+    if (locale === "ja") {
+      errMsgName03.textContent = '入力してください';
+    }
+
+    if (locale === "en") {
+      errMsgName03.textContent = 'Please input';
+    }
+
+    if (locale === "uk") {
+      errMsgName03.textContent = 'будь ласка, введіть';
+    } // クラスを追加(フォームの枠線を赤くする)
+
 
     thinking.classList.add('border-danger');
     errMsgName03.classList.add('alert');
     errMsgName03.classList.add('alert-danger');
-    errCount += 1;
-  } else {
-    // エラーメッセージのテキストに空文字を代入
-    errMsgName03.textContent = ''; // クラスを削除
-
-    thinking.classList.remove('border-danger');
-    errMsgName03.classList.remove('alert');
-    errMsgName03.classList.remove('alert-danger');
+    errThinkingCount += 1;
   }
+
+  errCount = errEmotionNameCount + errEmotionStrengthCount + errThinkingCount;
 
   if (errCount > 0) {
     return false;

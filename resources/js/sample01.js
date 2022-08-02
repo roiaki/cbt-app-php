@@ -187,13 +187,13 @@ window.threecolumnValidation = function (locale) {
     
     // エラーメッセージのテキスト
     if(locale === "ja") {
-      errMsgName01.textContent = '入力してください';
+      errMsgName02.textContent = '入力してください';
     }
     if(locale === "en") {
-      errMsgName01.textContent = 'Please input';
+      errMsgName02.textContent = 'Please input';
     }
     if(locale === "uk") {
-      errMsgName01.textContent = 'будь ласка, введіть';
+      errMsgName02.textContent = 'будь ласка, введіть';
     }
 
     // クラスを追加(フォームの枠線を赤くする)
@@ -209,15 +209,15 @@ window.threecolumnValidation = function (locale) {
     
     // エラーメッセージのテキスト
     if(locale === "ja") {
-      errMsgName01.textContent = '入力してください';
+      errMsgName03.textContent = '入力してください';
     }
     if(locale === "en") {
-      errMsgName01.textContent = 'Please input';
+      errMsgName03.textContent = 'Please input';
     }
     if(locale === "uk") {
-      errMsgName01.textContent = 'будь ласка, введіть';
+      errMsgName03.textContent = 'будь ласка, введіть';
     }
-    
+
     // クラスを追加(フォームの枠線を赤くする)
     thinking.classList.add('border-danger');
     errMsgName03.classList.add('alert');
