@@ -52,7 +52,7 @@ function checkTitleRequired(locale) {
  * タイトルの最大文字数をチェック
  * 
  * @param  locale 
- * @returns int errTitleCount
+ * @return int errTitleCount
  */
 
 
@@ -89,7 +89,7 @@ function checkTitleMaxNumber(locale) {
  * 内容の入力必須をチェック
  * 
  * @param {} locale 
- * @returns 
+ * @return
  */
 
 
@@ -127,7 +127,7 @@ function checkContentRequired(locale) {
  * 内容の最大文字数をチェック
  * 
  * @param {*} locale 
- * @returns 
+ * @return
  */
 
 
@@ -188,7 +188,7 @@ window.eventValidation = function (locale) {
     // エラーメッセージのテキストに空文字を代入
     errMsgName02.textContent = ''; // クラスを削除
 
-    eventTitle.classList.remove('border-danger');
+    eventContent.classList.remove('border-danger');
     errMsgName02.classList.remove('alert');
     errMsgName02.classList.remove('alert-danger');
   }
@@ -200,24 +200,17 @@ window.eventValidation = function (locale) {
   }
 };
 /**
- * 3コラムバリデーション
- * @param locale 言語切り替え
+ * 3コラムの感情名の入力必須チェック
+ * 
+ * @param {} locale 
+ * @returns 
  */
 
 
-window.threecolumnValidation = function (locale) {
-  console.log(locale); // フォームの要素を取得
-
+function checkEmotionNameRequired(locale) {
   var emotion_name = document.querySelector('#emotion_name_def');
-  var emotion_strength = document.querySelector('#emotion_strength_def');
-  var thinking = document.querySelector('#thinking');
   var errMsgName01 = document.querySelector('.err-msg-name01');
-  var errMsgName02 = document.querySelector('.err-msg-name02');
-  var errMsgName03 = document.querySelector('.err-msg-name03');
-  var errCount = 0;
-  var errEmotionNameCount = 0;
-  var errEmotionStrengthCount = 0;
-  var errThinkingCount = 0; // 感情名入力必須バリデーション
+  var errEmotionNameCount = 0; // 感情名入力必須バリデーション
 
   if (!emotion_name.value) {
     errMsgName01.classList.add('form-invalid'); // エラーメッセージのテキスト
@@ -238,9 +231,23 @@ window.threecolumnValidation = function (locale) {
     emotion_name.classList.add('border-danger');
     errMsgName01.classList.add('alert');
     errMsgName01.classList.add('alert-danger');
-    errEmotionNameCount += 1;
-  } // 感情名の入力最大文字数バリデーション
+    errEmotionNameCount = 1;
+  }
 
+  return errEmotionNameCount;
+}
+/**
+ * 感情名の最大入力文字数
+ * 
+ * @param {} locale 
+ * @returns 
+ */
+
+
+function checkEmotionNameMaxNumber(locale) {
+  var emotion_name = document.querySelector('#emotion_name_def');
+  var errMsgName01 = document.querySelector('.err-msg-name01');
+  var errEmotionNameCount = 0; // 感情名の入力最大文字数バリデーション
 
   if (emotion_name.value.length > 15) {
     errMsgName01.classList.add('form-invalid'); // エラーメッセージのテキスト
@@ -261,9 +268,32 @@ window.threecolumnValidation = function (locale) {
     emotion_name.classList.add('border-danger');
     errMsgName01.classList.add('alert');
     errMsgName01.classList.add('alert-danger');
-    errEmotionNameCount += 1;
-  } // エラーがないなら赤枠リセット
+    errEmotionNameCount = 1;
+  }
 
+  return errEmotionNameCount;
+}
+/**
+ * 3コラムバリデーション
+ * @param locale 言語切り替え
+ */
+
+
+window.threecolumnValidation = function (locale) {
+  console.log(locale); // フォームの要素を取得
+
+  var emotion_name = document.querySelector('#emotion_name_def');
+  var emotion_strength = document.querySelector('#emotion_strength_def');
+  var thinking = document.querySelector('#thinking');
+  var errMsgName01 = document.querySelector('.err-msg-name01');
+  var errMsgName02 = document.querySelector('.err-msg-name02');
+  var errMsgName03 = document.querySelector('.err-msg-name03');
+  var errCount = 0;
+  var errEmotionNameCount = 0;
+  var errEmotionStrengthCount = 0;
+  var errThinkingCount = 0;
+  errEmotionNameCount += checkEmotionNameRequired(locale);
+  errEmotionNameCount += checkEmotionNameMaxNumber(locale); // エラーがないなら赤枠リセット
 
   if (errEmotionNameCount === 0) {
     // エラーメッセージのテキストに空文字を代入

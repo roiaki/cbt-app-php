@@ -46,7 +46,7 @@ function checkTitleRequired(locale) {
  * タイトルの最大文字数をチェック
  * 
  * @param  locale 
- * @returns int errTitleCount
+ * @return int errTitleCount
  */
 function checkTitleMaxNumber(locale) {
   const eventTitle    = document.querySelector('#eventTitle');
@@ -61,11 +61,9 @@ function checkTitleMaxNumber(locale) {
     if(locale === "ja") {
       errMsgName01.textContent = '30文字以内で入力してください';
     }
-
     if(locale === "en") {
       errMsgName01.textContent = 'Please enter up to 30 characters';
     }
-
     if(locale === "uk") {
       errMsgName01.textContent = 'Введіть до 30 символів';
     }
@@ -83,7 +81,7 @@ function checkTitleMaxNumber(locale) {
  * 内容の入力必須をチェック
  * 
  * @param {} locale 
- * @returns 
+ * @return
  */
 function checkContentRequired(locale) {
   const eventContent = document.querySelector('#eventContent');
@@ -99,11 +97,9 @@ function checkContentRequired(locale) {
   if(locale === "ja") {
     errMsgName02.textContent = '入力してください';
   }
-
   if(locale === "en") {
     errMsgName02.textContent = 'Please input';
   }
-
   if(locale === "uk") {
     errMsgName02.textContent = 'будь ласка, введіть';
   }
@@ -120,7 +116,7 @@ function checkContentRequired(locale) {
  * 内容の最大文字数をチェック
  * 
  * @param {*} locale 
- * @returns 
+ * @return
  */
 function checkContentMaxNumber(locale) {
   
@@ -136,11 +132,9 @@ function checkContentMaxNumber(locale) {
     if(locale === "ja") {
       errMsgName02.textContent = '500文字以内で入力してください';
     }
-
     if(locale === "en") {
       errMsgName02.textContent = 'Please enter up to 500 characters';
     }
-
     if(locale === "uk") {
       errMsgName02.textContent = 'Введіть до 500 символів';
     }
@@ -157,8 +151,6 @@ function checkContentMaxNumber(locale) {
 // 出来事バリデーション
 window.eventValidation = function (locale) {
   
-console.log(locale);
-
   // エラーメッセージを表示させる要素を取得
   const errMsgName01 = document.querySelector('.err-msg-name01');
   const errMsgName02 = document.querySelector('.err-msg-name02');
@@ -186,7 +178,7 @@ console.log(locale);
     // エラーメッセージのテキストに空文字を代入
     errMsgName02.textContent ='';
     // クラスを削除
-    eventTitle.classList.remove('border-danger');
+    eventContent.classList.remove('border-danger');
     errMsgName02.classList.remove('alert');
     errMsgName02.classList.remove('alert-danger');
   }
@@ -197,28 +189,17 @@ console.log(locale);
   }
 }
 
-
 /**
- * 3コラムバリデーション
- * @param locale 言語切り替え
+ * 3コラムの感情名の入力必須チェック
+ * 
+ * @param {} locale 
+ * @returns 
  */
-window.threecolumnValidation = function (locale) {
-  console.log(locale);
-
-  // フォームの要素を取得
-  const emotion_name     = document.querySelector('#emotion_name_def');
-  const emotion_strength = document.querySelector('#emotion_strength_def');
-  const thinking         = document.querySelector('#thinking');
-
+function checkEmotionNameRequired(locale) {
+  const emotion_name = document.querySelector('#emotion_name_def');
   const errMsgName01 = document.querySelector('.err-msg-name01');
-  const errMsgName02 = document.querySelector('.err-msg-name02');
-  const errMsgName03 = document.querySelector('.err-msg-name03');
-
-  var errCount = 0;
   var errEmotionNameCount = 0;
-  var errEmotionStrengthCount = 0;
-  var errThinkingCount = 0;
-
+  
   // 感情名入力必須バリデーション
   if(!emotion_name.value) {
     errMsgName01.classList.add('form-invalid');
@@ -238,8 +219,21 @@ window.threecolumnValidation = function (locale) {
     emotion_name.classList.add('border-danger');
     errMsgName01.classList.add('alert');
     errMsgName01.classList.add('alert-danger');
-    errEmotionNameCount += 1;
+    errEmotionNameCount = 1;
   }
+  return errEmotionNameCount;
+}
+
+/**
+ * 感情名の最大入力文字数
+ * 
+ * @param {} locale 
+ * @returns 
+ */
+function checkEmotionNameMaxNumber(locale) {
+  const emotion_name = document.querySelector('#emotion_name_def');
+  const errMsgName01 = document.querySelector('.err-msg-name01');
+  var errEmotionNameCount = 0;
 
   // 感情名の入力最大文字数バリデーション
   if(emotion_name.value.length > 15) {
@@ -249,11 +243,9 @@ window.threecolumnValidation = function (locale) {
     if(locale === "ja") {
       errMsgName01.textContent = '15文字以内で入力してください';
     }
-
     if(locale === "en") {
       errMsgName01.textContent = 'Please enter up to 15 characters';
     }
-
     if(locale === "uk") {
       errMsgName01.textContent = 'Введіть до 15 символів';
     }
@@ -262,10 +254,35 @@ window.threecolumnValidation = function (locale) {
     emotion_name.classList.add('border-danger');
     errMsgName01.classList.add('alert');
     errMsgName01.classList.add('alert-danger');
-    errEmotionNameCount += 1;
-  } 
+    errEmotionNameCount = 1;
+  }
+  return errEmotionNameCount;
+}
 
+/**
+ * 3コラムバリデーション
+ * @param locale 言語切り替え
+ */
+window.threecolumnValidation = function (locale) {
+  console.log(locale);
 
+  // フォームの要素を取得
+  const emotion_name     = document.querySelector('#emotion_name_def');
+  const emotion_strength = document.querySelector('#emotion_strength_def');
+  const thinking         = document.querySelector('#thinking');
+
+  const errMsgName01 = document.querySelector('.err-msg-name01');
+  const errMsgName02 = document.querySelector('.err-msg-name02');
+  const errMsgName03 = document.querySelector('.err-msg-name03');
+
+  var errCount                = 0;
+  var errEmotionNameCount     = 0;
+  var errEmotionStrengthCount = 0;
+  var errThinkingCount        = 0;
+
+  errEmotionNameCount += checkEmotionNameRequired(locale);
+  errEmotionNameCount += checkEmotionNameMaxNumber(locale);
+  
   // エラーがないなら赤枠リセット
   if(errEmotionNameCount === 0) {
     // エラーメッセージのテキストに空文字を代入
@@ -363,11 +380,9 @@ window.threecolumnValidation = function (locale) {
     if(locale === "ja") {
       errMsgName03.textContent = '500文字以内で入力してください';
     }
-
     if(locale === "en") {
       errMsgName03.textContent = 'Please enter up to 500 characters';
     }
-
     if(locale === "uk") {
       errMsgName03.textContent = 'Введіть до 500 символів';
     }
