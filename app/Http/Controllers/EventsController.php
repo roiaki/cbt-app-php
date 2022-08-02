@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use App\Http\Requests\CreateEventRequest;
 use Exception;
+use Illuminate\Support\Facades\App;
 
 use Session;
 
@@ -26,6 +27,8 @@ class EventsController extends Controller
     // 検索機能
     public function searchIndex(Request $request)
     {
+        
+        
         $Event = new Event();
         $data = $Event->serchIndex($request);
 
@@ -36,7 +39,11 @@ class EventsController extends Controller
     // getでevents/createにアクセスされた場合の「新規登録画面表示処理」
     public function create()
     {
-        return view('events.create');
+        $locale = App::currentLocale();
+        $data = [
+            'locale' => $locale
+        ];
+        return view('events.create', ['locale' => $locale]);
     }
 
 

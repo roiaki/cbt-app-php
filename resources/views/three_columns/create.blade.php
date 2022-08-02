@@ -6,7 +6,7 @@
   <div class="col-sm-8">
     <h3 class="title_head"><h3>{{ __('threecolumn.page_title') }}</h3>
       <!-- model 第一引数：Modelのインスタンス、第二引数：連想配列　-->
-      <form action="{{ route('three_columns.store') }}" method="POST">
+      <form action="{{ route('three_columns.store') }}" method="POST" onsubmit="return threecolumnValidation();">
         @csrf
         <input type="hidden" name="eventid" value="{{ $event->id }}">
 
@@ -50,8 +50,8 @@
           @endif
         </div>
 
-      <div class="row">
-        <div class="form-group col">
+        <div class="row">
+          <div class="form-group col">
           <label for="emotion_name"><h5>{{ __('threecolumn.2-1_title') }}</h5></label>
           <p class="alert alert-success" role="alert">
             {{ __('threecolumn.2-1_sentence') }}
@@ -60,8 +60,10 @@
                  class="form-control"
                  id="emotion_name_def"
                  name="emotion_name_def"
-                 value="{{ old('emotion_name_def') }}" 
-                 required>
+                 value="{{ old('emotion_name_def') }}">
+
+          <!-- フロントバリデーションエラーメッセージ -->
+          <div class="err-msg-name01 mt-3"></div>
 
           <!-- バリデーションエラー表示-->
           @if($errors->has('emotion_name_def'))
@@ -82,8 +84,10 @@
                  class="form-control"
                  id="emotion_strength_def"
                  name="emotion_strength_def"
-                 value="{{ old('emotion_strength_def') }}" 
-                 required>
+                 value="{{ old('emotion_strength_def') }}">
+
+          <!-- フロントバリデーションエラーメッセージ -->
+          <div class="err-msg-name02 mt-3"></div>
 
           <!-- バリデーションエラー表示-->
           @if($errors->has('emotion_strength_def'))
@@ -110,7 +114,10 @@
                   id="thinking" 
                   name="thinking" 
                   cols="90" 
-                  rows="5" required>{{ old('thinking') }}</textarea>
+                  rows="5">{{ old('thinking') }}</textarea>
+
+        <!-- フロントバリデーションエラーメッセージ -->
+        <div class="err-msg-name03 mt-3"></div>
 
         <!-- バリデーションエラー表示-->
         @if($errors->has('thinking'))
