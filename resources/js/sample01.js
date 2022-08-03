@@ -419,6 +419,8 @@ window.threecolumnValidation = function (locale) {
   var errEmotionStrengthCount = 0;
   var errThinkingCount        = 0;
 
+  var errSum                  = 0;
+
   errEmotionNameCount     += checkEmotionNameRequired(locale);
   errEmotionNameCount     += checkEmotionNameMaxNumber(locale);
   errEmotionStrengthCount += checkEmotionStrenghtRequired(locale);
@@ -432,8 +434,17 @@ window.threecolumnValidation = function (locale) {
       behavior: 'smooth'
     });
   }
- 
-  if(errEmotionNameCount === 0 && errThinkingCount > 0) {
+  
+  if(errEmotionStrengthCount > 0) {
+    window.scrollTo({
+      top: emotion_strength.offsetTop,
+      behavior: 'smooth'
+    });
+  }
+
+  errSum = errEmotionNameCount + errEmotionStrengthCount;
+
+  if(errSum === 0 && errThinkingCount > 0) {
     window.scrollTo({
       top: thinking.offsetTop - 200,
       behavior: 'smooth'
