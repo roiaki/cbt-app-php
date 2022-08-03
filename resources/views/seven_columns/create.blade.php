@@ -146,7 +146,7 @@
                   rows="5"></textarea>
         
         <!-- フロントバリデーションエラーメッセージ -->
-        <div class="err-msg-name02 mt-3"></div>
+        <div class="err-msg-name03 mt-3"></div>
 
         <!-- バリデーションエラーメッセージ-->
         @if($errors->has('new_thinking'))
@@ -205,9 +205,9 @@
                 @endif
               </td>
               <td>
-                  @if(isset($three_column->emotion_strength00))
-                    {{$three_column->emotion_strength00 }}
-                  @endif
+                @if(isset($three_column->emotion_strength00))
+                  {{$three_column->emotion_strength00 }}
+                @endif
               </td>
               @if(isset($three_column->emotion_strength00))
                 <td>
@@ -282,7 +282,10 @@
             @endif
             
           </table>
-          
+
+          <!-- フロントバリデーションエラーメッセージ -->
+          <div class="err-msg-name04 mt-3"></div>
+
           <!-- バリデーションエラーメッセージ-->
           @if($errors->has('new_emotion_strength'))
             @foreach($errors->get('new_emotion_strength') as $message)

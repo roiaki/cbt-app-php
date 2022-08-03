@@ -508,24 +508,39 @@ window.sevencolumnValidation = function (locale) {
   // フォームの要素を取得
   var basis_thinking = document.querySelector('#basis_thinking');
   var opposite_fact = document.querySelector('#opposite_fact');
-  var new_thinking = document.querySelector('#new_thinking');
+  var new_thinking = document.querySelector('#new_thinking'); //const new_thinking   = document.querySelector('#new_thinking');
+
   var errMsgName01 = document.querySelector('.err-msg-name01');
   var errMsgName02 = document.querySelector('.err-msg-name02');
   var errMsgName03 = document.querySelector('.err-msg-name03');
   var errCount = 0;
   var errBasisThinkingCount = 0;
-  var errEmotionStrengthCount = 0;
+  var errOppsiteFactCount = 0;
   var errThinkingCount = 0;
-  var errSum = 0;
-  errBasisThinkingCount += checkBasisThinkingRequired(locale);
-  errBasisThinkingCount += checkMaxNumberBasisThinking(locale);
-  console.log(basis_thinking.offsetTop);
-  console.log(opposite_fact.offsetTop);
-  console.log(new_thinking.offsetTop);
+  errBasisThinkingCount += checkRequired(locale, "#basis_thinking", ".err-msg-name01");
+  errBasisThinkingCount += checkMaxNumInputChar(locale, "#basis_thinking", ".err-msg-name01");
+  errOppsiteFactCount += checkRequired(locale, "#opposite_fact", ".err-msg-name02");
+  errOppsiteFactCount += checkMaxNumInputChar(locale, "#opposite_fact", ".err-msg-name02");
+  errThinkingCount += checkRequired(locale, "#new_thinking", ".err-msg-name03");
+  errThinkingCount += checkMaxNumInputChar(locale, "#new_thinking", ".err-msg-name03");
 
   if (errBasisThinkingCount > 0) {
     window.scrollTo({
       top: basis_thinking.offsetTop - 100,
+      behavior: 'smooth'
+    });
+  }
+
+  if (errOppsiteFactCount > 0 && errBasisThinkingCount === 0) {
+    window.scrollTo({
+      top: opposite_fact.offsetTop - 100,
+      behavior: 'smooth'
+    });
+  }
+
+  if (errThinkingCount > 0 && errOppsiteFactCount === 0 && errBasisThinkingCount === 0) {
+    window.scrollTo({
+      top: new_thinking.offsetTop - 100,
       behavior: 'smooth'
     });
   } // エラーがないなら赤枠リセット
@@ -536,87 +551,104 @@ window.sevencolumnValidation = function (locale) {
     basis_thinking.classList.remove('border-danger');
     errMsgName01.classList.remove('alert');
     errMsgName01.classList.remove('alert-danger');
+  } // エラーがないなら赤枠リセット
+
+
+  if (errOppsiteFactCount === 0) {
+    errMsgName02.textContent = '';
+    opposite_fact.classList.remove('border-danger');
+    errMsgName02.classList.remove('alert');
+    errMsgName02.classList.remove('alert-danger');
+  } // エラーがないなら赤枠リセット
+
+
+  if (errThinkingCount === 0) {
+    errMsgName03.textContent = '';
+    new_thinking.classList.remove('border-danger');
+    errMsgName03.classList.remove('alert');
+    errMsgName03.classList.remove('alert-danger');
   }
 
-  errCount = errBasisThinkingCount;
+  errCount = errBasisThinkingCount + errOppsiteFactCount + errThinkingCount;
 
   if (errCount > 0) {
     return false;
   }
 };
 /**
- * 根拠の入力必須をチェック
+ * 入力必須チェック
  * 
- * @param {*} locale 
- * @return　int errBasisThinking エラーの数
-*/
+ * @param {string} locale 
+ * @param {string} elementId 
+ * @param {string} errMessageClass 
+ * @returns int errCount
+ */
 
 
-function checkBasisThinkingRequired(locale) {
-  var basis_thinking = document.querySelector('#basis_thinking');
-  var errMsgName01 = document.querySelector('.err-msg-name01');
-  var errBasisThinkingCount = 0; // 自動思考の入力必須バリデーション
+function checkRequired(locale, elementId, errMessageClass) {
+  var tagetElement = document.querySelector(elementId);
+  var errMsg = document.querySelector(errMessageClass);
+  errCount = 0;
 
-  if (!basis_thinking.value) {
-    errMsgName01.classList.add('form-invalid'); // エラーメッセージのテキスト
-
+  if (!tagetElement.value) {
+    // エラーメッセージのテキスト
     if (locale === "ja") {
-      errMsgName01.textContent = '入力してください';
+      errMsg.textContent = '入力してください';
     }
 
     if (locale === "en") {
-      errMsgName01.textContent = 'Please input';
+      errMsg.textContent = 'Please input';
     }
 
     if (locale === "uk") {
-      errMsgName01.textContent = 'будь ласка, введіть';
+      errMsg.textContent = 'будь ласка, введіть';
     } // クラスを追加(フォームの枠線を赤くする)
 
 
-    basis_thinking.classList.add('border-danger');
-    errMsgName01.classList.add('alert');
-    errMsgName01.classList.add('alert-danger');
-    errBasisThinkingCount = 1;
+    tagetElement.classList.add('border-danger');
+    errMsg.classList.add('alert');
+    errMsg.classList.add('alert-danger');
+    errCount = 1;
   }
 
-  return errBasisThinkingCount;
+  return errCount;
 }
 /**
- * 自動思考の最大入力文字数チェック
+ * 最大入力文字数チェック
  * 
  * @param {*} locale 
+ * @param {*} elementId 
+ * @param {*} errMessageClass 
  * @returns 
-*/
+ */
 
 
-function checkMaxNumberBasisThinking(locale) {
-  var basis_thinking = document.querySelector('#basis_thinking');
-  var errMsgName01 = document.querySelector('.err-msg-name01');
-  var errBasisThinkingCount = 0; // 自動思考の入力最大文字数バリデーション
+function checkMaxNumInputChar(locale, elementId, errMessageClass) {
+  var tagetElement = document.querySelector(elementId);
+  var errMsg = document.querySelector(errMessageClass);
+  var errCount = 0;
 
-  if (basis_thinking.value.length > 500) {
-    errMsgName01.classList.add('form-invalid'); // エラーメッセージのテキスト
-
+  if (tagetElement.value.length > 500) {
     if (locale === "ja") {
-      errMsgName01.textContent = '500文字以内で入力してください';
+      errMsg.textContent = "500文字以内で入力してください";
     }
 
     if (locale === "en") {
-      errMsgName01.textContent = 'Please enter up to 500 characters';
+      errMsg.textContent = 'Please enter up to 500 characters';
     }
 
     if (locale === "uk") {
-      errMsgName01.textContent = 'Введіть до 500 символів';
+      errMsg.textContent = 'Введіть до 500 символів';
     } // クラスを追加(フォームの枠線を赤くする)
 
 
-    basis_thinking.classList.add('border-danger');
-    errMsgName01.classList.add('alert');
-    errMsgName01.classList.add('alert-danger');
-    errBasisThinkingCount = 1;
+    tagetElement.classList.add('border-danger');
+    errMsg.classList.add('alert');
+    errMsg.classList.add('alert-danger');
+    errCount = 1;
   }
 
-  return errBasisThinkingCount;
+  return errCount;
 }
 /******/ })()
 ;
