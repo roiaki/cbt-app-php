@@ -1,12 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
+<?php
+  $locale = App::currentLocale();
+  $json_array = json_encode($locale);  
+?>
+<script>
+	let locale = <?php echo $json_array; ?>
+</script>
 
 <div class="row justify-content-center">
   <div class="col-sm-8">
   <h3 class="title_head">{{ __('sevencolumn.createPageTitle') }}</h3>
     <!-- model 第一引数：Modelのインスタンス、第二引数：連想配列　-->
-    <form action="{{ route('seven_columns.store') }}" method="POST">
+    <form action="{{ route('seven_columns.store') }}" 
+          method="post"
+          onsubmit="return sevencolumnValidation(locale);">
       @csrf
 
       <input type="hidden" name="threecol_id" value="{{ $three_column->id }}">
@@ -72,6 +81,7 @@
         @endif
       </div>
 
+      <!-- 自動思考を裏付ける根拠 -->
       <div class="form-group mt-5">
         <label for="basis_thinking"><h5>{{ __('sevencolumn.4_title') }}</h5></label>
         <p class="alert alert-success" role="alert">
@@ -81,7 +91,10 @@
                   id="basis_thinking" 
                   name="basis_thinking" 
                   cols="90" 
-                  rows="5" required></textarea>
+                  rows="5"></textarea>
+
+        <!-- フロントバリデーションエラーメッセージ -->
+        <div class="err-msg-name01 mt-3"></div>
 
         <!-- バリデーションエラーメッセージ-->
         @if($errors->has('basis_thinking'))
@@ -92,7 +105,9 @@
           @endforeach
         @endif
       </div>
+      <!-- /自動思考を裏付ける根拠 -->
 
+      <!-- 反証 -->
       <div class="form-group mt-5">
         <label for="opposite_fact"><h5>{{ __('sevencolumn.5_title') }}</h5></label>
         <p class="alert alert-success" role="alert">
@@ -102,7 +117,10 @@
                   id="opposite_fact" 
                   name="opposite_fact" 
                   cols="90" 
-                  rows="5" required></textarea>
+                  rows="5"></textarea>
+
+        <!-- フロントバリデーションエラーメッセージ -->
+        <div class="err-msg-name02 mt-3"></div>
 
         <!-- バリデーションエラーメッセージ-->
         @if($errors->has('opposite_fact'))
@@ -113,7 +131,9 @@
           @endforeach
         @endif
       </div>
+      <!-- /反証 -->
 
+      <!-- 適応的思考 -->
       <div class="form-group mt-5">
         <label for="new_thinking"><h5>{{ __('sevencolumn.6_title') }}</h5></label>
         <p class="alert alert-success" role="alert">
@@ -123,8 +143,11 @@
                   id="new_thinking" 
                   name="new_thinking" 
                   cols="90" 
-                  rows="5" required></textarea>
+                  rows="5"></textarea>
         
+        <!-- フロントバリデーションエラーメッセージ -->
+        <div class="err-msg-name02 mt-3"></div>
+
         <!-- バリデーションエラーメッセージ-->
         @if($errors->has('new_thinking'))
           @foreach($errors->get('new_thinking') as $message)
@@ -134,14 +157,15 @@
           @endforeach
         @endif
       </div>
+      <!-- /適応的思考 -->
 
+      <!-- 感情の変化-->
       <div class="form-group mt-5">
         <label for="new_emotion"><h5>{{ __('sevencolumn.7_title') }}</h5></label>
         <p class="alert alert-success" role="alert">
         {{ __('sevencolumn.7_sentence') }}
         </p>
 
-        <!-- 感情の変化-->
         <div class="mt-3">
           <table class="table table-bordered">
             <tr>
@@ -165,8 +189,7 @@
                 <input type="number" 
                        class="form-control mt-1" 
                        id="new_emotion_strength" 
-                       name="new_emotion_strength" 
-                       required>
+                       name="new_emotion_strength">
               </td>
             </tr>
 

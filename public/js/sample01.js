@@ -498,5 +498,114 @@ window.threecolumnValidation = function (locale) {
     return false;
   }
 };
+/**
+ * 7コラムバリデーション
+ * @param locale 言語切り替え
+ */
+
+
+window.sevencolumnValidation = function (locale) {
+  // フォームの要素を取得
+  var basis_thinking = document.querySelector('#basis_thinking');
+  var opposite_fact = document.querySelector('#opposite_fact');
+  var tnew_thinking = document.querySelector('#new_thinking');
+  var errMsgName01 = document.querySelector('.err-msg-name01');
+  var errMsgName02 = document.querySelector('.err-msg-name02');
+  var errMsgName03 = document.querySelector('.err-msg-name03');
+  var errCount = 0;
+  var errBasisThinkingCount = 0;
+  var errEmotionStrengthCount = 0;
+  var errThinkingCount = 0;
+  var errSum = 0;
+  errBasisThinkingCount += checkBasisThinkingRequired(locale);
+  errBasisThinkingCount += checkMaxNumberBasisThinking(locale); // エラーがないなら赤枠リセット
+
+  if (errBasisThinkingCount === 0) {
+    errMsgName01.textContent = '';
+    basis_thinking.classList.remove('border-danger');
+    errMsgName01.classList.remove('alert');
+    errMsgName01.classList.remove('alert-danger');
+  }
+
+  errCount = errBasisThinkingCount;
+
+  if (errCount > 0) {
+    return false;
+  }
+};
+/**
+ * 根拠の入力必須をチェック
+ * 
+ * @param {*} locale 
+ * @return　int errBasisThinking エラーの数
+*/
+
+
+function checkBasisThinkingRequired(locale) {
+  var basis_thinking = document.querySelector('#basis_thinking');
+  var errMsgName01 = document.querySelector('.err-msg-name01');
+  var errBasisThinkingCount = 0; // 自動思考の入力必須バリデーション
+
+  if (!basis_thinking.value) {
+    errMsgName01.classList.add('form-invalid'); // エラーメッセージのテキスト
+
+    if (locale === "ja") {
+      errMsgName01.textContent = '入力してください';
+    }
+
+    if (locale === "en") {
+      errMsgName01.textContent = 'Please input';
+    }
+
+    if (locale === "uk") {
+      errMsgName01.textContent = 'будь ласка, введіть';
+    } // クラスを追加(フォームの枠線を赤くする)
+
+
+    basis_thinking.classList.add('border-danger');
+    errMsgName01.classList.add('alert');
+    errMsgName01.classList.add('alert-danger');
+    errBasisThinkingCount = 1;
+  }
+
+  return errBasisThinkingCount;
+}
+/**
+ * 自動思考の最大入力文字数チェック
+ * 
+ * @param {*} locale 
+ * @returns 
+*/
+
+
+function checkMaxNumberBasisThinking(locale) {
+  var basis_thinking = document.querySelector('#thinking');
+  var errMsgName01 = document.querySelector('.err-msg-name01');
+  var errBasisThinkingCount = 0; // 自動思考の入力最大文字数バリデーション
+
+  if (basis_thinking.value.length > 500) {
+    errMsgName01.classList.add('form-invalid'); // エラーメッセージのテキスト
+
+    if (locale === "ja") {
+      errMsgName01.textContent = '500文字以内で入力してください';
+    }
+
+    if (locale === "en") {
+      errMsgName01.textContent = 'Please enter up to 500 characters';
+    }
+
+    if (locale === "uk") {
+      errMsgName01.textContent = 'Введіть до 500 символів';
+    } // クラスを追加(フォームの枠線を赤くする)
+
+
+    basis_thinking.classList.add('border-danger');
+    errMsgName01.classList.add('alert');
+    errMsgName01.classList.add('alert-danger');
+    errBasisThinkingCount = 1;
+  }
+
+  return errBasisThinkingCount;
+}
 /******/ })()
 ;
