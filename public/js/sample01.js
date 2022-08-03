@@ -498,5 +498,157 @@ window.threecolumnValidation = function (locale) {
     return false;
   }
 };
+/**
+ * 7コラムバリデーション
+ * @param locale 言語切り替え
+ */
+
+
+window.sevencolumnValidation = function (locale) {
+  // フォームの要素を取得
+  var basis_thinking = document.querySelector('#basis_thinking');
+  var opposite_fact = document.querySelector('#opposite_fact');
+  var new_thinking = document.querySelector('#new_thinking'); //const new_thinking   = document.querySelector('#new_thinking');
+
+  var errMsgName01 = document.querySelector('.err-msg-name01');
+  var errMsgName02 = document.querySelector('.err-msg-name02');
+  var errMsgName03 = document.querySelector('.err-msg-name03');
+  var errCount = 0;
+  var errBasisThinkingCount = 0;
+  var errOppsiteFactCount = 0;
+  var errThinkingCount = 0;
+  errBasisThinkingCount += checkRequired(locale, "#basis_thinking", ".err-msg-name01");
+  errBasisThinkingCount += checkMaxNumInputChar(locale, "#basis_thinking", ".err-msg-name01");
+  errOppsiteFactCount += checkRequired(locale, "#opposite_fact", ".err-msg-name02");
+  errOppsiteFactCount += checkMaxNumInputChar(locale, "#opposite_fact", ".err-msg-name02");
+  errThinkingCount += checkRequired(locale, "#new_thinking", ".err-msg-name03");
+  errThinkingCount += checkMaxNumInputChar(locale, "#new_thinking", ".err-msg-name03");
+
+  if (errBasisThinkingCount > 0) {
+    window.scrollTo({
+      top: basis_thinking.offsetTop - 100,
+      behavior: 'smooth'
+    });
+  }
+
+  if (errOppsiteFactCount > 0 && errBasisThinkingCount === 0) {
+    window.scrollTo({
+      top: opposite_fact.offsetTop - 100,
+      behavior: 'smooth'
+    });
+  }
+
+  if (errThinkingCount > 0 && errOppsiteFactCount === 0 && errBasisThinkingCount === 0) {
+    window.scrollTo({
+      top: new_thinking.offsetTop - 100,
+      behavior: 'smooth'
+    });
+  } // エラーがないなら赤枠リセット
+
+
+  if (errBasisThinkingCount === 0) {
+    errMsgName01.textContent = '';
+    basis_thinking.classList.remove('border-danger');
+    errMsgName01.classList.remove('alert');
+    errMsgName01.classList.remove('alert-danger');
+  } // エラーがないなら赤枠リセット
+
+
+  if (errOppsiteFactCount === 0) {
+    errMsgName02.textContent = '';
+    opposite_fact.classList.remove('border-danger');
+    errMsgName02.classList.remove('alert');
+    errMsgName02.classList.remove('alert-danger');
+  } // エラーがないなら赤枠リセット
+
+
+  if (errThinkingCount === 0) {
+    errMsgName03.textContent = '';
+    new_thinking.classList.remove('border-danger');
+    errMsgName03.classList.remove('alert');
+    errMsgName03.classList.remove('alert-danger');
+  }
+
+  errCount = errBasisThinkingCount + errOppsiteFactCount + errThinkingCount;
+
+  if (errCount > 0) {
+    return false;
+  }
+};
+/**
+ * 入力必須チェック
+ * 
+ * @param {string} locale 
+ * @param {string} elementId 
+ * @param {string} errMessageClass 
+ * @returns int errCount
+ */
+
+
+function checkRequired(locale, elementId, errMessageClass) {
+  var tagetElement = document.querySelector(elementId);
+  var errMsg = document.querySelector(errMessageClass);
+  errCount = 0;
+
+  if (!tagetElement.value) {
+    // エラーメッセージのテキスト
+    if (locale === "ja") {
+      errMsg.textContent = '入力してください';
+    }
+
+    if (locale === "en") {
+      errMsg.textContent = 'Please input';
+    }
+
+    if (locale === "uk") {
+      errMsg.textContent = 'будь ласка, введіть';
+    } // クラスを追加(フォームの枠線を赤くする)
+
+
+    tagetElement.classList.add('border-danger');
+    errMsg.classList.add('alert');
+    errMsg.classList.add('alert-danger');
+    errCount = 1;
+  }
+
+  return errCount;
+}
+/**
+ * 最大入力文字数チェック
+ * 
+ * @param {*} locale 
+ * @param {*} elementId 
+ * @param {*} errMessageClass 
+ * @returns 
+ */
+
+
+function checkMaxNumInputChar(locale, elementId, errMessageClass) {
+  var tagetElement = document.querySelector(elementId);
+  var errMsg = document.querySelector(errMessageClass);
+  var errCount = 0;
+
+  if (tagetElement.value.length > 500) {
+    if (locale === "ja") {
+      errMsg.textContent = "500文字以内で入力してください";
+    }
+
+    if (locale === "en") {
+      errMsg.textContent = 'Please enter up to 500 characters';
+    }
+
+    if (locale === "uk") {
+      errMsg.textContent = 'Введіть до 500 символів';
+    } // クラスを追加(フォームの枠線を赤くする)
+
+
+    tagetElement.classList.add('border-danger');
+    errMsg.classList.add('alert');
+    errMsg.classList.add('alert-danger');
+    errCount = 1;
+  }
+
+  return errCount;
+}
 /******/ })()
 ;
