@@ -91,7 +91,7 @@
                   id="basis_thinking" 
                   name="basis_thinking" 
                   cols="90" 
-                  rows="5"></textarea>
+                  rows="5">{{ old('basis_thinking') }}</textarea>
 
         <!-- フロントバリデーションエラーメッセージ -->
         <div class="err-msg-name01 mt-3"></div>
@@ -117,7 +117,7 @@
                   id="opposite_fact" 
                   name="opposite_fact" 
                   cols="90" 
-                  rows="5"></textarea>
+                  rows="5">{{ old('opposite_fact') }}</textarea>
 
         <!-- フロントバリデーションエラーメッセージ -->
         <div class="err-msg-name02 mt-3"></div>
@@ -143,7 +143,7 @@
                   id="new_thinking" 
                   name="new_thinking" 
                   cols="90" 
-                  rows="5"></textarea>
+                  rows="5">{{ old('new_thinking') }}</textarea>
         
         <!-- フロントバリデーションエラーメッセージ -->
         <div class="err-msg-name03 mt-3"></div>
