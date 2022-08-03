@@ -508,7 +508,7 @@ window.sevencolumnValidation = function (locale) {
   // フォームの要素を取得
   var basis_thinking = document.querySelector('#basis_thinking');
   var opposite_fact = document.querySelector('#opposite_fact');
-  var tnew_thinking = document.querySelector('#new_thinking');
+  var new_thinking = document.querySelector('#new_thinking');
   var errMsgName01 = document.querySelector('.err-msg-name01');
   var errMsgName02 = document.querySelector('.err-msg-name02');
   var errMsgName03 = document.querySelector('.err-msg-name03');
@@ -518,7 +518,18 @@ window.sevencolumnValidation = function (locale) {
   var errThinkingCount = 0;
   var errSum = 0;
   errBasisThinkingCount += checkBasisThinkingRequired(locale);
-  errBasisThinkingCount += checkMaxNumberBasisThinking(locale); // エラーがないなら赤枠リセット
+  errBasisThinkingCount += checkMaxNumberBasisThinking(locale);
+  console.log(basis_thinking.offsetTop);
+  console.log(opposite_fact.offsetTop);
+  console.log(new_thinking.offsetTop);
+
+  if (errBasisThinkingCount > 0) {
+    window.scrollTo({
+      top: basis_thinking.offsetTop - 100,
+      behavior: 'smooth'
+    });
+  } // エラーがないなら赤枠リセット
+
 
   if (errBasisThinkingCount === 0) {
     errMsgName01.textContent = '';
@@ -579,7 +590,7 @@ function checkBasisThinkingRequired(locale) {
 
 
 function checkMaxNumberBasisThinking(locale) {
-  var basis_thinking = document.querySelector('#thinking');
+  var basis_thinking = document.querySelector('#basis_thinking');
   var errMsgName01 = document.querySelector('.err-msg-name01');
   var errBasisThinkingCount = 0; // 自動思考の入力最大文字数バリデーション
 

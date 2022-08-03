@@ -491,7 +491,7 @@ window.threecolumnValidation = function (locale) {
   // フォームの要素を取得
   const basis_thinking = document.querySelector('#basis_thinking');
   const opposite_fact  = document.querySelector('#opposite_fact');
-  const tnew_thinking  = document.querySelector('#new_thinking');
+  const new_thinking   = document.querySelector('#new_thinking');
 
   const errMsgName01 = document.querySelector('.err-msg-name01');
   const errMsgName02 = document.querySelector('.err-msg-name02');
@@ -507,6 +507,16 @@ window.threecolumnValidation = function (locale) {
   errBasisThinkingCount += checkBasisThinkingRequired(locale);
   errBasisThinkingCount += checkMaxNumberBasisThinking(locale);
   
+  console.log(basis_thinking.offsetTop);
+  console.log(opposite_fact.offsetTop);
+  console.log(new_thinking.offsetTop);
+
+  if(errBasisThinkingCount > 0) {
+    window.scrollTo({
+      top: basis_thinking.offsetTop -100,
+      behavior: 'smooth'
+    });
+  }
   // エラーがないなら赤枠リセット
   if(errBasisThinkingCount === 0) {
     errMsgName01.textContent ='';
@@ -562,7 +572,7 @@ function checkBasisThinkingRequired(locale) {
  * @returns 
 */
 function checkMaxNumberBasisThinking(locale) {
-  const basis_thinking = document.querySelector('#thinking');
+  const basis_thinking = document.querySelector('#basis_thinking');
   const errMsgName01   = document.querySelector('.err-msg-name01');
   var errBasisThinkingCount = 0;
   
