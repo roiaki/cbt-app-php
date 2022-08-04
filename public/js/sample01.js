@@ -3,6 +3,11 @@ var __webpack_exports__ = {};
 /*!**********************************!*\
   !*** ./resources/js/sample01.js ***!
   \**********************************/
+/**
+ * 削除するときの確認フォーム
+ * 
+ * @returns boolean true or false 削除するかしないか
+ */
 window.confirmDelete = function () {
   if (window.confirm('本当に削除してもよろしいでしょうか?')) {
     document.forms[0].submit();
@@ -508,21 +513,49 @@ window.sevencolumnValidation = function (locale) {
   // フォームの要素を取得
   var basis_thinking = document.querySelector('#basis_thinking');
   var opposite_fact = document.querySelector('#opposite_fact');
-  var new_thinking = document.querySelector('#new_thinking'); //const new_thinking   = document.querySelector('#new_thinking');
-
+  var new_thinking = document.querySelector('#new_thinking');
+  var new_emotion_strength01 = document.querySelector('#new_emotion_strength');
+  var new_emotion_strength02 = document.querySelector('#new_emotion_strength00');
+  var new_emotion_strength03 = document.querySelector('#new_emotion_strength01');
+  var new_emotion_strength04 = document.querySelector('#new_emotion_strength02');
   var errMsgName01 = document.querySelector('.err-msg-name01');
   var errMsgName02 = document.querySelector('.err-msg-name02');
   var errMsgName03 = document.querySelector('.err-msg-name03');
+  var errMsgName04 = document.querySelector('.err-msg-name04');
   var errCount = 0;
   var errBasisThinkingCount = 0;
   var errOppsiteFactCount = 0;
-  var errThinkingCount = 0;
+  var errNewEmotionCount01 = 0;
+  var errNewEmotionCount02 = 0;
+  var errNewEmotionCount03 = 0;
+  var errNewEmotionCount04 = 0;
+  var errNewEmotionSumCount = 0;
   errBasisThinkingCount += checkRequired(locale, "#basis_thinking", ".err-msg-name01");
   errBasisThinkingCount += checkMaxNumInputChar(locale, "#basis_thinking", ".err-msg-name01");
   errOppsiteFactCount += checkRequired(locale, "#opposite_fact", ".err-msg-name02");
   errOppsiteFactCount += checkMaxNumInputChar(locale, "#opposite_fact", ".err-msg-name02");
   errThinkingCount += checkRequired(locale, "#new_thinking", ".err-msg-name03");
   errThinkingCount += checkMaxNumInputChar(locale, "#new_thinking", ".err-msg-name03");
+
+  if (new_emotion_strength01) {
+    errNewEmotionCount01 += checkRequired(locale, "#new_emotion_strength", ".err-msg-name04");
+    console.log(errNewEmotionCount01);
+  }
+
+  if (new_emotion_strength02) {
+    errNewEmotionCount02 += checkRequired(locale, "#new_emotion_strength00", ".err-msg-name04");
+    console.log(errNewEmotionCount02);
+  }
+
+  if (new_emotion_strength03) {
+    errNewEmotionCount03 += checkRequired(locale, "#new_emotion_strength01", ".err-msg-name04");
+    console.log(errNewEmotionCount03);
+  }
+
+  if (new_emotion_strength04) {
+    errNewEmotionCount04 += checkRequired(locale, "#new_emotion_strength02", ".err-msg-name04");
+    console.log(errNewEmotionCount04);
+  }
 
   if (errBasisThinkingCount > 0) {
     window.scrollTo({
@@ -567,9 +600,42 @@ window.sevencolumnValidation = function (locale) {
     new_thinking.classList.remove('border-danger');
     errMsgName03.classList.remove('alert');
     errMsgName03.classList.remove('alert-danger');
+  } // エラーがないなら赤枠リセット
+
+
+  if (new_emotion_strength01) {
+    if (errNewEmotionCount01 === 0) {
+      new_emotion_strength01.classList.remove('border-danger');
+    }
   }
 
-  errCount = errBasisThinkingCount + errOppsiteFactCount + errThinkingCount;
+  if (new_emotion_strength02) {
+    if (errNewEmotionCount02 === 0) {
+      new_emotion_strength02.classList.remove('border-danger');
+    }
+  }
+
+  if (new_emotion_strength03) {
+    if (errNewEmotionCount03 === 0) {
+      new_emotion_strength03.classList.remove('border-danger');
+    }
+  }
+
+  if (new_emotion_strength04) {
+    if (errNewEmotionCount04 === 0) {
+      new_emotion_strength04.classList.remove('border-danger');
+    }
+  }
+
+  errNewEmotionSumCount = errNewEmotionCount01 + errNewEmotionCount02 + errNewEmotionCount03 + errNewEmotionCount04;
+
+  if (errNewEmotionSumCount === 0) {
+    errMsgName04.textContent = '';
+    errMsgName04.classList.remove('alert');
+    errMsgName04.classList.remove('alert-danger');
+  }
+
+  errCount = errBasisThinkingCount + errOppsiteFactCount + errThinkingCount + errNewEmotionCount01 + errNewEmotionCount02 + errNewEmotionCount03 + errNewEmotionCount04;
 
   if (errCount > 0) {
     return false;

@@ -91,7 +91,7 @@
                   id="basis_thinking" 
                   name="basis_thinking" 
                   cols="90" 
-                  rows="5"></textarea>
+                  rows="5">{{ old('basis_thinking') }}</textarea>
 
         <!-- フロントバリデーションエラーメッセージ -->
         <div class="err-msg-name01 mt-3"></div>
@@ -117,7 +117,7 @@
                   id="opposite_fact" 
                   name="opposite_fact" 
                   cols="90" 
-                  rows="5"></textarea>
+                  rows="5">{{ old('opposite_fact') }}</textarea>
 
         <!-- フロントバリデーションエラーメッセージ -->
         <div class="err-msg-name02 mt-3"></div>
@@ -143,7 +143,7 @@
                   id="new_thinking" 
                   name="new_thinking" 
                   cols="90" 
-                  rows="5"></textarea>
+                  rows="5">{{ old('new_thinking') }}</textarea>
         
         <!-- フロントバリデーションエラーメッセージ -->
         <div class="err-msg-name03 mt-3"></div>
@@ -214,8 +214,7 @@
                   <input type="number" 
                         class="form-control mt-2" 
                         id="new_emotion_strength00" 
-                        name="new_emotion_strength00"
-                        required>
+                        name="new_emotion_strength00">
                 </td>
               @endif
             </tr>
@@ -242,10 +241,9 @@
               @if(isset($three_column->emotion_strength01))
                 <td>
                   <input type="number" 
-                        class="form-control mt-2" 
-                        id="new_emotion_strength01" 
-                        name="new_emotion_strength01"
-                        required>
+                         class="form-control mt-2" 
+                         id="new_emotion_strength01" 
+                         name="new_emotion_strength01">
                 </td>
               @endif
             </tr>
@@ -257,8 +255,8 @@
                 <td>       
                   {{$three_column->emotion_name02 }}
                   <input type="hidden"
-                        name="new_emotion_name02"
-                        value="{{$three_column->emotion_name02 }}"
+                         name="new_emotion_name02"
+                         value="{{$three_column->emotion_name02 }}"
                   >
                 </td>
               @endif
@@ -274,8 +272,7 @@
                   <input type="number" 
                          class="form-control mt-2" 
                          id="new_emotion_strength02" 
-                         name="new_emotion_strength02"
-                         required>
+                         name="new_emotion_strength02">
                </td>
               @endif
             </tr>
