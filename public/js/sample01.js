@@ -525,6 +525,7 @@ window.sevencolumnValidation = function (locale) {
   var errCount = 0;
   var errBasisThinkingCount = 0;
   var errOppsiteFactCount = 0;
+  var errThinkingCount = 0;
   var errNewEmotionCount01 = 0;
   var errNewEmotionCount02 = 0;
   var errNewEmotionCount03 = 0;
