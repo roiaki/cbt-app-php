@@ -6,9 +6,10 @@
     <div class="col-md-8">
       
       <div class="glasscard">
-        <div class="card-header">{{ __('auth.Login') }}</div>
+       
         
         <div class="card-body">
+        <div><h3 class="mb-5" style="text-align: center;">{{ __('auth.Login') }}</h3></div>
           <form method="POST" action="{{ route('login') }}">
             @csrf
 
@@ -54,7 +55,7 @@
 
             <div class="form-group row mb-0">
               <div class="col-md-8 offset-md-4">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary mt-3">
                   {{ __('auth.Login') }}
                 </button>
 
