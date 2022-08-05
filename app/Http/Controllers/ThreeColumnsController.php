@@ -193,4 +193,9 @@ class ThreeColumnsController extends Controller
     {
         return view('users.info');
     }
+
+    public function infotest()
+    {
+        return view('users.infotest');
+    }
 }

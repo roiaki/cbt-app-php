@@ -13,6 +13,6 @@ const Manifest = require('laravel-mix/src/Manifest');
  */
  mix.js('resources/js/app.js', 'public/js')
   .js('resources/js/main.js', 'public/js')
-  .js('resources/js/sample01.js', 'public/js')
+  .js('resources/js/validation.js', 'public/js')
   .postCss('resources/css/app.css', 'public/css', [
  ]).vue();

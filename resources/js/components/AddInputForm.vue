@@ -7,6 +7,7 @@
       <div class="form-group col">
         <input ref="texts"
                 name="emotion_name[]"
+                id="emotion_name[]"
                 class="form-control"
                 type="text"
                 v-model="texts[index]"
@@ -15,6 +16,7 @@
       <div class="form-group col">
         <input ref="strength"
                 name="emotion_strength[]"
+                id="emotion_strength[]"
                 class="form-control"
                 type="number"
                 v-model="strength[index]"

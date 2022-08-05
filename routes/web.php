@@ -82,6 +82,8 @@ Route::group(['middleware' => ['auth']], function () {
     // 使い方説明
     Route::get('users/info', 'ThreeColumnsController@info')->name('users.info');
 
+    Route::get('users/infotest', 'ThreeColumnsController@infotest')->name('users.infotest');
+
     // ログアウト
     Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 

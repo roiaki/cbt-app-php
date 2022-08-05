@@ -4,7 +4,8 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <div class="card">
+      
+      <div class="glasscard">
         <div class="card-header">{{ __('auth.Login') }}</div>
         
         <div class="card-body">
@@ -70,4 +71,13 @@
     </div>
   </div>
 </div>
+
+<!-- <div class="glasscard">
+  <div class="content">
+    <h2>01</h2>
+    <h3>Glass Card</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim ea pariatur doloribus eligendi maxime, ab, fugiat officia, modi vitae velit fuga. Esse optio debitis eaque. Distinctio excepturi hic soluta ducimus!</p>
+    <a href="#">More Detail</a>
+    </div>
+</div>  -->
 @endsection

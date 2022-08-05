@@ -19,7 +19,7 @@ class EventsController extends Controller
     public function index()
     {
         $Event = new Event();
-        $data = $Event->showEventIndex();
+        $data  = $Event->showEventIndex();
 
         return view('events.index', $data);
     }
@@ -27,10 +27,8 @@ class EventsController extends Controller
     // 検索機能
     public function searchIndex(Request $request)
     {
-        
-        
         $Event = new Event();
-        $data = $Event->serchIndex($request);
+        $data  = $Event->serchIndex($request);
 
         return view('events.index', $data);
     }
@@ -40,9 +38,7 @@ class EventsController extends Controller
     public function create()
     {
         $locale = App::currentLocale();
-        $data = [
-            'locale' => $locale
-        ];
+        
         return view('events.create', ['locale' => $locale]);
     }
 
@@ -121,7 +117,6 @@ class EventsController extends Controller
         if(!isset($event)) {
             return redirect('events');
         }
-
         if(Auth::id() === $event->user_id) {
             $event->eventDelete($id);
         }
