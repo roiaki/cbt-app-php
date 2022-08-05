@@ -5,12 +5,12 @@
   <meta charset="utf-8">
   <title>CBT APP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="{{asset('css/main.css')}}">
+  
   <!-- animate css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  
+  <link rel="stylesheet" href="{{asset('css/main.css')}}">
   <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
 
 
@@ -158,9 +158,17 @@
   <!--<script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>-->
 
 </div>
-  <script src="{{ mix('/js/app.js') }}"> </script>
+  <script src="{{ mix('/js/app.js') }}"></script>
   <script src="{{ mix('/js/main.js') }}"></script>
-  <script src="{{ mix('/js/sample01.js') }}"> </script>
- 
+  <script src="{{ mix('/js/validation.js') }}"></script>
+
+  <script type="text/javascript" src="{{ asset('js/vanilla-tilt.js') }}"></script>
+  <script>
+	VanillaTilt.init(document.querySelector(".glasscard"), {
+		max: 15,
+		speed: 100
+	});
+	
+</script>
 </body>
 </html>

@@ -433,13 +433,13 @@ window.threecolumnValidation = function (locale) {
   errThinkingCount        += checkThinkingRequired(locale);
   errThinkingCount        += checkMaxNumberThinking(locale);
 
+  // エラーがあった個所へスクロール
   if(errEmotionNameCount > 0) {
     window.scrollTo({
       top: emotion_name.offsetTop,
       behavior: 'smooth'
     });
   }
-  
   if(errEmotionStrengthCount > 0) {
     window.scrollTo({
       top: emotion_strength.offsetTop,

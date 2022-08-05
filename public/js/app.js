@@ -15156,6 +15156,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ref_for: true,
       ref: "texts",
       name: "emotion_name[]",
+      id: "emotion_name[]",
       "class": "form-control",
       type: "text",
       "onUpdate:modelValue": function onUpdateModelValue($event) {
@@ -15170,6 +15171,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ref_for: true,
       ref: "strength",
       name: "emotion_strength[]",
+      id: "emotion_strength[]",
       "class": "form-control",
       type: "number",
       "onUpdate:modelValue": function onUpdateModelValue($event) {
