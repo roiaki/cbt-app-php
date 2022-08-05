@@ -2,7 +2,7 @@
 
 @section('content1')
 <!-- <div class="glasscard" style="background-color:#f7f7f7; background-size:auto;"> -->
-    <div class="glasscard">
+    <div class="welcomeglasscard">
       <div class="text-center">
         <p class="pt-5">{{ __('messages.sentence01') }}<br>{{ __('messages.sentence02') }}</p>
         <h1 class="outline">{{ __('messages.welcome_title') }}</h1><br>

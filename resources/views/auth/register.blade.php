@@ -4,7 +4,8 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-7">
-      <div class="card">
+      <div class="glasscard">
+        <p>Lorem</p>
         <div class="card-header">{{ __('auth.Register') }}</div>
 
         <div class="card-body">
