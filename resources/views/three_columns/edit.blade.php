@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+<?php
+  $locale = App::currentLocale();
+  $json_array = json_encode($locale);
+?>
+<script>
+	let locale = <?php echo $json_array; ?>
+</script>
 
 <div class="row justify-content-center">
   <div class="col-sm-7">
@@ -10,7 +17,9 @@
         update の URL である /messages/{message} の {message} に id が入ります
     -->
 
-    <form action="{{ route('three_columns.update', ['param' => $three_column->id] ) }}" method="POST">
+    <form action="{{ route('three_columns.update', ['param' => $three_column->id] ) }}" 
+          method="POST"
+          onsubmit="return eventValidation(locale);">
       @csrf
       @method('PUT')
       <input type="hidden" name="eventid" value="{{ $event->id }}">
@@ -66,8 +75,7 @@
                 class="form-control" 
                 id="emotion_name" 
                 name="emotion_name" 
-                value="{{$three_column->emotion_name }}"
-                required>
+                value="{{$three_column->emotion_name }}">
           
           <!-- 感情名必須バリデーション表示-->
           @if($errors->has('emotion_name'))
@@ -84,8 +92,7 @@
                 class="form-control mt-2" 
                 id="emotion_name_def" 
                 name="emotion_name00" 
-                value="{{$three_column->emotion_name00 }}" 
-                required>
+                value="{{$three_column->emotion_name00 }}">
           @endif
 
           <!-- 感情名必須バリデーション表示-->

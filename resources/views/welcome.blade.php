@@ -16,10 +16,12 @@
         </div>
         
         @guest
-        <div class="SP_Flex_container" style="margin-top:250px">
-          {!! link_to_route('guest.signup',  __('auth.GuestLogin'), [], ['class' => 'btn btn-success m-3 animate__animated animate__swing animate__delay-5s']) !!}
-          {!! link_to_route('login', __('auth.Login'), [], ['class' => 'btn btn-primary m-3']) !!}
-          {!! link_to_route('signup.get', __('messages.register'), [], ['class' => 'btn btn-secondary m-3']) !!}
+        <div class="container" style="margin-top:100px">
+          <div class="row">
+            <div class="col-sm">{!! link_to_route('guest.signup',  __('auth.GuestLogin'), [], ['class' => 'btn btn-success m-3 animate__animated animate__swing animate__delay-5s']) !!}</div>
+            <div class="col-sm">{!! link_to_route('login', __('auth.Login'), [], ['class' => 'btn btn-primary m-3']) !!}</div>
+            <div class="col-sm">{!! link_to_route('signup.get', __('messages.register'), [], ['class' => 'btn btn-secondary m-3']) !!}</div>
+          </div>
         </div>
         @endguest
        

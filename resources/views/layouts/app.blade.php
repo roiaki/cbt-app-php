@@ -164,14 +164,20 @@
 
   <script type="text/javascript" src="{{ asset('js/vanilla-tilt.js') }}"></script>
   <script>
-	VanillaTilt.init(document.querySelector(".welcomeglasscard"), {
-		max: 25,
-		speed: 10
-	});
-  VanillaTilt.init(document.querySelector(".glasscard"), {
-		max: 15,
-		speed: 100
-	});
+    var windowWidth = $(window).width();
+    var windowSm = 640;
+    console.log(windowWidth);
+    if(windowWidth > windowSm) {
+      VanillaTilt.init(document.querySelector(".welcomeglasscard"), {
+      max: 25,
+      speed: 10
+    });
+      VanillaTilt.init(document.querySelector(".glasscard"), {
+        max: 15,
+        speed: 100
+      });
+    } 
+   
 </script>
 </body>
 </html>

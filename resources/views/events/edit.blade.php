@@ -1,13 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-
+<?php
+  $locale = App::currentLocale();
+  $json_array = json_encode($locale);
+?>
+<script>
+	let locale = <?php echo $json_array; ?>
+</script>
 <div class="row justify-content-center">
   <div class="col-sm-7">
   <h3 class="title_head">{{ __("event.event_edit_head") }}( id={{ $event->id }} )</h3>
     <form action="{{ route('events.update', ['event' => $event->id] ) }}" 
           method="post" 
-          onsubmit="return eventValidation();">
+          onsubmit="return eventValidation(locale);">
 
       @csrf
       @method('PUT')
