@@ -27,6 +27,7 @@ function checkTitleRequired(locale) {
   if(!eventTitle.value) {
     // クラスを追加(エラーメッセージを表示する)
     errMsgName01.classList.add('form-invalid');
+    
     // エラーメッセージのテキスト
     if(locale === "ja") {
       errMsgName01.textContent = '入力してください';
@@ -42,6 +43,7 @@ function checkTitleRequired(locale) {
     eventTitle.classList.add('border-danger');
     errMsgName01.classList.add('alert');
     errMsgName01.classList.add('alert-danger');
+    errMsgName01.classList.add('shadow-lg');
     errTitleCount = 1;
   }
   return errTitleCount;

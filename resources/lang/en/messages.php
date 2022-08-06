@@ -4,7 +4,7 @@ return [
     'welcome_user' => 'Welcome :name',
 
     // welcomeページ
-    'welcome_title' => 'A like Cognitive-behavioral therapy web app',
+    'welcome_title' => 'CBT WEB APP',
     'sentence01' => 'Fill in your thinking with the 3-column or 7-column method',
     'sentence02' => 'Would you like to remove cognitive distortions?',
     'register' => 'Register',

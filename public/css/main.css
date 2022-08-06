@@ -202,11 +202,13 @@ h1.outline {
 
 .input-invalid {
     border: 1px solid #f50000;
+    
 }
 
 .form-invalid {
     color: #f50000;
     font-size: 15px;
+    
     padding-left: 12px;
 }
 * {
@@ -254,8 +256,8 @@ body::after {
 }
 .welcomeglasscard {  
     margin:auto;
-    margin-top:50px;
-    width: 80%;
+    margin-top:40px;
+    width: 90%;
     height: 100%; 
     border-radius: 30px;
     border-top: 1px solid rgba(255, 255, 255, 0.5);

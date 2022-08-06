@@ -48,6 +48,7 @@ function checkTitleRequired(locale) {
     eventTitle.classList.add('border-danger');
     errMsgName01.classList.add('alert');
     errMsgName01.classList.add('alert-danger');
+    errMsgName01.classList.add('shadow-lg');
     errTitleCount = 1;
   }
 
