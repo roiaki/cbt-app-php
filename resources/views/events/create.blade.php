@@ -3,6 +3,7 @@
 @section('content')
 <?php 
   $json_array = json_encode($locale);
+ 
 ?>
 <script>
 	let locale = <?php echo $json_array; ?>

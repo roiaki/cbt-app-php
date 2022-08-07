@@ -169,11 +169,11 @@
     console.log(windowWidth);
     if(windowWidth > windowSm) {
       VanillaTilt.init(document.querySelector(".welcomeglasscard"), {
-      max: 25,
+      max: 2,
       speed: 10
     });
       VanillaTilt.init(document.querySelector(".glasscard"), {
-        max: 15,
+        max: 5,
         speed: 100
       });
     } 
