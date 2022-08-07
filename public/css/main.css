@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Zen+Antique&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@100;400;&display=swap');
+
+
 habit-thinking {
     display: block;
     position: relative;
@@ -215,7 +218,11 @@ h1.outline {
     margin: 0;
     /* padding: 0; */
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    /* font-family: "Poppins", 'Roboto', sans-serif; */
+    /* font-family: 'Roboto', sans-serif; */
+
+    font-family: 'M PLUS 1p', sans-serif;
+
   }
 
 body {

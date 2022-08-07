@@ -8,7 +8,7 @@
 <script>
 	let locale = <?php echo $json_array; ?>
 </script>
-<div class="row justify-content-center">
+<div class="glasscard row justify-content-center">
   <div class="col-sm-7">   
     <h3 class="title_head">{{ __('event.create_headtitle') }}</h3>
       <form action="{{ route('events.store') }}" method="post" onsubmit="return eventValidation(locale);">

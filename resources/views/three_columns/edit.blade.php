@@ -9,7 +9,7 @@
 	let locale = <?php echo $json_array; ?>
 </script>
 
-<div class="row justify-content-center">
+<div class="glasscard row justify-content-center">
   <div class="col-sm-7">
   <h3 class="title_head">{{ __('threecolumn.editPageTitle') }} ( id={{ $three_column->id }} )</h3>
     <!-- 'route' => ['messages.update', $message->id] というルーティング指定になります。

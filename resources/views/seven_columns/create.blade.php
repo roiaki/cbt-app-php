@@ -9,8 +9,8 @@
 	let locale = <?php echo $json_array; ?>
 </script>
 
-<div class="row justify-content-center">
-  <div class="col-sm-8">
+<div class="glasscard row justify-content-center">
+  <div class="col-sm-7">
   <h3 class="title_head">{{ __('sevencolumn.createPageTitle') }}</h3>
     <!-- model 第一引数：Modelのインスタンス、第二引数：連想配列　-->
     <form action="{{ route('seven_columns.store') }}" 

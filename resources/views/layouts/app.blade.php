@@ -5,14 +5,12 @@
   <meta charset="utf-8">
   <title>CBT APP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
   <!-- animate css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{asset('css/main.css')}}">
   <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
-
 
   <!-- Vue.js を読み込む -->
   <!--<script src="https://unpkg.com/vue@next"></script>-->
@@ -153,7 +151,7 @@
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>-->
 
   <!-- Propper.js読み込み -->
-  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>-->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script> -->
   
   <!--<script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>-->
 
@@ -161,8 +159,8 @@
   <script src="{{ mix('/js/app.js') }}"></script>
   <script src="{{ mix('/js/main.js') }}"></script>
   <script src="{{ mix('/js/validation.js') }}"></script>
-
   <script type="text/javascript" src="{{ asset('js/vanilla-tilt.js') }}"></script>
+
   <script>
     var windowWidth = $(window).width();
     var windowSm = 640;
@@ -173,11 +171,10 @@
       speed: 10
     });
       VanillaTilt.init(document.querySelector(".glasscard"), {
-        max: 5,
-        speed: 100
+        max: 0,
+        speed: 0.1
       });
     } 
-   
 </script>
 </body>
 </html>
