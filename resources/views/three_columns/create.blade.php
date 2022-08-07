@@ -9,7 +9,7 @@
 	let locale = <?php echo $json_array; ?>
 </script>
 
-<div class="row justify-content-center"> 
+<div class="glasscard row justify-content-center"> 
   <div class="col-sm-8">
     <h3 class="title_head"><h3>{{ __('threecolumn.page_title') }}</h3>
       <!-- model 第一引数：Modelのインスタンス、第二引数：連想配列　-->

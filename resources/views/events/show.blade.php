@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="row justify-content-center glasscard">
+<div class="glasscard row justify-content-center glasscard">
   <div class="col-sm-7">
     <h3 class="title_head">{{ __('event.event_detail_head') }} (id = {{ $event->id }} ) </h3>
 
