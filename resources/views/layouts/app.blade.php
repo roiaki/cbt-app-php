@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
   <meta charset="utf-8">
   <title>CBT APP</title>
@@ -14,6 +13,7 @@
 
   <!-- Vue.js を読み込む -->
   <!--<script src="https://unpkg.com/vue@next"></script>-->
+  <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <!-- 開発バージョン、便利なコンソールの警告が含まれています -->
@@ -24,8 +24,7 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   <!-- @check-->
-  <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
--->
+  <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>-->
   <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
   
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -143,16 +142,14 @@
   <footer class="footer">
     <!-- Copyright -->
     <div class="text-center p-4">
-      © 2022 Copyright: roiaki All rights reserved.</a>
+      © 2022 Copyright roiaki All rights reserved.</a>
     </div>
     <!-- Copyright -->
   </footer>
 
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>-->
-
   <!-- Propper.js読み込み -->
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script> -->
-  
   <!--<script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>-->
 
 </div>
@@ -170,10 +167,10 @@
       max: 2,
       speed: 10
     });
-      VanillaTilt.init(document.querySelector(".glasscard"), {
-        max: 0,
-        speed: 0.1
-      });
+    VanillaTilt.init(document.querySelector(".glasscard"), {
+      max: 0,
+      speed: 0.1
+    });
     } 
 </script>
 </body>

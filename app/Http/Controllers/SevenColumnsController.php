@@ -7,7 +7,8 @@ use App\Models\SevenColumn;
 use App\Models\ThreeColumn;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use App\Http\Requests\CreateSevenColumnRequest;
+use App\Http\Requests\UpdateSevenColumnRequest;
 
 
 class SevenColumnsController extends Controller
@@ -39,17 +40,8 @@ class SevenColumnsController extends Controller
     }
 
     // 7コラム保存処理
-    public function store(Request $request)
+    public function store(CreateSevenColumnRequest $request)
     {
-        $this->validate(
-            $request,
-            [
-                'basis_thinking' => 'required|max:500',
-                'opposite_fact' => 'required|max:500',
-                'new_thinking' => 'required|max:500',
-                'new_emotion_strength' => 'required'
-            ]
-        );
         $sevencolumn = new sevencolumn;
         $sevencolumn->storeSevencolumn($request);
 
@@ -91,18 +83,8 @@ class SevenColumnsController extends Controller
     }
 
     // 7コラム更新処理
-    public function update(Request $request, $id)
+    public function update(UpdateSevenColumnRequest $request, $id)
     {
-        $this->validate(
-            $request,
-            [
-                'basis_thinking' => 'required|max:500',
-                'opposite_fact'  => 'required|max:500',
-                'new_thinking'   => 'required|max:500',
-                'new_emotion_strength' => 'required'
-            ]
-        );
-
         $sevencolumn = new SevenColumn;
 
         if(!isset($sevencolumn)) {
