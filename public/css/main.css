@@ -311,25 +311,31 @@ aaa {
 }
 
 @media screen and (max-width: 480px) {
-    
-.welcomeglasscard {  
-    margin:auto;
-    margin-top:40px;
-    width: 96%;
-    height: 100%; 
-    /* border-radius: 30px; */
-    border-radius: 50%;
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
-    border-left: 1px solid rgba(255, 255, 255, 0.5);;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter:blur(3px);
-    /* backdrop-filter:saturate(90%); */
-    /* backdrop-filter:drop-shadow(70%); */
-    box-shadow: 10px 10px 50px 10px rgba(0, 0, 0, 0.25);
-    z-index: 1;
+    .welcomeglasscard {  
+        margin:auto;
+        margin-top:40px;
+        width: 96%;
+        height: 100%; 
+        /* border-radius: 30px; */
+        border-radius: 50%;
+        border-top: 1px solid rgba(255, 255, 255, 0.5);
+        border-left: 1px solid rgba(255, 255, 255, 0.5);;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter:blur(3px);
+        /* backdrop-filter:saturate(90%); */
+        /* backdrop-filter:drop-shadow(70%); */
+        box-shadow: 10px 10px 50px 10px rgba(0, 0, 0, 0.25);
+        z-index: 1;
+    }
+
 }
 
- }
+table {
+    width: 100%;
+    table-layout: fixed;
+    word-break: break-all;
+    word-wrap: break-all;
+}
   
