@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="row justify-content-center">
+<div class="glasscard row justify-content-center">
   <div class="col-sm-7">
     <h3 class="title_head">{{ __('solution.pageTitle') }}</h3>
     

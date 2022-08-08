@@ -24,9 +24,9 @@ class UpdateThreeColumnRequest extends FormRequest
     public function rules()
     {
         return [
-            'emotion_name_def'     => 'required',
-            'emotion_strength_def' => 'required',
-            'thinking'             => 'required|max:500',
+            'emotion_name'     => 'required',
+            'emotion_strength' => 'required',
+            'thinking'         => 'required|max:500',
         ];
     }
 }

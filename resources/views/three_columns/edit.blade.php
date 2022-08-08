@@ -19,7 +19,7 @@
 
     <form action="{{ route('three_columns.update', ['param' => $three_column->id] ) }}" 
           method="POST"
-          onsubmit="return eventValidation(locale);">
+          onsubmit="return threecolumnValidation(locale);">
       @csrf
       @method('PUT')
       <input type="hidden" name="eventid" value="{{ $event->id }}">
@@ -77,6 +77,9 @@
                 name="emotion_name" 
                 value="{{$three_column->emotion_name }}">
           
+          <!-- フロントバリデーションエラーメッセージ -->
+          <div class="err-msg-name01 mt-3"></div>
+          
           <!-- 感情名必須バリデーション表示-->
           @if($errors->has('emotion_name'))
             @foreach($errors->get('emotion_name') as $message)
@@ -90,7 +93,7 @@
           @if(isset($three_column->emotion_name00))
           <input type="text" 
                 class="form-control mt-2" 
-                id="emotion_name_def" 
+                id="emotion_name" 
                 name="emotion_name00" 
                 value="{{$three_column->emotion_name00 }}">
           @endif
@@ -108,7 +111,7 @@
           @if(isset($three_column->emotion_name01))
           <input type="text" 
                 class="form-control mt-2" 
-                id="emotion_name_def" 
+                id="emotion_name" 
                 name="emotion_name01" 
                 value="{{$three_column->emotion_name01 }}"
                 required>
@@ -127,7 +130,7 @@
           @if(isset($three_column->emotion_name02))
           <input type="text" 
                 class="form-control mt-2" 
-                id="emotion_name_def" 
+                id="emotion_name" 
                 name="emotion_name02" 
                 value="{{$three_column->emotion_name02 }}"
                 required>
@@ -149,10 +152,11 @@
                 class="form-control" 
                 id="emotion_strength" 
                 name="emotion_strength" 
-                value="{{ $three_column->emotion_strength }}"
-                required>
+                value="{{ $three_column->emotion_strength }}">
+          <!-- フロントバリデーションエラーメッセージ -->
+          <div class="err-msg-name02 mt-3"></div>
 
-          <!-- 感情名必須バリデーション表示-->
+          <!-- 感情の強さ必須バリデーション表示-->
           @if($errors->has('emotion_strength'))
             @foreach($errors->get('emotion_strength') as $message)
             <ul>
@@ -164,7 +168,7 @@
           @if(isset($three_column->emotion_strength00))
           <input type="number" 
                 class="form-control mt-2" 
-                id="emotion_strength_def" 
+                id="emotion_strength" 
                 name="emotion_strength00" 
                 value="{{ $three_column->emotion_strength00 }}"
                 required>
@@ -173,7 +177,7 @@
           @if(isset($three_column->emotion_strength01))
           <input type="number" 
                 class="form-control mt-2" 
-                id="emotion_strength_def" 
+                id="emotion_strength" 
                 name="emotion_strength01" 
                 value="{{ $three_column->emotion_strength01 }}"
                 required>
@@ -182,7 +186,7 @@
           @if(isset($three_column->emotion_strength02))
           <input type="number" 
                 class="form-control mt-2" 
-                id="emotion_strength_def" 
+                id="emotion_strength" 
                 name="emotion_strength02" 
                 value="{{ $three_column->emotion_strength02 }}"
                 required>
@@ -196,9 +200,12 @@
                   id="thinking" 
                   name="thinking" 
                   cols="90" 
-                  rows="7" required>{{$three_column->thinking }}</textarea>
+                  rows="7">{{$three_column->thinking }}</textarea>
+        
+        <!-- フロントバリデーションエラーメッセージ -->
+        <div class="err-msg-name03 mt-3"></div>
 
-        <!-- 感情名必須バリデーション表示-->
+        <!-- 自動思考必須バリデーション表示-->
         @if($errors->has('thinking'))
           @foreach($errors->get('thinking') as $message)
           <ul>
