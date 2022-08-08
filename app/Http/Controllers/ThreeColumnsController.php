@@ -6,7 +6,8 @@ use App\Models\Event;
 use App\Models\ThreeColumn;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use App\Http\Requests\CreateThreeColumnRequest;
+use App\Http\Requests\UpdateThreeColumnRequest;
 
 
 class ThreeColumnsController extends Controller
@@ -67,17 +68,8 @@ class ThreeColumnsController extends Controller
      * @param Request $request
      * @return view('three_columns.show', $data);
      */
-    public function store(Request $request)
+    public function store(CreateThreeColumnRequest $request)
     {
-        $this->validate(
-            $request,
-            [
-                'emotion_name_def' => 'required',
-                'emotion_strength_def' => 'required',
-                'thinking' => 'required|max:500',
-            ]
-        );
-
         $Threecolumn = new ThreeColumn;
         $three_column = $Threecolumn->storeThreecolumn($request);
         
@@ -141,15 +133,8 @@ class ThreeColumnsController extends Controller
      * @param int $id
      * @return redirect('/three_columns');
      */
-    public function update(Request $request, $id)
+    public function update(UpdateThreeColumnRequest $request, $id)
     {
-        $this->validate($request, [
-            'emotion_name' => 'required',
-            'emotion_strength' => 'required',
-            'thinking' => 'required|max:500',
-            'habit' => 'required'
-        ]);
-
         $threecolumn = ThreeColumn::find($id);
 
         if(!isset($threecolumn)) {
@@ -159,6 +144,7 @@ class ThreeColumnsController extends Controller
         if(Auth::id() === $threecolumn->user_id) {
             $threecolumn->updateThreecolumn($request, $id);
         }
+
         return redirect('/three_columns');
     }
 

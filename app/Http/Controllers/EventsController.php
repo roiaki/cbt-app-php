@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use App\Http\Requests\CreateEventRequest;
+use App\Http\Requests\UpdateEventRequest;
 use Exception;
 use Illuminate\Support\Facades\App;
 
@@ -88,12 +89,8 @@ class EventsController extends Controller
 
 
     // 出来事更新処理
-    public function update(Request $request, $id)
+    public function update(UpdateEventRequest $request, $id)
     {
-        $this->validate($request, [
-            'title' => 'required|max:30',
-            'content' => 'required|max:500',
-        ]);
 
         $event = Event::find($id);
 
