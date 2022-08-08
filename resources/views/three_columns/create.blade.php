@@ -59,6 +59,7 @@
           @endif
         </div>
 
+        <!-- 感情名 -->
         <div class="row">
           <div class="form-group col">
           <label for="emotion_name"><h5>{{ __('threecolumn.2-1_title') }}</h5></label>
@@ -83,7 +84,9 @@
             @endforeach
           @endif
         </div>
+        <!-- /感情名 -->
 
+        <!-- 感情の強さ　-->
         <div class="form-group col">
           <label for="emotion_strength"><h5>{{ __('threecolumn.2-2_title') }}</h5></label>
           <p class="alert alert-success" role="alert">

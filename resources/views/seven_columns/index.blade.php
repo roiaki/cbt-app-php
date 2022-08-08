@@ -37,7 +37,12 @@
         <tbody>
           @foreach ($seven_columns as $seven_column)
           <tr>
-            <td>{{ $seven_column->basis_thinking }}</td>
+            <td>
+              @if(mb_strlen($seven_column->basis_thinking) > 25)
+                {{ $short_basis_thinking = mb_substr($seven_column->basis_thinking, 0, 25 ) . "..."; }}
+              @else
+                {{ $seven_column->basis_thinking }}
+              @endif
             <td>  
               @if (mb_strlen($seven_column->opposite_fact) > 25)
                 {{ $short_content = mb_substr($seven_column->opposite_fact, 0, 25 ) . "..."; }}

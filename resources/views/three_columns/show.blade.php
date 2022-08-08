@@ -67,14 +67,14 @@
         </tr>
       @endif
       
-      </table>
+    </table>
 
     <table class="table table-bordered" class="table table-bordered">
       <tr>
-        <th width="70%">{{ __('threecolumn.3-1_title') }}</th>
+        <th>{{ __('threecolumn.3-1_title') }}</th>
       </tr>
       <tr>
-        <td width="70%">{{ $three_column->thinking }}</td>
+        <td>{{ $three_column->thinking }}</td>
       </tr>
     </table>
 
