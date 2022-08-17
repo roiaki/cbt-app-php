@@ -68,7 +68,7 @@
           </p>
           <input type="text"
                  class="form-control"
-                 id="emotion_name_def"
+                 id="emotion_name"
                  name="emotion_name_def"
                  value="{{ old('emotion_name_def') }}">
 
@@ -94,7 +94,7 @@
           </p>
           <input type="number"
                  class="form-control"
-                 id="emotion_strength_def"
+                 id="emotion_strength"
                  name="emotion_strength_def"
                  value="{{ old('emotion_strength_def') }}">
 
