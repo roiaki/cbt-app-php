@@ -165,7 +165,9 @@
     if(windowWidth > windowSm) {
       VanillaTilt.init(document.querySelector(".welcomeglasscard"), {
       max: 2,
-      speed: 10
+      speed: 1.,
+      glare: true,
+      "max-glare": 0.5,    
     });
     VanillaTilt.init(document.querySelector(".glasscard"), {
       max: 0,
