@@ -11,7 +11,9 @@
 <div class="glasscard row justify-content-center">
   <div class="col-sm-7">   
     <h3 class="title_head">{{ __('event.create_headtitle') }}</h3>
-      <form action="{{ route('events.store') }}" method="post" onsubmit="return eventValidation(locale);">
+      <form action="{{ route('events.store') }}" 
+            method="post" 
+            onsubmit="return eventValidation(locale);">
         @csrf
         <div class="form-group">
           <!-- タイトル -->

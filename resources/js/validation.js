@@ -11,6 +11,60 @@ window.confirmDelete = function () {
   }
 }
 
+// ログインバリデーション
+window.userValidation = function (locale) {
+  const errMsgName01 = document.querySelector('.err-msg-name01');
+  const errMsgName02 = document.querySelector('.err-msg-name02');
+  var errEmailCount = 0;
+  var errCount = 0;
+
+  errEmailCount += checkRequired(locale, "#email", ".err-msg-name01");
+
+  errCount = errEmailCount;
+
+  if(errCount > 0) {
+    return false;
+  }
+
+}
+
+// ログイン画面でのリアルタイムバリデーション
+window.blurEmail = function (locale) {
+  const email = document.querySelector('#email');
+  const errMsgName01 = document.querySelector('.err-msg-name01');
+  
+  var pattern = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/;
+
+  if(pattern.test(email.value)) {
+    // エラーの表示を解除
+    errMsgName01.textContent ='';
+    email.classList.remove('border-danger');
+    errMsgName01.classList.remove('alert');
+    errMsgName01.classList.remove('alert-danger');
+  } else {
+    
+    if(locale === "ja") {
+      errMsgName01.textContent = "メールアドレスの形式で入力してください";
+    }
+    if(locale === "en") {
+      errMsgName01.textContent = "Please enter in the form of an email address";
+    }
+    if(locale === "uk") {
+      errMsgName01.textContent = "Будь ласка, введіть у формі електронної адреси";
+    }
+    // クラスを追加(フォームの枠線を赤くする)
+    email.classList.add('border-danger');
+    errMsgName01.classList.add('alert');
+    errMsgName01.classList.add('alert-danger');
+  }
+
+};
+
+// window.addEventListener('DOMContentLoaded', function() {
+//   console.log("test");
+// });
+
+
 // 出来事バリデーション
 window.eventValidation = function (locale) {
   

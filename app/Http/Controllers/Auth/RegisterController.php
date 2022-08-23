@@ -70,20 +70,4 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
-
-    // ゲストユーザー作成
-    /*
-    public function guestUserCreate()
-    {
-        $email = uniqid();
-
-        User::create([
-            'name' => 'Guest',
-            'email' => $email . "@test.com",
-            'password' =>  Hash::make('testtest'),
-        ]);
-
-        return view('event');
-    }
-    */
 }
