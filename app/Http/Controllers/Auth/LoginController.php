@@ -43,23 +43,4 @@ class LoginController extends Controller
         // guest とは、ログイン認証されていない閲覧者
         $this->middleware('guest')->except('logout');
     }
-
-    /**
-     * ゲストログイン機能
-     * 
-     */ 
-    public function guestLogin()
-    {
-        $email = 'testuser123@test.com';
-        $password = 'testtest';
-
-        if(Auth::attempt(['email' => $email, 'password' => $password])) {
-            return redirect()->route('users.info');
-        }
-
-        return redirect('/');
-    }
-
-
- 
 }

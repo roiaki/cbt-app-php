@@ -11,6 +11,155 @@ window.confirmDelete = function () {
   }
 }
 
+
+// ログイン画面でのメールアドレスのリアルタイムバリデーション
+window.blurEmailAndPassword = function (locale) {
+  const email        = document.querySelector('#email');
+  const errMsgName01 = document.querySelector('.err-msg-name01');
+  const password     = document.querySelector('#password');
+  const errMsgName02 = document.querySelector('.err-msg-name02');
+  const button       = document.querySelector("#submit-btn");
+  
+  var pattern = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/;
+
+  var errCount         = 0;
+  let errEmailCount    = 0;
+  let errPasswordCount = 0;
+
+  errEmailCount += checkRequired(locale, "#email", ".err-msg-name01");
+
+  if(errEmailCount === 1) {
+    
+  } else {
+    
+    if(!pattern.test(email.value)) {
+      errEmailCount += 1;
+      if(locale === "ja") {
+        errMsgName01.textContent = "メールアドレスの形式で入力してください";
+      }
+      if(locale === "en") {
+        errMsgName01.textContent = "Please enter in the form of an email address";
+      }
+      if(locale === "uk") {
+        errMsgName01.textContent = "Будь ласка, введіть у формі електронної адреси";
+      }
+      // クラスを追加(フォームの枠線を赤くする)
+      email.classList.add('border-danger');
+      errMsgName01.classList.add('alert');
+      errMsgName01.classList.add('alert-danger');
+    } else {
+      // エラーの表示を解除
+      errMsgName01.textContent ='';
+      email.classList.remove('border-danger');
+      errMsgName01.classList.remove('alert');
+      errMsgName01.classList.remove('alert-danger');
+    }
+  }
+ 
+  errPasswordCount += checkRequired(locale, "#password", ".err-msg-name02");
+
+  if(errPasswordCount === 1) {
+
+  } else {
+    if(password.value.length < 8) {
+      errPasswordCount += 1;
+      if(locale === "ja") {
+        errMsgName02.textContent = "8文字以上で入力してください";
+      }
+      if(locale === "en") {
+        errMsgName02.textContent = "Password must be at least 8 characters";
+      }
+      if(locale === "uk") {
+        errMsgName02.textContent = "Пароль має бути не менше 8 символів";
+      }
+      // クラスを追加(フォームの枠線を赤くする)
+      password.classList.add('border-danger');
+      errMsgName02.classList.add('alert');
+      errMsgName02.classList.add('alert-danger'); 
+    } else {
+      // エラーの表示を解除
+      password.classList.remove('border-danger');
+      errMsgName02.textContent ='';
+      errMsgName02.classList.remove('alert');
+      errMsgName02.classList.remove('alert-danger');
+    }
+  }
+  
+  errCount = errEmailCount + errPasswordCount;
+  
+  if(errCount > 0) {
+    button.disabled = true;
+  } else {
+    button.disabled = false;
+  }
+  
+};
+
+// ログイン画面でのパスワードのリアルタイムバリデーション
+// window.blurPassword = function(locale) {
+//   const password     = document.querySelector('#password');
+//   const errMsgName02 = document.querySelector('.err-msg-name02');
+//   const button       = document.querySelector("#submit-btn");
+
+//   var errCount = 0;
+//   errCount = checkRequired(locale, "#password", ".err-msg-name02")
+//   if(errCount === 1) {
+
+//   } else {
+//     if(password.value.length < 8) {
+//       errCount = 1;
+//       if(locale === "ja") {
+//         errMsgName02.textContent = "8文字以上で入力してください";
+//       }
+//       if(locale === "en") {
+//         errMsgName02.textContent = "Password must be at least 8 characters";
+//       }
+//       if(locale === "uk") {
+//         errMsgName02.textContent = "Пароль має бути не менше 8 символів";
+//       }
+//       // クラスを追加(フォームの枠線を赤くする)
+//       password.classList.add('border-danger');
+//       errMsgName02.classList.add('alert');
+//       errMsgName02.classList.add('alert-danger'); 
+//     } else {
+//       // エラーの表示を解除
+//       password.classList.remove('border-danger');
+//       errMsgName02.textContent ='';
+//       errMsgName02.classList.remove('alert');
+//       errMsgName02.classList.remove('alert-danger');
+//     }
+//   }
+//   const form = document.querySelector("#form");
+
+//   const isValid = form.checkValidity();
+//   if(isValid) {
+//     button.setAttribute('disabled', 'disabled');
+//     return;
+//   } 
+//   button.removeAttribute('disabled');
+   
+  
+  
+//   // if(errCount > 0) {
+//   //   button.disabled = true;
+//   // } else {
+//   //   button.disabled = false;
+//   // }
+  
+// }
+
+// // ログインバリデーション
+// window.validationUser = function () {
+//   const button = document.querySelector("#submit-btn");
+//   if(errVali01) {
+//     button.disabled = true;
+//   } else {
+//     button.disabled = false;
+//   }
+
+// }
+
+
 // 出来事バリデーション
 window.eventValidation = function (locale) {
   
