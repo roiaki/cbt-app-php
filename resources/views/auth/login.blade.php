@@ -17,9 +17,10 @@
        
         <div class="card-body">
         <div><h3 class="mb-5" style="text-align: center;">{{ __('auth.Login') }}</h3></div>
-          <form method="POST" 
+          <form method="POST"
+                id="form"
                 action="{{ route('login') }}"
-                onsubmit="return userValidation(locale);">
+                onsubmit="return validationUser();">
             @csrf
 
             <!-- メール -->
@@ -32,8 +33,7 @@
                        name="email" 
                        value="{{ old('email') }}" 
                        autocomplete="email" 
-                       autofocus
-                       onfocus="focusA(this);" onblur="blurEmail(locale);" style="background-color: white;">
+                       onblur="blurEmailAndPassword(locale);">
                 
                 <!-- フロントバリデーションエラーメッセージ -->
                 <div class="err-msg-name01 mt-3"></div>
@@ -57,7 +57,7 @@
                        class="form-control @error('password') is-invalid @enderror" 
                        name="password" 
                        autocomplete="current-password"
-                       >
+                       onblur="blurEmailAndPassword(locale);">
 
                 <!-- フロントバリデーションエラーメッセージ -->
                 <div class="err-msg-name02 mt-3"></div>
@@ -85,7 +85,9 @@
 
             <div class="form-group row mb-0">
               <div class="col-md-8 offset-md-4">
-                <button type="submit" class="btn btn-primary mt-3">
+                <button type="submit" 
+                        class="btn btn-primary mt-3"
+                        id="submit-btn">
                   {{ __('auth.Login') }}
                 </button>
 
