@@ -14,88 +14,108 @@ window.confirmDelete = function () {
 
 // ログイン画面でのメールアドレスのリアルタイムバリデーション
 window.blurEmailAndPassword = function (locale) {
-  const email        = document.querySelector('#email');
-  const errMsgName01 = document.querySelector('.err-msg-name01');
-  const password     = document.querySelector('#password');
-  const errMsgName02 = document.querySelector('.err-msg-name02');
   const button       = document.querySelector("#submit-btn");
-  
-  let pattern = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/;
 
   let errCount         = 0;
   let errEmailCount    = 0;
   let errPasswordCount = 0;
 
+  // 入力必須を検査してNGなら１が返ってくる
   errEmailCount += checkRequired(locale, "#email", ".err-msg-name01");
-
   if(errEmailCount === 1) {
-    
+    // エラーがあったら送信ボタンをグレーアウト
+    button.disabled = true;
+    return;
   } else {
-    
-    if(!pattern.test(email.value)) {
-      errEmailCount += 1;
-      if(locale === "ja") {
-        errMsgName01.textContent = "メールアドレスの形式で入力してください";
-      }
-      if(locale === "en") {
-        errMsgName01.textContent = "Please enter in the form of an email address";
-      }
-      if(locale === "uk") {
-        errMsgName01.textContent = "Будь ласка, введіть у формі електронної адреси";
-      }
-      // クラスを追加(フォームの枠線を赤くする)
-      email.classList.add('border-danger');
-      errMsgName01.classList.add('alert');
-      errMsgName01.classList.add('alert-danger');
-    } else {
-      // エラーの表示を解除
-      errMsgName01.textContent ='';
-      email.classList.remove('border-danger');
-      errMsgName01.classList.remove('alert');
-      errMsgName01.classList.remove('alert-danger');
+    errEmailCount += checkEmailFormat();
+    if(errEmailCount === 1) {
+      button.disabled = true;
     }
   }
  
   errPasswordCount += checkRequired(locale, "#password", ".err-msg-name02");
-
   if(errPasswordCount === 1) {
-
+    button.disabled = true;
+    return;
   } else {
-    if(password.value.length < 8) {
-      errPasswordCount += 1;
-      if(locale === "ja") {
-        errMsgName02.textContent = "8文字以上で入力してください";
-      }
-      if(locale === "en") {
-        errMsgName02.textContent = "Password must be at least 8 characters";
-      }
-      if(locale === "uk") {
-        errMsgName02.textContent = "Пароль має бути не менше 8 символів";
-      }
-      // クラスを追加(フォームの枠線を赤くする)
-      password.classList.add('border-danger');
-      errMsgName02.classList.add('alert');
-      errMsgName02.classList.add('alert-danger'); 
-    } else {
-      // エラーの表示を解除
-      password.classList.remove('border-danger');
-      errMsgName02.textContent ='';
-      errMsgName02.classList.remove('alert');
-      errMsgName02.classList.remove('alert-danger');
+    errPasswordCount += checkPassword();
+    if(errPasswordCount === 1) {
+      button.disabled = true;
     }
   }
   
   errCount = errEmailCount + errPasswordCount;
 
-  if(errCount > 0) {
-    button.disabled = true;
-  } else {
+  // エラーがなかったらボタンを表示
+  if(errEmailCount == 0 && errPasswordCount == 0) {
     button.disabled = false;
   }
   
 };
 
+// メールアドレスの形式がチェックする
+function checkEmailFormat() {
+  const email        = document.querySelector('#email');
+  const errMsgName01 = document.querySelector('.err-msg-name01');
+  let pattern = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/;
+  let errEmailCount  = 0;
 
+  if(!pattern.test(email.value)) {
+    errEmailCount += 1;
+    if(locale === "ja") {
+      errMsgName01.textContent = "メールアドレスの形式で入力してください";
+    }
+    if(locale === "en") {
+      errMsgName01.textContent = "Please enter in the form of an email address";
+    }
+    if(locale === "uk") {
+      errMsgName01.textContent = "Будь ласка, введіть у формі електронної адреси";
+    }
+    // クラスを追加(フォームの枠線を赤くする)
+    email.classList.add('border-danger');
+    errMsgName01.classList.add('alert');
+    errMsgName01.classList.add('alert-danger');
+  } else {
+    // エラーの表示を解除
+    errMsgName01.textContent ='';
+    email.classList.remove('border-danger');
+    errMsgName01.classList.remove('alert');
+    errMsgName01.classList.remove('alert-danger');
+  }
+
+  return errEmailCount;
+}
+
+// passwordをチェックする
+function checkPassword() {
+  const password       = document.querySelector('#password');
+  const errMsgName02   = document.querySelector('.err-msg-name02');
+  let errPasswordCount = 0;
+
+  if(password.value.length < 8) {
+    errPasswordCount += 1;
+    if(locale === "ja") {
+      errMsgName02.textContent = "8文字以上で入力してください";
+    }
+    if(locale === "en") {
+      errMsgName02.textContent = "Password must be at least 8 characters";
+    }
+    if(locale === "uk") {
+      errMsgName02.textContent = "Пароль має бути не менше 8 символів";
+    }
+    // クラスを追加(フォームの枠線を赤くする)
+    password.classList.add('border-danger');
+    errMsgName02.classList.add('alert');
+    errMsgName02.classList.add('alert-danger'); 
+  } else {
+    // エラーの表示を解除
+    password.classList.remove('border-danger');
+    errMsgName02.textContent ='';
+    errMsgName02.classList.remove('alert');
+    errMsgName02.classList.remove('alert-danger');
+  }
+  return errPasswordCount;
+}
 
 
 // 出来事バリデーション
@@ -366,10 +386,10 @@ window.threecolumnValidation = function (locale) {
 /**
  * 入力必須チェック
  * 
- * @param {string} locale 
- * @param {string} elementId 
- * @param {string} errMessageClass 
- * @returns int errCount
+ * 引数：言語設定ロケール
+ * 引数：検査するタグ（エレメント）のID
+ * 引数：エラー表示するタグ、エレメントＩＤ
+ * 戻り値：エラーカウント
  */
  function checkRequired(locale, elementId, errMessageClass) {
   const tagetElement = document.querySelector(elementId);
@@ -398,12 +418,12 @@ window.threecolumnValidation = function (locale) {
 }
 
 /**
- * 最大入力文字数チェック
+ * 最大入力文字数チェックをする関数
  * 
- * @param {*} locale 
- * @param {*} elementId 
- * @param {*} errMessageClass 
- * @returns 
+ * 引数：言語設定ロケール
+ * 引数：検査するタグ（エレメント）のID
+ * 引数：エラー表示するタグ、エレメントＩＤ
+ * 戻り値：エラーカウント
  */
  function checkMaxNumInputChar(locale, elementId, errMessageClass, maxNumber) {
   
@@ -434,8 +454,10 @@ window.threecolumnValidation = function (locale) {
 /**
  * 数字かチェック
  * 
- * @param {*} locale 
- * @returns 
+ * 引数：言語設定ロケール
+ * 引数：検査するタグ（エレメント）のID
+ * 引数：エラー表示するタグ、エレメントＩＤ
+ * 戻り値：エラーカウント
 */
 function isNumber(locale, elementId, errMsgClass) {
   const targetElement = document.querySelector(elementId);
