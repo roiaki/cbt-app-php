@@ -20,9 +20,9 @@ window.blurEmailAndPassword = function (locale) {
   const errMsgName02 = document.querySelector('.err-msg-name02');
   const button       = document.querySelector("#submit-btn");
   
-  var pattern = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/;
+  let pattern = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/;
 
-  var errCount         = 0;
+  let errCount         = 0;
   let errEmailCount    = 0;
   let errPasswordCount = 0;
 
@@ -86,7 +86,7 @@ window.blurEmailAndPassword = function (locale) {
   }
   
   errCount = errEmailCount + errPasswordCount;
-  
+
   if(errCount > 0) {
     button.disabled = true;
   } else {
@@ -95,69 +95,7 @@ window.blurEmailAndPassword = function (locale) {
   
 };
 
-// ログイン画面でのパスワードのリアルタイムバリデーション
-// window.blurPassword = function(locale) {
-//   const password     = document.querySelector('#password');
-//   const errMsgName02 = document.querySelector('.err-msg-name02');
-//   const button       = document.querySelector("#submit-btn");
 
-//   var errCount = 0;
-//   errCount = checkRequired(locale, "#password", ".err-msg-name02")
-//   if(errCount === 1) {
-
-//   } else {
-//     if(password.value.length < 8) {
-//       errCount = 1;
-//       if(locale === "ja") {
-//         errMsgName02.textContent = "8文字以上で入力してください";
-//       }
-//       if(locale === "en") {
-//         errMsgName02.textContent = "Password must be at least 8 characters";
-//       }
-//       if(locale === "uk") {
-//         errMsgName02.textContent = "Пароль має бути не менше 8 символів";
-//       }
-//       // クラスを追加(フォームの枠線を赤くする)
-//       password.classList.add('border-danger');
-//       errMsgName02.classList.add('alert');
-//       errMsgName02.classList.add('alert-danger'); 
-//     } else {
-//       // エラーの表示を解除
-//       password.classList.remove('border-danger');
-//       errMsgName02.textContent ='';
-//       errMsgName02.classList.remove('alert');
-//       errMsgName02.classList.remove('alert-danger');
-//     }
-//   }
-//   const form = document.querySelector("#form");
-
-//   const isValid = form.checkValidity();
-//   if(isValid) {
-//     button.setAttribute('disabled', 'disabled');
-//     return;
-//   } 
-//   button.removeAttribute('disabled');
-   
-  
-  
-//   // if(errCount > 0) {
-//   //   button.disabled = true;
-//   // } else {
-//   //   button.disabled = false;
-//   // }
-  
-// }
-
-// // ログインバリデーション
-// window.validationUser = function () {
-//   const button = document.querySelector("#submit-btn");
-//   if(errVali01) {
-//     button.disabled = true;
-//   } else {
-//     button.disabled = false;
-//   }
-
-// }
 
 
 // 出来事バリデーション
@@ -166,9 +104,9 @@ window.eventValidation = function (locale) {
   // エラーメッセージを表示させる要素を取得
   const errMsgName01 = document.querySelector('.err-msg-name01');
   const errMsgName02 = document.querySelector('.err-msg-name02');
-  var errTitleCount   = 0;
-  var errContentCount = 0;
-  var errCount        = 0;
+  let errTitleCount   = 0;
+  let errContentCount = 0;
+  let errCount        = 0;
  
   errTitleCount += checkRequired(locale, "#eventTitle", ".err-msg-name01");
   errTitleCount += checkMaxNumInputChar(locale, "#eventTitle", ".err-msg-name01", 15)
@@ -218,12 +156,12 @@ window.threecolumnValidation = function (locale) {
   const errMsgName02 = document.querySelector('.err-msg-name02');
   const errMsgName03 = document.querySelector('.err-msg-name03');
 
-  var errCount                = 0;
-  var errEmotionNameCount     = 0;
-  var errEmotionStrengthCount = 0;
-  var errThinkingCount        = 0;
+  let errCount                = 0;
+  let errEmotionNameCount     = 0;
+  let errEmotionStrengthCount = 0;
+  let errThinkingCount        = 0;
 
-  var errSum                  = 0;
+  let errSum                  = 0;
 
   errEmotionNameCount     += checkRequired(locale, "#emotion_name", ".err-msg-name01");
   errEmotionNameCount     += checkMaxNumInputChar(locale, "#emotion_name", ".err-msg-name01", 15);
@@ -309,15 +247,15 @@ window.threecolumnValidation = function (locale) {
   const errMsgName03 = document.querySelector('.err-msg-name03');
   const errMsgName04 = document.querySelector('.err-msg-name04');
 
-  var errCount              = 0;
-  var errBasisThinkingCount = 0;
-  var errOppsiteFactCount   = 0;
-  var errThinkingCount      = 0;
-  var errNewEmotionCount01  = 0;
-  var errNewEmotionCount02  = 0;
-  var errNewEmotionCount03  = 0;
-  var errNewEmotionCount04  = 0;
-  var errNewEmotionSumCount = 0;
+  let errCount              = 0;
+  let errBasisThinkingCount = 0;
+  let errOppsiteFactCount   = 0;
+  let errThinkingCount      = 0;
+  let errNewEmotionCount01  = 0;
+  let errNewEmotionCount02  = 0;
+  let errNewEmotionCount03  = 0;
+  let errNewEmotionCount04  = 0;
+  let errNewEmotionSumCount = 0;
 
   errBasisThinkingCount += checkRequired(locale, "#basis_thinking", ".err-msg-name01");
   errBasisThinkingCount += checkMaxNumInputChar(locale, "#basis_thinking", ".err-msg-name01", 500);
@@ -471,7 +409,7 @@ window.threecolumnValidation = function (locale) {
   
   const tagetElement = document.querySelector(elementId);
   const errMsg = document.querySelector(errMessageClass);
-  var errCount = 0;
+  let errCount = 0;
 
   if(tagetElement.value.length > maxNumber) {
     if(locale === "ja") {
@@ -502,7 +440,7 @@ window.threecolumnValidation = function (locale) {
 function isNumber(locale, elementId, errMsgClass) {
   const targetElement = document.querySelector(elementId);
   const errMsg        = document.querySelector(errMsgClass);
-  var errCount        = 0;
+  let errCount        = 0;
 
   // 数字がどうかバリデーション
   if(isNaN(targetElement.value)) {
