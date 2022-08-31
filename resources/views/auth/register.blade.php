@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<?php
+  $locale = App::currentLocale();
+  $json_array = json_encode($locale);
+?>
+<script>
+	let locale = <?php echo $json_array; ?>
+</script>
+
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-7">
@@ -10,14 +18,24 @@
 
         <div class="card-body">
           <div><h3 class="mb-5" style="text-align: center;">{{ __('auth.Register') }}</h3></div>
-          <form method="POST" action="{{ route('signup.get') }}">
+          <form method="POST" action="{{ route('signup.get') }}" onsubmit="return checkRegister();">
             @csrf
 
             <div class="form-group row">
               <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('auth.Name') }}</label>
 
               <div class="col-md-6">
-                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                <input id="name" 
+                       type="text" 
+                       class="form-control @error('name') is-invalid @enderror" 
+                       name="name" 
+                       value="{{ old('name') }}"  
+                       autocomplete="name" 
+                       autofocus
+                       onchange="validationName(locale)">
+                
+                <!-- フロントバリデーションエラーメッセージ -->
+                <div class="err-msg-name01 mt-3"></div>
 
                 @error('name')
                 <span class="invalid-feedback" role="alert">
@@ -31,7 +49,16 @@
               <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('auth.E-Mail Address') }}</label>
 
               <div class="col-md-6">
-                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                <input id="email" 
+                       type="email" 
+                       class="form-control @error('email') is-invalid @enderror" 
+                       name="email" 
+                       value="{{ old('email') }}"
+                       autocomplete="email"
+                       onchange="validationEmail(locale)">
+                
+                <!-- フロントバリデーションエラーメッセージ -->
+                <div class="err-msg-name02 mt-3"></div>
 
                 @error('email')
                 <span class="invalid-feedback" role="alert">
@@ -45,7 +72,15 @@
               <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('auth.Password') }}</label>
 
               <div class="col-md-6">
-                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                <input id="password" 
+                       type="password" 
+                       class="form-control @error('password') is-invalid @enderror" 
+                       name="password"  
+                       autocomplete="new-password"
+                       onchange="validationPass(locale)">
+                
+                <!-- フロントバリデーションエラーメッセージ -->
+                <div class="err-msg-name03 mt-3"></div>
 
                 @error('password')
                 <span class="invalid-feedback" role="alert">
@@ -59,13 +94,18 @@
               <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('auth.Confirm Password') }}</label>
 
               <div class="col-md-6">
-                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                <input id="password-confirm" 
+                       type="password" 
+                       class="form-control" 
+                       name="password_confirmation"  
+                       autocomplete="new-password"
+                       onchange="validationConfirmPass(locale)">
               </div>
             </div>
 
             <div class="form-group row mb-0">
               <div class="col-md-6 offset-md-4">
-                <button type="submit" class="btn btn-primary mt-3">
+                <button id="submit-btn" type="submit" class="btn btn-primary mt-3">
                   {{ __('auth.Register') }}
                 </button>
               </div>
