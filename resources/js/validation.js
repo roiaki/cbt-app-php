@@ -1,4 +1,3 @@
-
 /**
  * 削除するときの確認フォーム
  * 
@@ -16,8 +15,8 @@ window.confirmDelete = function () {
 window.checkLogin = function() {
   let err = 0;
 
-  err += validationLoginEmail(locale);
-  err += validationLoginPass(locale);
+  err += validationLoginEmail();
+  err += validationLoginPass();
 
   if(err > 0) {
     return false;
@@ -50,7 +49,7 @@ window.validationLoginPass = function() {
   let errCount = 0;
   errCount += checkRequired(locale, "#password", ".err-msg-name02");
   if(errCount === 1) {
-    
+
   } else {
     errCount += checkMinNumInputChar(locale, "#password", ".err-msg-name02", 8);
   }
@@ -63,7 +62,7 @@ window.validationLoginPass = function() {
 }
 
 /**
- * 登録画面で送信ボタンが押されたら各種バリデーションを検査し問題なけらば送信し、
+ * 登録画面で送信ボタンが押されたら各種バリデーションを検査し問題なければ送信し、
  * 問題があれば 送信をキャンセルする
  */ 
 window.checkRegister = function() {
@@ -87,23 +86,16 @@ window.validationName = function() {
   //名前に対して入力必須を検査してNGなら１が返ってくる
   errNameCount += checkRequired(locale, "#name", ".err-msg-name01");
   if(errNameCount === 1) {
-    // button.disabled = true;
-    // return;
+    
   } else {
     errNameCount += checkMaxNumInputChar(locale, "#name", ".err-msg-name01", 20);
-    if(errNameCount === 1) {
-      // button.disabled = true;
-      // return;
-    }
     errNameCount += checkMinNumInputChar(locale, "#name", ".err-msg-name01", 2);
-    if(errNameCount === 1) {
-      // button.disabled = true;
-      // return;
-    }
-    if(errNameCount === 0) {
-      removeErrmsg("#name", ".err-msg-name01");
-    }
   }
+
+  if(errNameCount === 0) {
+    removeErrmsg("#name", ".err-msg-name01");
+  }
+
   return errNameCount;
 }
 
@@ -122,7 +114,7 @@ window.validationEmail = function() {
   if(errEmailCount === 0) {
     removeErrmsg("#email", ".err-msg-name02");
   }
-  
+
   return errEmailCount;
 }
 
@@ -156,10 +148,11 @@ window.validationConfirmPass = function() {
 
 //　登録パスワードと確認フォームの一致を確認
 function confirmPass(locale, elementId, confirmelementId, errMessageClass) {
-  const pass = document.querySelector(elementId);
+  const pass        = document.querySelector(elementId);
   const confirmPass = document.querySelector(confirmelementId);
-  const errMsg = document.querySelector(errMessageClass);
+  const errMsg      = document.querySelector(errMessageClass);
   let errCount = 0;
+
   if(pass.value === confirmPass.value) {
 
   } else {
@@ -184,7 +177,7 @@ function confirmPass(locale, elementId, confirmelementId, errMessageClass) {
 
 // エラー表示を消す
 function removeErrmsg(elementId, errMsg) {
-  const target = document.querySelector(elementId);
+  const target     = document.querySelector(elementId);
   const errMsgname = document.querySelector(errMsg);
   // エラーの表示を解除
   target.classList.remove('border-danger');
@@ -236,7 +229,7 @@ window.eventValidation = function (locale) {
   errContentCount += checkRequired(locale, "#eventContent", ".err-msg-name02");
   errContentCount += checkMaxNumInputChar(locale, "#eventContent", ".err-msg-name02", 500);
 
-
+  // エラーがなかったら赤枠を消す
   if(errTitleCount === 0) {
     // エラーメッセージのテキストに空文字を代入
     errMsgName01.textContent ='';
@@ -246,6 +239,7 @@ window.eventValidation = function (locale) {
     errMsgName01.classList.remove('alert-danger');
   }
 
+  // エラーがなかったら赤枠を消す
   if(errContentCount === 0) {
     // エラーメッセージのテキストに空文字を代入
     errMsgName02.textContent ='';
