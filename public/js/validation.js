@@ -14,52 +14,89 @@ window.confirmDelete = function () {
   } else {
     return false;
   }
-}; //ログイン画面でのメールアドレスのリアルタイムバリデーション
-
-
-window.validationEmailAndPassword = function (locale) {
-  var button = document.querySelector("#submit-btn");
-  var errCount = 0;
-  var errEmailCount = 0;
-  var errPasswordCount = 0; // 入力必須を検査してNGなら１が返ってくる
-
-  errEmailCount += checkRequired(locale, "#email", ".err-msg-name01");
-
-  if (errEmailCount === 1) {
-    // エラーがあったら送信ボタンをグレーアウト
-    button.disabled = true;
-    return;
-  } else {
-    // 入力があってもメール形式ではない場合
-    errEmailCount += checkEmailFormat();
-
-    if (errEmailCount === 1) {
-      button.disabled = true;
-    }
-  } //入力必須を検査してNGなら１が返ってくる
-
-
-  errPasswordCount += checkRequired(locale, "#password", ".err-msg-name02");
-
-  if (errPasswordCount === 1) {
-    // 入力がない場合
-    button.disabled = true;
-    return;
-  } else {
-    // 入力があっても8文字以内の場合
-    errPasswordCount += checkPassword(locale);
-
-    if (errPasswordCount === 1) {
-      button.disabled = true;
-    }
-  }
-
-  errCount = errEmailCount + errPasswordCount; // エラーがなかったらボタンを表示
-
-  if (errEmailCount == 0 && errPasswordCount == 0) {
-    button.disabled = false;
-  }
 };
+
+window.checkLogin = function () {
+  var err = 0;
+  err += validationLoginEmail(locale);
+  err += validationLoginPass(locale);
+
+  if (err > 0) {
+    return false;
+  } else {
+    return true;
+  }
+}; //ログイン画面のメールアドレスのバリデーション
+
+
+window.validationLoginEmail = function (locale) {
+  var errCount = 0;
+  errCount += checkRequired(locale, "#email", ".err-msg-name01");
+
+  if (errCount === 1) {} else {
+    errCount += checkEmailFormat(locale, "#email", ".err-msg-name01");
+  }
+
+  if (errCount === 0) {
+    removeErrmsg("#email", ".err-msg-name01");
+  }
+
+  return errCount;
+}; // ログイン画面のパスワードのバリデーション
+
+
+window.validationLoginPass = function () {
+  var errCount = 0;
+  errCount += checkRequired(locale, "#password", ".err-msg-name02");
+
+  if (errCount === 1) {} else {
+    errCount += checkMinNumInputChar(locale, "#password", ".err-msg-name02", 8);
+  }
+
+  if (errCount === 0) {
+    removeErrmsg("#password", ".err-msg-name02");
+  }
+
+  return errCount;
+}; //ログイン画面でのメールアドレスのリアルタイムバリデーション
+// window.validationEmailAndPassword = function (locale) {
+//   const button       = document.querySelector("#submit-btn");
+//   let errCount         = 0;
+//   let errEmailCount    = 0;
+//   let errPasswordCount = 0;
+//   // 入力必須を検査してNGなら１が返ってくる
+//   errEmailCount += checkRequired(locale, "#email", ".err-msg-name01");
+//   if(errEmailCount === 1) {
+//     // エラーがあったら送信ボタンをグレーアウト
+//     button.disabled = true;
+//     return;
+//   } else {
+//     // 入力があってもメール形式ではない場合
+//     errEmailCount += checkEmailFormat();
+//     if(errEmailCount === 1) {
+//       button.disabled = true;
+//     }
+//   }
+//   //入力必須を検査してNGなら１が返ってくる
+//   errPasswordCount += checkRequired(locale, "#password", ".err-msg-name02");
+//   if(errPasswordCount === 1) {
+//     // 入力がない場合
+//     button.disabled = true;
+//     return;
+//   } else {
+//     // 入力があっても8文字以内の場合
+//     errPasswordCount += checkPassword(locale);
+//     if(errPasswordCount === 1) {
+//       button.disabled = true;
+//     }
+//   }
+//   errCount = errEmailCount + errPasswordCount;
+//   // エラーがなかったらボタンを表示
+//   if(errEmailCount == 0 && errPasswordCount == 0) {
+//     button.disabled = false;
+//   }
+// };
+
 /**
  * 登録画面で送信ボタンが押されたら各種バリデーションを検査し問題なけらば送信し、
  * 問題があれば 送信をキャンセルする
