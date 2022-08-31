@@ -14,12 +14,13 @@ window.confirmDelete = function () {
   } else {
     return false;
   }
-};
+}; // ログイン画面で送信ボタンが押された時、問題がなければ送信する
+
 
 window.checkLogin = function () {
   var err = 0;
-  err += validationLoginEmail(locale);
-  err += validationLoginPass(locale);
+  err += validationLoginEmail();
+  err += validationLoginPass();
 
   if (err > 0) {
     return false;
@@ -58,47 +59,9 @@ window.validationLoginPass = function () {
   }
 
   return errCount;
-}; //ログイン画面でのメールアドレスのリアルタイムバリデーション
-// window.validationEmailAndPassword = function (locale) {
-//   const button       = document.querySelector("#submit-btn");
-//   let errCount         = 0;
-//   let errEmailCount    = 0;
-//   let errPasswordCount = 0;
-//   // 入力必須を検査してNGなら１が返ってくる
-//   errEmailCount += checkRequired(locale, "#email", ".err-msg-name01");
-//   if(errEmailCount === 1) {
-//     // エラーがあったら送信ボタンをグレーアウト
-//     button.disabled = true;
-//     return;
-//   } else {
-//     // 入力があってもメール形式ではない場合
-//     errEmailCount += checkEmailFormat();
-//     if(errEmailCount === 1) {
-//       button.disabled = true;
-//     }
-//   }
-//   //入力必須を検査してNGなら１が返ってくる
-//   errPasswordCount += checkRequired(locale, "#password", ".err-msg-name02");
-//   if(errPasswordCount === 1) {
-//     // 入力がない場合
-//     button.disabled = true;
-//     return;
-//   } else {
-//     // 入力があっても8文字以内の場合
-//     errPasswordCount += checkPassword(locale);
-//     if(errPasswordCount === 1) {
-//       button.disabled = true;
-//     }
-//   }
-//   errCount = errEmailCount + errPasswordCount;
-//   // エラーがなかったらボタンを表示
-//   if(errEmailCount == 0 && errPasswordCount == 0) {
-//     button.disabled = false;
-//   }
-// };
-
+};
 /**
- * 登録画面で送信ボタンが押されたら各種バリデーションを検査し問題なけらば送信し、
+ * 登録画面で送信ボタンが押されたら各種バリデーションを検査し問題なければ送信し、
  * 問題があれば 送信をキャンセルする
  */
 
@@ -115,7 +78,7 @@ window.checkRegister = function () {
   } else {
     return true;
   }
-}; // お名前のバリデーション
+}; // 登録画面のお名前のバリデーション
 
 
 window.validationName = function () {
@@ -123,28 +86,17 @@ window.validationName = function () {
 
   errNameCount += checkRequired(locale, "#name", ".err-msg-name01");
 
-  if (errNameCount === 1) {// button.disabled = true;
-    // return;
-  } else {
+  if (errNameCount === 1) {} else {
     errNameCount += checkMaxNumInputChar(locale, "#name", ".err-msg-name01", 20);
-
-    if (errNameCount === 1) {// button.disabled = true;
-      // return;
-    }
-
     errNameCount += checkMinNumInputChar(locale, "#name", ".err-msg-name01", 2);
+  }
 
-    if (errNameCount === 1) {// button.disabled = true;
-      // return;
-    }
-
-    if (errNameCount === 0) {
-      removeErrmsg("#name", ".err-msg-name01");
-    }
+  if (errNameCount === 0) {
+    removeErrmsg("#name", ".err-msg-name01");
   }
 
   return errNameCount;
-}; // メールアドレスのバリデーション
+}; // 登録画面のメールアドレスのバリデーション
 
 
 window.validationEmail = function () {
@@ -160,7 +112,7 @@ window.validationEmail = function () {
   }
 
   return errEmailCount;
-}; // パスワードのバリデーション
+}; // 登録パスワードのバリデーション
 
 
 window.validationPass = function () {
@@ -174,7 +126,7 @@ window.validationPass = function () {
   }
 
   return errPassCount;
-}; // パスワード確認フォームのバリデーション
+}; // 登録パスワード確認フォームのバリデーション
 
 
 window.validationConfirmPass = function () {
@@ -188,7 +140,7 @@ window.validationConfirmPass = function () {
   }
 
   return errPassConfirmCount;
-}; //　パスワードと確認フォームの一致を確認
+}; //　登録パスワードと確認フォームの一致を確認
 
 
 function confirmPass(locale, elementId, confirmelementId, errMessageClass) {
@@ -274,7 +226,7 @@ window.eventValidation = function (locale) {
   errTitleCount += checkRequired(locale, "#eventTitle", ".err-msg-name01");
   errTitleCount += checkMaxNumInputChar(locale, "#eventTitle", ".err-msg-name01", 15);
   errContentCount += checkRequired(locale, "#eventContent", ".err-msg-name02");
-  errContentCount += checkMaxNumInputChar(locale, "#eventContent", ".err-msg-name02", 500);
+  errContentCount += checkMaxNumInputChar(locale, "#eventContent", ".err-msg-name02", 500); // エラーがなかったら赤枠を消す
 
   if (errTitleCount === 0) {
     // エラーメッセージのテキストに空文字を代入
@@ -283,7 +235,8 @@ window.eventValidation = function (locale) {
     eventTitle.classList.remove('border-danger');
     errMsgName01.classList.remove('alert');
     errMsgName01.classList.remove('alert-danger');
-  }
+  } // エラーがなかったら赤枠を消す
+
 
   if (errContentCount === 0) {
     // エラーメッセージのテキストに空文字を代入
