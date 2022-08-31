@@ -18,7 +18,7 @@
 
         <div class="card-body">
           <div><h3 class="mb-5" style="text-align: center;">{{ __('auth.Register') }}</h3></div>
-          <form method="POST" action="{{ route('signup.get') }}">
+          <form method="POST" action="{{ route('signup.get') }}" onsubmit="return checkRegister();">
             @csrf
 
             <div class="form-group row">
@@ -32,7 +32,7 @@
                        value="{{ old('name') }}"  
                        autocomplete="name" 
                        autofocus
-                       onblur="blurRegister(locale)">
+                       onchange="validationName(locale)">
                 
                 <!-- フロントバリデーションエラーメッセージ -->
                 <div class="err-msg-name01 mt-3"></div>
@@ -55,7 +55,7 @@
                        name="email" 
                        value="{{ old('email') }}"
                        autocomplete="email"
-                       onblur="blurRegister(locale)">
+                       onchange="validationEmail(locale)">
                 
                 <!-- フロントバリデーションエラーメッセージ -->
                 <div class="err-msg-name02 mt-3"></div>
@@ -77,7 +77,7 @@
                        class="form-control @error('password') is-invalid @enderror" 
                        name="password"  
                        autocomplete="new-password"
-                       onblur="blurRegister(locale)">
+                       onchange="validationPass(locale)">
                 
                 <!-- フロントバリデーションエラーメッセージ -->
                 <div class="err-msg-name03 mt-3"></div>
@@ -99,7 +99,7 @@
                        class="form-control" 
                        name="password_confirmation"  
                        autocomplete="new-password"
-                       onblur="blurRegister(locale)">
+                       onchange="validationConfirmPass(locale)">
               </div>
             </div>
 

@@ -13,8 +13,8 @@ window.confirmDelete = function () {
 }
 
 
-// ログイン画面でのメールアドレスのリアルタイムバリデーション
-window.blurEmailAndPassword = function (locale) {
+//ログイン画面でのメールアドレスのリアルタイムバリデーション
+window.validationEmailAndPassword = function (locale) {
   const button       = document.querySelector("#submit-btn");
 
   let errCount         = 0;
@@ -35,7 +35,7 @@ window.blurEmailAndPassword = function (locale) {
     }
   }
   
-  // 入力必須を検査してNGなら１が返ってくる
+  //入力必須を検査してNGなら１が返ってくる
   errPasswordCount += checkRequired(locale, "#password", ".err-msg-name02");
   if(errPasswordCount === 1) {
     // 入力がない場合
@@ -43,7 +43,7 @@ window.blurEmailAndPassword = function (locale) {
     return;
   } else {
     // 入力があっても8文字以内の場合
-    errPasswordCount += checkPassword();
+    errPasswordCount += checkPassword(locale);
     if(errPasswordCount === 1) {
       button.disabled = true;
     }
@@ -57,46 +57,125 @@ window.blurEmailAndPassword = function (locale) {
   }
 };
 
-// 登録画面でのリアルタイムバリデーション
-window.blurRegister = function (locale) {
-  const button       = document.querySelector("#submit-btn");
+/**
+ * 登録画面で送信ボタンが押されたら各種バリデーションを検査し問題なけらば送信し、
+ * 問題があれば 送信をキャンセルする
+ */ 
+window.checkRegister = function() {
+  let err = 0;
+  err += validationName();
+  err += validationEmail();
+  err += validationPass();
+  err += validationConfirmPass();
 
-  let errCount         = 0;
+  if(err > 0) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+// お名前のバリデーション
+window.validationName = function() {
   let errNameCount     = 0;
-  let errEmailCount    = 0;
-  let errPasswordCount = 0;
-  
-  // 入力必須を検査してNGなら１が返ってくる
+
+  //名前に対して入力必須を検査してNGなら１が返ってくる
   errNameCount += checkRequired(locale, "#name", ".err-msg-name01");
   if(errNameCount === 1) {
-    button.disabled = true;
-    return;
+    // button.disabled = true;
+    // return;
   } else {
-    removeErrmsg("#name", ".err-msg-name01");
-    
+    errNameCount += checkMaxNumInputChar(locale, "#name", ".err-msg-name01", 20);
+    if(errNameCount === 1) {
+      // button.disabled = true;
+      // return;
+    }
+    errNameCount += checkMinNumInputChar(locale, "#name", ".err-msg-name01", 2);
+    if(errNameCount === 1) {
+      // button.disabled = true;
+      // return;
+    }
+    if(errNameCount === 0) {
+      removeErrmsg("#name", ".err-msg-name01");
+    }
   }
+  return errNameCount;
+}
 
+// メールアドレスのバリデーション
+window.validationEmail = function() {
+  let errEmailCount     = 0;
+
+  //入力必須を検査してNGなら１が返ってくる
   errEmailCount += checkRequired(locale, "#email", ".err-msg-name02");
-  if(errEmailCount === 1) {
-    button.disabled = true;
-    return;
-  } else {
+  
+  // 入力があってもメール形式ではない場合
+  errEmailCount += checkEmailFormat(locale, "#email", ".err-msg-name02");
+    
+  errEmailCount += checkMaxNumInputChar(locale, "#email", ".err-msg-name02", 50);
+    
+  if(errEmailCount === 0) {
     removeErrmsg("#email", ".err-msg-name02");
   }
+  
+  return errEmailCount;
+}
 
-  errPasswordCount += checkRequired(locale, "#password", ".err-msg-name03");
-  if(errPasswordCount === 1) {
-    button.disabled = true;
-    return;
-  } else {
+// パスワードのバリデーション
+window.validationPass = function() {
+  let errPassCount = 0;
+  errPassCount += checkRequired(locale, "#password", ".err-msg-name03");
+  errPassCount += checkMaxNumInputChar(locale, "#password", ".err-msg-name03", 20);
+  errPassCount += checkMinNumInputChar(locale, "#password", ".err-msg-name03", 8);
+
+  if(errPassCount === 0) {
     removeErrmsg("#password", ".err-msg-name03");
   }
 
-  errCount = errNameCount + errEmailCount + errPasswordCount;
-  if(errCount === 0) {
-    button.disabled = false;
-  }
+  return errPassCount;
 }
+
+// パスワード確認フォームのバリデーション
+window.validationConfirmPass = function() {
+  let errPassConfirmCount = 0;
+  errPassConfirmCount += checkRequired(locale, "#password", ".err-msg-name03");
+  errPassConfirmCount += checkMaxNumInputChar(locale, "#password", ".err-msg-name03", 20);
+  errPassConfirmCount += confirmPass(locale, "#password", "#password-confirm", ".err-msg-name03");
+
+  if(errPassConfirmCount === 0) {
+    removeErrmsg("#password", ".err-msg-name03");
+  }
+
+  return errPassConfirmCount;
+}
+
+//　パスワードと確認フォームの一致を確認
+function confirmPass(locale, elementId, confirmelementId, errMessageClass) {
+  const pass = document.querySelector(elementId);
+  const confirmPass = document.querySelector(confirmelementId);
+  const errMsg = document.querySelector(errMessageClass);
+  let errCount = 0;
+  if(pass.value === confirmPass.value) {
+
+  } else {
+    errCount = 1;
+    if(locale === "ja") {
+      errMsg.textContent = "パスワードが確認用と一致しません";
+    }
+    if(locale === "en") {
+      errMsg.textContent = "Password does not match confirmation";
+    }
+    if(locale === "uk") {
+      errMsg.textContent = "Пароль не відповідає підтвердженню";
+    }
+    // クラスを追加(フォームの枠線を赤くする)
+    pass.classList.add('border-danger');
+    errMsg.classList.add('alert');
+    errMsg.classList.add('alert-danger');
+  }
+  return errCount;
+}
+
 
 // エラー表示を消す
 function removeErrmsg(elementId, errMsg) {
@@ -110,9 +189,9 @@ function removeErrmsg(elementId, errMsg) {
 }
 
 // メールアドレスの形式がチェックする
-function checkEmailFormat() {
-  const email        = document.querySelector('#email');
-  const errMsgName01 = document.querySelector('.err-msg-name01');
+function checkEmailFormat(locale, elementId, errClass) {
+  const email        = document.querySelector(elementId);
+  const errMsgName01 = document.querySelector(errClass);
   let pattern = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/;
   let errEmailCount  = 0;
 
@@ -131,48 +210,10 @@ function checkEmailFormat() {
     email.classList.add('border-danger');
     errMsgName01.classList.add('alert');
     errMsgName01.classList.add('alert-danger');
-  } else {
-    // エラーの表示を解除
-    errMsgName01.textContent ='';
-    email.classList.remove('border-danger');
-    errMsgName01.classList.remove('alert');
-    errMsgName01.classList.remove('alert-danger');
-  }
+  } 
 
   return errEmailCount;
 }
-
-// passwordの入力文字数をチェックする
-function checkPassword() {
-  const password       = document.querySelector('#password');
-  const errMsgName02   = document.querySelector('.err-msg-name02');
-  let errPasswordCount = 0;
-
-  if(password.value.length < 8) {
-    errPasswordCount += 1;
-    if(locale === "ja") {
-      errMsgName02.textContent = "8文字以上で入力してください";
-    }
-    if(locale === "en") {
-      errMsgName02.textContent = "Password must be at least 8 characters";
-    }
-    if(locale === "uk") {
-      errMsgName02.textContent = "Пароль має бути не менше 8 символів";
-    }
-    // クラスを追加(フォームの枠線を赤くする)
-    password.classList.add('border-danger');
-    errMsgName02.classList.add('alert');
-    errMsgName02.classList.add('alert-danger'); 
-  } else {
-    // エラーの表示を解除
-    password.classList.remove('border-danger');
-    errMsgName02.textContent ='';
-    errMsgName02.classList.remove('alert');
-    errMsgName02.classList.remove('alert-danger');
-  }
-  return errPasswordCount;
-}
-
 
 // 出来事バリデーション
 window.eventValidation = function (locale) {
@@ -492,10 +533,37 @@ window.threecolumnValidation = function (locale) {
       errMsg.textContent = String(maxNumber) + "文字以内で入力してください";
     }
     if(locale === "en") {
-      errMsg.textContent = 'Please enter up to 500 characters';
+      errMsg.textContent = 'Please enter up to' + String(maxNumber) + 'characters';
     }
     if(locale === "uk") {
-      errMsg.textContent = 'Введіть до 500 символів';
+      errMsg.textContent = 'Введіть до' + String(maxNumber) + 'символів';
+    }
+
+    // クラスを追加(フォームの枠線を赤くする)
+    tagetElement.classList.add('border-danger');
+    errMsg.classList.add('alert');
+    errMsg.classList.add('alert-danger');
+    errCount = 1;
+  }
+  return errCount;
+}
+
+// 最小入力文字数をチェックする
+function checkMinNumInputChar(locale, elementId, errMessageClass, minNumber) {
+  
+  const tagetElement = document.querySelector(elementId);
+  const errMsg = document.querySelector(errMessageClass);
+  let errCount = 0;
+
+  if(tagetElement.value.length < minNumber) {
+    if(locale === "ja") {
+      errMsg.textContent = String(minNumber) + "文字以上で入力してください";
+    }
+    if(locale === "en") {
+      errMsg.textContent = 'Please enter at least' + String(minNumber) + 'characters';
+    }
+    if(locale === "uk") {
+      errMsg.textContent = 'Введіть принаймні один символ' + String(minNumber);
     }
 
     // クラスを追加(フォームの枠線を赤くする)

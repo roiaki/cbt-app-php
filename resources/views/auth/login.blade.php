@@ -33,7 +33,7 @@
                        name="email" 
                        value="{{ old('email') }}" 
                        autocomplete="email" 
-                       onblur="blurEmailAndPassword(locale);">
+                       onchange="validationEmailAndPassword(locale);">
                 
                 <!-- フロントバリデーションエラーメッセージ -->
                 <div class="err-msg-name01 mt-3"></div>
@@ -57,7 +57,7 @@
                        class="form-control @error('password') is-invalid @enderror" 
                        name="password" 
                        autocomplete="current-password"
-                       onblur="blurEmailAndPassword(locale);">
+                       onchange="validationEmailAndPassword(locale);">
 
                 <!-- フロントバリデーションエラーメッセージ -->
                 <div class="err-msg-name02 mt-3"></div>
