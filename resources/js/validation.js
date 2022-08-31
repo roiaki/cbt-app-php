@@ -12,50 +12,55 @@ window.confirmDelete = function () {
   }
 }
 
+// ログイン画面で送信ボタンが押された時、問題がなければ送信する
+window.checkLogin = function() {
+  let err = 0;
 
-//ログイン画面でのメールアドレスのリアルタイムバリデーション
-window.validationEmailAndPassword = function (locale) {
-  const button       = document.querySelector("#submit-btn");
+  err += validationLoginEmail(locale);
+  err += validationLoginPass(locale);
 
-  let errCount         = 0;
-  let errEmailCount    = 0;
-  let errPasswordCount = 0;
+  if(err > 0) {
+    return false;
 
-  // 入力必須を検査してNGなら１が返ってくる
-  errEmailCount += checkRequired(locale, "#email", ".err-msg-name01");
-  if(errEmailCount === 1) {
-    // エラーがあったら送信ボタンをグレーアウト
-    button.disabled = true;
-    return;
   } else {
-    // 入力があってもメール形式ではない場合
-    errEmailCount += checkEmailFormat();
-    if(errEmailCount === 1) {
-      button.disabled = true;
-    }
+    return true;
+  }
+}
+
+//ログイン画面のメールアドレスのバリデーション
+window.validationLoginEmail = function(locale) {
+  let errCount = 0;
+
+  errCount += checkRequired(locale,  "#email", ".err-msg-name01");
+  if(errCount === 1) {
+
+  } else {
+    errCount += checkEmailFormat(locale, "#email", ".err-msg-name01");
   }
   
-  //入力必須を検査してNGなら１が返ってくる
-  errPasswordCount += checkRequired(locale, "#password", ".err-msg-name02");
-  if(errPasswordCount === 1) {
-    // 入力がない場合
-    button.disabled = true;
-    return;
+  if(errCount === 0) {
+    removeErrmsg("#email", ".err-msg-name01");
+  }
+
+  return errCount;
+}
+
+// ログイン画面のパスワードのバリデーション
+window.validationLoginPass = function() {
+  let errCount = 0;
+  errCount += checkRequired(locale, "#password", ".err-msg-name02");
+  if(errCount === 1) {
+    
   } else {
-    // 入力があっても8文字以内の場合
-    errPasswordCount += checkPassword(locale);
-    if(errPasswordCount === 1) {
-      button.disabled = true;
-    }
+    errCount += checkMinNumInputChar(locale, "#password", ".err-msg-name02", 8);
   }
   
-  errCount = errEmailCount + errPasswordCount;
 
-  // エラーがなかったらボタンを表示
-  if(errEmailCount == 0 && errPasswordCount == 0) {
-    button.disabled = false;
+  if(errCount === 0) {
+    removeErrmsg("#password", ".err-msg-name02");
   }
-};
+  return errCount;
+}
 
 /**
  * 登録画面で送信ボタンが押されたら各種バリデーションを検査し問題なけらば送信し、
@@ -75,7 +80,7 @@ window.checkRegister = function() {
   }
 }
 
-// お名前のバリデーション
+// 登録画面のお名前のバリデーション
 window.validationName = function() {
   let errNameCount     = 0;
 
@@ -102,7 +107,7 @@ window.validationName = function() {
   return errNameCount;
 }
 
-// メールアドレスのバリデーション
+// 登録画面のメールアドレスのバリデーション
 window.validationEmail = function() {
   let errEmailCount     = 0;
 
@@ -121,7 +126,7 @@ window.validationEmail = function() {
   return errEmailCount;
 }
 
-// パスワードのバリデーション
+// 登録パスワードのバリデーション
 window.validationPass = function() {
   let errPassCount = 0;
   errPassCount += checkRequired(locale, "#password", ".err-msg-name03");
@@ -135,7 +140,7 @@ window.validationPass = function() {
   return errPassCount;
 }
 
-// パスワード確認フォームのバリデーション
+// 登録パスワード確認フォームのバリデーション
 window.validationConfirmPass = function() {
   let errPassConfirmCount = 0;
   errPassConfirmCount += checkRequired(locale, "#password", ".err-msg-name03");
@@ -149,7 +154,7 @@ window.validationConfirmPass = function() {
   return errPassConfirmCount;
 }
 
-//　パスワードと確認フォームの一致を確認
+//　登録パスワードと確認フォームの一致を確認
 function confirmPass(locale, elementId, confirmelementId, errMessageClass) {
   const pass = document.querySelector(elementId);
   const confirmPass = document.querySelector(confirmelementId);

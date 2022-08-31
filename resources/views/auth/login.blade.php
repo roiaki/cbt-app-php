@@ -20,7 +20,7 @@
           <form method="POST"
                 id="form"
                 action="{{ route('login') }}"
-          >
+                onsubmit="return checkLogin();">
             @csrf
 
             <!-- メール -->
@@ -33,7 +33,7 @@
                        name="email" 
                        value="{{ old('email') }}" 
                        autocomplete="email" 
-                       onchange="validationEmailAndPassword(locale);">
+                       onchange="validationLoginEmail(locale);">
                 
                 <!-- フロントバリデーションエラーメッセージ -->
                 <div class="err-msg-name01 mt-3"></div>
@@ -57,7 +57,7 @@
                        class="form-control @error('password') is-invalid @enderror" 
                        name="password" 
                        autocomplete="current-password"
-                       onchange="validationEmailAndPassword(locale);">
+                       onchange="validationLoginPass(locale);">
 
                 <!-- フロントバリデーションエラーメッセージ -->
                 <div class="err-msg-name02 mt-3"></div>
