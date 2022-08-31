@@ -43,8 +43,7 @@
 <div class="footerFixed">
   <header>
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
-      <a class="navbar-brand font-weight-bold ml-5" href="/">CBT APP</a>
-
+      <a class="navbar-brand font-weight-bold ml-5 beauty" href="/">CBT APP</a>
       <!-- 横幅が狭い時に出るハンバーガーボタン -->
       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
         <span class="navbar-toggler-icon"></span>
@@ -142,7 +141,7 @@
   <footer class="footer">
     <!-- Copyright -->
     <div class="text-center p-4">
-      © 2022 Copyright roiaki All rights reserved.</a>
+      © 2022 Copyright roiaki compose beauty All rights reserved.</a>
     </div>
     <!-- Copyright -->
   </footer>

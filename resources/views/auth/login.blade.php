@@ -20,7 +20,7 @@
           <form method="POST"
                 id="form"
                 action="{{ route('login') }}"
-                onsubmit="return validationUser();">
+          >
             @csrf
 
             <!-- メール -->

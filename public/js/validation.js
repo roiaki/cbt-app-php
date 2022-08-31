@@ -30,19 +30,23 @@ window.blurEmailAndPassword = function (locale) {
     button.disabled = true;
     return;
   } else {
+    // 入力があってもメール形式ではない場合
     errEmailCount += checkEmailFormat();
 
     if (errEmailCount === 1) {
       button.disabled = true;
     }
-  }
+  } // 入力必須を検査してNGなら１が返ってくる
+
 
   errPasswordCount += checkRequired(locale, "#password", ".err-msg-name02");
 
   if (errPasswordCount === 1) {
+    // 入力がない場合
     button.disabled = true;
     return;
   } else {
+    // 入力があっても8文字以内の場合
     errPasswordCount += checkPassword();
 
     if (errPasswordCount === 1) {
@@ -55,7 +59,60 @@ window.blurEmailAndPassword = function (locale) {
   if (errEmailCount == 0 && errPasswordCount == 0) {
     button.disabled = false;
   }
-}; // メールアドレスの形式がチェックする
+}; // 登録画面でのリアルタイムバリデーション
+
+
+window.blurRegister = function (locale) {
+  var button = document.querySelector("#submit-btn");
+  var errCount = 0;
+  var errNameCount = 0;
+  var errEmailCount = 0;
+  var errPasswordCount = 0; // 入力必須を検査してNGなら１が返ってくる
+
+  errNameCount += checkRequired(locale, "#name", ".err-msg-name01");
+
+  if (errNameCount === 1) {
+    button.disabled = true;
+    return;
+  } else {
+    removeErrmsg("#name", ".err-msg-name01");
+  }
+
+  errEmailCount += checkRequired(locale, "#email", ".err-msg-name02");
+
+  if (errEmailCount === 1) {
+    button.disabled = true;
+    return;
+  } else {
+    removeErrmsg("#email", ".err-msg-name02");
+  }
+
+  errPasswordCount += checkRequired(locale, "#password", ".err-msg-name03");
+
+  if (errPasswordCount === 1) {
+    button.disabled = true;
+    return;
+  } else {
+    removeErrmsg("#password", ".err-msg-name03");
+  }
+
+  errCount = errNameCount + errEmailCount + errPasswordCount;
+
+  if (errCount === 0) {
+    button.disabled = false;
+  }
+}; // エラー表示を消す
+
+
+function removeErrmsg(elementId, errMsg) {
+  var target = document.querySelector(elementId);
+  var errMsgname = document.querySelector(errMsg); // エラーの表示を解除
+
+  target.classList.remove('border-danger');
+  errMsgname.textContent = '';
+  errMsgname.classList.remove('alert');
+  errMsgname.classList.remove('alert-danger');
+} // メールアドレスの形式がチェックする
 
 
 function checkEmailFormat() {
@@ -92,7 +149,7 @@ function checkEmailFormat() {
   }
 
   return errEmailCount;
-} // passwordをチェックする
+} // passwordの入力文字数をチェックする
 
 
 function checkPassword() {
