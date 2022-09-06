@@ -89,10 +89,13 @@
                 {{ __('messages.account') }}
                 <span class="caret"></span></a>
               <ul class="dropdown-menu bg-light text-black-50" aria-labelledby="dropdownMenu1">
+                <li>{!! link_to_route('users.profile', __('messages.profile'), [], ['class' => 'nav-link']) !!}</li>
+                
                 <li>{!! link_to_route('logout.get', __('messages.logout'), [], ['class' => 'nav-link']) !!}</li>
                 <li>{!! link_to_route('users.delete_confirm', __('messages.withdrawal'), [], ['class' => 'nav-link']) !!}</li>
               </ul>
             </li>
+            <!-- /アカウント -->
             
           @else
             <!-- ここから言語切り替え -->
@@ -141,7 +144,7 @@
   <footer class="footer">
     <!-- Copyright -->
     <div class="text-center p-4">
-      © 2022 Copyright roiaki compose beauty All rights reserved.</a>
+      © 2022 Copyright roiaki compose beauty poem All rights reserved.</a>
     </div>
     <!-- Copyright -->
   </footer>

@@ -87,6 +87,9 @@ Route::group(['middleware' => ['auth']], function () {
     // ログアウト
     Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
+    Route::get('profile', 'UserController@show')->name('users.profile');
+    Route::put('profile', 'UserController@update')->name('users.update');
+    
     // ユーザー退会確認画面遷移
     Route::get('users/delete_confirm', 'UserController@delete_confirm')->name('users.delete_confirm');
 
