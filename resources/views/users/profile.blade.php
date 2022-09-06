@@ -17,7 +17,7 @@
             id="name"
             class="form-control"
             name="name"
-            value="{{ old('name') }}"
+            value="{{ $user->name }}"
             >
       </div>
 
@@ -27,6 +27,7 @@
                id="email"
                class="form-control"
                name="email"
+               value="{{ $user->email }}"
         >
       </div>
 

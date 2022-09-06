@@ -72,6 +72,6 @@ class UserController extends Controller
     
             $user->save();
         }
-        return view('users.profile', ['user' => $user]);
+        return redirect('/profile');
     }
 }
