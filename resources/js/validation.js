@@ -209,7 +209,6 @@ function checkEmailFormat(locale, elementId, errClass) {
     errMsgName01.classList.add('alert');
     errMsgName01.classList.add('alert-danger');
   } 
-
   return errEmailCount;
 }
 

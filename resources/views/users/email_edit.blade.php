@@ -28,18 +28,20 @@
                 class="form-control"
                 name="email"
                 value="{{ $user->email }}">
-                
-                <!-- サーバサイドバリデーションエラー表示 -->
-                @if($errors->has('email'))
-                  @foreach($errors->get('email') as $message)
-                    <div class="alert alert-danger mt-3" role="alert">
-                      <ul>
-                        <li class="text-danger">{{ $message }}</li>
-                      </ul>
-                    </div>
-                  @endforeach
-                @endif
-                <!-- /サーバーサイドバリデーションエラー表示 -->
+              <input type="hidden" name="userId" value="{{ $user->id }}">
+              
+              <!-- サーバサイドバリデーションエラー表示 -->
+              @if($errors->has('email'))
+                @foreach($errors->get('email') as $message)
+                  <div class="alert alert-danger mt-3" role="alert">
+                    <ul>
+                      <li class="text-danger">{{ $message }}</li>
+                    </ul>
+                  </div>
+                @endforeach
+              @endif
+              <!-- /サーバーサイドバリデーションエラー表示 -->
+              
             </td>
           </tr>    
         </table>

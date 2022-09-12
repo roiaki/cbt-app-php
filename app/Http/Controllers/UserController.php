@@ -96,9 +96,9 @@ class UserController extends Controller
 
     // 名前更新処理
     public function nameUpdate(UpdateNameRequest $request) {
-        // dd($request);
-        $user = User::find(Auth::id());
-        if(Auth::id() === $user->id) {
+        $userId = (int)$request->userId;
+        $user   = User::find(Auth::id());
+        if($user->id === $userId) {
             $user->name = $request->name;
             $user->updated_at = date("Y-m-d G:i:s");
 
@@ -112,9 +112,9 @@ class UserController extends Controller
 
     // メールアドレス更新処理
     public function emailUpdate(UpdateEmailRequest $request) {
-
-        $user = User::find(Auth::id());
-        if(Auth::id() === $user->id) {
+        $userId = (int)$request->userId;
+        $user   = User::find(Auth::id());
+        if($user->id === $userId) {
             $user->email = $request->email;
             $user->updated_at = date("Y-m-d G:i:s");
 
@@ -128,9 +128,9 @@ class UserController extends Controller
 
     // パスワード更新処理
     public function passwordUpdate(Request $request) {
-
-        $user = User::find(Auth::id());
-        if(Auth::id() === $user->id) {
+        $userId = (int)$request->userId;
+        $user   = User::find(Auth::id());
+        if($user->id === $userId) {
             $user->password = Hash::make($request->password);
             $user->updated_at = date("Y-m-d G:i:s");
 

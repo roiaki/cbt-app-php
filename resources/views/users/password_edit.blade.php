@@ -16,6 +16,7 @@
             method="POST">
             @csrf
             @method('PUT')
+            <input type="hidden" name="userId" value="{{ $user->id }}">
             <table class="table">
 <!--             
               <th>以前のパスワード</th>

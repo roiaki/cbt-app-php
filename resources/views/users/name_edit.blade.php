@@ -25,7 +25,8 @@
                          class="form-control"
                          name="name"
                          value="{{ $user->name }}">
-
+                  <input type="hidden" name="userId" value="{{ $user->id }}">
+                  <!-- サーババリデーションエラー表示-->
                   @if($errors->has('name'))
                     @foreach($errors->get('name') as $message)
                       <div class="alert alert-danger mt-3" role="alert">
@@ -35,13 +36,13 @@
                       </div>
                     @endforeach
                   @endif
+                  <!-- /サーババリデーションエラー表示--->
 
                   <button type="submit" class="btn btn-primary mt-5">保存</button>
                 </form>
               </td>
             </tr>
           </table>
-          
         </div>
       </div>
   </div>
