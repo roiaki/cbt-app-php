@@ -37,6 +37,7 @@ return [
     'account' => 'アカウント',
     'logout' => 'ログアウト',
     'withdrawal' => '退会',
+    'profile' => 'プロフィール',
     
     
 

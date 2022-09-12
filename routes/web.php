@@ -87,6 +87,26 @@ Route::group(['middleware' => ['auth']], function () {
     // ログアウト
     Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
+    // プロフィール編集画面表示
+    Route::get('profile', 'UserController@show')->name('users.profile');
+    
+    // プロフィール編集（更新）
+    // Route::put('profile', 'UserController@update')->name('users.update');
+
+    // 名前更新
+    Route::put('profile', 'UserController@nameUpdate')->name('user.nameupdate');
+    // メールアドレス更新
+    Route::put('profile/e', 'UserController@emailUpdate')->name('user.emailupdate');
+    // パスワード更新処理
+    Route::put('profile/p', 'UserController@passwordUpdate')->name('user.passwordUpdate');
+
+    // 名前編集ページへ遷移
+    Route::get('profile/name', 'UserController@showNameProfile')->name('user.name_edit');
+    // email編集ページへ遷移
+    Route::get('profile/email', 'UserController@showEmailProfile')->name('user.email_edit');
+    // パスワード編集ページへ遷移
+    Route::get('profile/password', 'UserController@showPasswordProfile')->name('user.password_edit');
+    
     // ユーザー退会確認画面遷移
     Route::get('users/delete_confirm', 'UserController@delete_confirm')->name('users.delete_confirm');
 
