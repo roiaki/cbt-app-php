@@ -12,9 +12,16 @@ habit-thinking {
 }
 
 th {
-    background-color: rgba(224, 223, 214, 0.956);
+    /* background-color: rgba(224, 223, 214, 0.956); */
     text-align: center;
     width: 15%;
+}
+
+th.profile {
+    width: 15%;
+    padding: 3px, 0px, 0px, 0px;
+    /* text-align: center; */
+    
 }
 
 div.columns {    
@@ -344,5 +351,22 @@ table {
 .beauty {
     line-height : 1em; 
     color: rgba(0, 0, 0, 0.25);
+}
+
+.profiles {
+    border-radius: 5px;
+    display: block;
+    width: auto;
+    height: 50px;
+    padding: 15px 0;
+    margin: auto;
+    background: #5876a3;
+    color: #FFF;
+    text-decoration: none;
+    text-align: center;
+}
+
+profiles:hover{
+    background: #225f0d;
 }
   

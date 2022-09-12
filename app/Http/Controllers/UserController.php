@@ -7,6 +7,9 @@ use App\Models\User;    // 追加
 use Illuminate\Support\Facades\Hash;
 use Laravel\Ui\Presets\React;
 
+use App\Http\Requests\UpdateNameRequest;
+use App\Http\Requests\UpdateEmailRequest;
+
 class UserController extends Controller
 {
     // 退会処理　物理削除
@@ -70,6 +73,70 @@ class UserController extends Controller
             // 二重送信対策
             $request->session()->regenerateToken();
     
+            $user->save();
+        }
+        return redirect('/profile');
+    }
+
+    // 名前編集ページへ遷移
+    public function showNameProfile() {
+        $user = Auth::user();
+        return view('users.name_edit', ['user' => $user]);
+    }
+    // メールアドレス編集ページへ遷移
+    public function showEmailProfile() {
+        $user = Auth::user();
+        return view('users.email_edit', ['user' => $user]);
+    }
+     // メールアドレス編集ページへ遷移
+     public function showPasswordProfile() {
+        $user = Auth::user();
+        return view('users.password_edit', ['user' => $user]);
+    }
+
+    // 名前更新処理
+    public function nameUpdate(UpdateNameRequest $request) {
+        // dd($request);
+        $user = User::find(Auth::id());
+        if(Auth::id() === $user->id) {
+            $user->name = $request->name;
+            $user->updated_at = date("Y-m-d G:i:s");
+
+            // 二重送信対策
+            $request->session()->regenerateToken();
+
+            $user->save();
+        }
+        return redirect('/profile');
+    }
+
+    // メールアドレス更新処理
+    public function emailUpdate(UpdateEmailRequest $request) {
+
+        $user = User::find(Auth::id());
+        if(Auth::id() === $user->id) {
+            $user->email = $request->email;
+            $user->updated_at = date("Y-m-d G:i:s");
+
+            // 二重送信対策
+            $request->session()->regenerateToken();
+
+            $user->save();
+        }
+        return redirect('/profile');
+    }
+
+    // パスワード更新処理
+    public function passwordUpdate(Request $request) {
+
+        $user = User::find(Auth::id());
+        if(Auth::id() === $user->id) {
+            $user->password = Hash::make($request->password);
+            $user->updated_at = date("Y-m-d G:i:s");
+
+            // 二重送信対策
+            $request->session()->regenerateToken();
+
             $user->save();
         }
         return redirect('/profile');
