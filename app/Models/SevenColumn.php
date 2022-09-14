@@ -135,13 +135,13 @@ class SevenColumn extends Model
 
             $seven_column = new SevenColumn();
 
-            $seven_column->user_id = Auth::id();
+            $seven_column->user_id     = Auth::id();
             $seven_column->threecol_id = $request->threecol_id;
-            $seven_column->event_id = $request->event_id;
+            $seven_column->event_id    = $request->event_id;
 
             $seven_column->basis_thinking = $request->basis_thinking;
-            $seven_column->opposite_fact = $request->opposite_fact;
-            $seven_column->new_thinking = $request->new_thinking;
+            $seven_column->opposite_fact  = $request->opposite_fact;
+            $seven_column->new_thinking   = $request->new_thinking;
             
             $seven_column->new_emotion_name = $request->new_emotion_name;
            

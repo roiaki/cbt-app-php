@@ -18,15 +18,15 @@ class CreateThreeColumnsTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->integer('event_id')->unsigned()->index();
            
-            $table->string('emotion_name');
-            $table->string('emotion_name00')->nullable();
-            $table->string('emotion_name01')->nullable();
-            $table->string('emotion_name02')->nullable();
+            // $table->string('emotion_name');
+            // $table->string('emotion_name00')->nullable();
+            // $table->string('emotion_name01')->nullable();
+            // $table->string('emotion_name02')->nullable();
 
-            $table->integer('emotion_strength');
-            $table->integer('emotion_strength00')->nullable();
-            $table->integer('emotion_strength01')->nullable();
-            $table->integer('emotion_strength02')->nullable();
+            // $table->integer('emotion_strength');
+            // $table->integer('emotion_strength00')->nullable();
+            // $table->integer('emotion_strength01')->nullable();
+            // $table->integer('emotion_strength02')->nullable();
 
             $table->string('thinking', 500);
 
@@ -44,10 +44,29 @@ class CreateThreeColumnsTable extends Migration
                 ->references('id')
                 ->on('events')
                 ->onDelete('cascade');
-              
+        });
 
+        Schema::create('emotions', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->integer('threecolumn_id');
+            $table->integer('event_id');
+            $table->integer('user_id');
+            $table->string('emotion_name', 30);
+            $table->ingeger('emotion_strength');
+            $table->timestamps();
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+            
+            $table->foreign('event_id')
+                ->references('id')
+                ->on('events')
+                ->onDelete('cascade');
         });
     }
+    
 
     /**
      * Reverse the migrations.
@@ -57,5 +76,6 @@ class CreateThreeColumnsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('threecolumns');
+        Schema::dropIfExists('emotions');
     }
 }

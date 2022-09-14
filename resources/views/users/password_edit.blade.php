@@ -52,7 +52,7 @@
               
             </table>
             
-            <button type="submit" class="btn btn-primary mt-3">保存</button>
+            <button type="submit" class="btn btn-primary mt-3 mb-3">保存</button>
 					</form>
         </div>
       </div>
