@@ -80,11 +80,20 @@ class User extends Authenticatable
      * User(主) -> Sevencolumn(従)
      * 1対多
      */
-    // public function seven_columns() 
-    // {
-    //     // 1th param Model, 2th param foreign_key, 3th param owner_key
-    //     return $this->hasMany(SevenColumn::class);   
-    // }
+    public function seven_columns() 
+    {
+        // 1th param Model, 2th param foreign_key, 3th param owner_key
+        return $this->hasMany(SevenColumn::class);   
+    }
+
+    /**
+     * User(主) -> Trouble(従)
+     * 1 to Many
+     */
+    public function troubles()
+    {
+        return $this->hasMany('Trouble::class');
+    }
 
     /**
      * User(主) -> Solution(従)
@@ -94,6 +103,26 @@ class User extends Authenticatable
     {
         // 1th param Model, 2th param foreign_key, 3th param owner_key
         return $this->hasMany(Solution::class);   
+    }
+
+    /**
+     * User(主) -> Merit(従)
+     * 1対多
+     */
+    public function merits() 
+    {
+        // 1th param Model, 2th param foreign_key, 3th param owner_key
+        return $this->hasMany(Merit::class);   
+    }
+
+     /**
+     * User(主) -> Demerit(従)
+     * 1対多
+     */
+    public function demerits() 
+    {
+        // 1th param Model, 2th param foreign_key, 3th param owner_key
+        return $this->hasMany(Demerit::class);   
     }
 
 
