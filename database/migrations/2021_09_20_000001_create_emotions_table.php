@@ -15,9 +15,9 @@ class CreateEmotionsTable extends Migration
     {
         Schema::create('emotions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('threecolumn_id')->unsigned();
-            $table->integer('event_id')->unsigned();
             $table->integer('user_id')->unsigned();
+            $table->integer('event_id')->unsigned();
+            $table->integer('threecolumn_id')->unsigned();
             $table->string('emotion_name', 30);
             $table->integer('emotion_strength');
             $table->timestamps();

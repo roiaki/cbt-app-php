@@ -74,7 +74,6 @@
       </tr>
     </table>
 
-
     <table class="table table-bordered">
       <tr>
         <th>{{ __('threecolumn.3-2_title') }}</th>
