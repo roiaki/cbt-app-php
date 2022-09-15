@@ -76,13 +76,13 @@
           <div class="err-msg-name01 mt-3"></div>
 
           <!-- バリデーションエラー表示-->
-          @if($errors->has('emotion_name_def'))
+          <!-- @if($errors->has('emotion_name_def'))
             @foreach($errors->get('emotion_name_def') as $message)
             <ul>
               <li class="ml-2 my-1 text-danger">{{ $message }}</li>
             </ul>
             @endforeach
-          @endif
+          @endif -->
         </div>
         <!-- /感情名 -->
 
@@ -102,13 +102,13 @@
           <div class="err-msg-name02 mt-3"></div>
 
           <!-- バリデーションエラー表示-->
-          @if($errors->has('emotion_strength_def'))
+          <!-- @if($errors->has('emotion_strength_def'))
             @foreach($errors->get('emotion_strength_def') as $message)
             <ul>
               <li class="ml-2 my-1 text-danger">{{ $message }}</li>
             </ul>
             @endforeach
-          @endif
+          @endif -->
         </div>
       </div>
 
@@ -117,6 +117,7 @@
         <add></add>  
       </div>
 
+      <!-- 自動思考 -->
       <div class="form-group mt-4">
         <label for="thinking"><h5>{{ __('threecolumn.3-1_title') }}</h5></label>
         <p class="alert alert-success" role="alert">

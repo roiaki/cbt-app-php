@@ -41,31 +41,27 @@
         <th>{{ __('threecolumn.2-2_title') }}</th>
         </th>
       </tr>
+      @if(isset($emotion[0]->emotion_name))
       <tr>
-        <td>{{ $three_column->emotion_name }}</td>
-        <td>{{ $three_column->emotion_strength }}</td> 
+        <td>{{ $emotion[0]->emotion_name }}</td>
+        <td>{{ $emotion[0]->emotion_strength }}</td> 
       </tr>
+      @endif
 
-      @if($three_column->emotion_name00)
+      @if(isset($emotion[1]->emotion_name))
         <tr>
-          <td>{{ $three_column->emotion_name00 }}</td>
-          <td>{{ $three_column->emotion_strength00 }}</td>
+          <td>{{ $emotion[1]->emotion_name }}</td>
+          <td>{{ $emotion[1]->emotion_strength }}</td>
         </tr>
       @endif
 
-      @if($three_column->emotion_name01)
+      @if(isset($emotion[2]->emotion_name))
         <tr>
-          <td>{{ $three_column->emotion_name01 }}</td>
-          <td>{{ $three_column->emotion_strength01 }}</td>
+          <td>{{ $emotion[2]->emotion_name }}</td>
+          <td>{{ $emotion[2]->emotion_strength }}</td>
         </tr>
       @endif
-
-      @if($three_column->emotion_name02)
-        <tr>
-          <td>{{ $three_column->emotion_name02 }}</td>
-          <td>{{ $three_column->emotion_strength02 }}</td>
-        </tr>
-      @endif
+      
       
     </table>
 

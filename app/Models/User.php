@@ -27,7 +27,7 @@ class User extends Authenticatable
         'password',
         'email_verified', 
         'email_verify_token', // 追加
-        'is_guest'
+        'is_guest' // 追加
     ];
 
     /**
@@ -80,10 +80,11 @@ class User extends Authenticatable
      * User(主) -> Sevencolumn(従)
      * 1対多
      */
-    public function seven_columns() 
-    {
-        return $this->hasMany(SevenColumn::class);   
-    }
+    // public function seven_columns() 
+    // {
+    //     // 1th param Model, 2th param foreign_key, 3th param owner_key
+    //     return $this->hasMany(SevenColumn::class);   
+    // }
 
     /**
      * User(主) -> Solution(従)
@@ -91,6 +92,7 @@ class User extends Authenticatable
      */
     public function solutions() 
     {
+        // 1th param Model, 2th param foreign_key, 3th param owner_key
         return $this->hasMany(Solution::class);   
     }
 
