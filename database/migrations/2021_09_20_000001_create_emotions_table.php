@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateThreeColumnsTable extends Migration
+class CreateEmotionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,20 @@ class CreateThreeColumnsTable extends Migration
      */
     public function up()
     {
-        Schema::create('threecolumns', function (Blueprint $table) {
-            $table->increments('id')->unsigned()->index(); // id -> threecol_idへ変更
-            $table->integer('user_id')->unsigned()->index();
-            $table->integer('event_id')->unsigned()->index();
-           
-
-            $table->string('thinking', 500);
-
+        Schema::create('emotions', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->integer('threecolumn_id')->unsigned();
+            $table->integer('event_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->string('emotion_name', 30);
+            $table->integer('emotion_strength');
             $table->timestamps();
 
-            // 外部キー制約
-            // $table->foreign(外部キーを設定するカラム名)->references(制約先のID名)->on(外部キー制約先のテーブル名);
-            
+            $table->foreign('threecolumn_id')
+                ->references('id')
+                ->on('threecolumns')
+                ->onDelete('cascade');
+
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
@@ -37,7 +38,6 @@ class CreateThreeColumnsTable extends Migration
                 ->onDelete('cascade');
         });
     }
-    
 
     /**
      * Reverse the migrations.
@@ -46,6 +46,6 @@ class CreateThreeColumnsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('threecolumns');
+        Schema::dropIfExists('emotions');
     }
 }

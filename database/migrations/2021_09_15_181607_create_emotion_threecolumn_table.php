@@ -13,19 +13,19 @@ class CreateEmotionThreecolumnTable extends Migration
      */
     public function up()
     {
-        Schema::create('emotion_threecolumn', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('threecol_id')->unsigned()->index();
-            $table->integer('emotion_id')->unsigned()->index();
+        // Schema::create('emotion_threecolumn', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     $table->integer('threecol_id')->unsigned()->index();
+        //     $table->integer('emotion_id')->unsigned()->index();
 
-            $table->timestamps();
+        //     $table->timestamps();
 
-            $table->unique(['threecol_id', 'emotion_id']);
+        //     $table->unique(['threecol_id', 'emotion_id']);
 
-            // 外部キー制約
-            $table->foreign('threecol_id')->references('id')->on('threecolumns')->onDelete('cascade');
-            $table->foreign('emotion_id')->references('id')->on('emotions')->onDelete('cascade');
-        });
+        //     // 外部キー制約
+        //     $table->foreign('threecol_id')->references('id')->on('threecolumns')->onDelete('cascade');
+        //     $table->foreign('emotion_id')->references('id')->on('emotions')->onDelete('cascade');
+        // });
     }
 
     /**
@@ -35,6 +35,6 @@ class CreateEmotionThreecolumnTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('emotion_threecolumn');
+        // Schema::dropIfExists('emotion_threecolumn');
     }
 }

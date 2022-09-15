@@ -19,17 +19,15 @@ class User extends Authenticatable
      */
     //protected $primaryKey = 'user_id';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    
     // fillableに指定したカラムのみ、create()やfill()、update()で値が代入されます。
     protected $fillable = [
         'name',
         'email',
         'password',
-        'email_verified', 'email_verify_token', // 追加
+        'email_verified', 
+        'email_verify_token', // 追加
+        'is_guest'
     ];
 
     /**
@@ -52,9 +50,9 @@ class User extends Authenticatable
 
     ];
 
-    /*
-     * 1対多（逆）所属
-     * 子（Event）を所有している親（user）を取得 
+    /* 
+     * User(主) -> Event(従)
+     * 1対多
      */
     public function events()
     {
@@ -62,36 +60,38 @@ class User extends Authenticatable
         // 第1引数：リレーション先のモデル
         // 第2引数：外部キー「親を判別するための値が格納されている、子テーブルの外部キー」
         // 第3引数：親を判別する値が格納された「親がもつ」カラム（userテーブルの主キーを指定）
-        //return $this->hasMany(Event::class, 'user_id', 'user_id');
         return $this->hasMany(Event::class);
     }
 
-    // user->columns()->get() が書けるようになる　
-    // Columnモデルとの紐づけ
+    /**
+     * User(主) -> Threecolumn(従)
+     * 1対多
+     */
     public function three_columns() 
     {
         // 1対多のリレーション （主->従）
         // 第1引数：リレーション先のモデル
         // 第2引数：外部キー「親を判別するための値が格納されている、子テーブルの外部キー」
         // 第3引数：親を判別する値が格納された「親がもつ」カラム（userテーブルの主キーを指定）
-        //return $this->hasMany(ThreeColumn::class, 'user_id', 'user_id');
         return $this->hasMany(ThreeColumn::class);
     }
 
-    // user->seven_columns()->get()　が書けるようになる　
-    // SevenColumnモデルとの紐づけ
-    public function seven_columns() {
-
-        return $this->hasMany(SevenColumn::class);
-        
+    /**
+     * User(主) -> Sevencolumn(従)
+     * 1対多
+     */
+    public function seven_columns() 
+    {
+        return $this->hasMany(SevenColumn::class);   
     }
 
-    // user->solutions()->get()　が書けるようになる　
-    // Solutionsモデルとの紐づけ
-    public function solutions() {
-
-        return $this->hasMany(Solution::class);
-        
+    /**
+     * User(主) -> Solution(従)
+     * 1対多
+     */
+    public function solutions() 
+    {
+        return $this->hasMany(Solution::class);   
     }
 
 

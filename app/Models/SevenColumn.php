@@ -19,22 +19,28 @@ class SevenColumn extends Model
     //protected $primaryKey = 'id';
 
     // Userモデルとの紐づけ
-    public function user() {
-        
+    public function user() 
+    {     
         return $this->belongsTo(User::class);
-
     }
 
+    /**
+     * Sevencolumn(従) -> Event(主)
+     * 多対１
+     */
     public function event()
     {
         // belongsTo 子から親へ　従から主へ
         // 第1引数：リレーション先の親モデル
         // 第2引数：外部キー「親を判別するための値が格納されている、子テーブルのカラム名」
         // 第3引数：親を判別する値が格納された「親がもつ」カラム
-        //return $this->belongsTo(Event::class, 'event_id', 'event_id'); 
         return $this->belongsTo(Event::class, 'event_id', 'id'); 
     }
 
+    /**
+     * Sevencolumn(従) -> Threecolumn(主)
+     * 多対１
+     */
     public function threecolumn()
     {
         // belongsTo 子から親へ　従から主へ

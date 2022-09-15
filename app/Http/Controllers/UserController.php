@@ -44,6 +44,7 @@ class UserController extends Controller
         $user = new User();
         $user->name     = $name;
         $user->email    = $email . "@test.com";
+        $user->is_guest = 1;
         $user->password = Hash::make('testtest');
         $user->save();
 
