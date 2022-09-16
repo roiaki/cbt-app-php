@@ -87,12 +87,22 @@ class User extends Authenticatable
     }
 
     /**
+     * User(主) -> NewEmotion(従)
+     * 1 to Many
+     */
+    public function new_emotions()
+    {
+        return $this->hasMany(NewEmotion::class, 'user_id', 'id');
+    }
+
+
+    /**
      * User(主) -> Trouble(従)
      * 1 to Many
      */
     public function troubles()
     {
-        return $this->hasMany('Trouble::class');
+        return $this->hasMany(Trouble::class);
     }
 
     /**

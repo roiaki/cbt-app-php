@@ -51,6 +51,15 @@ class SevenColumn extends Model
     }
 
     /**
+     * Sevencolumn(主) -> NewEmotion(従)
+     * 1 to Many
+     */
+    public function new_emotions()
+    {
+        return $this->hasMany(NewEmotion::class, 'sevencolumn_id', 'id');
+    }
+
+    /**
      * 一覧表示処理
      * 
      * @return array $data
@@ -117,7 +126,8 @@ class SevenColumn extends Model
         $user_id = $user->id;
 
         $three_column = ThreeColumn::where('id', $id)->where('user_id', $user_id)->first();
-
+        $emotions = Emotion::where('threecolumn_id', $id)->get();
+     
         $event_id = $three_column->event_id;
 
         $event = Event::where('id', $event_id)
@@ -126,6 +136,7 @@ class SevenColumn extends Model
         $data = [
             'event' => $event,
             'three_column' => $three_column,
+            'emotions' => $emotions
         ];
         return $data;
     }
@@ -149,9 +160,12 @@ class SevenColumn extends Model
             $seven_column->opposite_fact  = $request->opposite_fact;
             $seven_column->new_thinking   = $request->new_thinking;
             
-            $seven_column->new_emotion_name = $request->new_emotion_name;
+            // $seven_column->new_emotion_name = $request->new_emotion_name;
            
             if(isset($request->new_emotion_name00)) {
+                $new_emotion = new NewEmotion;
+                $new_emotion
+
                 $seven_column->new_emotion_name00 = $request->new_emotion_name00;
             }
 

@@ -18,12 +18,12 @@ class CreateThreeColumnsTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->integer('event_id')->unsigned()->index();
             $table->string('thinking', 500);
-
             $table->timestamps();
 
             // 外部キー制約
-            // $table->foreign(外部キーを設定するカラム名)->references(制約先のID名)->on(外部キー制約先のテーブル名);
-            
+            // $table->foreign(外部キーを設定するカラム名)
+            //       ->references(制約先のID名)
+            //       ->on(外部キー制約先のテーブル名);
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')

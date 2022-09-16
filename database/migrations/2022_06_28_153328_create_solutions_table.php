@@ -13,24 +13,20 @@ class CreateSolutionsTable extends Migration
      */
     public function up()
     {
-        // @check 後で別テーブルへ検討 
         Schema::create('troubles', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned()->index();
             $table->integer('user_id')->unsigned()->index();
             $table->string('trouble', 500);
-            
             $table->timestamps();
 
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
-                ->onDelete('cascade');
-
-            
+                ->onDelete('cascade'); 
         });
 
         Schema::create('solutions', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id')->unsigned()->index();
             $table->integer('user_id')->unsigned()->index();
             $table->integer('trouble_id')->unsigned()->index();
             $table->string('solution', 500);
@@ -49,7 +45,7 @@ class CreateSolutionsTable extends Migration
         });
 
         Schema::create('merits', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id')->unsigned()->index();
             $table->integer('user_id')->unsigned()->index();
             $table->integer('trouble_id')->unsigned()->index();
             $table->string('merit', 500);
@@ -68,7 +64,7 @@ class CreateSolutionsTable extends Migration
         });
 
         Schema::create('demerits', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id')->unsigned()->index();
             $table->integer('user_id')->unsigned()->index();
             $table->integer('trouble_id')->unsigned()->index();
             $table->string('demerit', 500);

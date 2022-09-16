@@ -68,16 +68,18 @@ class ThreeColumn extends Model
         // 第3引数：自モデルカラム　owner_key
         return $this->hasMany(SevenColumn::class, 'threecol_id', 'id'); 
     }
-    public function emotion()
+
+    /**
+     * Threecolumn(主) -> NewEmotion(従)
+     * 1 to Many
+     * 
+     */
+    public function new_emotions()
     {
-        // belongsToMany()
-        // 第一引数：得られるModelクラス
-        // 第二引数：中間テーブル
-        // 第三引数：中間テーブルに保存されている自分のidを示すカラム名
-        // 第四引数：中間テーブルに保存されている関係先のidを示すカラム名
-        //return $this->belongsToMany(Emotion::class, 'includes', 'threecol_id', 'emotion_id');
-        return $this->belongsToMany(Emotion::class);
+        return $this->hasMany(NewEmotion::class, 'threecolumn_id', 'id');
     }
+
+   
     /**
      * Threecolumn(主) -> Emotion(従)
      * 1対多

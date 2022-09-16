@@ -15,7 +15,7 @@ class CreateHabitsTable extends Migration
     {
         Schema::create('habits', function (Blueprint $table) {
             //$table->increments('habit_id'); // id -> habit_idへ変更
-            $table->increments('id'); 
+            $table->increments('id')->unsigned()->index();
             $table->string('habit_name'); // string へ変更しよう
 
             $table->timestamps();

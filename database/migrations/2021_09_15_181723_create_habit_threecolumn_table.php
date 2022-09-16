@@ -14,7 +14,7 @@ class CreateHabitThreecolumnTable extends Migration
     public function up()
     {
         Schema::create('habit_threecolumn', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned()->index();
             $table->integer('threecol_id')->unsigned()->index();
             $table->integer('habit_id')->unsigned()->index();
 

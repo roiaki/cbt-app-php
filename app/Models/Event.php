@@ -58,6 +58,15 @@ class Event extends Model
         return $this->hasMany(SevenColumn::class, 'event_id', 'id');
     }
 
+    /**
+     * Event(主) -> NewEmotion(従)
+     * 1 to Many
+     */
+    public function new_emotions()
+    {
+        return $this->hasMany(NewEmotion::class, 'event_id', 'id');
+    }
+
 
     /** 
      * 出来事一覧表示処理
