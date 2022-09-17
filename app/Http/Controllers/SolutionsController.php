@@ -35,10 +35,10 @@ class SolutionsController extends Controller
         $this->validate(
             $request,
             [
-                'trouble' => 'required|max:500',
+                'trouble'    => 'required|max:500',
                 'solution.*' => 'required|max:500',
-                'merit.*' => 'required|max:500',
-                'demerit.*' => 'required|max:500',
+                'merit.*'    => 'required|max:500',
+                'demerit.*'  => 'required|max:500',
             ]
         );
         

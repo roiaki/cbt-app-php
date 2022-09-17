@@ -61,9 +61,7 @@ class Solution extends Model
     public function solutionStore($request)
     {
         $solution = new Solution;
-
         $solution->user_id = Auth::id();
-        
         $solution->trouble = $request->trouble;
         
         // @cheack create()　fill() マルチカラムアトリビュート対策の検討

@@ -9,6 +9,9 @@ class NewEmotion extends Model
 {
     use HasFactory;
 
+    // テーブルの紐付け(テーブル名がモデル名の複数形の場合は記述の必要なし)
+    protected $table = 'newemotions';
+
     // ブラックリスト
     protected $guarded = ['id'];
 

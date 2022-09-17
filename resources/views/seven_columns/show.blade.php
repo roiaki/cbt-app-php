@@ -104,33 +104,26 @@
         <td>{{ __('sevencolumn.new_emotion_strength') }}</td>
       </tr>
       <tr>
-        <td>{{ $seven_column->new_emotion_name }}</td>
-        <td>{{ $three_column->emotion_strength }}</td>
-        <td>{{ $seven_column->new_emotion_strength }}</td>
+        <td>{{ $emotions[0]->emotion_name }}</td>
+        <td>{{ $emotions[0]->emotion_strength }}</td>
+        <td>{{ $newemotions[0]->new_emotion_strength }}</td>
       </tr>
-      @if(isset($seven_column->new_emotion_name00))
+      @if(isset($emotions[1]->emotion_name))
         <tr>
-          <td>{{ $seven_column->new_emotion_name00 }}</td>
-          <td>{{ $three_column->emotion_strength00 }}</td>
-          <td>{{ $seven_column->new_emotion_strength00 }}</td>
+          <td>{{ $emotions[1]->emotion_name }}</td>
+          <td>{{ $emotions[1]->emotion_strength }}</td>
+          <td>{{ $newemotions[1]->new_emotion_strength }}</td>
         </tr>
       @endif
 
-      @if(isset($seven_column->new_emotion_name01))
+      @if(isset($emotions[2]->emotion_name))
         <tr>
-          <td>{{ $seven_column->new_emotion_name01 }}</td>
-          <td>{{ $three_column->emotion_strength01 }}</td>
-          <td>{{ $seven_column->new_emotion_strength01 }}</td>
+          <td>{{ $emotions[2]->emotion_name }}</td>
+          <td>{{ $emotions[2]->emotion_strength }}</td>
+          <td>{{ $newemotions[2]->new_emotion_strength }}</td>
         </tr>
       @endif
 
-      @if(isset($seven_column->new_emotion_name02))
-        <tr>
-          <td>{{ $seven_column->new_emotion_name02 }}</td>
-          <td>{{ $three_column->emotion_strength02 }}</td>
-          <td>{{ $seven_column->new_emotion_strength02 }}</td>
-        </tr>
-      @endif
     </table>
 
     <div class="buttons-first">

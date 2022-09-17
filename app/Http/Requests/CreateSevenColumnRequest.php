@@ -27,7 +27,7 @@ class CreateSevenColumnRequest extends FormRequest
             'basis_thinking'       => 'required|max:500',
             'opposite_fact'        => 'required|max:500',
             'new_thinking'         => 'required|max:500',
-            'new_emotion_strength' => 'required'
+            // 'new_emotion_strength' => 'required'
         ];
     }
 }

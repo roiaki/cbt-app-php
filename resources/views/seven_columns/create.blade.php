@@ -18,6 +18,7 @@
           onsubmit="return sevencolumnValidation(locale);">
       @csrf
 
+      <!-- 隠しデータ -->
       <input type="hidden" name="threecol_id" value="{{ $three_column->id }}">
       <input type="hidden" name="event_id" value="{{ $three_column->event_id }}">
       
@@ -173,13 +174,13 @@
               <th>{{ __('sevencolumn.prev_emotion_strength') }}</th>
               <th>{{ __('sevencolumn.new_emotion_strength') }}</th></tr>
             </tr>
-            
+            <?php var_dump($emotions[0]->emotion_name); ?>
             <tr>
               <td>
                 {{ $emotions[0]->emotion_name }}
                 <input type="hidden"
-                       name="new_emotion_name"
-                       value="{{$three_column->emotion_name }}">
+                       name="new_emotion_name00"
+                       value="{{$emotions[0]->emotion_name }}">
               </td>
               <td>
                 {{ $emotions[0]->emotion_strength }}
@@ -197,7 +198,9 @@
               <td>       
                 @if(isset($emotions[1]->emotion_name))
                   {{ $emotions[1]->emotion_name }}
-                  
+                  <input type="hidden"
+                       name="new_emotion_name01"
+                       value="{{$emotions[1]->emotion_name }}">
                 @endif
               </td>
               <td>
@@ -221,12 +224,16 @@
               @if(isset($emotions[2]->emotion_name))
                 <td>       
                   {{ $emotions[2]->emotion_name }}
+                  <input type="hidden"
+                         name="new_emotion_name02"
+                         value="{{$emotions[2]->emotion_name }}">
                 </td>
               @endif
 
               @if(isset($emotions[2]->emotion_strength))
                 <td>
-                  {{ $emotions[2]->emotion_strength }} 
+                  {{ $emotions[2]->emotion_strength }}
+                  
                 </td>
               @endif
 

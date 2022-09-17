@@ -137,57 +137,45 @@
         <div class="row mt-3">
         <div class="form-group col-3">
           <label for="emotion_name">{{ __('sevencolumn.emotion_name') }}</label>
-          
           <ul class="list-group">
-            <li class="list-group-item">{{$three_column->emotion_name }}</li>
-            <input type="hidden"
-                   name="new_emotion_name"
-                   value="{{$three_column->emotion_name }}"
-            >
-
-            @if(isset($three_column->emotion_name00))
-              <li class="list-group-item">{{$three_column->emotion_name00 }}</li>
+            @if(isset($new_emotions[0]->new_emotion_name))
+              <li class="list-group-item">{{ $new_emotions[0]->new_emotion_name }}</li>
               <input type="hidden"
-                     name="new_emotion_name00"
-                     value="{{$three_column->emotion_name00 }}"
-              >
+                    name="new_emotion_name00"
+                    value="{{ $new_emotions[0]->new_emotion_name }}">
             @endif
 
-            @if(isset($three_column->emotion_name01))
-              <li class="list-group-item">{{$three_column->emotion_name01 }}</li>
+            @if(isset($new_emotions[1]->new_emotion_name))
+              <li class="list-group-item">{{ $new_emotions[1]->new_emotion_name }}</li>
               <input type="hidden"
                      name="new_emotion_name01"
-                     value="{{$three_column->emotion_name01 }}"
-              >
+                     value="{{ $new_emotions[1]->new_emotion_name }}">
             @endif
 
-            @if(isset($three_column->emotion_name02))
-              <li class="list-group-item">{{$three_column->emotion_name02 }}</li>
+            @if(isset($new_emotions[2]->new_emotion_name))
+              <li class="list-group-item">{{ $new_emotions[2]->new_emotion_name }}</li>
               <input type="hidden"
                      name="new_emotion_name02"
-                     value="{{ $three_column->emotion_name02 }}"
-              >
+                     value="{{ $new_emotions[2]->new_emotion_name }}">
             @endif
           </ul>
-
         </div>
 
         <!-- 以前の感情の強さ -->
         <div class="form-group col-3">
           <label for="emotion_strength">{{ __('sevencolumn.prev_emotion_strength') }}</label>
           <ul class="list-group">
-            <li class="list-group-item">{{$three_column->emotion_strength }}</li>
             
-            @if(isset($three_column->emotion_strength00))
-              <li class="list-group-item">{{$three_column->emotion_strength00 }}</li>
+            @if(isset($emotions[0]->emotion_strength))
+              <li class="list-group-item">{{ $emotions[0]->emotion_strength }}</li>
+            @endif
+
+            @if(isset($emotions[1]->emotion_strength))
+              <li class="list-group-item">{{ $emotions[1]->emotion_strength }}</li>
             @endif
             
-            @if(isset($three_column->emotion_strength01))
-              <li class="list-group-item">{{$three_column->emotion_strength01 }}</li>
-            @endif
-            
-            @if(isset($three_column->emotion_strength02))
-              <li class="list-group-item">{{$three_column->emotion_strength02 }}</li>
+            @if(isset($emotions[2]->emotion_strength))
+              <li class="list-group-item">{{ $emotions[2]->emotion_strength }}</li>
             @endif
           </ul>
         </div>
@@ -196,37 +184,31 @@
         <!-- 新しいの感情の強さ -->
         <div class="form-group col-3">
           <label for="emotion_strength">{{ __('sevencolumn.new_emotion_strength') }}</label>
-          <input type="number" 
-                 class="form-control mt-1" 
-                 id="new_emotion_strength" 
-                 name="new_emotion_strength"
-                 value="{{ $seven_column->new_emotion_strength }}"
-                 required>
 
-          @if(isset($three_column->emotion_strength00))
+          @if(isset($emotions[0]->emotion_strength))
           <input type="number" 
-                 class="form-control mt-3" 
-                 id="new_emotion_strength00" 
+                 class="form-control" 
+                 id="new_emotion_strength" 
                  name="new_emotion_strength00"
-                 value="{{ $seven_column->new_emotion_strength00 }}"
+                 value="{{ $new_emotions[0]->new_emotion_strength }}"
                  required>
           @endif
 
-          @if(isset($three_column->emotion_strength01))
+          @if(isset($emotions[1]->emotion_strength))
           <input type="number" 
                  class="form-control mt-3" 
                  id="new_emotion_strength01" 
                  name="new_emotion_strength01"
-                 value="{{ $seven_column->new_emotion_strength01 }}"
+                 value="{{ $new_emotions[1]->new_emotion_strength }}"
                  required>
           @endif
 
-          @if(isset($three_column->emotion_strength02))
+          @if(isset($emotions[2]->emotion_strength))
           <input type="number" 
                  class="form-control mt-3" 
                  id="new_emotion_strength02" 
                  name="new_emotion_strength02"    
-                 value="{{ $seven_column->new_emotion_strength02 }}"
+                 value="{{ $new_emotions[2]->new_emotion_strength }}"
                  required>
           @endif
         </div>
