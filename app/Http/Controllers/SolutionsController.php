@@ -53,25 +53,18 @@ class SolutionsController extends Controller
     // 詳細ページ表示処理
     public function show($id)
     {
-        // dd($id);
-        $trouble  = Trouble::find($id);
-        // dd($trouble->id);
+        $trouble   = Trouble::find($id);
         $solutions = Solution::where('trouble_id', $trouble->id)->get();
-        // dd($solution);
         $merits    = Merit::where('trouble_id', $trouble->id)->get();
-        // dd($merit);
         $demerits  = Demerit::where('trouble_id', $trouble->id)->get();
-        // dd($trouble);
-        // dd($solution);
-        // $trouble = Trouble::where('id', $id)->get();
-        // dd($trouble);
+       
         if(!isset($trouble)) {
             return redirect('/solutions');
         }
-// dd($trouble->user_id);
+
         if(Auth::id() === $trouble->user_id) {
             $data = [
-                'trouble'  => $trouble,
+                'trouble'   => $trouble,
                 'solutions' => $solutions,
                 'merits'    => $merits,
                 'demerits'  => $demerits,
@@ -84,15 +77,21 @@ class SolutionsController extends Controller
     // 編集ページ表示処理
     public function edit($id)
     {
-        $solution = Solution::find($id);
+        $trouble   = Trouble::find($id);
+        $solutions = Solution::where('trouble_id', $trouble->id)->get();
+        $merits    = Merit::where('trouble_id', $trouble->id)->get();
+        $demerits  = Demerit::where('trouble_id', $trouble->id)->get();
         
-        if(!isset($solution)) {
+        if(!isset($trouble)) {
             return redirect('/solutions');
         }
 
-        if(Auth::id() === $solution->user_id) {
+        if(Auth::id() === $trouble->user_id) {
             $data = [
-                'solution' => $solution,
+                'trouble' => $trouble,
+                'solutions' => $solutions,
+                'merits'    => $merits,
+                'demerits'  => $demerits,
             ];
             return view('solutions.edit', $data);
         }
