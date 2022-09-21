@@ -23,10 +23,11 @@ class CreateThreeColumnRequest extends FormRequest
      */
     public function rules()
     {
+      
         return [
-            // 'emotion_name'     => 'required',
-            // 'emotion_strength' => 'required',
-            'thinking'             => 'required|max:500',
+            'emotion_name.*'     => 'required',
+            'emotion_strength.*' => 'required',
+            'thinking'           => 'required|max:500',
         ];
     }
 }

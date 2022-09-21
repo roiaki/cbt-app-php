@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Solution;
+use App\Models\Trouble;
+use App\Models\Merit;
+use App\Models\Demerit;
 use Illuminate\Support\Facades\Auth;
 use Session;
 
@@ -42,30 +45,36 @@ class SolutionsController extends Controller
             ]
         );
         
-        $Solution = new Solution;
-        //dd($request);
-        if(isset($request->solution[0])) {
-            $solution = $Solution->solutionStore($request);
-            $data = ['solution' => $solution];
-            return view('solutions.show', $data);
-        } else {
-            return redirect('/solution/create');
-        }
-        
+        $solution = new Solution;
+        $solution->storeSolution($request);
+        return redirect('/solutions'); 
     }
 
     // 詳細ページ表示処理
     public function show($id)
     {
-        $solution = Solution::find($id);
-        
-        if(!isset($solution)) {
+        // dd($id);
+        $trouble  = Trouble::find($id);
+        // dd($trouble->id);
+        $solutions = Solution::where('trouble_id', $trouble->id)->get();
+        // dd($solution);
+        $merits    = Merit::where('trouble_id', $trouble->id)->get();
+        // dd($merit);
+        $demerits  = Demerit::where('trouble_id', $trouble->id)->get();
+        // dd($trouble);
+        // dd($solution);
+        // $trouble = Trouble::where('id', $id)->get();
+        // dd($trouble);
+        if(!isset($trouble)) {
             return redirect('/solutions');
         }
-
-        if(Auth::id() === $solution->user_id) {
+// dd($trouble->user_id);
+        if(Auth::id() === $trouble->user_id) {
             $data = [
-                'solution' => $solution,
+                'trouble'  => $trouble,
+                'solutions' => $solutions,
+                'merits'    => $merits,
+                'demerits'  => $demerits,
             ];
             return view('solutions.show', $data);
         }

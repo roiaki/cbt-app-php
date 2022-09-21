@@ -27,6 +27,6 @@ class Merit extends Model
      */
     public function trouble()
     {
-        return $this->belongsTo('Trouble::class', 'trouble_id', 'id');
+        return $this->belongsTo(Trouble::class);
     }
 }

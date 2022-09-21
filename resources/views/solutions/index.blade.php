@@ -29,23 +29,19 @@
       <table class="table table-bordered table-hover">
         <thread>
           <tr class="table-info">
-            <th>{{ __('solution.trouble') }}</th>
-            <th>{{ __('solution.merit') }}</th>
+            <th>{{ __('solution.trouble') }}</th>        
             <th>{{ __('solution.updated') }}</th>
           </tr>
         </thead>
         <tbody>
-          @foreach ($solutions as $solution)
+          @foreach ($troubles as $trouble)
           <tr>
             <td>  
-              {{ $solution->trouble }}
+              {{ $trouble->trouble }}
             </td>
             <td>
-              {{ $solution->merit00 }}
-            </td>
-            <td>
-              {{ date( 'Y/n/j H:i', strtotime($solution->updated_at) ) }}
-              <p><a href="{{ route('solutions.show', $solution->id) }}">{{ __('event.detail') }}</a></p>
+              {{ date( 'Y/n/j H:i', strtotime($trouble->updated_at) ) }}
+              <p><a href="{{ route('solutions.show', $trouble->id) }}">{{ __('event.detail') }}</a></p>
             </td>
           </tr>
           @endforeach

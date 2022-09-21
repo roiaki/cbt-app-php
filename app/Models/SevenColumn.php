@@ -133,6 +133,7 @@ class SevenColumn extends Model
         $event = Event::where('id', $event_id)
                       ->where('user_id', $user_id)
                       ->first();
+        
         $data = [
             'event' => $event,
             'three_column' => $three_column,

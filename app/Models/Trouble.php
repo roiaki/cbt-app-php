@@ -20,7 +20,7 @@ class Trouble extends Model
     public function user()
     {
         // 1param model 2param foreign_key 3param owner_key
-        return $this->belongsTo('User::class', 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     /**
@@ -45,7 +45,7 @@ class Trouble extends Model
     {
         // hasMany
         // 1 param リレーション先モデル. 2param 外部キー. 3param 自モデルカラム
-        return $this->hasMany('Merit::class');
+        return $this->hasMany(Merit::class);
     }
 
     /**
@@ -54,6 +54,6 @@ class Trouble extends Model
      */
     public function demerits()
     {
-        return $this->hasMany('Demerit::class');
+        return $this->hasMany(Demerit::class);
     }
 }
