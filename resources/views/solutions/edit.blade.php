@@ -2,10 +2,10 @@
 
 @section('content')
 
-<div class="row justify-content-center">
+<div class="glasscard row justify-content-center">
   <div class="col-sm-7">   
     <h3 class="title_head">{{ __('solution.editPage') }}</h3>
-    <form action="{{ route('solution.update', ['param' => $solution->id] ) }}" method="POST">
+    <form action="{{ route('solution.update', ['param' => $trouble->id] ) }}" method="POST">
       @csrf
       @method('PUT')
         
@@ -14,12 +14,13 @@
           <tr>  
             <th><label for="content"><h5>{{ __('solution.trouble') }}</h5></label></th>
             <td>
-              <input type="text" 
-                     class="form-control" 
-                     id="trouble" 
-                     name="trouble" 
-                     value = "{{ $solution->trouble }}" 
-                     required>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="trouble" 
+                name="trouble" 
+                value = "{{ $trouble->trouble }}" 
+                required>
             </td>
           </tr>
         </div>
@@ -52,107 +53,107 @@
           <div class="col-4">
             <textarea name="solution00"
                       class="form-control"
-                      type="text">{{ $solution->solution00 }}</textarea>
+                      type="text">{{ $solutions[0]->solution }}</textarea>
           </div>
     
           <div class="col-4">
             <textarea name="merit00"
                       class="form-control"
-                      type="text">{{ $solution->merit00 }}</textarea>
+                      type="text">{{ $merits[0]->merit }}</textarea>
           </div>
 
           <div class="col-4">
             <textarea name="demerit00"
                       class="form-control"
-                      type="text">{{ $solution->demerit00 }}</textarea>
+                      type="text">{{ $demerits[0]->demerit }}</textarea>
           </div>
 
         </div>
 
-        @if(isset($solution->solution01))
+        @if(isset($solutions[1]->solution))
         <div class="row">
           <div class="col-4">
             <textarea name="solution01"
                       class="form-control"
-                      type="text">{{ $solution->solution01 }}</textarea>
+                      type="text">{{ $solutions[1]->solution }}</textarea>
           </div>
     
           <div class="col-4">
             <textarea name="merit01"
                       class="form-control"
-                      type="text">{{ $solution->merit01 }}</textarea>
+                      type="text">{{ $merits[1]->merit }}</textarea>
           </div>
 
           <div class="col-4">
             <textarea name="demerit01"
                       class="form-control"
-                      type="text">{{ $solution->demerit01 }}</textarea>
+                      type="text">{{ $demerits[1]->demerit }}</textarea>
           </div>
         </div>
         @endif
 
-        @if(isset($solution->solution02))
+        @if(isset($solutions[2]->solution))
         <div class="row">
           <div class="col-4">
             <textarea name="solution02"
                       class="form-control"
-                      type="text">{{ $solution->solution02 }}</textarea>
+                      type="text">{{ $solutions[2]->solution }}</textarea>
           </div>
     
           <div class="col-4">
             <textarea name="merit02"
                       class="form-control"
-                      type="text">{{ $solution->merit02 }}</textarea>
+                      type="text">{{ $merits[2]->merit }}</textarea>
           </div>
 
           <div class="col-4">
             <textarea name="demerit02"
                       class="form-control"
-                      type="text">{{ $solution->demerit02 }}</textarea>
+                      type="text">{{ $demerits[2]->demerit }}</textarea>
           </div>
         </div>
         @endif
 
-        @if(isset($solution->solution03))
+        @if(isset($solutions[3]->solution))
         <div class="row">
           <div class="col-4">
             <textarea name="solution03"
                       class="form-control"
-                      type="text">{{ $solution->solution03 }}</textarea>
+                      type="text">{{ $solutions[3]->solution }}</textarea>
           </div>
     
           <div class="col-4">
             <textarea name="merit03"
                       class="form-control"
-                      type="text">{{ $solution->merit03 }}</textarea>
+                      type="text">{{ $merits[3]->merit }}</textarea>
           </div>
 
           <div class="col-4">
             <textarea name="demerit03"
                       class="form-control"
-                      type="text">{{ $solution->demerit03 }}</textarea>
+                      type="text">{{ $demerits[3]->demerit }}</textarea>
           </div>
         </div>
         @endif
 
-        @if(isset($solution->solution04))
+        @if(isset($solutions[4]->solution))
         <div class="row">
           <div class="col-4">
             <textarea name="solution04"
                       class="form-control"
-                      type="text">{{ $solution->solution04 }}</textarea>
+                      type="text">{{ $solutions[4]->solution }}</textarea>
           </div>
     
           <div class="col-4">
             <textarea name="merit04"
                       class="form-control"
-                      type="text">{{ $solution->merit04 }}</textarea>
+                      type="text">{{ $merits[4]->merit }}</textarea>
           </div>
 
           <div class="col-4">
             <textarea name="demerit04"
                       class="form-control"
-                      type="text">{{ $solution->demerit04 }}</textarea>
+                      type="text">{{ $demerits[4]->demerit }}</textarea>
           </div>
         </div>
         @endif

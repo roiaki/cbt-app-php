@@ -2,9 +2,9 @@
 
 @section('content')
 
-<div class="row justify-content-center">
+<div class="glasscard row justify-content-center">
   <div class="col-sm-7">
-    <h3 class="title_head">{{ __('solution.DetailPage')}} (id = {{ $solution->id }} ) </h3>
+    <h3 class="title_head">{{ __('solution.DetailPage')}} (id = {{ $trouble->id }} ) </h3>
 
     <table class="table table-bordered">
       <tr>
@@ -13,11 +13,10 @@
         <th>{{ __('solution.updateDay')}}</th>
       </tr>
       <tr>
-       <td>{{ $solution->id }}</td>
-       <td>{{ $solution->created_at }}</td>
-       <td>{{ $solution->updated_at }}</td>
+       <td>{{ $trouble->id }}</td>
+       <td>{{ $trouble->created_at }}</td>
+       <td>{{ $trouble->updated_at }}</td>
       </tr>
-
     </table>
 
     <table class="table table-bordered">
@@ -25,60 +24,62 @@
         <th>{{ __('solution.trouble') }}</th>
       </tr>
       <tr>
-        <td>{{ $solution->trouble }}</td>
+        <td>{{ $trouble->trouble }}</td>
       </tr>
-      </table>
+    </table>
 
-      <table class="table table-bordered">
+    <table class="table table-bordered">
       <tr>
         <th>{{ __('solution.solution') }}</th>
         <th>{{ __('solution.merit') }}</th>
         <th>{{ __('solution.demerit') }}</th>
       </tr>
+      @if(isset($solutions[0]))
       <tr>
-        <td>{{ $solution->solution00 }}</td>
-        <td>{{ $solution->merit00 }}</td>
-        <td>{{ $solution->demerit00 }}</td>
-      </tr>
-      @if(isset($solution->solution01))
-      <tr>
-        <td>{{ $solution->solution01 }}</td>
-        <td>{{ $solution->merit01 }}</td>
-        <td>{{ $solution->demerit01 }}</td>
+        <td>{{ $solutions[0]->solution}}</td>
+        <td>{{ $merits[0]->merit }}</td>
+        <td>{{ $demerits[0]->demerit }}</td>
       </tr>
       @endif
-      @if(isset($solution->solution02))
+      @if(isset($solutions[1]))
       <tr>
-        <td>{{ $solution->solution02 }}</td>
-        <td>{{ $solution->merit02 }}</td>
-        <td>{{ $solution->demerit02 }}</td>
+        <td>{{ $solutions[1]->solution }}</td>
+        <td>{{ $merits[1]->merit }}</td>
+        <td>{{ $demerits[1]->demerit }}</td>
       </tr>
       @endif
-      @if(isset($solution->solution03))
+      @if(isset($solutions[2]))
       <tr>
-        <td>{{ $solution->solution03 }}</td>
-        <td>{{ $solution->merit03 }}</td>
-        <td>{{ $solution->demerit03 }}</td>
+        <td>{{ $solutions[2]->solution }}</td>
+        <td>{{ $merits[2]->merit }}</td>
+        <td>{{ $demerits[2]->demerit }}</td>
       </tr>
       @endif
-      @if(isset($solution->solution04))
+      @if(isset($solutions[3]))
       <tr>
-        <td>{{ $solution->solution04 }}</td>
-        <td>{{ $solution->merit04 }}</td>
-        <td>{{ $solution->demerit04 }}</td>
+        <td>{{ $solutions[3]->solution }}</td>
+        <td>{{ $merits[3]->merit }}</td>
+        <td>{{ $demerits[3]->demerit }}</td>
+      </tr>
+      @endif
+      @if(isset($solutions[4]))
+      <tr>
+        <td>{{ $solutions[4]->solution }}</td>
+        <td>{{ $merits[4]->merit }}</td>
+        <td>{{ $demerits[4]->demerit }}</td>
       </tr>
       @endif
     </table>
     
     <div class="buttons-first">
-      <form action="{{ route('solutions.edit', ['param' => $solution->id]) }}" method="get">
+      <form action="{{ route('solutions.edit', ['param' => $trouble->id]) }}" method="get">
         @csrf
         <button type="submit" class="btn btn-secondary btn-lg">{{ __('solution.edit')}}</button>
       </form>
     </div>
 
     <div class="buttons">
-      <form action="{{ route('solution.destroy', ['param' => $solution->id] ) }}" method="post">
+      <form action="{{ route('solution.destroy', ['param' => $trouble->id] ) }}" method="post">
         @csrf
         @method('DELETE')
         <button type="submit" class="btn btn-danger btn-lg" onclick="return confirmDelete();">{{ __('event.delete') }}</button>

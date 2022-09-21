@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Solution;
+use App\Models\Trouble;
+use App\Models\Merit;
+use App\Models\Demerit;
 use Illuminate\Support\Facades\Auth;
 use Session;
 
@@ -35,37 +38,36 @@ class SolutionsController extends Controller
         $this->validate(
             $request,
             [
-                'trouble' => 'required|max:500',
+                'trouble'    => 'required|max:500',
                 'solution.*' => 'required|max:500',
-                'merit.*' => 'required|max:500',
-                'demerit.*' => 'required|max:500',
+                'merit.*'    => 'required|max:500',
+                'demerit.*'  => 'required|max:500',
             ]
         );
         
-        $Solution = new Solution;
-        //dd($request);
-        if(isset($request->solution[0])) {
-            $solution = $Solution->solutionStore($request);
-            $data = ['solution' => $solution];
-            return view('solutions.show', $data);
-        } else {
-            return redirect('/solution/create');
-        }
-        
+        $solution = new Solution;
+        $solution->storeSolution($request);
+        return redirect('/solutions'); 
     }
 
     // 詳細ページ表示処理
     public function show($id)
     {
-        $solution = Solution::find($id);
-        
-        if(!isset($solution)) {
+        $trouble   = Trouble::find($id);
+        $solutions = Solution::where('trouble_id', $trouble->id)->get();
+        $merits    = Merit::where('trouble_id', $trouble->id)->get();
+        $demerits  = Demerit::where('trouble_id', $trouble->id)->get();
+       
+        if(!isset($trouble)) {
             return redirect('/solutions');
         }
 
-        if(Auth::id() === $solution->user_id) {
+        if(Auth::id() === $trouble->user_id) {
             $data = [
-                'solution' => $solution,
+                'trouble'   => $trouble,
+                'solutions' => $solutions,
+                'merits'    => $merits,
+                'demerits'  => $demerits,
             ];
             return view('solutions.show', $data);
         }
@@ -75,15 +77,21 @@ class SolutionsController extends Controller
     // 編集ページ表示処理
     public function edit($id)
     {
-        $solution = Solution::find($id);
+        $trouble   = Trouble::find($id);
+        $solutions = Solution::where('trouble_id', $trouble->id)->get();
+        $merits    = Merit::where('trouble_id', $trouble->id)->get();
+        $demerits  = Demerit::where('trouble_id', $trouble->id)->get();
         
-        if(!isset($solution)) {
+        if(!isset($trouble)) {
             return redirect('/solutions');
         }
 
-        if(Auth::id() === $solution->user_id) {
+        if(Auth::id() === $trouble->user_id) {
             $data = [
-                'solution' => $solution,
+                'trouble' => $trouble,
+                'solutions' => $solutions,
+                'merits'    => $merits,
+                'demerits'  => $demerits,
             ];
             return view('solutions.edit', $data);
         }

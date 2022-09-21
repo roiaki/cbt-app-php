@@ -24,9 +24,9 @@ class Event extends Model
     // ブラックリスト
     protected $guarded = ['id'];
 
-    /*
-     * 1対多（逆）所属
-     * 子（Event）を所有している親（user）を取得 
+    /**
+     * Evnet(従) -> User(主)
+     * 多対１
      */
     public function user()
     {
@@ -34,23 +34,42 @@ class Event extends Model
         // 第1引数：リレーション先の親モデル
         // 第2引数：外部キー「親を判別するための値が格納されている、子テーブルのカラム名」
         // 第3引数：親を判別する値が格納された「親がもつ」カラム
-        //return $this->belongsTo(User::class, 'user_id', 'user_id');
         return $this->belongsTo(User::class);
     }
 
-    // 親から子へ
+    /**
+     * Event(主) -> Threecolumn(従)
+     * 1対多
+     */
     public function three_column()
     {
         // 第1引数：リレーション先の親モデル
         // 第2引数：外部キー「親を判別するための値が格納されている、子テーブルのカラム名」
         // 第3引数：親を判別する値が格納された「親がもつ」カラム
-        //return $this->hasOne(ThreeColumn::class, 'event_id', 'event_id');
         return $this->hasMany(ThreeColumn::class, 'event_id', 'id');
     }
 
+    /**
+     * Event(主) -> Sevencolumn(従)
+     * 1対多
+     */
+    public function seven_columns()
+    {
+        return $this->hasMany(SevenColumn::class, 'event_id', 'id');
+    }
+
+    /**
+     * Event(主) -> NewEmotion(従)
+     * 1 to Many
+     */
+    public function new_emotions()
+    {
+        return $this->hasMany(NewEmotion::class, 'event_id', 'id');
+    }
+
+
     /** 
      * 出来事一覧表示処理
-     * 
      * ログイン済みならば表示させる。
      * 
      * @return array $data 

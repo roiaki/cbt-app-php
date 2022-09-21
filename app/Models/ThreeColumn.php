@@ -18,6 +18,7 @@ class ThreeColumn extends Model
      * @var string
      */
     //protected $primaryKey = 'threecol_id';
+    
     /**
      * モデルと関連しているテーブル
      *
@@ -28,45 +29,74 @@ class ThreeColumn extends Model
     // ブラックリスト
     protected $guarded = ['id'];
     
+    /**
+     * Threecolumn(従) -> User(主)
+     * 多対1
+     */
     public function user()
     {
         // belongsTo 子から親へ　従から主へ
-        // 第1引数：リレーション先の親モデル
+        // 第1引数：リレーション先のモデル
         // 第2引数：外部キー「親を判別するための値が格納されている、子テーブルのカラム名」
         // 第3引数：親を判別する値が格納された「親がもつ」カラム
-        //return $this->belongsTo(User::class, 'user_id', 'user_id');
+        //return $this->belongsTo(User::class, 'user_id', 'id');
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * Threecolumn(従) -> Event(主)
+     * 多対1
+     */
     public function event()
     {
         // belongsTo 子から親へ　従から主へ
-        // 第1引数：リレーション先の親モデル
+        // 第1引数：リレーション先のモデル
         // 第2引数：外部キー「親を判別するための値が格納されている、子テーブルのカラム名」
         // 第3引数：親を判別する値が格納された「親がもつ」カラム
-        //return $this->belongsTo(Event::class, 'event_id', 'event_id'); 
         return $this->belongsTo(Event::class, 'event_id', 'id'); 
     }
 
+    /**
+     * Threecolumn(主) -> Sevencolumn(従)
+     * 1対多
+     */
     public function sevencolumn()
     {
-        // 第1引数：リレーション先の親モデル
-        // 第2引数：外部キー「親を判別するための値が格納されている、子テーブルのカラム名」
-        // 第3引数：親を判別する値が格納された「親がもつ」カラム
+        // hasMany 主から従へ
+        // 第1引数：リレーション先の従モデル
+        // 第2引数：対象先（従）がもつ外部キー　foreign_key
+        // 第3引数：自モデルカラム　owner_key
         return $this->hasMany(SevenColumn::class, 'threecol_id', 'id'); 
     }
 
-    public function emotion()
+    /**
+     * Threecolumn(主) -> NewEmotion(従)
+     * 1 to Many
+     * 
+     */
+    public function new_emotions()
     {
-        // belongsToMany()
-        // 第一引数：得られるModelクラス
-        // 第二引数：中間テーブル
-        // 第三引数：中間テーブルに保存されている自分のidを示すカラム名
-        // 第四引数：中間テーブルに保存されている関係先のidを示すカラム名
-        //return $this->belongsToMany(Emotion::class, 'includes', 'threecol_id', 'emotion_id');
-        return $this->belongsToMany(Emotion::class);
+        return $this->hasMany(NewEmotion::class, 'threecolumn_id', 'id');
     }
 
+   
+    /**
+     * Threecolumn(主) -> Emotion(従)
+     * 1対多
+     */
+    public function emotions()
+    {
+        // hasMany 主から従へ
+        // 第1引数：リレーション先の従モデル
+        // 第2引数：対象先（従）がもつ外部キー　foreign_key
+        // 第3引数：自モデルカラム　owner_key
+        return $this->hasMany(Emotion::class);
+    }
+
+    /**
+     * Threecolumn(主) -> habit_threecolumn(中間) -> Habit(従)
+     * 多対多
+     */
     public function habit()
     {
         // belongsToMany()
@@ -74,7 +104,6 @@ class ThreeColumn extends Model
         // 第二引数：中間テーブル
         // 第三引数：中間テーブルに保存されている自分のidを示すカラム名
         // 第四引数：中間テーブルに保存されている関係先のidを示すカラム名
-        //return $this->belongsToMany(Habits::class, 'thinks', 'threecol_id', 'habit_id');
         return $this->belongsToMany(Habits::class, 'habit_threecolumn', 'threecol_id', 'habit_id')->withTimestamps();;
     }
 
@@ -156,46 +185,20 @@ class ThreeColumn extends Model
     {
         $three_column = new ThreeColumn;
 
-        // クロージャでトランザクション処理
         DB::transaction(function () use ($three_column, $request) {
-
-            $three_column->user_id = Auth::id();
+            
+            $three_column->user_id  = Auth::id();
             $three_column->event_id = $request->eventid;
-
-            $three_column->emotion_name = $request->emotion_name_def;
-            $three_column->emotion_strength = $request->emotion_strength_def;
-
-            //dd($three_column->emotion_strength[0]);
-            if(isset($request->emotion_name[0])) {
-                $three_column->emotion_name00 = $request->emotion_name[0];   
-            }
-           
-            if(isset($request->emotion_name[1])) {
-                $three_column->emotion_name01 = $request->emotion_name[1];
-            }
-
-            if(isset($request->emotion_name[2])) {
-                $three_column->emotion_name02 = $request->emotion_name[2];
-            }
-
-            if(isset($request->emotion_strength[0])) {
-                $three_column->emotion_strength00 = $request->emotion_strength[0];
-            }
-
-            if(isset($request->emotion_strength[1])) {
-                $three_column->emotion_strength01 = $request->emotion_strength[1];
-            }
-
-            if(isset($request->emotion_strength[2])) {
-                $three_column->emotion_strength02 = $request->emotion_strength[2];
-            }
-           
-
             $three_column->thinking = $request->thinking;
 
+            $emotion_name     = $request->emotion_name;
+            $emotion_strength = $request->emotion_strength;
+           
             // 中間テーブルの保存はthree_column保存の後でないとidがない
-            $three_column->save();
-
+             $three_column->save();
+            // dd($three_column);
+            
+            // 中間テーブル
             if (isset($request->habit[0])) {
                 if ($request->habit[0] == "on") {
                     $three_column->habit()->attach(1);
@@ -239,6 +242,36 @@ class ThreeColumn extends Model
             }
 
             $three_column->save();
+
+            if(isset($request->emotion_name[0])) {
+                $emotion = new Emotion;
+                $emotion->emotion_name     = $emotion_name[0]; 
+                $emotion->emotion_strength = $emotion_strength[0];
+                $emotion->event_id = $request->eventid;
+                $emotion->user_id  = Auth::id();
+                $emotion->threecolumn_id = $three_column->id;
+                $emotion->save();
+            }
+           
+            if(isset($request->emotion_name[1])) {
+                $emotion = new Emotion;
+                $emotion->emotion_name     = $emotion_name[1]; 
+                $emotion->emotion_strength = $emotion_strength[1];
+                $emotion->event_id = $request->eventid;
+                $emotion->user_id  = Auth::id();
+                $emotion->threecolumn_id = $three_column->id;
+                $emotion->save();
+            }
+
+            if(isset($request->emotion_name[2])) {
+                $emotion = new Emotion;
+                $emotion->emotion_name     = $emotion_name[2]; 
+                $emotion->emotion_strength = $emotion_strength[2];
+                $emotion->event_id = $request->eventid;
+                $emotion->user_id  = Auth::id();
+                $emotion->threecolumn_id = $three_column->id;
+                $emotion->save();
+            }
         });
         // end transaction
         return $three_column;
@@ -252,24 +285,31 @@ class ThreeColumn extends Model
      */
     public function showDetailThreecolumn($id)
     {
+    
         $three_column = ThreeColumn::find($id);
+        
+
         if(Auth::id() === $three_column->user_id) {
             $event_id = $three_column->event_id;
             $event = Event::find($event_id);
             $habit_id = [];
-    
+            $emotion      = Emotion::where('threecolumn_id', $id)->get();
+            // dd($emotion[0], $emotion[1]);
+           
+
             // 考え方の癖 id 取得
             foreach ($three_column->habit as $habit) {
                 $habit_id[] = $habit->id;
             }
     
             $user = Auth::user();
-    
+            
             $data = [
                 'user' => $user,
                 'event' => $event,
                 'habit_id' => $habit_id,
-                'three_column' => $three_column
+                'three_column' => $three_column,
+                'emotion' => $emotion
             ];
     
             // $data 配列そのまま渡すか、連想配列として渡すかでbladeでのアクセス方法が変わる

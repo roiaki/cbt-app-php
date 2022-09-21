@@ -23,11 +23,12 @@ class UpdateSevenColumnRequest extends FormRequest
      */
     public function rules()
     {
+        // @check 動的フォームのバリデーション
         return  [
-            'basis_thinking'       => 'required|max:500',
-            'opposite_fact'        => 'required|max:500',
-            'new_thinking'         => 'required|max:500',
-            'new_emotion_strength' => 'required'
+            'basis_thinking'         => 'required|max:500',
+            'opposite_fact'          => 'required|max:500',
+            'new_thinking'           => 'required|max:500',
+            'new_emotion_strength00' => 'required'
         ];
     }
 }

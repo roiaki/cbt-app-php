@@ -14,14 +14,22 @@ class Emotion extends Model
      * @var string
      */
     protected $primaryKey = 'emotion_id';
+    
+    // fillableに指定したカラムのみ、create()やfill()、update()で値が代入されます。
+    protected $fillable = [
+        'threecolumn_id',
+        'event_id',
+        'user_id',
+        'emotion_name',
+        'emotion_strength'
+    ];
 
-    public function three_columns()
+    /**
+     * Emotion(従) -> Threecolumn(主)
+     * many to one
+     */
+    public function threecolumns()
     {
-        // belongsToMany()
-        // 第一引数：得られるModelクラス
-        // 第二引数：中間テーブル
-        // 第三引数：中間テーブルに保存されている自分のidを示すカラム名
-        // 第四引数：中間テーブルに保存されている関係先のidを示すカラム名
-        //return $this->belongsToMany(ThreeColumn::class, 'includes', 'emotion_id', 'threecol_id');
+        return $this->belongsTo(ThreeColumn::class);
     }
 }

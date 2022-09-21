@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CreateSevenColumnRequest;
 use App\Http\Requests\UpdateSevenColumnRequest;
-
+use App\Models\Emotion;
 
 class SevenColumnsController extends Controller
 {
@@ -85,7 +85,7 @@ class SevenColumnsController extends Controller
     // 7コラム更新処理
     public function update(UpdateSevenColumnRequest $request, $id)
     {
-        $sevencolumn = new SevenColumn;
+        $sevencolumn = SevenColumn::find($id);
 
         if(!isset($sevencolumn)) {
             return redirect('seven_columns');

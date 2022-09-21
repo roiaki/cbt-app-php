@@ -58,7 +58,127 @@
             @endforeach
           @endif
         </div>
+        
+        <!-- <div class="form-group">
+          <h5>2.感情</h5>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th colspan="2">楽しみ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>エクスタシー</th><td>絶句するほどの喜び。非常に大きな幸福感で、圧倒されそうな状態。</td>
+              </tr>
+              <tr>
+                <th>興奮</th><td>力強い熱意。</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>楽しみ</h4>
+          <ul>
+            <li>エクスタシー</li>
+            <li>興奮</li>
+            <li>感嘆奇跡</li>
+            <li>ナチェス</li>
+            <li>フィエロ</li>
+            <li>誇り</li>
+            <li>平和</li>
+            <li>安心</li>
+            <li>シャーデンフロイデ</li>
+            <li>Amusement</li>
+            <li>compassion</li>
+            <li>rejoicing</li>
+            <li>sensory pleasure</li>
+          </ul>
+              
+              
+          
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>悲しみ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>苦悩</td>
+                <td>Sarrow</td>
+                <td>Greif</td>
+                <td>絶望</td>
+                <td>悲惨</td>
+                <td>絶望簡</td>
+                <td>無力感</td>
+                <td>あきらめ</td>
+                <td>取り乱し</td>
+                <td>落胆</td>
+                <td>失望</td>
 
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>怒り</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>激怒:制御できない暴力的な怒り</td>
+                <td>復讐心</td>
+                <td>恨み</td>
+                <td>論争性</td>
+                <td>激高</td>
+                <td>フラストレーション</td>
+                <td>いらだち</td>
+                
+              </tr>
+            </tbody>
+          </table>
+          <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>恐れ</th>
+                </tr>
+              </thead>
+              
+              <tr>
+                <td>恐怖</td>
+                <td>恐怖</td>
+                <td>パニック</td>
+                <td>絶望</td>
+                <td>恐れ</td>
+                <td>不安</td>
+                <td>緊張</td>
+                <td>怯え</td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>嫌気</th>
+                </tr>
+              </thead>
+              
+              <tr>
+                <td>憎しみ</td>
+                <td>忌み嫌う</td>
+                <td>反感</td>
+                <td>嫌気</td>
+                <td>嫌悪</td>
+                <td>嫌い</td>
+                <td>苦手</td>
+               
+              </tr>
+            </tbody>
+          </table> </div>-->
+       
+        
+        
         <!-- 感情名 -->
         <div class="row">
           <div class="form-group col">
@@ -66,18 +186,18 @@
           <p class="alert alert-success" role="alert">
             {{ __('threecolumn.2-1_sentence') }}
           </p>
-          <input type="text"
+          <!-- <input type="text"
                  class="form-control"
                  id="emotion_name"
                  name="emotion_name_def"
-                 value="{{ old('emotion_name_def') }}">
+                 value="{{ old('emotion_name_def') }}"> -->
 
           <!-- フロントバリデーションエラーメッセージ -->
-          <div class="err-msg-name01 mt-3"></div>
+          <!-- <div class="err-msg-name01 mt-3"></div> -->
 
           <!-- バリデーションエラー表示-->
-          @if($errors->has('emotion_name_def'))
-            @foreach($errors->get('emotion_name_def') as $message)
+          @if($errors->has('emotion_name[0]'))
+            @foreach($errors->get('emotion_name[0]') as $message)
             <ul>
               <li class="ml-2 my-1 text-danger">{{ $message }}</li>
             </ul>
@@ -92,23 +212,23 @@
           <p class="alert alert-success" role="alert">
             {{ __('threecolumn.2-2_sentence') }}
           </p>
-          <input type="number"
+          <!-- <input type="number"
                  class="form-control"
                  id="emotion_strength"
                  name="emotion_strength_def"
-                 value="{{ old('emotion_strength_def') }}">
+                 value="{{ old('emotion_strength_def') }}"> -->
 
           <!-- フロントバリデーションエラーメッセージ -->
-          <div class="err-msg-name02 mt-3"></div>
+          <!-- <div class="err-msg-name02 mt-3"></div> -->
 
           <!-- バリデーションエラー表示-->
-          @if($errors->has('emotion_strength_def'))
+          <!-- @if($errors->has('emotion_strength_def'))
             @foreach($errors->get('emotion_strength_def') as $message)
             <ul>
               <li class="ml-2 my-1 text-danger">{{ $message }}</li>
             </ul>
             @endforeach
-          @endif
+          @endif -->
         </div>
       </div>
 
@@ -117,6 +237,7 @@
         <add></add>  
       </div>
 
+      <!-- 自動思考 -->
       <div class="form-group mt-4">
         <label for="thinking"><h5>{{ __('threecolumn.3-1_title') }}</h5></label>
         <p class="alert alert-success" role="alert">

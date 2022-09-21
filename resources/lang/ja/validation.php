@@ -151,7 +151,7 @@ return [
         'password' => 'パスワード',
         'title' => 'タイトル',
         'content' => '内容',
-        'emotion_name' => '感情名',
+        'emotion_name.*' => '感情名',
         
         'emotion_strength' => '感情の強さ',
         'thinking' => '考えたこと',
