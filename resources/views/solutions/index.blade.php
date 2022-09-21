@@ -53,7 +53,7 @@
     @endif
     {!! link_to_route('solution.create', __('event.create_new'), [], ['class' => 'btn btn-primary btn-lg']) !!}
     <div class="d-flex justify-content-center mb-5">
-        {{ $solutions->appends(request()->input())->links('pagination::bootstrap-4') }}
+        {{ $troubles->appends(request()->input())->links('pagination::bootstrap-4') }}
     </div>
   </div>
 </div>

@@ -34,7 +34,6 @@ class Solution extends Model
     }
 
     
-
     /**
      * 一覧表示処理
      * 
@@ -46,9 +45,8 @@ class Solution extends Model
         if (Auth::check()) {
             $user = Auth::user();
             $troubles  = $user->troubles()->orderBy('updated_at', 'desc')->paginate(5);
-             $solutions = $user->solutions()->orderBy('updated_at', 'desc')->paginate(5);
+            $solutions = $user->solutions()->orderBy('updated_at', 'desc')->paginate(5);
             
-            // @check
             $data = [
                 'troubles'  => $troubles,
                 'solutions' => $solutions,
@@ -144,37 +142,37 @@ class Solution extends Model
 
         if(isset($request->demerit[0])) {
             $demerit = new Demerit;
-            $demerit->user_id = Auth::id();
+            $demerit->user_id    = Auth::id();
             $demerit->trouble_id = $trouble->id;
-            $demerit->demerit = $request->demerit[0];
+            $demerit->demerit    = $request->demerit[0];
             $demerit->save();
         }
         if(isset($request->demerit[1])) {
             $demerit = new Demerit;
-            $demerit->user_id = Auth::id();
+            $demerit->user_id    = Auth::id();
             $demerit->trouble_id = $trouble->id;
-            $demerit->demerit = $request->demerit[1];
+            $demerit->demerit    = $request->demerit[1];
             $demerit->save();
         }
         if(isset($request->demerit[2])) {
             $demerit = new Demerit;
-            $demerit->user_id = Auth::id();
+            $demerit->user_id    = Auth::id();
             $demerit->trouble_id = $trouble->id;
-            $demerit->demerit = $request->demerit[2];
+            $demerit->demerit    = $request->demerit[2];
             $demerit->save();
         }
         if(isset($request->demerit[3])) {
             $demerit = new Demerit;
-            $demerit->user_id = Auth::id();
+            $demerit->user_id    = Auth::id();
             $demerit->trouble_id = $trouble->id;
-            $demerit->demerit = $request->demerit[3];
+            $demerit->demerit    = $request->demerit[3];
             $demerit->save();
         }
         if(isset($request->demerit[4])) {
             $demerit = new Demerit;
-            $demerit->user_id = Auth::id();
+            $demerit->user_id    = Auth::id();
             $demerit->trouble_id = $trouble->id;
-            $demerit->demerit = $request->demerit[4];
+            $demerit->demerit    = $request->demerit[4];
             $demerit->save();
         }
     }
@@ -273,9 +271,9 @@ class Solution extends Model
      */
     public function deleteSolution($id)
     {
-        $solution = Solution::find($id);
-        if(Auth::id() === $solution->user_id) {
-            $solution->delete();
+        $trouble = Trouble::find($id);
+        if(Auth::id() === $trouble->user_id) {
+            $trouble->delete();
         }
     }
 }
