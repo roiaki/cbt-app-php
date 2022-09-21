@@ -285,17 +285,13 @@ class ThreeColumn extends Model
      */
     public function showDetailThreecolumn($id)
     {
-    
         $three_column = ThreeColumn::find($id);
-        
-
+    
         if(Auth::id() === $three_column->user_id) {
             $event_id = $three_column->event_id;
-            $event = Event::find($event_id);
+            $event    = Event::find($event_id);
             $habit_id = [];
-            $emotion      = Emotion::where('threecolumn_id', $id)->get();
-            // dd($emotion[0], $emotion[1]);
-           
+            $emotion  = Emotion::where('threecolumn_id', $id)->get();       
 
             // 考え方の癖 id 取得
             foreach ($three_column->habit as $habit) {
@@ -316,6 +312,37 @@ class ThreeColumn extends Model
             // return view('three_columns, ['data' => $data]);
             return $data;
         }
+    }
+
+    /**
+     * 3コラム編集画面表示処理
+     * 
+     * @param int $id
+     * @return array $data
+     */
+    public function getThreecolumn($id)
+    {
+        $three_column = ThreeColumn::find($id);
+
+        if(Auth::id() === $three_column->user_id) {
+            $event_id = $three_column->event_id;
+            $event    = Event::find($event_id);
+            $emotions = Emotion::where('threecolumn_id', $three_column->id)->get(); 
+            $habit_id = [];
+            
+            // 考え方の癖 id 取得
+            foreach ($three_column->habit as $habit) {
+                $habit_id[] = $habit->id;
+            }
+    
+            $data = [
+                'three_column' => $three_column,
+                'habit_id'     => $habit_id,
+                'event'        => $event,
+                'emotions'     => $emotions,
+            ];
+            return $data;
+        } 
     }
 
     /**
@@ -423,35 +450,6 @@ class ThreeColumn extends Model
             });
             // end transaction
         }
-    }
-
-    /**
-     * 3コラム編集画面表示処理
-     * 
-     * @param int $id
-     * @return array $data
-     */
-    public function getThreecolumn($id)
-    {
-        $three_column = ThreeColumn::find($id);
-        if(Auth::id() === $three_column->user_id) {
-            $event_id = $three_column->event_id;
-            $event = Event::find($event_id);
-    
-            $habit_id = [];
-            
-            // 考え方の癖 id 取得
-            foreach ($three_column->habit as $habit) {
-                $habit_id[] = $habit->id;
-            }
-    
-            $data = [
-                'three_column' => $three_column,
-                'habit_id' => $habit_id,
-                'event' => $event
-            ];
-            return $data;
-        } 
     }
 
     /**

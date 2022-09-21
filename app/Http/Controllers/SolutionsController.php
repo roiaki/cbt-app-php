@@ -106,13 +106,14 @@ class SolutionsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $solution = Solution::find($id);
+        $trouble = Trouble::find($id);
 
-        if(!isset($solution)) {
+        if(!isset($trouble)) {
             return redirect('/solutions');
         }
         
-        if(Auth::id() === $solution->user_id) {
+        if(Auth::id() === $trouble->user_id) {
+            $solution = new Solution;
             $solution->updateSolution($request, $id);
             return redirect('/solutions');
         }

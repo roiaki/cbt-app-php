@@ -25,8 +25,10 @@ class CreateThreeColumnRequest extends FormRequest
     {
       
         return [
-            'emotion_name.*'     => 'required',
-            'emotion_strength.*' => 'required',
+            'emotion_name'       => 'required',
+            'emotion_name.*'     => 'required|max:10',
+            'emotion_strength'   => 'required',
+            'emotion_strength.*' => 'required|int',
             'thinking'           => 'required|max:500',
         ];
     }

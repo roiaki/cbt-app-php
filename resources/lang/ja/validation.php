@@ -146,25 +146,27 @@ return [
     */
 
     'attributes' => [
-        'name' => '名前',
-        'email' => 'メールアドレス',
-        'password' => 'パスワード',
-        'title' => 'タイトル',
-        'content' => '内容',
-        'emotion_name.*' => '感情名',
+        'name'                 => '名前',
+        'email'                => 'メールアドレス',
+        'password'             => 'パスワード',
+        'title'                => 'タイトル',
+        'content'              => '内容',
+        'emotion_name'         => '感情名',
+        'emotion_name.*'       => '感情名',
         
-        'emotion_strength' => '感情の強さ',
-        'thinking' => '考えたこと',
-        'habit' => '考えたの癖',
-        'basis_thinking' => '考えの根拠',
-        'opposite_fact' => '逆の事実',
-        'new_thinking' => '新しい考え',
-        'new_emotion' => '新しい感情',
+        'emotion_strength'     => '感情の強さ',
+        'emotion_strength.*'   => '感情の強さ',
+        'thinking'             => '考えたこと',
+        'habit'                => '考えたの癖',
+        'basis_thinking'       => '考えの根拠',
+        'opposite_fact'        => '逆の事実',
+        'new_thinking'         => '新しい考え',
+        'new_emotion'          => '新しい感情',
         'new_emotion_strength' => '新しい感情の強さ',
         
-        'solution' => '解決策',
-        'merit' => 'メリット',
-        'demerit' => 'デメリット',
+        'solution'             => '解決策',
+        'merit'                => 'メリット',
+        'demerit'              => 'デメリット',
     ],
 
 ];

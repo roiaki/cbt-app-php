@@ -34,7 +34,8 @@ window.validationLoginEmail = function (locale) {
   var errCount = 0;
   errCount += checkRequired(locale, "#email", ".err-msg-name01");
 
-  if (errCount === 1) {} else {
+  if (errCount === 1) {//
+  } else {
     errCount += checkEmailFormat(locale, "#email", ".err-msg-name01");
   }
 
@@ -50,7 +51,8 @@ window.validationLoginPass = function () {
   var errCount = 0;
   errCount += checkRequired(locale, "#password", ".err-msg-name02");
 
-  if (errCount === 1) {} else {
+  if (errCount === 1) {//
+  } else {
     errCount += checkMinNumInputChar(locale, "#password", ".err-msg-name02", 8);
   }
 
@@ -86,7 +88,8 @@ window.validationName = function () {
 
   errNameCount += checkRequired(locale, "#name", ".err-msg-name01");
 
-  if (errNameCount === 1) {} else {
+  if (errNameCount === 1) {//
+  } else {
     errNameCount += checkMaxNumInputChar(locale, "#name", ".err-msg-name01", 20);
     errNameCount += checkMinNumInputChar(locale, "#name", ".err-msg-name01", 2);
   }
@@ -149,7 +152,8 @@ function confirmPass(locale, elementId, confirmelementId, errMessageClass) {
   var errMsg = document.querySelector(errMessageClass);
   var errCount = 0;
 
-  if (pass.value === confirmPass.value) {} else {
+  if (pass.value === confirmPass.value) {//
+  } else {
     errCount = 1;
 
     if (locale === "ja") {
@@ -258,221 +262,192 @@ window.eventValidation = function (locale) {
  * 
  * @param locale 言語切り替え
  */
+// window.threecolumnValidation = function (locale) {
+//   // フォームの要素を取得
+//   const emotion_name     = document.querySelector('#emotion_name');
+//   const emotion_strength = document.querySelector('#emotion_strength');
+//   const thinking         = document.querySelector('#thinking');
+//   const errMsgName01 = document.querySelector('.err-msg-name01');
+//   const errMsgName02 = document.querySelector('.err-msg-name02');
+//   const errMsgName03 = document.querySelector('.err-msg-name03');
+//   let errCount                = 0;
+//   let errEmotionNameCount     = 0;
+//   let errEmotionStrengthCount = 0;
+//   let errThinkingCount        = 0;
+//   let errSum                  = 0;
+//   errEmotionNameCount     += checkRequired(locale, "#emotion_name", ".err-msg-name01");
+//   errEmotionNameCount     += checkMaxNumInputChar(locale, "#emotion_name", ".err-msg-name01", 15);
+//   errEmotionStrengthCount += checkRequired(locale, "#emotion_strength", ".err-msg-name02");
+//   errEmotionStrengthCount += isNumber(locale, "#emotion_strength", ".err-msg-name02");
+//   errThinkingCount        += checkRequired(locale, "#thinking", ".err-msg-name03");
+//   errThinkingCount        += checkMaxNumInputChar(locale, "#thinking", ".err-msg-name03", 500);
+//   // エラーがあった個所へスクロール
+//   if(errEmotionNameCount > 0) {
+//     window.scrollTo({
+//       top: emotion_name.offsetTop,
+//       behavior: 'smooth'
+//     });
+//   }
+//   if(errEmotionStrengthCount > 0) {
+//     window.scrollTo({
+//       top: emotion_strength.offsetTop,
+//       behavior: 'smooth'
+//     });
+//   }
+//   errSum = errEmotionNameCount + errEmotionStrengthCount;
+//   if(errSum === 0 && errThinkingCount > 0) {
+//     window.scrollTo({
+//       top: thinking.offsetTop - 200,
+//       behavior: 'smooth'
+//     });
+//   }
+//   // エラーがないなら赤枠リセット
+//   if(errEmotionNameCount === 0) {
+//     errMsgName01.textContent ='';
+//     emotion_name.classList.remove('border-danger');
+//     errMsgName01.classList.remove('alert');
+//     errMsgName01.classList.remove('alert-danger');
+//   }
+//   // エラーがないなら赤枠リセット
+//   if(errEmotionStrengthCount === 0) {
+//     errMsgName02.textContent ='';
+//     emotion_strength.classList.remove('border-danger');
+//     errMsgName02.classList.remove('alert');
+//     errMsgName02.classList.remove('alert-danger');
+//   }
+//   // エラーがないなら赤枠リセット
+//   if(errThinkingCount === 0) {
+//     errMsgName03.textContent ='';
+//     thinking.classList.remove('border-danger');
+//     errMsgName03.classList.remove('alert');
+//     errMsgName03.classList.remove('alert-danger');
+//   }
+//   errCount = errEmotionNameCount + errEmotionStrengthCount + errThinkingCount;
+//   if (errCount > 0) {
+//     return false;
+//   }
+// }
+// /**
+//  * 7コラムバリデーション
+//  * @param locale 言語切り替え
+//  */
+//  window.sevencolumnValidation = function (locale) {
+//   // フォームの要素を取得
+//   const basis_thinking = document.querySelector('#basis_thinking');
+//   const opposite_fact  = document.querySelector('#opposite_fact');
+//   const new_thinking   = document.querySelector('#new_thinking');
+//   const new_emotion_strength01   = document.querySelector('#new_emotion_strength');
+//   const new_emotion_strength02   = document.querySelector('#new_emotion_strength00');
+//   const new_emotion_strength03   = document.querySelector('#new_emotion_strength01');
+//   const new_emotion_strength04   = document.querySelector('#new_emotion_strength02');
+//   const errMsgName01 = document.querySelector('.err-msg-name01');
+//   const errMsgName02 = document.querySelector('.err-msg-name02');
+//   const errMsgName03 = document.querySelector('.err-msg-name03');
+//   const errMsgName04 = document.querySelector('.err-msg-name04');
+//   let errCount              = 0;
+//   let errBasisThinkingCount = 0;
+//   let errOppsiteFactCount   = 0;
+//   let errThinkingCount      = 0;
+//   let errNewEmotionCount01  = 0;
+//   let errNewEmotionCount02  = 0;
+//   let errNewEmotionCount03  = 0;
+//   let errNewEmotionCount04  = 0;
+//   let errNewEmotionSumCount = 0;
+//   errBasisThinkingCount += checkRequired(locale, "#basis_thinking", ".err-msg-name01");
+//   errBasisThinkingCount += checkMaxNumInputChar(locale, "#basis_thinking", ".err-msg-name01", 500);
+//   errOppsiteFactCount   += checkRequired(locale, "#opposite_fact", ".err-msg-name02");
+//   errOppsiteFactCount   += checkMaxNumInputChar(locale, "#opposite_fact", ".err-msg-name02", 500);
+//   errThinkingCount      += checkRequired(locale, "#new_thinking", ".err-msg-name03");
+//   errThinkingCount      += checkMaxNumInputChar(locale, "#new_thinking", ".err-msg-name03", 500);
+//   if(new_emotion_strength01) {
+//     errNewEmotionCount01 += checkRequired(locale, "#new_emotion_strength", ".err-msg-name04");
+//     console.log(errNewEmotionCount01);
+//   }
+//   if(new_emotion_strength02) {
+//     errNewEmotionCount02 += checkRequired(locale, "#new_emotion_strength00", ".err-msg-name04");
+//     console.log(errNewEmotionCount02);
+//   }
+//   if(new_emotion_strength03) {
+//     errNewEmotionCount03 += checkRequired(locale, "#new_emotion_strength01", ".err-msg-name04");
+//     console.log(errNewEmotionCount03);
+//   }
+//   if(new_emotion_strength04) {
+//     errNewEmotionCount04 += checkRequired(locale, "#new_emotion_strength02", ".err-msg-name04");
+//     console.log(errNewEmotionCount04);
+//   }
+//   if(errBasisThinkingCount > 0) {
+//     window.scrollTo({
+//       top: basis_thinking.offsetTop - 100,
+//       behavior: 'smooth'
+//     });
+//   }
+//   if(errOppsiteFactCount > 0 && errBasisThinkingCount === 0) {
+//     window.scrollTo({
+//       top: opposite_fact.offsetTop - 100,
+//       behavior: 'smooth'
+//     });
+//   }
+//   if(errThinkingCount > 0 && errOppsiteFactCount === 0 && errBasisThinkingCount === 0) {
+//     window.scrollTo({
+//       top: new_thinking.offsetTop - 100,
+//       behavior: 'smooth'
+//     });
+//   }
+//   // エラーがないなら赤枠リセット
+//   if(errBasisThinkingCount === 0) {
+//     errMsgName01.textContent ='';
+//     basis_thinking.classList.remove('border-danger');
+//     errMsgName01.classList.remove('alert');
+//     errMsgName01.classList.remove('alert-danger');
+//   }
+//   // エラーがないなら赤枠リセット
+//   if(errOppsiteFactCount === 0) {
+//     errMsgName02.textContent ='';
+//     opposite_fact.classList.remove('border-danger');
+//     errMsgName02.classList.remove('alert');
+//     errMsgName02.classList.remove('alert-danger');
+//   }
+//   // エラーがないなら赤枠リセット
+//   if(errThinkingCount === 0) {
+//     errMsgName03.textContent ='';
+//     new_thinking.classList.remove('border-danger');
+//     errMsgName03.classList.remove('alert');
+//     errMsgName03.classList.remove('alert-danger');
+//   }
+//   // エラーがないなら赤枠リセット
+//   if(new_emotion_strength01) {
+//     if(errNewEmotionCount01 === 0) {
+//       new_emotion_strength01.classList.remove('border-danger');
+//     }
+//   }
+//   if(new_emotion_strength02) {
+//     if(errNewEmotionCount02 === 0) {
+//       new_emotion_strength02.classList.remove('border-danger');
+//     }
+//   }
+//   if(new_emotion_strength03) {
+//     if(errNewEmotionCount03 === 0) {
+//       new_emotion_strength03.classList.remove('border-danger');
+//     }
+//   }
+//   if(new_emotion_strength04) {
+//     if(errNewEmotionCount04 === 0) {
+//       new_emotion_strength04.classList.remove('border-danger');
+//     }
+//   }
+//   errNewEmotionSumCount = errNewEmotionCount01 + errNewEmotionCount02 + errNewEmotionCount03 + errNewEmotionCount04;
+//   if(errNewEmotionSumCount === 0) {
+//     errMsgName04.textContent ='';
+//     errMsgName04.classList.remove('alert');
+//     errMsgName04.classList.remove('alert-danger');
+//   }
+//   errCount = errBasisThinkingCount + errOppsiteFactCount + errThinkingCount 
+//             + errNewEmotionCount01 + errNewEmotionCount02 + errNewEmotionCount03 + errNewEmotionCount04;
+//   if(errCount > 0) {
+//     return false;
+//   }
+// }
 
-
-window.threecolumnValidation = function (locale) {
-  console.log(locale); // フォームの要素を取得
-
-  var emotion_name = document.querySelector('#emotion_name');
-  var emotion_strength = document.querySelector('#emotion_strength');
-  var thinking = document.querySelector('#thinking');
-  var errMsgName01 = document.querySelector('.err-msg-name01');
-  var errMsgName02 = document.querySelector('.err-msg-name02');
-  var errMsgName03 = document.querySelector('.err-msg-name03');
-  var errCount = 0;
-  var errEmotionNameCount = 0;
-  var errEmotionStrengthCount = 0;
-  var errThinkingCount = 0;
-  var errSum = 0;
-  errEmotionNameCount += checkRequired(locale, "#emotion_name", ".err-msg-name01");
-  errEmotionNameCount += checkMaxNumInputChar(locale, "#emotion_name", ".err-msg-name01", 15);
-  errEmotionStrengthCount += checkRequired(locale, "#emotion_strength", ".err-msg-name02");
-  errEmotionStrengthCount += isNumber(locale, "#emotion_strength", ".err-msg-name02");
-  errThinkingCount += checkRequired(locale, "#thinking", ".err-msg-name03");
-  errThinkingCount += checkMaxNumInputChar(locale, "#thinking", ".err-msg-name03", 500); // エラーがあった個所へスクロール
-
-  if (errEmotionNameCount > 0) {
-    window.scrollTo({
-      top: emotion_name.offsetTop,
-      behavior: 'smooth'
-    });
-  }
-
-  if (errEmotionStrengthCount > 0) {
-    window.scrollTo({
-      top: emotion_strength.offsetTop,
-      behavior: 'smooth'
-    });
-  }
-
-  errSum = errEmotionNameCount + errEmotionStrengthCount;
-
-  if (errSum === 0 && errThinkingCount > 0) {
-    window.scrollTo({
-      top: thinking.offsetTop - 200,
-      behavior: 'smooth'
-    });
-  } // エラーがないなら赤枠リセット
-
-
-  if (errEmotionNameCount === 0) {
-    errMsgName01.textContent = '';
-    emotion_name.classList.remove('border-danger');
-    errMsgName01.classList.remove('alert');
-    errMsgName01.classList.remove('alert-danger');
-  } // エラーがないなら赤枠リセット
-
-
-  if (errEmotionStrengthCount === 0) {
-    errMsgName02.textContent = '';
-    emotion_strength.classList.remove('border-danger');
-    errMsgName02.classList.remove('alert');
-    errMsgName02.classList.remove('alert-danger');
-  } // エラーがないなら赤枠リセット
-
-
-  if (errThinkingCount === 0) {
-    errMsgName03.textContent = '';
-    thinking.classList.remove('border-danger');
-    errMsgName03.classList.remove('alert');
-    errMsgName03.classList.remove('alert-danger');
-  }
-
-  errCount = errEmotionNameCount + errEmotionStrengthCount + errThinkingCount;
-
-  if (errCount > 0) {
-    return false;
-  }
-};
-/**
- * 7コラムバリデーション
- * @param locale 言語切り替え
- */
-
-
-window.sevencolumnValidation = function (locale) {
-  // フォームの要素を取得
-  var basis_thinking = document.querySelector('#basis_thinking');
-  var opposite_fact = document.querySelector('#opposite_fact');
-  var new_thinking = document.querySelector('#new_thinking');
-  var new_emotion_strength01 = document.querySelector('#new_emotion_strength');
-  var new_emotion_strength02 = document.querySelector('#new_emotion_strength00');
-  var new_emotion_strength03 = document.querySelector('#new_emotion_strength01');
-  var new_emotion_strength04 = document.querySelector('#new_emotion_strength02');
-  var errMsgName01 = document.querySelector('.err-msg-name01');
-  var errMsgName02 = document.querySelector('.err-msg-name02');
-  var errMsgName03 = document.querySelector('.err-msg-name03');
-  var errMsgName04 = document.querySelector('.err-msg-name04');
-  var errCount = 0;
-  var errBasisThinkingCount = 0;
-  var errOppsiteFactCount = 0;
-  var errThinkingCount = 0;
-  var errNewEmotionCount01 = 0;
-  var errNewEmotionCount02 = 0;
-  var errNewEmotionCount03 = 0;
-  var errNewEmotionCount04 = 0;
-  var errNewEmotionSumCount = 0;
-  errBasisThinkingCount += checkRequired(locale, "#basis_thinking", ".err-msg-name01");
-  errBasisThinkingCount += checkMaxNumInputChar(locale, "#basis_thinking", ".err-msg-name01", 500);
-  errOppsiteFactCount += checkRequired(locale, "#opposite_fact", ".err-msg-name02");
-  errOppsiteFactCount += checkMaxNumInputChar(locale, "#opposite_fact", ".err-msg-name02", 500);
-  errThinkingCount += checkRequired(locale, "#new_thinking", ".err-msg-name03");
-  errThinkingCount += checkMaxNumInputChar(locale, "#new_thinking", ".err-msg-name03", 500);
-
-  if (new_emotion_strength01) {
-    errNewEmotionCount01 += checkRequired(locale, "#new_emotion_strength", ".err-msg-name04");
-    console.log(errNewEmotionCount01);
-  }
-
-  if (new_emotion_strength02) {
-    errNewEmotionCount02 += checkRequired(locale, "#new_emotion_strength00", ".err-msg-name04");
-    console.log(errNewEmotionCount02);
-  }
-
-  if (new_emotion_strength03) {
-    errNewEmotionCount03 += checkRequired(locale, "#new_emotion_strength01", ".err-msg-name04");
-    console.log(errNewEmotionCount03);
-  }
-
-  if (new_emotion_strength04) {
-    errNewEmotionCount04 += checkRequired(locale, "#new_emotion_strength02", ".err-msg-name04");
-    console.log(errNewEmotionCount04);
-  }
-
-  if (errBasisThinkingCount > 0) {
-    window.scrollTo({
-      top: basis_thinking.offsetTop - 100,
-      behavior: 'smooth'
-    });
-  }
-
-  if (errOppsiteFactCount > 0 && errBasisThinkingCount === 0) {
-    window.scrollTo({
-      top: opposite_fact.offsetTop - 100,
-      behavior: 'smooth'
-    });
-  }
-
-  if (errThinkingCount > 0 && errOppsiteFactCount === 0 && errBasisThinkingCount === 0) {
-    window.scrollTo({
-      top: new_thinking.offsetTop - 100,
-      behavior: 'smooth'
-    });
-  } // エラーがないなら赤枠リセット
-
-
-  if (errBasisThinkingCount === 0) {
-    errMsgName01.textContent = '';
-    basis_thinking.classList.remove('border-danger');
-    errMsgName01.classList.remove('alert');
-    errMsgName01.classList.remove('alert-danger');
-  } // エラーがないなら赤枠リセット
-
-
-  if (errOppsiteFactCount === 0) {
-    errMsgName02.textContent = '';
-    opposite_fact.classList.remove('border-danger');
-    errMsgName02.classList.remove('alert');
-    errMsgName02.classList.remove('alert-danger');
-  } // エラーがないなら赤枠リセット
-
-
-  if (errThinkingCount === 0) {
-    errMsgName03.textContent = '';
-    new_thinking.classList.remove('border-danger');
-    errMsgName03.classList.remove('alert');
-    errMsgName03.classList.remove('alert-danger');
-  } // エラーがないなら赤枠リセット
-
-
-  if (new_emotion_strength01) {
-    if (errNewEmotionCount01 === 0) {
-      new_emotion_strength01.classList.remove('border-danger');
-    }
-  }
-
-  if (new_emotion_strength02) {
-    if (errNewEmotionCount02 === 0) {
-      new_emotion_strength02.classList.remove('border-danger');
-    }
-  }
-
-  if (new_emotion_strength03) {
-    if (errNewEmotionCount03 === 0) {
-      new_emotion_strength03.classList.remove('border-danger');
-    }
-  }
-
-  if (new_emotion_strength04) {
-    if (errNewEmotionCount04 === 0) {
-      new_emotion_strength04.classList.remove('border-danger');
-    }
-  }
-
-  errNewEmotionSumCount = errNewEmotionCount01 + errNewEmotionCount02 + errNewEmotionCount03 + errNewEmotionCount04;
-
-  if (errNewEmotionSumCount === 0) {
-    errMsgName04.textContent = '';
-    errMsgName04.classList.remove('alert');
-    errMsgName04.classList.remove('alert-danger');
-  }
-
-  errCount = errBasisThinkingCount + errOppsiteFactCount + errThinkingCount + errNewEmotionCount01 + errNewEmotionCount02 + errNewEmotionCount03 + errNewEmotionCount04;
-
-  if (errCount > 0) {
-    return false;
-  }
-};
 /**
  * 入力必須チェック
  * 

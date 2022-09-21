@@ -15153,7 +15153,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ref_for: true,
       ref: "texts",
       name: "emotion_name[]",
-      id: "emotion_name[]",
+      id: "emotion_name",
       "class": "form-control",
       type: "text"
     }, null, 512

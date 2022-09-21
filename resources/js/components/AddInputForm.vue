@@ -8,7 +8,7 @@
         <input 
           ref="texts"
           name="emotion_name[]"
-          id="emotion_name[]"
+          id="emotion_name"
           class="form-control"
           type="text">
       </div>
