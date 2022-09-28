@@ -7,22 +7,41 @@
       <div class="form-group col">
         <input 
           ref="texts"
-          name="emotion_name[]"
-          id="emotion_name"
+          name="'emotion_name' + index"
+          id="'emotion_name' + index"
           class="form-control"
-          type="text">
+          v-model="texts[index]"
+          @change="checkForm(index)"
+          type="text"
+        >
+        <!-- <p class="text-danger" v-if="errors[index].length">
+          <b>Please correct the following error(s):</b>
+          <ul>
+            <li v-for="error in errors[index]">{{ error }}</li>
+          </ul>
+        </p> -->
+
+        <!-- <p v-if="errors1.length">エラーあり</p>
+        <p>texts[index]:{{ texts[index] }}</p>
+        <p>index:{{ index }}</p>
+        <p>text:{{ text }}</p>
+        <p>texts{{ texts }}</p> -->
+        
       </div>
+      
       <div class="form-group col">
         <input 
           ref="strength"
           name="emotion_strength[]"
-          id="emotion_strength[]"
+          id="emotion_strength"
           class="form-control"
-          type="number">
+          onchange="checkEmotionStrength(locale)"
+          type="number"
+        >
       </div>
     </div>   
   </div>
-
+  
   <!-- 入力ボックスを追加するボタン -->
   <div class="btn-toolbar">
     <div class="btn-group">
@@ -32,10 +51,11 @@
     </div>
 
     <div class="btn-group ml-auto">
-      <button type="button" 
-              class="btn btn-outline-danger mr-auto" 
-              v-if="remainingTextCount < 3"
-              @click="removeInput(index)">×</button>
+      <button 
+        type="button" 
+        class="btn btn-outline-danger mr-auto" 
+        v-if="remainingTextCount < 3"
+        @click="removeInput(index)">×</button>
     </div>
   </div>
   
@@ -48,7 +68,9 @@ export default {
     return {
       texts: [],    
       strength: [],
-      maxTextCount: 3
+      maxTextCount: 3,
+      name: "",
+      errors: [],
     }
   },
   methods: {
@@ -61,15 +83,29 @@ export default {
 
       this.texts.push(''); // 配列に１つ空データを追加する
 
-      Vue.nextTick(() => {
-          const maxIndex = this.texts.length - 1;
-          this.$refs['texts'][maxIndex].focus(); // 追加された入力ボックスにフォーカスする
-      });
     },
     removeInput(index) {
       this.texts.splice(index, 1);
       this.strength.splice(index, 1);
     },
+
+    checkForm(index) {
+      if(this.texts[0]) {
+        console.log("aru");
+      }
+      this.errors = [];
+
+      if(!this.texts[0]) {
+        this.errors[index].push("感情1を入力してください");
+      }
+
+      
+    },
+
+    isInValidName() {
+            //文字列が4文字以上かチェックする
+      return this.texts[0].length < 4;
+    }
   },
   computed: {
     isTextMax() {

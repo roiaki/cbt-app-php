@@ -22,12 +22,14 @@
         <div class="form-group">
 
           <label for="title"><h5>{{ __('threecolumn.1-1_title') }}</h5></label>
-          <input type="text"
-                 class="form-control"
-                 id="title"
-                 name="title"
-                 value="{{ $event->title }}"
-                 readonly>
+          <input 
+            type="text"
+            class="form-control"
+            id="title"
+            name="title"
+            value="{{ $event->title }}"
+            readonly
+          >
 
           <!-- バリデーションエラー表示-->
           @if($errors->has('title'))
@@ -224,7 +226,7 @@
           </div>
       </div>
 
-      <!-- 動的に増えるフォーム-->
+      <!-- 動的に増える感情名と強さの入力フォーム-->
       <div id="app">
         <add></add>  
       </div>
