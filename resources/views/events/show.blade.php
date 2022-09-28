@@ -40,27 +40,43 @@
     <div class="buttons-first">
       <form action="{{ route('three_columns.create', ['id' => $event->id]) }}" method="get">
         @csrf
-        <button type="submit" class="btn btn-success btn-lg">{{ __('event.create_threecolumn_button') }}</button>
+        <button 
+          type="submit" 
+          class="btn btn-success btn-lg">{{ __('event.create_threecolumn_button') }}
+        </button>
       </form>
     </div>
 
     <div class="buttons">
       <form action="{{ route('events.edit', ['event' => $event->id] ) }}" method="get">
         @csrf
-        <button type="submit" class="btn btn-secondary btn-lg">{{ __('event.edit') }}</button>
+        <button 
+          type="submit" 
+          class="btn btn-secondary btn-lg">{{ __('event.edit') }}
+        </button>
       </form>
     </div>
 
     <div class="buttons">
-      <form action="{{ route('events.destroy', ['event' => $event->id] ) }}" , method="post">
+      <form 
+        action="{{ route('events.destroy', ['event' => $event->id] ) }}" , 
+        method="post"
+      >
         @csrf
         @method('DELETE')
-        <button type="submit" class="btn btn-danger btn-lg" onclick="return confirmDelete();">{{ __('event.delete') }}</button>
+        <button 
+          type="submit" 
+          class="btn btn-danger btn-lg" 
+          onclick="return confirmDelete();">{{ __('event.delete') }}
+        </button>
       </form>
     </div>
 
     <div class="buttons">
-      <button class="btn btn-primary btn-lg" onclick="history.back(-1)">{{ __('event.back') }}</button>
+      <button 
+        class="btn btn-primary btn-lg" 
+        onclick="history.back(-1)">{{ __('event.back') }}
+      </button>
     </div>
     
   </div>

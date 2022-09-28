@@ -1,6 +1,3 @@
-@extends('layouts.app')
-
-@section('content')
 <?php 
   $json_array = json_encode($locale);
  
@@ -8,17 +5,30 @@
 <script>
 	let locale = <?php echo $json_array; ?>
 </script>
+
+@extends('layouts.app')
+
+@section('content')
+
 <div class="glasscard row justify-content-center">
   <div class="col-sm-7">   
     <h3 class="title_head">{{ __('event.create_headtitle') }}</h3>
-      <form action="{{ route('events.store') }}" 
-            method="post" 
-            onsubmit="return eventValidation(locale);">
+      <form 
+        action="{{ route('events.store') }}" 
+        method="post" 
+        onsubmit="return eventValidation(locale);"
+      >
         @csrf
         <div class="form-group">
           <!-- タイトル -->
           <label for="eventTitle"><h5>{{ __('event.create_title') }}</h5></label>
-          <input type="text" class="form-control" id="eventTitle" name="title" value = "{{ old('title') }}" >
+          <input 
+            type="text" 
+            class="form-control" 
+            id="eventTitle" 
+            name="title" 
+            value = "{{ old('title') }}"
+          >
           <!-- /タイトル-->
 
           <!-- フロントバリデーションエラーメッセージ -->
@@ -40,11 +50,12 @@
         <div class="form-group">
           <!-- 内容 -->
           <label for="eventContent"><h5>{{ __('event.create_contents') }}</h5></label>
-          <textarea class="form-control" 
-                    id="eventContent" 
-                    name="content" 
-                    cols="90" 
-                    rows="7">{{ old('content') }}</textarea>
+          <textarea 
+            class="form-control" 
+            id="eventContent" 
+            name="content" 
+            cols="90" 
+            rows="7">{{ old('content') }}</textarea>
           <!-- /内容 -->
 
           <!-- フロントバリデーションエラーメッセージ -->
@@ -63,15 +74,19 @@
           <!-- /バリデーションエラー表示 -->
         </div>
          
-        <input type="submit" 
-               id="eventSubmit" 
-               value="{{ __('event.create_button') }}" 
-               class="btn btn-primary btn-lg"> 
+        <input 
+          type="submit" 
+          id="eventSubmit" 
+          value="{{ __('event.create_button') }}" 
+          class="btn btn-primary btn-lg"
+        > 
         
         <div class="buttons">
-          <button type="button" 
-                  class="btn btn-secondary btn-lg" 
-                  onclick="history.back(-1)">{{ __('event.back')}}</button>
+          <button 
+            type="button" 
+            class="btn btn-secondary btn-lg" 
+            onclick="history.back(-1)">{{ __('event.back')}}
+          </button>
         </div>
         
       </form>
