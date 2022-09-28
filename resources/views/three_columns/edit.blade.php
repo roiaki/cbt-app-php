@@ -35,16 +35,15 @@
                id="title" 
                name="title" 
                value="{{ $event->title }}"
-               readonly
-        >
+               readonly>
 
         <!-- タイトル必須バリデーション表示-->
         @if($errors->has('title'))
-        @foreach($errors->get('title') as $message)
-        <ul>
-          <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-        </ul>
-        @endforeach
+          @foreach($errors->get('title') as $message)
+          <ul>
+            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+          </ul>
+          @endforeach
         @endif
       </div>
 
@@ -71,31 +70,30 @@
       <div class="row">
         <div class="form-group col">
           <label for="emotion_name"><h5>{{ __('threecolumn.2-1_title') }}</h5></label>
-          <input type="text" 
-                class="form-control" 
-                id="emotion_name" 
-                name="emotion_name" 
-                value="{{$three_column->emotion_name }}">
           
-          <!-- フロントバリデーションエラーメッセージ -->
-          <div class="err-msg-name01 mt-3"></div>
+          <!-- 感情１-->
+          <input type="text" 
+            class="form-control" 
+            id="emotion_name00"
+            name="emotion_name00" 
+            value="{{ $emotions[0]->emotion_name }}">
           
           <!-- 感情名必須バリデーション表示-->
-          @if($errors->has('emotion_name'))
-            @foreach($errors->get('emotion_name') as $message)
+          @if($errors->has('emotion_name00'))
+            @foreach($errors->get('emotion_name00') as $message)
             <ul>
               <li class="ml-2 my-1 text-danger">{{ $message }}</li>
             </ul>
             @endforeach
           @endif
 
-
-          @if(isset($three_column->emotion_name00))
-          <input type="text" 
-                class="form-control mt-2" 
-                id="emotion_name" 
-                name="emotion_name00" 
-                value="{{$three_column->emotion_name00 }}">
+          <!-- 感情２-->
+          @if(isset($emotions[1]->emotion_name))
+            <input type="text" 
+              class="form-control mt-2" 
+              id="emotion_name" 
+              name="emotion_name01" 
+              value="{{ $emotions[1]->emotion_name }}">
           @endif
 
           <!-- 感情名必須バリデーション表示-->
@@ -107,14 +105,15 @@
             @endforeach
           @endif
 
-          
-          @if(isset($three_column->emotion_name01))
-          <input type="text" 
-                class="form-control mt-2" 
-                id="emotion_name" 
-                name="emotion_name01" 
-                value="{{$three_column->emotion_name01 }}"
-                required>
+          <!-- 感情３-->
+          @if(isset($emotions[2]->emotion_name))
+            <input 
+              type="text" 
+              class="form-control mt-2" 
+              id="emotion_name" 
+              name="emotion_name02" 
+              value="{{$emotions[2]->emotion_name }}"
+              required>
           @endif
 
           <!-- 感情名必須バリデーション表示-->
@@ -125,36 +124,23 @@
             </ul>
             @endforeach
           @endif
-
-          
-          @if(isset($three_column->emotion_name02))
-          <input type="text" 
-                class="form-control mt-2" 
-                id="emotion_name" 
-                name="emotion_name02" 
-                value="{{$three_column->emotion_name02 }}"
-                required>
-          @endif
-
-          <!-- 感情名必須バリデーション表示-->
-          @if($errors->has('emotion_name02'))
-            @foreach($errors->get('emotion_name02') as $message)
-            <ul>
-              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-            </ul>
-            @endforeach
-          @endif
         </div>
 
+        <!-- フロントバリデーションエラーメッセージ -->
+        <div class="err-msg-name01 mt-3"></div>
+
+          
         <div class="form-group col">
           <label for="emotion_strength"><h5>{{ __('threecolumn.2-2_title') }}</h5></label>
-          <input type="number" 
-                class="form-control" 
-                id="emotion_strength" 
-                name="emotion_strength" 
-                value="{{ $three_column->emotion_strength }}">
-          <!-- フロントバリデーションエラーメッセージ -->
-          <div class="err-msg-name02 mt-3"></div>
+          
+          <input 
+            type="number" 
+            class="form-control" 
+            id="emotion_strength" 
+            name="emotion_strength00" 
+            value="{{ $emotions[0]->emotion_strength }}">
+
+         
 
           <!-- 感情の強さ必須バリデーション表示-->
           @if($errors->has('emotion_strength'))
@@ -165,34 +151,39 @@
             @endforeach
           @endif
 
-          @if(isset($three_column->emotion_strength00))
-          <input type="number" 
-                class="form-control mt-2" 
-                id="emotion_strength" 
-                name="emotion_strength00" 
-                value="{{ $three_column->emotion_strength00 }}"
-                required>
+          @if(isset($emotions[1]->emotion_strength))
+            <input 
+              type="number" 
+              class="form-control mt-2" 
+              id="emotion_strength" 
+              name="emotion_strength01" 
+              value="{{ $emotions[1]->emotion_strength }}"
+              required>
           @endif
 
-          @if(isset($three_column->emotion_strength01))
-          <input type="number" 
-                class="form-control mt-2" 
-                id="emotion_strength" 
-                name="emotion_strength01" 
-                value="{{ $three_column->emotion_strength01 }}"
-                required>
+          @if(isset($emotions[2]->emotion_strength))
+          <input 
+            type="number" 
+            class="form-control mt-2" 
+            id="emotion_strength" 
+            name="emotion_strength02" 
+            value="{{ $emotions[2]->emotion_strength }}"
+            required>
           @endif
 
           @if(isset($three_column->emotion_strength02))
-          <input type="number" 
-                class="form-control mt-2" 
-                id="emotion_strength" 
-                name="emotion_strength02" 
-                value="{{ $three_column->emotion_strength02 }}"
-                required>
+          <input 
+            type="number" 
+            class="form-control mt-2" 
+            id="emotion_strength" 
+            name="emotion_strength02" 
+            value="{{ $three_column->emotion_strength02 }}"
+            required>
           @endif
         </div>
       </div>
+      <!-- フロントバリデーションエラーメッセージ -->
+      <div class="err-msg-name02 mt-3"></div>
 
       <div class="form-group">
         <label for="thinking"><h5>{{ __('threecolumn.3-1_title') }}</h5></label><br>

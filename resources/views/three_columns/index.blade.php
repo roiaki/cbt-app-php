@@ -25,7 +25,6 @@
       <table class="table table-bordered table-hover">
         <thead>
           <tr class="table-info">
-            <th>{{ __('threecolumn.emotion_name') }}</th>
             <th>{{ __('threecolumn.thinking') }}</th>
             <th>{{ __('threecolumn.updated_day') }}</th>
           </tr>
@@ -33,7 +32,6 @@
         <tbody>
           @foreach ($three_columns as $three_column)
           <tr>
-            <td>{{ $three_column->emotion_name }}</td>
             <td>
               @if (mb_strlen($three_column->thinking) > 25)
               {{ $thinking = mb_substr($three_column->thinking, 0, 25 ) . "..."; }}

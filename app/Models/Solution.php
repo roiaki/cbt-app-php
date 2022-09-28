@@ -191,8 +191,10 @@ class Solution extends Model
         $solutions = Solution::where('trouble_id', $trouble->id)->get();
         $merits    = Merit::where('trouble_id', $trouble->id)->get();
         $demerits  = Demerit::where('trouble_id', $trouble->id)->get();
+        
         try {
             DB::beginTransaction();
+            
             $trouble->trouble = $request->trouble;
             $trouble->save();
 

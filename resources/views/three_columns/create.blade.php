@@ -22,12 +22,14 @@
         <div class="form-group">
 
           <label for="title"><h5>{{ __('threecolumn.1-1_title') }}</h5></label>
-          <input type="text"
-                 class="form-control"
-                 id="title"
-                 name="title"
-                 value="{{ $event->title }}"
-                 readonly>
+          <input 
+            type="text"
+            class="form-control"
+            id="title"
+            name="title"
+            value="{{ $event->title }}"
+            readonly
+          >
 
           <!-- バリデーションエラー表示-->
           @if($errors->has('title'))
@@ -182,61 +184,79 @@
         <!-- 感情名 -->
         <div class="row">
           <div class="form-group col">
-          <label for="emotion_name"><h5>{{ __('threecolumn.2-1_title') }}</h5></label>
-          <p class="alert alert-success" role="alert">
-            {{ __('threecolumn.2-1_sentence') }}
-          </p>
-          <!-- <input type="text"
-                 class="form-control"
-                 id="emotion_name"
-                 name="emotion_name_def"
-                 value="{{ old('emotion_name_def') }}"> -->
+            <label for="emotion_name"><h5>{{ __('threecolumn.2-1_title') }}</h5></label>
+            <p class="alert alert-success" role="alert">
+              {{ __('threecolumn.2-1_sentence') }}
+            </p>
 
-          <!-- フロントバリデーションエラーメッセージ -->
-          <!-- <div class="err-msg-name01 mt-3"></div> -->
+            <!-- フロントバリデーションエラーメッセージ -->
+            <div class="err-msg-name01 mt-3"></div>
 
-          <!-- バリデーションエラー表示-->
-          @if($errors->has('emotion_name[0]'))
-            @foreach($errors->get('emotion_name[0]') as $message)
-            <ul>
-              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-            </ul>
-            @endforeach
-          @endif
-        </div>
-        <!-- /感情名 -->
+            <!-- サーバサイトバリデーション -->
+            @if($errors->has('emotion_name'))
+              @foreach($errors->get('emotion_name') as $message)
+              <ul>
+                <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+              </ul>
+              @endforeach
+            @endif
 
-        <!-- 感情の強さ　-->
-        <div class="form-group col">
-          <label for="emotion_strength"><h5>{{ __('threecolumn.2-2_title') }}</h5></label>
-          <p class="alert alert-success" role="alert">
-            {{ __('threecolumn.2-2_sentence') }}
-          </p>
-          <!-- <input type="number"
-                 class="form-control"
-                 id="emotion_strength"
-                 name="emotion_strength_def"
-                 value="{{ old('emotion_strength_def') }}"> -->
+          </div>
+          <!-- /感情名 -->
 
-          <!-- フロントバリデーションエラーメッセージ -->
-          <!-- <div class="err-msg-name02 mt-3"></div> -->
+          <!-- 感情の強さ　-->
+          <div class="form-group col">
+            <label for="emotion_strength"><h5>{{ __('threecolumn.2-2_title') }}</h5></label>
+            <p class="alert alert-success" role="alert">
+              {{ __('threecolumn.2-2_sentence') }}
+            </p>
 
-          <!-- バリデーションエラー表示-->
-          <!-- @if($errors->has('emotion_strength_def'))
-            @foreach($errors->get('emotion_strength_def') as $message)
-            <ul>
-              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-            </ul>
-            @endforeach
-          @endif -->
-        </div>
+            <!-- フロントバリデーションエラー -->
+            <div class="err-msg-name02 mt-3"></div>
+
+            <!-- サーバサイトバリデーション -->
+            @if($errors->has('emotion_strength'))
+              @foreach($errors->get('emotion_strength') as $message)
+              <ul>
+                <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+              </ul>
+              @endforeach
+            @endif
+
+          </div>
       </div>
 
-      <!-- 動的に増えるフォーム-->
+      <!-- 動的に増える感情名と強さの入力フォーム-->
       <div id="app">
         <add></add>  
       </div>
 
+      <!-- サーバサイドバリデーションエラー表示-->
+      <div class="row">
+        <div class="form-group col">
+          @if($errors->has('emotion_name.*'))
+            @foreach($errors->get('emotion_name.*') as $messages)
+              @foreach($messages as $message)
+              <ul>
+                <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+              </ul>
+              @endforeach
+            @endforeach
+          @endif
+        </div>
+        <div class="form-group col">
+          @if($errors->has('emotion_strength.*'))
+            @foreach($errors->get('emotion_strength.*') as $messages)
+              @foreach($messages as $message)
+              <ul>
+                <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+              </ul>
+              @endforeach
+            @endforeach
+          @endif
+        </div>
+      </div>
+      
       <!-- 自動思考 -->
       <div class="form-group mt-4">
         <label for="thinking"><h5>{{ __('threecolumn.3-1_title') }}</h5></label>
@@ -260,7 +280,6 @@
             </ul>
           @endforeach
         @endif
-        <!-- /バリデーションエラー表示-->
       </div>
 
       <!-- 3-2考え方の癖 -->

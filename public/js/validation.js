@@ -34,7 +34,8 @@ window.validationLoginEmail = function (locale) {
   var errCount = 0;
   errCount += checkRequired(locale, "#email", ".err-msg-name01");
 
-  if (errCount === 1) {} else {
+  if (errCount === 1) {//
+  } else {
     errCount += checkEmailFormat(locale, "#email", ".err-msg-name01");
   }
 
@@ -50,7 +51,8 @@ window.validationLoginPass = function () {
   var errCount = 0;
   errCount += checkRequired(locale, "#password", ".err-msg-name02");
 
-  if (errCount === 1) {} else {
+  if (errCount === 1) {//
+  } else {
     errCount += checkMinNumInputChar(locale, "#password", ".err-msg-name02", 8);
   }
 
@@ -86,7 +88,8 @@ window.validationName = function () {
 
   errNameCount += checkRequired(locale, "#name", ".err-msg-name01");
 
-  if (errNameCount === 1) {} else {
+  if (errNameCount === 1) {//
+  } else {
     errNameCount += checkMaxNumInputChar(locale, "#name", ".err-msg-name01", 20);
     errNameCount += checkMinNumInputChar(locale, "#name", ".err-msg-name01", 2);
   }
@@ -149,7 +152,8 @@ function confirmPass(locale, elementId, confirmelementId, errMessageClass) {
   var errMsg = document.querySelector(errMessageClass);
   var errCount = 0;
 
-  if (pass.value === confirmPass.value) {} else {
+  if (pass.value === confirmPass.value) {//
+  } else {
     errCount = 1;
 
     if (locale === "ja") {
@@ -252,7 +256,23 @@ window.eventValidation = function (locale) {
   if (errCount > 0) {
     return false;
   }
-};
+}; // window.checkEmotionName = function (locale) {
+//   let errCount = 0;
+//   errCount += checkRequired(locale, "#emotion_name", ".err-msg-name01");
+//   if(errCount === 0) {
+//     removeErrmsg("#emotion_name", ".err-msg-name01");
+//   }
+//   return errCount;
+// }
+// window.checkEmotionStrength = function (locale) {
+//   let errCount = 0;
+//   errCount += checkRequired(locale, "#emotion_strength", ".err-msg-name02");
+//   if(errCount === 0) {
+//     removeErrmsg("#emotion_strength", ".err-msg-name02");
+//   }
+//   return errCount;
+// }
+
 /**
  * 3コラムバリデーション
  * 
@@ -261,8 +281,7 @@ window.eventValidation = function (locale) {
 
 
 window.threecolumnValidation = function (locale) {
-  console.log(locale); // フォームの要素を取得
-
+  // フォームの要素を取得
   var emotion_name = document.querySelector('#emotion_name');
   var emotion_strength = document.querySelector('#emotion_strength');
   var thinking = document.querySelector('#thinking');
