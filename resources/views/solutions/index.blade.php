@@ -12,10 +12,12 @@
         <form class="form-inline" action="{{ route('seven_columns.serch') }}" method="get">
         @csrf
           <div class="form-group">
-            <input type="text" 
-                   name="keyword" 
-                   value="@if ( !empty($keyword) ){{ $keyword }}@endif"
-                   class="form-control" placeholder="{{ __('sevencolumn.search_word') }}">
+            <input 
+              type="text" 
+              name="keyword" 
+              value="@if ( !empty($keyword) ){{ $keyword }}@endif"
+              class="form-control" placeholder="{{ __('sevencolumn.search_word') }}"
+            >
                    
             <input type="submit" value="{{ __('sevencolumn.search') }}" class="btn btn-info">
           </div>          

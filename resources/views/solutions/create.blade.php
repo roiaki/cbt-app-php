@@ -15,12 +15,13 @@
               自分が現在何ができなくて困っているかをはっきりさせます。
               漠然と主観的に記入するのではなく感情を分けて客観的かつ具体的に記入しましょう。
             </p>
-            <textarea type="text" 
-                    class="form-control" 
-                    id="trouble" 
-                    name="trouble" 
-                    value = "{{ old('trouble') }}" 
-                    required></textarea>
+            <textarea 
+              type="text" 
+              class="form-control" 
+              id="trouble" 
+              name="trouble" 
+              value = "{{ old('trouble') }}" 
+              required></textarea>
         </div>
         <!-- /問題-->
 
@@ -52,34 +53,38 @@
 
         <!-- バリデーションエラー表示 -->
         @if($errors->has('solution.*'))
-            @foreach($errors->get('solution') as $message)
-            <ul>
-                <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-            </ul>
-            @endforeach
+          @foreach($errors->get('solution') as $message)
+          <ul>
+              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+          </ul>
+          @endforeach
         @endif
 
         @if($errors->has('merit.*'))
-            @foreach($errors->get('merit') as $message)
-            <ul>
-                <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-            </ul>
-            @endforeach
+          @foreach($errors->get('merit') as $message)
+          <ul>
+              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+          </ul>
+          @endforeach
         @endif
 
         @if($errors->has('demerit.*'))
-            @foreach($errors->get('demerit') as $message)
-            <ul>
-                <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-            </ul>
-            @endforeach
+          @foreach($errors->get('demerit') as $message)
+          <ul>
+              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+          </ul>
+          @endforeach
         @endif
         <!-- /バリデーションエラー表示 -->
 
         <input type="submit" value="作成" class="btn btn-primary btn-lg mt-5"> 
         
         <div class="buttons">
-          <button type="button" class="btn btn-secondary btn-lg mt-5" onclick="history.back(-1)">{{ __('event.back')}}</button>
+          <button 
+            type="button" 
+            class="btn btn-secondary btn-lg mt-5" 
+            onclick="history.back(-1)">{{ __('event.back')}}
+          </button>
         </div>
         
       </form>
