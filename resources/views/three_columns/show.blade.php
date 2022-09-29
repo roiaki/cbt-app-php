@@ -82,105 +82,112 @@
         <td>
           <div class="form-group">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" 
-                     type="checkbox" 
-                     name="habit[0]" 
-                     id="1" 
-                     <?php
-                       if (in_array(1, $habit_id)) {
-                         echo 'checked';
-                       }
-                     ?>
+              <input 
+                class="form-check-input" 
+                type="checkbox" 
+                name="habit[0]" 
+                id="1" 
+                <?php
+                  if (in_array(1, $habit_id)) {
+                    echo 'checked';
+                  }
+                ?>
               >
               <label class="form-check-label" for="1">
               {{ __('threecolumn.habitName01') }}
               </label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" 
-                     type="checkbox" 
-                     name="habit[0]" 
-                     id="1" 
-                     <?php
-                       if (in_array(2, $habit_id)) {
-                         echo 'checked';
-                       }
-                     ?>
+              <input 
+                class="form-check-input" 
+                type="checkbox" 
+                name="habit[0]" 
+                id="1" 
+                <?php
+                  if (in_array(2, $habit_id)) {
+                    echo 'checked';
+                  }
+                ?>
               >
               <label class="form-check-label" for="1">
                 {{ __('threecolumn.habitName02') }}
               </label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" 
-                     type="checkbox" 
-                     name="habit[0]" 
-                     id="1" 
-                     <?php
-                      if (in_array(3, $habit_id)) {
-                        echo 'checked';
-                      }
-                     ?>
+              <input 
+                class="form-check-input" 
+                type="checkbox" 
+                name="habit[0]" 
+                id="1" 
+                <?php
+                if (in_array(3, $habit_id)) {
+                  echo 'checked';
+                }
+                ?>
               >
               <label class="form-check-label" for="1">
                 {{ __('threecolumn.habitName03') }}              
               </label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" 
-                     type="checkbox" 
-                     name="habit[0]" 
-                     id="1" 
-                     <?php
-                      if (in_array(4, $habit_id)) {
-                        echo 'checked';
-                      }
-                     ?>
+              <input 
+                class="form-check-input" 
+                type="checkbox" 
+                name="habit[0]" 
+                id="1" 
+                <?php
+                if (in_array(4, $habit_id)) {
+                  echo 'checked';
+                }
+                ?>
               >
               <label class="form-check-label" for="1">
                 {{ __('threecolumn.habitName04') }}
               </label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" 
-                     type="checkbox" 
-                     name="habit[0]" 
-                     id="1" 
-                     <?php
-                      if (in_array(5, $habit_id)) {
-                        echo 'checked';
-                      }
-                     ?>
+              <input 
+                class="form-check-input" 
+                type="checkbox" 
+                name="habit[0]" 
+                id="1" 
+                <?php
+                if (in_array(5, $habit_id)) {
+                  echo 'checked';
+                }
+                ?>
               >
               <label class="form-check-label" for="1">
                 {{ __('threecolumn.habitName05') }}
               </label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" 
-                     type="checkbox" 
-                     name="habit[0]" 
-                     id="1" 
-                     <?php
-                      if (in_array(6, $habit_id)) {
-                        echo 'checked';
-                      }
-                     ?>
+              <input 
+                class="form-check-input" 
+                type="checkbox" 
+                name="habit[0]" 
+                id="1" 
+                <?php
+                if (in_array(6, $habit_id)) {
+                  echo 'checked';
+                }
+                ?>
               >
               <label class="form-check-label" for="1">
                 {{ __('threecolumn.habitName06') }}
               </label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" 
-                     type="checkbox" 
-                     name="habit[0]" 
-                     id="1" 
-                     <?php
-                      if (in_array(7, $habit_id)) {
-                        echo 'checked';
-                      }
-                     ?>
+              <input 
+                class="form-check-input" 
+                type="checkbox" 
+                name="habit[0]" 
+                id="1" 
+                <?php
+                if (in_array(7, $habit_id)) {
+                  echo 'checked';
+                }
+                ?>
               >
               <label class="form-check-label" for="1">
                 {{ __('threecolumn.habitName07') }}
@@ -193,29 +200,50 @@
     </table>
 
     <div class="buttons-first">
-      <form action="{{ route('seven_columns.create', ['id' => $three_column->id]) }}" method="get">
+      <form  
+        action="{{ route('seven_columns.create', ['id' => $three_column->id]) }}" 
+        method="get"
+      >
         @csrf
-        <button type="submit" class="btn btn-success btn-lg">{{ __('threecolumn.buttonCreate7') }}</button>
+        <button 
+          type="submit" 
+          class="btn btn-success btn-lg">{{ __('threecolumn.buttonCreate7') }}
+        </button>
       </form>
     </div>
 
     <div class="buttons">
-      <form action="{{ route('three_columns.edit', ['param' => $three_column->id] ) }}" method="get">
+      <form 
+        action="{{ route('three_columns.edit', ['param' => $three_column->id] ) }}" 
+        method="get"
+      >
         @csrf
-        <button type="submit" class="btn btn-secondary btn-lg">{{ __('threecolumn.buttonEdit') }}</button>
+        <button 
+          type="submit" 
+          class="btn btn-secondary btn-lg">{{ __('threecolumn.buttonEdit') }}
+        </button>
       </form>
     </div>
 
     <div class="buttons">
-      <form action="{{ route('three_columns.destroy', ['param' => $three_column->id] ) }}" method="post">
+      <form 
+        action="{{ route('three_columns.destroy', ['param' => $three_column->id] ) }}" 
+        method="post"
+      >
         @csrf
         @method('DELETE')
-        <button type="submit" class="btn btn-danger btn-lg" onclick="return confirmDelete();">{{ __('threecolumn.buttonDelete') }}</button>
+        <button 
+          type="submit" 
+          class="btn btn-danger btn-lg" onclick="return confirmDelete();">{{ __('threecolumn.buttonDelete') }}
+        </button>
       </form>
     </div>
 
     <div class="buttons">
-      <button class="btn btn-primary btn-lg" onclick="history.back(-1)">{{ __('threecolumn.buttonBack') }}</button>
+      <button 
+        class="btn btn-primary btn-lg" 
+        onclick="history.back(-1)">{{ __('threecolumn.buttonBack') }}
+      </button>
     </div>
   </div>
 </div>
