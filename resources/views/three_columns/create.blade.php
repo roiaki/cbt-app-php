@@ -44,12 +44,14 @@
         <div class="form-group">
           <!-- 内容 -->
           <label for="content"><h5>{{ __('threecolumn.1-2_title') }}</h5></label>
-          <textarea class="form-control" 
-                    id="content" 
-                    name="content" 
-                    cols="90" 
-                    rows="5" 
-                    readonly>{{ $event->content }}</textarea>
+          <textarea 
+            class="form-control" 
+            id="content" 
+            name="content" 
+            cols="90" 
+            rows="5" 
+            readonly>{{ $event->content }}
+          </textarea>
 
           <!-- バリデーションエラー表示-->
           @if($errors->has('content'))
@@ -61,6 +63,7 @@
           @endif
         </div>
         
+        <!-- 新機能構想 -->
         <!-- <div class="form-group">
           <h5>2.感情</h5>
           <table class="table table-bordered">
@@ -263,11 +266,13 @@
         <p class="alert alert-success" role="alert">
           {{ __('threecolumn.3-1_sentence') }}
         </p>
-        <textarea class="form-control" 
-                  id="thinking" 
-                  name="thinking" 
-                  cols="90" 
-                  rows="5">{{ old('thinking') }}</textarea>
+        <textarea 
+          class="form-control" 
+          id="thinking" 
+          name="thinking" 
+          cols="90" 
+          rows="5">{{ old('thinking') }}
+        </textarea>
 
         <!-- フロントバリデーションエラーメッセージ -->
         <div class="err-msg-name03 mt-3"></div>
@@ -380,7 +385,11 @@
       <input type="submit" class="btn btn-primary btn-lg" value="{{ __('threecolumn.buttonCreate') }}"> 
 
       <div class="buttons">
-        <button type="button" class="btn btn-secondary btn-lg" onclick="history.back(-1)">{{ __('threecolumn.buttonBack') }}</button>
+        <button 
+          type="button" 
+          class="btn btn-secondary btn-lg" 
+          onclick="history.back(-1)">{{ __('threecolumn.buttonBack') }}
+        </button>
       </div>
 
     </form>

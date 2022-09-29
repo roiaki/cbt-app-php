@@ -7,7 +7,7 @@
       <div class="form-group col">
         <input 
           ref="texts"
-          name="'emotion_name' + index"
+          name="emotion_name"
           id="'emotion_name' + index"
           class="form-control"
           v-model="texts[index]"
@@ -32,7 +32,7 @@
       <div class="form-group col">
         <input 
           ref="strength"
-          name="emotion_strength[]"
+          name="emotion_strength"
           id="emotion_strength"
           class="form-control"
           onchange="checkEmotionStrength(locale)"

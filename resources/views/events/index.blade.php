@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="glasscard row justify-content-center">
   <div class="col-sm-7">
 

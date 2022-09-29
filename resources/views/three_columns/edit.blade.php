@@ -17,12 +17,18 @@
         update の URL である /messages/{message} の {message} に id が入ります
     -->
 
-    <form action="{{ route('three_columns.update', ['param' => $three_column->id] ) }}" 
-          method="POST"
-          onsubmit="return threecolumnValidation(locale);">
+    <form 
+      action="{{ route('three_columns.update', ['param' => $three_column->id] ) }}" 
+      method="POST"
+      onsubmit="return threecolumnValidation(locale);"
+    >
       @csrf
       @method('PUT')
-      <input type="hidden" name="eventid" value="{{ $event->id }}">
+      <input 
+        type="hidden" 
+        name="eventid" 
+        value="{{ $event->id }}"
+      >
 
       <div class="form-group">
         <!-- タイトル -->
@@ -30,12 +36,14 @@
         <!-- idはグローバル属性であり、HTML内の全ての要素に適用される。
                  name属性はHTMLの特定の要素（フォーム要素）主にバックエンド
         -->
-        <input type="text" 
-               class="form-control" 
-               id="title" 
-               name="title" 
-               value="{{ $event->title }}"
-               readonly>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="title" 
+          name="title" 
+          value="{{ $event->title }}"
+          readonly
+        >
 
         <!-- タイトル必須バリデーション表示-->
         @if($errors->has('title'))
@@ -50,12 +58,14 @@
       <div class="form-group">
         <!-- 内容 -->
         <label for="content"><h5>{{ __('threecolumn.1-2_title') }}</h5></label>
-        <textarea class="form-control" 
-                  id="content" 
-                  name="content" 
-                  cols="90" 
-                  rows="5" 
-                  readonly>{{ $event->content }}</textarea>
+        <textarea 
+          class="form-control" 
+          id="content" 
+          name="content" 
+          cols="90" 
+          rows="5" 
+          readonly>{{ $event->content }}
+        </textarea>
 
         <!-- 内容必須バリデーション表示-->
         @if($errors->has('content'))
@@ -138,9 +148,8 @@
             class="form-control" 
             id="emotion_strength" 
             name="emotion_strength00" 
-            value="{{ $emotions[0]->emotion_strength }}">
-
-         
+            value="{{ $emotions[0]->emotion_strength }}"
+          >
 
           <!-- 感情の強さ必須バリデーション表示-->
           @if($errors->has('emotion_strength'))
@@ -158,7 +167,8 @@
               id="emotion_strength" 
               name="emotion_strength01" 
               value="{{ $emotions[1]->emotion_strength }}"
-              required>
+              required
+            >
           @endif
 
           @if(isset($emotions[2]->emotion_strength))
@@ -168,7 +178,8 @@
             id="emotion_strength" 
             name="emotion_strength02" 
             value="{{ $emotions[2]->emotion_strength }}"
-            required>
+            required
+          >
           @endif
 
           @if(isset($three_column->emotion_strength02))
@@ -178,7 +189,8 @@
             id="emotion_strength" 
             name="emotion_strength02" 
             value="{{ $three_column->emotion_strength02 }}"
-            required>
+            required
+          >
           @endif
         </div>
       </div>
@@ -187,11 +199,13 @@
 
       <div class="form-group">
         <label for="thinking"><h5>{{ __('threecolumn.3-1_title') }}</h5></label><br>
-        <textarea class="form-control" 
-                  id="thinking" 
-                  name="thinking" 
-                  cols="90" 
-                  rows="7">{{$three_column->thinking }}</textarea>
+        <textarea 
+          class="form-control" 
+          id="thinking" 
+          name="thinking" 
+          cols="90" 
+          rows="7">{{$three_column->thinking }}
+        </textarea>
         
         <!-- フロントバリデーションエラーメッセージ -->
         <div class="err-msg-name03 mt-3"></div>
@@ -325,12 +339,18 @@
       </div>
       <!-- /必須バリデーション表示-->
 
-      <input type="submit" 
-             class="btn btn-primary btn-lg" 
-             value="{{ __('threecolumn.buttonUpdate') }}">
+      <input 
+        type="submit" 
+        class="btn btn-primary btn-lg" 
+        value="{{ __('threecolumn.buttonUpdate') }}"
+      >
 
       <div class="buttons">
-        <button type="button" class="btn btn-secondary btn-lg" onclick="history.back(-1)">{{ __('threecolumn.buttonBack') }}</button>
+        <button 
+          type="button" 
+          class="btn btn-secondary btn-lg" 
+          onclick="history.back(-1)">{{ __('threecolumn.buttonBack') }}
+        </button>
       </div>
     </form>
   </div>
