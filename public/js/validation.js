@@ -256,23 +256,29 @@ window.eventValidation = function (locale) {
   if (errCount > 0) {
     return false;
   }
-}; // window.checkEmotionName = function (locale) {
-//   let errCount = 0;
-//   errCount += checkRequired(locale, "#emotion_name", ".err-msg-name01");
-//   if(errCount === 0) {
-//     removeErrmsg("#emotion_name", ".err-msg-name01");
-//   }
-//   return errCount;
-// }
-// window.checkEmotionStrength = function (locale) {
-//   let errCount = 0;
-//   errCount += checkRequired(locale, "#emotion_strength", ".err-msg-name02");
-//   if(errCount === 0) {
-//     removeErrmsg("#emotion_strength", ".err-msg-name02");
-//   }
-//   return errCount;
-// }
+};
 
+window.checkEmotionName = function (locale) {
+  var errCount = 0;
+  errCount += checkRequired(locale, "#emotion_name", ".err-msg-name01");
+
+  if (errCount === 0) {
+    removeErrmsg("#emotion_name", ".err-msg-name01");
+  }
+
+  return errCount;
+};
+
+window.checkEmotionStrength = function (locale) {
+  var errCount = 0;
+  errCount += checkRequired(locale, "#emotion_strength", ".err-msg-name02");
+
+  if (errCount === 0) {
+    removeErrmsg("#emotion_strength", ".err-msg-name02");
+  }
+
+  return errCount;
+};
 /**
  * 3コラムバリデーション
  * 

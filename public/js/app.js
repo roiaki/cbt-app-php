@@ -15161,7 +15161,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 各入力ボックス "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       ref_for: true,
       ref: "texts",
-      name: "emotion_name",
+      name: "emotion_name[]",
       id: "'emotion_name' + index",
       "class": "form-control",
       "onUpdate:modelValue": function onUpdateModelValue($event) {
@@ -15176,7 +15176,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , _hoisted_3), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.texts[index]]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <p class=\"text-danger\" v-if=\"errors[index].length\">\n          <b>Please correct the following error(s):</b>\n          <ul>\n            <li v-for=\"error in errors[index]\">{{ error }}</li>\n          </ul>\n        </p> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <p v-if=\"errors1.length\">エラーあり</p>\n        <p>texts[index]:{{ texts[index] }}</p>\n        <p>index:{{ index }}</p>\n        <p>text:{{ text }}</p>\n        <p>texts{{ texts }}</p> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       ref_for: true,
       ref: "strength",
-      name: "emotion_strength",
+      name: "emotion_strength[]",
       id: "emotion_strength",
       "class": "form-control",
       onchange: "checkEmotionStrength(locale)",
