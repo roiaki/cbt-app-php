@@ -13,7 +13,6 @@
           v-model="texts[index]"
           onchange="checkEmotionName(locale)"
           type="text"
-         
         >  
       </div>
       

@@ -670,7 +670,7 @@ function checkMinNumInputChar(locale, elementId, errMessageClass, minNumber) {
 }
 
 /**
- * 数字かチェック
+ * 数字であるかチェック
  * 
  * 引数：言語設定ロケール
  * 引数：検査するタグ（エレメント）のID
