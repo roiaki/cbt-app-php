@@ -255,61 +255,134 @@ window.eventValidation = function (locale) {
 }
 
 
-
-window.checkEmotionName = function (locale) {
+// 感情名のリアルタイムバリデーション
+// window.checkEmotionName = function (locale) {
   
-  let errCount = 0;
+//   let errCount = 0;
+//   errCount += checkRequired(locale, "#emotion_name", ".err-msg-name01");
 
-  errCount += checkRequired(locale, "#emotion_name", ".err-msg-name01");
+//   if(errCount === 0) {
+//     removeErrmsg("#emotion_name", ".err-msg-name01");
+//   }
+//   return errCount;
+// }
 
-  if(errCount === 0) {
-    removeErrmsg("#emotion_name", ".err-msg-name01");
+// 感情の強さのリアルタイムバリデーション
+// window.checkEmotionStrength = function (locale) {
+  
+//   let errCount = 0;
+//   errCount += checkRequired(locale, "#emotion_strength", ".err-msg-name02");
+
+//   if(errCount === 0) {
+//     removeErrmsg("#emotion_strength", ".err-msg-name02");
+//   }
+//   return errCount;
+// }
+
+// 動的に増減する感情名の入力フォーム必須バリデーション
+function checkRequiredEmotionNames() {
+  const emotion_name = document.querySelectorAll('#emotion_name');
+  const errMsg       = document.querySelector('.err-msg-name01');
+  errCount = 0;
+  if(emotion_name[0]) {
+    if(!emotion_name[0].value) {
+      emotion_name[0].classList.add('border-danger');
+      errCount += 1;
+    } else {
+      emotion_name[0].classList.remove('border-danger');
+    }
   }
 
-  return errCount;
-
-}
-
-window.checkEmotionStrength = function (locale) {
-  
-  let errCount = 0;
-
-  errCount += checkRequired(locale, "#emotion_strength", ".err-msg-name02");
-
-  if(errCount === 0) {
-    removeErrmsg("#emotion_strength", ".err-msg-name02");
+  if(emotion_name[1]) {
+    if(!emotion_name[1].value) {
+      emotion_name[1].classList.add('border-danger');
+      errCount += 1;
+    } else {
+      emotion_name[1].classList.remove('border-danger');
+    }
   }
 
-  return errCount;
+  if(emotion_name[2]) {
+    if(!emotion_name[2].value) {
+      emotion_name[2].classList.add('border-danger');
+      errCount += 1;
+    } else {
+      emotion_name[2].classList.remove('border-danger');
+    }
+  }
 
+  if(errCount > 0) {
+    errMsg.textContent = '入力してください';
+    errMsg.classList.add('alert');
+    errMsg.classList.add('alert-danger');
+  }
+  return errCount;
 }
+
+// 動的に増減する感情の強さ入力フォーム必須バリデーション
+function checkRequiredEmotionStrengths() {
+  const emotion_strength = document.querySelectorAll('#emotion_strength');
+  const errMsg           = document.querySelector('.err-msg-name02');
+  errCount = 0;
+  if(emotion_strength[0]) {
+    if(!emotion_strength[0].value) {
+      emotion_strength[0].classList.add('border-danger');
+      errCount += 1;
+    } else {
+      emotion_strength[0].classList.remove('border-danger');
+    }
+  }
+
+  if(emotion_strength[1]) {
+    if(!emotion_strength[1].value) {
+      emotion_strength[1].classList.add('border-danger');
+      errCount += 1;
+    } else {
+      emotion_strength[1].classList.remove('border-danger');
+    }
+  }
+
+  if(emotion_strength[2]) {
+    if(!emotion_strength[2].value) {
+      emotion_strength[2].classList.add('border-danger');
+      errCount += 1;
+    } else {
+      emotion_strength[2].classList.remove('border-danger');
+    }
+  }
+
+  if(errCount > 0) {
+    errMsg.textContent = '入力してください';
+    errMsg.classList.add('alert');
+    errMsg.classList.add('alert-danger');
+  }
+  return errCount;
+}
+
 /**
- * 3コラムバリデーション
+ * 送信ボタンを押した時の3コラムバリデーション
  * 
  * @param locale 言語切り替え
  */
 window.threecolumnValidation = function (locale) {
 
   // フォームの要素を取得
-  const emotion_name     = document.querySelector('#emotion_name');
+  const emotion_name     = document.querySelectorAll('#emotion_name');
   const emotion_strength = document.querySelector('#emotion_strength');
   const thinking         = document.querySelector('#thinking');
 
-  const errMsgName01 = document.querySelector('.err-msg-name01');
-  const errMsgName02 = document.querySelector('.err-msg-name02');
   const errMsgName03 = document.querySelector('.err-msg-name03');
 
   let errCount                = 0;
   let errEmotionNameCount     = 0;
   let errEmotionStrengthCount = 0;
   let errThinkingCount        = 0;
-
   let errSum                  = 0;
 
-  errEmotionNameCount     += checkRequired(locale, "#emotion_name", ".err-msg-name01");
+  errEmotionNameCount     += checkRequiredEmotionNames();
   errEmotionNameCount     += checkMaxNumInputChar(locale, "#emotion_name", ".err-msg-name01", 15);
 
-  errEmotionStrengthCount += checkRequired(locale, "#emotion_strength", ".err-msg-name02");
+  errEmotionStrengthCount += checkRequiredEmotionStrengths();
   errEmotionStrengthCount += isNumber(locale, "#emotion_strength", ".err-msg-name02");
 
   errThinkingCount        += checkRequired(locale, "#thinking", ".err-msg-name03");
@@ -339,22 +412,6 @@ window.threecolumnValidation = function (locale) {
   }
 
   // エラーがないなら赤枠リセット
-  if(errEmotionNameCount === 0) {
-    errMsgName01.textContent ='';
-    emotion_name.classList.remove('border-danger');
-    errMsgName01.classList.remove('alert');
-    errMsgName01.classList.remove('alert-danger');
-  }
-
-  // エラーがないなら赤枠リセット
-  if(errEmotionStrengthCount === 0) {
-    errMsgName02.textContent ='';
-    emotion_strength.classList.remove('border-danger');
-    errMsgName02.classList.remove('alert');
-    errMsgName02.classList.remove('alert-danger');
-  }
-
-  // エラーがないなら赤枠リセット
   if(errThinkingCount === 0) {
     errMsgName03.textContent ='';
     thinking.classList.remove('border-danger');
@@ -363,6 +420,12 @@ window.threecolumnValidation = function (locale) {
   }
 
   errCount = errEmotionNameCount + errEmotionStrengthCount + errThinkingCount;
+  
+  if(errCount === 0) {
+    errMsg.textContent ='';
+    errMsg.classList.remove('alert');
+    errMsg.classList.remove('alert-danger');
+  }
 
   if (errCount > 0) {
     return false;

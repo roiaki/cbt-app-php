@@ -15139,7 +15139,7 @@ var _hoisted_1 = {
 var _hoisted_2 = {
   "class": "form-group col"
 };
-var _hoisted_3 = ["onUpdate:modelValue", "onChange"];
+var _hoisted_3 = ["onUpdate:modelValue"];
 var _hoisted_4 = {
   "class": "form-group col"
 };
@@ -15162,17 +15162,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ref_for: true,
       ref: "texts",
       name: "emotion_name[]",
-      id: "'emotion_name' + index",
+      id: "emotion_name",
       "class": "form-control",
       "onUpdate:modelValue": function onUpdateModelValue($event) {
         return _ctx.texts[index] = $event;
       },
-      onChange: function onChange($event) {
-        return $options.checkForm(index);
-      },
+      onchange: "checkEmotionName(locale)",
       type: "text"
-    }, null, 40
-    /* PROPS, HYDRATE_EVENTS */
+    }, null, 8
+    /* PROPS */
     , _hoisted_3), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.texts[index]]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <p class=\"text-danger\" v-if=\"errors[index].length\">\n          <b>Please correct the following error(s):</b>\n          <ul>\n            <li v-for=\"error in errors[index]\">{{ error }}</li>\n          </ul>\n        </p> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <p v-if=\"errors1.length\">エラーあり</p>\n        <p>texts[index]:{{ texts[index] }}</p>\n        <p>index:{{ index }}</p>\n        <p>text:{{ text }}</p>\n        <p>texts{{ texts }}</p> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       ref_for: true,
       ref: "strength",
