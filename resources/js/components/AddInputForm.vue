@@ -8,10 +8,10 @@
         <input 
           ref="texts"
           name="emotion_name[]"
-          id="'emotion_name' + index"
+          id="emotion_name"
           class="form-control"
           v-model="texts[index]"
-          @change="checkForm(index)"
+          onchange="checkEmotionName(locale)"
           type="text"
          
         >
