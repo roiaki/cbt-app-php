@@ -1,6 +1,3 @@
-@extends('layouts.app')
-
-@section('content')
 <?php
   $locale = App::currentLocale();
   $json_array = json_encode($locale);
@@ -8,6 +5,10 @@
 <script>
 	let locale = <?php echo $json_array; ?>
 </script>
+
+@extends('layouts.app')
+
+@section('content')
 
 <div class="container">
   <div class="row justify-content-center">
@@ -17,23 +18,27 @@
        
         <div class="card-body">
         <div><h3 class="mb-5" style="text-align: center;">{{ __('auth.Login') }}</h3></div>
-          <form method="POST"
-                id="form"
-                action="{{ route('login') }}"
-                onsubmit="return checkLogin();">
+          <form 
+            method="POST"
+            id="form"
+            action="{{ route('login') }}"
+            onsubmit="return checkLogin();"
+          >
             @csrf
 
             <!-- メール -->
             <div class="form-group row">
               <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('auth.E-Mail Address') }}</label>
               <div class="col-md-6">
-                <input id="email" 
-                       type="email" 
-                       class="form-control @error('email') is-invalid @enderror" 
-                       name="email" 
-                       value="{{ old('email') }}" 
-                       autocomplete="email" 
-                       onchange="validationLoginEmail(locale);">
+                <input 
+                  id="email" 
+                  type="email" 
+                  class="form-control @error('email') is-invalid @enderror" 
+                  name="email" 
+                  value="{{ old('email') }}" 
+                  autocomplete="email" 
+                  onchange="validationLoginEmail(locale);"
+                >
                 
                 <!-- フロントバリデーションエラーメッセージ -->
                 <div class="err-msg-name01 mt-3"></div>
@@ -52,12 +57,14 @@
               <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('auth.Password') }}</label>
 
               <div class="col-md-6">
-                <input id="password" 
-                       type="password" 
-                       class="form-control @error('password') is-invalid @enderror" 
-                       name="password" 
-                       autocomplete="current-password"
-                       onchange="validationLoginPass(locale);">
+                <input 
+                  id="password" 
+                  type="password" 
+                  class="form-control @error('password') is-invalid @enderror" 
+                  name="password" 
+                  autocomplete="current-password"
+                  onchange="validationLoginPass(locale);"
+                >
 
                 <!-- フロントバリデーションエラーメッセージ -->
                 <div class="err-msg-name02 mt-3"></div>
@@ -85,9 +92,10 @@
 
             <div class="form-group row mb-0">
               <div class="col-md-8 offset-md-4">
-                <button type="submit" 
-                        class="btn btn-primary mt-3"
-                        id="submit-btn">
+                <button 
+                  type="submit" 
+                  class="btn btn-primary mt-3"
+                  id="submit-btn">
                   {{ __('auth.Login') }}
                 </button>
 

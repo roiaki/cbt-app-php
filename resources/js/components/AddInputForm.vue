@@ -13,6 +13,7 @@
           v-model="texts[index]"
           @change="checkForm(index)"
           type="text"
+         
         >
         <!-- <p class="text-danger" v-if="errors[index].length">
           <b>Please correct the following error(s):</b>
