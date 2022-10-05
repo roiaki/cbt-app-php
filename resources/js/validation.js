@@ -255,30 +255,6 @@ window.eventValidation = function (locale) {
 }
 
 
-// 感情名のリアルタイムバリデーション
-// window.checkEmotionName = function (locale) {
-  
-//   let errCount = 0;
-//   errCount += checkRequired(locale, "#emotion_name", ".err-msg-name01");
-
-//   if(errCount === 0) {
-//     removeErrmsg("#emotion_name", ".err-msg-name01");
-//   }
-//   return errCount;
-// }
-
-// 感情の強さのリアルタイムバリデーション
-// window.checkEmotionStrength = function (locale) {
-  
-//   let errCount = 0;
-//   errCount += checkRequired(locale, "#emotion_strength", ".err-msg-name02");
-
-//   if(errCount === 0) {
-//     removeErrmsg("#emotion_strength", ".err-msg-name02");
-//   }
-//   return errCount;
-// }
-
 // 動的に増減する感情名の入力フォーム必須バリデーション
 function checkRequiredEmotionNames() {
   const emotion_name = document.querySelectorAll('#emotion_name');
