@@ -14,20 +14,7 @@
           onchange="checkEmotionName(locale)"
           type="text"
          
-        >
-        <!-- <p class="text-danger" v-if="errors[index].length">
-          <b>Please correct the following error(s):</b>
-          <ul>
-            <li v-for="error in errors[index]">{{ error }}</li>
-          </ul>
-        </p> -->
-
-        <!-- <p v-if="errors1.length">エラーあり</p>
-        <p>texts[index]:{{ texts[index] }}</p>
-        <p>index:{{ index }}</p>
-        <p>text:{{ text }}</p>
-        <p>texts{{ texts }}</p> -->
-        
+        >  
       </div>
       
       <div class="form-group col">
@@ -70,43 +57,21 @@ export default {
       texts: [],    
       strength: [],
       maxTextCount: 3,
-      name: "",
-      errors: [],
     }
   },
   methods: {
-    // ボタンをクリックしたときのイベント ①〜③
+    // フォーム追加
     addInput() {
-
       if(this.isTextMax) {
           return;
       }
-
       this.texts.push(''); // 配列に１つ空データを追加する
-
     },
+    // フォーム削除
     removeInput(index) {
       this.texts.splice(index, 1);
       this.strength.splice(index, 1);
     },
-
-    checkForm(index) {
-      if(this.texts[0]) {
-        console.log("aru");
-      }
-      this.errors = [];
-
-      if(!this.texts[0]) {
-        this.errors[index].push("感情1を入力してください");
-      }
-
-      
-    },
-
-    isInValidName() {
-            //文字列が4文字以上かチェックする
-      return this.texts[0].length < 4;
-    }
   },
   computed: {
     isTextMax() {

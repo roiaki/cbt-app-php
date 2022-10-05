@@ -415,14 +415,13 @@ window.threecolumnValidation = function (locale) {
   }
 
   errSum = errEmotionNameCount + errEmotionStrengthCount;
-
+  // エラーがあった個所へスクロール
   if(errSum === 0 && errThinkingCount > 0) {
     window.scrollTo({
       top: thinking.offsetTop - 200,
       behavior: 'smooth'
     });
   }
-
   // エラーがないなら赤枠リセット
   if(errThinkingCount === 0) {
     errMsgName03.textContent ='';
