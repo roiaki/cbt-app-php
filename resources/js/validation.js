@@ -311,6 +311,12 @@ function checkRequiredEmotionNames() {
     }
   }
 
+  if(errCount === 0) {
+    errMsg.textContent ='';
+    errMsg.classList.remove('alert');
+    errMsg.classList.remove('alert-danger');
+  }
+
   if(errCount > 0) {
     errMsg.textContent = '入力してください';
     errMsg.classList.add('alert');
@@ -349,6 +355,12 @@ function checkRequiredEmotionStrengths() {
     } else {
       emotion_strength[2].classList.remove('border-danger');
     }
+  }
+
+  if(errCount === 0) {
+    errMsg.textContent ='';
+    errMsg.classList.remove('alert');
+    errMsg.classList.remove('alert-danger');
   }
 
   if(errCount > 0) {
@@ -420,12 +432,6 @@ window.threecolumnValidation = function (locale) {
   }
 
   errCount = errEmotionNameCount + errEmotionStrengthCount + errThinkingCount;
-  
-  if(errCount === 0) {
-    errMsg.textContent ='';
-    errMsg.classList.remove('alert');
-    errMsg.classList.remove('alert-danger');
-  }
 
   if (errCount > 0) {
     return false;
