@@ -14974,13 +14974,11 @@ __webpack_require__.r(__webpack_exports__);
     return {
       texts: [],
       strength: [],
-      maxTextCount: 3,
-      name: "",
-      errors: []
+      maxTextCount: 3
     };
   },
   methods: {
-    // ボタンをクリックしたときのイベント ①〜③
+    // フォーム追加
     addInput: function addInput() {
       if (this.isTextMax) {
         return;
@@ -14988,24 +14986,10 @@ __webpack_require__.r(__webpack_exports__);
 
       this.texts.push(''); // 配列に１つ空データを追加する
     },
+    // フォーム削除
     removeInput: function removeInput(index) {
       this.texts.splice(index, 1);
       this.strength.splice(index, 1);
-    },
-    checkForm: function checkForm(index) {
-      if (this.texts[0]) {
-        console.log("aru");
-      }
-
-      this.errors = [];
-
-      if (!this.texts[0]) {
-        this.errors[index].push("感情1を入力してください");
-      }
-    },
-    isInValidName: function isInValidName() {
-      //文字列が4文字以上かチェックする
-      return this.texts[0].length < 4;
     }
   },
   computed: {
@@ -15042,7 +15026,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    // ボタンをクリックしたときのイベント ①〜③
+    // フォーム追加
     addInput: function addInput() {
       var _this = this;
 
@@ -15060,6 +15044,7 @@ __webpack_require__.r(__webpack_exports__);
 
       });
     },
+    // フォーム削除
     removeInput: function removeInput(index) {
       this.texts.splice(index, 1);
       this.strength.splice(index, 1);
@@ -15171,7 +15156,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       type: "text"
     }, null, 8
     /* PROPS */
-    , _hoisted_3), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.texts[index]]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <p class=\"text-danger\" v-if=\"errors[index].length\">\n          <b>Please correct the following error(s):</b>\n          <ul>\n            <li v-for=\"error in errors[index]\">{{ error }}</li>\n          </ul>\n        </p> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <p v-if=\"errors1.length\">エラーあり</p>\n        <p>texts[index]:{{ texts[index] }}</p>\n        <p>index:{{ index }}</p>\n        <p>text:{{ text }}</p>\n        <p>texts{{ texts }}</p> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    , _hoisted_3), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.texts[index]]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       ref_for: true,
       ref: "strength",
       name: "emotion_strength[]",

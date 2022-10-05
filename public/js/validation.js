@@ -410,7 +410,7 @@ window.threecolumnValidation = function (locale) {
     });
   }
 
-  errSum = errEmotionNameCount + errEmotionStrengthCount;
+  errSum = errEmotionNameCount + errEmotionStrengthCount; // エラーがあった個所へスクロール
 
   if (errSum === 0 && errThinkingCount > 0) {
     window.scrollTo({
@@ -677,7 +677,7 @@ function checkMinNumInputChar(locale, elementId, errMessageClass, minNumber) {
   return errCount;
 }
 /**
- * 数字かチェック
+ * 数字であるかチェック
  * 
  * 引数：言語設定ロケール
  * 引数：検査するタグ（エレメント）のID
