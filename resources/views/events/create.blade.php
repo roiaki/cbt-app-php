@@ -1,14 +1,12 @@
+@extends('layouts.app')
+
+@section('content')
 <?php 
   $json_array = json_encode($locale);
- 
 ?>
 <script>
 	let locale = <?php echo $json_array; ?>
 </script>
-
-@extends('layouts.app')
-
-@section('content')
 
 <div class="glasscard row justify-content-center">
   <div class="col-sm-7">   
