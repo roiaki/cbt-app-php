@@ -144,7 +144,7 @@
   <footer class="footer">
     <!-- Copyright -->
     <div class="text-center p-4">
-      © 2022 Copyright roiaki compose beauty poem All rights reserved.</a>
+      © 2022 Copyright roiaki with compose beauty poem All rights reserved.</a>
     </div>
     <!-- Copyright -->
   </footer>
