@@ -15229,7 +15229,7 @@ var _hoisted_9 = {
   "class": "btn-group"
 };
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" ＋ ");
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" ＋");
 
 var _hoisted_11 = ["textContent"];
 var _hoisted_12 = {
