@@ -61,121 +61,128 @@ class Solution extends Model
      */
     public function storeSolution($request)
     {
-        $trouble = new Trouble;
-        $trouble->user_id = Auth::id();
-        $trouble->trouble = $request->trouble;
-        $trouble->save();
+        try {
+            DB::beginTransaction();
 
-        // @cheack create()　fill() マルチカラムアトリビュート対策の検討
-        if(isset($request->solution[0])) {
-            $solution = new Solution;
-            $solution->user_id    = $trouble->user_id;
-            $solution->trouble_id = $trouble->id;
-            $solution->solution   = $request->solution[0];
-            $solution->save();
-        }
-        
-        if(isset($request->solution[1])) {
-            $solution = new Solution;
-            $solution->user_id    = $trouble->user_id;
-            $solution->trouble_id = $trouble->id;
-            $solution->solution   = $request->solution[1];
-            $solution->save();
-        }
-        if(isset($request->solution[2])) {
-            $solution = new Solution;
-            $solution->user_id    = $trouble->user_id;
-            $solution->trouble_id = $trouble->id;
-            $solution->solution   = $request->solution[2];
-            $solution->save();
-        }
-        if(isset($request->solution[3])) {
-            $solution = new Solution;
-            $solution->user_id    = $trouble->user_id;
-            $solution->trouble_id = $trouble->id;
-            $solution->solution   = $request->solution[3];
-            $solution->save();
-        }
-        if(isset($request->solution[4])) {
-            $solution = new Solution;
-            $solution->user_id    = $trouble->user_id;
-            $solution->trouble_id = $trouble->id;
-            $solution->solution   = $request->solution[4];
-            $solution->save();
-        }
-        
-        if(isset($request->merit[0])) {
-            $merit = new Merit;
-            $merit->user_id    = Auth::id();
-            $merit->trouble_id = $trouble->id;
-            $merit->merit      = $request->merit[0];
-            $merit->save();
-        }
-        if(isset($request->merit[1])) {
-            $merit = new Merit;
-            $merit->user_id    = Auth::id();
-            $merit->trouble_id = $trouble->id;
-            $merit->merit      = $request->merit[1];
-            $merit->save();
-        }
-        if(isset($request->merit[2])) {
-            $merit = new Merit;
-            $merit->user_id    = Auth::id();
-            $merit->trouble_id = $trouble->id;
-            $merit->merit      = $request->merit[2];
-            $merit->save();
-        }
-        if(isset($request->merit[3])) {
-            $merit = new Merit;
-            $merit->user_id    = Auth::id();
-            $merit->trouble_id = $trouble->id;
-            $merit->merit      = $request->merit[3];
-            $merit->save();
-        }
-        if(isset($request->merit[4])) {
-            $merit = new Merit;
-            $merit->user_id    = Auth::id();
-            $merit->trouble_id = $trouble->id;
-            $merit->merit      = $request->merit[4];
-            $merit->save();
-        }
+            $trouble = new Trouble;
+            $trouble->user_id = Auth::id();
+            $trouble->trouble = $request->trouble;
+            $trouble->save();
 
-        if(isset($request->demerit[0])) {
-            $demerit = new Demerit;
-            $demerit->user_id    = Auth::id();
-            $demerit->trouble_id = $trouble->id;
-            $demerit->demerit    = $request->demerit[0];
-            $demerit->save();
-        }
-        if(isset($request->demerit[1])) {
-            $demerit = new Demerit;
-            $demerit->user_id    = Auth::id();
-            $demerit->trouble_id = $trouble->id;
-            $demerit->demerit    = $request->demerit[1];
-            $demerit->save();
-        }
-        if(isset($request->demerit[2])) {
-            $demerit = new Demerit;
-            $demerit->user_id    = Auth::id();
-            $demerit->trouble_id = $trouble->id;
-            $demerit->demerit    = $request->demerit[2];
-            $demerit->save();
-        }
-        if(isset($request->demerit[3])) {
-            $demerit = new Demerit;
-            $demerit->user_id    = Auth::id();
-            $demerit->trouble_id = $trouble->id;
-            $demerit->demerit    = $request->demerit[3];
-            $demerit->save();
-        }
-        if(isset($request->demerit[4])) {
-            $demerit = new Demerit;
-            $demerit->user_id    = Auth::id();
-            $demerit->trouble_id = $trouble->id;
-            $demerit->demerit    = $request->demerit[4];
-            $demerit->save();
-        }
+            if(isset($request->solution[0])) {
+                $solution = new Solution;
+                $solution->user_id    = $trouble->user_id;
+                $solution->trouble_id = $trouble->id;
+                $solution->solution   = $request->solution[0];
+                $solution->save();
+            }
+            if(isset($request->solution[1])) {
+                $solution = new Solution;
+                $solution->user_id    = $trouble->user_id;
+                $solution->trouble_id = $trouble->id;
+                $solution->solution   = $request->solution[1];
+                $solution->save();
+            }
+            if(isset($request->solution[2])) {
+                $solution = new Solution;
+                $solution->user_id    = $trouble->user_id;
+                $solution->trouble_id = $trouble->id;
+                $solution->solution   = $request->solution[2];
+                $solution->save();
+            }
+            if(isset($request->solution[3])) {
+                $solution = new Solution;
+                $solution->user_id    = $trouble->user_id;
+                $solution->trouble_id = $trouble->id;
+                $solution->solution   = $request->solution[3];
+                $solution->save();
+            }
+            if(isset($request->solution[4])) {
+                $solution = new Solution;
+                $solution->user_id    = $trouble->user_id;
+                $solution->trouble_id = $trouble->id;
+                $solution->solution   = $request->solution[4];
+                $solution->save();
+            }
+        
+            if(isset($request->merit[0])) {
+                $merit = new Merit;
+                $merit->user_id    = Auth::id();
+                $merit->trouble_id = $trouble->id;
+                $merit->merit      = $request->merit[0];
+                $merit->save();
+            }
+            if(isset($request->merit[1])) {
+                $merit = new Merit;
+                $merit->user_id    = Auth::id();
+                $merit->trouble_id = $trouble->id;
+                $merit->merit      = $request->merit[1];
+                $merit->save();
+            }
+            if(isset($request->merit[2])) {
+                $merit = new Merit;
+                $merit->user_id    = Auth::id();
+                $merit->trouble_id = $trouble->id;
+                $merit->merit      = $request->merit[2];
+                $merit->save();
+            }
+            if(isset($request->merit[3])) {
+                $merit = new Merit;
+                $merit->user_id    = Auth::id();
+                $merit->trouble_id = $trouble->id;
+                $merit->merit      = $request->merit[3];
+                $merit->save();
+            }
+            if(isset($request->merit[4])) {
+                $merit = new Merit;
+                $merit->user_id    = Auth::id();
+                $merit->trouble_id = $trouble->id;
+                $merit->merit      = $request->merit[4];
+                $merit->save();
+            }
+
+            if(isset($request->demerit[0])) {
+                $demerit = new Demerit;
+                $demerit->user_id    = Auth::id();
+                $demerit->trouble_id = $trouble->id;
+                $demerit->demerit    = $request->demerit[0];
+                $demerit->save();
+            }
+            if(isset($request->demerit[1])) {
+                $demerit = new Demerit;
+                $demerit->user_id    = Auth::id();
+                $demerit->trouble_id = $trouble->id;
+                $demerit->demerit    = $request->demerit[1];
+                $demerit->save();
+            }
+            if(isset($request->demerit[2])) {
+                $demerit = new Demerit;
+                $demerit->user_id    = Auth::id();
+                $demerit->trouble_id = $trouble->id;
+                $demerit->demerit    = $request->demerit[2];
+                $demerit->save();
+            }
+            if(isset($request->demerit[3])) {
+                $demerit = new Demerit;
+                $demerit->user_id    = Auth::id();
+                $demerit->trouble_id = $trouble->id;
+                $demerit->demerit    = $request->demerit[3];
+                $demerit->save();
+            }
+            if(isset($request->demerit[4])) {
+                $demerit = new Demerit;
+                $demerit->user_id    = Auth::id();
+                $demerit->trouble_id = $trouble->id;
+                $demerit->demerit    = $request->demerit[4];
+                $demerit->save();
+            }
+        
+            DB::commit();
+
+        } catch (Throwable $e) {
+            DB::rollBack();
     }
+}
 
     
     /**
@@ -187,7 +194,7 @@ class Solution extends Model
         $user_id = Auth::id();
         // クエリの制約に一致する最初のモデルを取得
         $trouble  = Trouble::find($id);
-// dd($request);
+
         $solutions = Solution::where('trouble_id', $trouble->id)->get();
         $merits    = Merit::where('trouble_id', $trouble->id)->get();
         $demerits  = Demerit::where('trouble_id', $trouble->id)->get();
@@ -263,7 +270,6 @@ class Solution extends Model
 
         } catch (Throwable $e) {
             DB::rollBack();
-
         }
     }
 
