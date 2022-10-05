@@ -311,6 +311,12 @@ function checkRequiredEmotionNames() {
     }
   }
 
+  if(errCount === 0) {
+    errMsg.textContent ='';
+    errMsg.classList.remove('alert');
+    errMsg.classList.remove('alert-danger');
+  }
+
   if(errCount > 0) {
     errMsg.textContent = '入力してください';
     errMsg.classList.add('alert');
@@ -349,6 +355,12 @@ function checkRequiredEmotionStrengths() {
     } else {
       emotion_strength[2].classList.remove('border-danger');
     }
+  }
+
+  if(errCount === 0) {
+    errMsg.textContent ='';
+    errMsg.classList.remove('alert');
+    errMsg.classList.remove('alert-danger');
   }
 
   if(errCount > 0) {
@@ -403,14 +415,13 @@ window.threecolumnValidation = function (locale) {
   }
 
   errSum = errEmotionNameCount + errEmotionStrengthCount;
-
+  // エラーがあった個所へスクロール
   if(errSum === 0 && errThinkingCount > 0) {
     window.scrollTo({
       top: thinking.offsetTop - 200,
       behavior: 'smooth'
     });
   }
-
   // エラーがないなら赤枠リセット
   if(errThinkingCount === 0) {
     errMsgName03.textContent ='';
@@ -420,12 +431,6 @@ window.threecolumnValidation = function (locale) {
   }
 
   errCount = errEmotionNameCount + errEmotionStrengthCount + errThinkingCount;
-  
-  if(errCount === 0) {
-    errMsg.textContent ='';
-    errMsg.classList.remove('alert');
-    errMsg.classList.remove('alert-danger');
-  }
 
   if (errCount > 0) {
     return false;
