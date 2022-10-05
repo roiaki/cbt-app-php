@@ -13,11 +13,17 @@
   <div class="col-sm-8">
     <h3 class="title_head"><h3>{{ __('threecolumn.page_title') }}</h3>
       <!-- model 第一引数：Modelのインスタンス、第二引数：連想配列　-->
-      <form action="{{ route('three_columns.store') }}" 
-            method="post" 
-            onsubmit="return threecolumnValidation(locale);">
+      <form 
+        action="{{ route('three_columns.store') }}" 
+        method="post" 
+        onsubmit="return threecolumnValidation(locale);"
+      >
         @csrf
-        <input type="hidden" name="eventid" value="{{ $event->id }}">
+        <input 
+          type="hidden" 
+          name="eventid" 
+          value="{{ $event->id }}"
+        >
 
         <div class="form-group">
 

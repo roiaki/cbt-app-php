@@ -30,7 +30,7 @@ window.checkLogin = function () {
 }; //ログイン画面のメールアドレスのバリデーション
 
 
-window.validationLoginEmail = function (locale) {
+window.validationLoginEmail = function () {
   var errCount = 0;
   errCount += checkRequired(locale, "#email", ".err-msg-name01");
 

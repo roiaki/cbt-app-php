@@ -70,7 +70,7 @@ class ThreeColumnsController extends Controller
      */
     public function store(CreateThreeColumnRequest $request)
     {
-        dd($request);
+        // dd($request);
         $Threecolumn = new ThreeColumn;
         $three_column = $Threecolumn->storeThreecolumn($request);
         
