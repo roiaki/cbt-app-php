@@ -130,11 +130,9 @@ class ThreeColumn extends Model
 
     /**
      * 3コラム検索表示処理
-     * 
      * 検索ワードが空の場合は更新日の降順で一覧表示する
      * 
      * @param Request $request
-     * 
      */
      public function searchThreecolIndex($request)
      {
@@ -145,9 +143,7 @@ class ThreeColumn extends Model
             if (isset($keyword)) {
                 $three_columns = ThreeColumn::where('user_id', $id)
                     ->where(function($query) use($keyword) {
-                        $query->orwhere('emotion_name', 'like', '%' . $keyword . '%')
-                              ->orWhere('thinking', 'like', '%' . $keyword . '%');
-                       
+                        $query->orWhere('thinking', 'like', '%' . $keyword . '%');
                     })
                     ->orderBy('updated_at', 'desc')
                     ->paginate(5);
@@ -451,7 +447,6 @@ class ThreeColumn extends Model
      * 3コラム削除処理
      * 
      * @param int $id
-     * 
      */
     public function deleteThreecolumn($id)
     {
