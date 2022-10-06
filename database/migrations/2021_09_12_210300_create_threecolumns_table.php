@@ -17,6 +17,7 @@ class CreateThreeColumnsTable extends Migration
             $table->increments('id')->unsigned()->index(); // id -> threecol_idへ変更
             $table->integer('user_id')->unsigned()->index();
             $table->integer('event_id')->unsigned()->index();
+
             $table->string('thinking', 500);
             $table->timestamps();
 
@@ -24,6 +25,7 @@ class CreateThreeColumnsTable extends Migration
             // $table->foreign(外部キーを設定するカラム名)
             //       ->references(制約先のID名)
             //       ->on(外部キー制約先のテーブル名);
+            
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')

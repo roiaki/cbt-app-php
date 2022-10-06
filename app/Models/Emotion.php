@@ -13,7 +13,7 @@ class Emotion extends Model
      * 
      * @var string
      */
-    protected $primaryKey = 'emotion_id';
+    protected $primaryKey = 'id';
     
     // fillableに指定したカラムのみ、create()やfill()、update()で値が代入されます。
     protected $fillable = [
@@ -28,8 +28,11 @@ class Emotion extends Model
      * Emotion(従) -> Threecolumn(主)
      * many to one
      */
-    public function threecolumns()
+    public function threecolumn()
     {
-        return $this->belongsTo(ThreeColumn::class);
+        // 1param 対象先モデル
+        // 2param 自モデル
+        // 3param 対象先カラム
+        return $this->belongsTo(ThreeColumn::class, 'threecolumn_id', 'id');
     }
 }

@@ -90,7 +90,7 @@ class ThreeColumn extends Model
         // 第1引数：リレーション先の従モデル
         // 第2引数：対象先（従）がもつ外部キー　foreign_key
         // 第3引数：自モデルカラム　owner_key
-        return $this->hasMany(Emotion::class);
+        return $this->hasMany(Emotion::class, 'threecolumn_id', 'id');
     }
 
     /**
@@ -353,15 +353,18 @@ class ThreeColumn extends Model
             // クロージャでトランザクション処理開始
             // @refact
             DB::transaction(function () use ($request, $id, $three_column) {
-                
+                $three_column->thinking   = $request->thinking;
+                $three_column->updated_at = date("Y-m-d G:i:s");
+    
+                $three_column->save();
                 $emotions     = Emotion::where('threecolumn_id', $id)->get();
-// dd($emotions[0]->emotion_name);
+
                 if(isset($request->emotion_name[0])) {
                     $emotions[0]->emotion_name = $request->emotion_name[0];
                     $emotions[0]->save();
                 }
                 
-                if(isset($request->emotion_name0[1])) {
+                if(isset($request->emotion_name[1])) {
                     $emotions[1]->emotion_name = $request->emotion_name[1];
                     $emotions[1]->save();
                 }
@@ -371,25 +374,22 @@ class ThreeColumn extends Model
                     $emotions[2]->save();
                 }
     
-                if(isset($request->emotion_strength00)) {
-                    $emotions[0]->emotion_strength = $request->emotion_strength00;
+                if(isset($request->emotion_strength[0])) {
+                    $emotions[0]->emotion_strength = $request->emotion_strength[0];
                     $emotions[0]->save();
                 }
     
-                if(isset($request->emotion_strength01)) {
-                    $emotions[1]->emotion_strength = $request->emotion_strength01;
+                if(isset($request->emotion_strength[1])) {
+                    $emotions[1]->emotion_strength = $request->emotion_strength[1];
                     $emotions[1]->save();
                 }
     
-                if(isset($request->emotion_strength02)) {
-                    $emotions[2]->emotion_strength = $request->emotion_strength02;
+                if(isset($request->emotion_strength[2])) {
+                    $emotions[2]->emotion_strength = $request->emotion_strength[2];
                     $emotions[2]->save();
                 }
     
-                $three_column->thinking   = $request->thinking;
-                $three_column->updated_at = date("Y-m-d G:i:s");
-    
-                $three_column->save();
+                
         
                 // 考えの癖を中間テーブルで更新
                 if (isset($request->habit[0])) {
