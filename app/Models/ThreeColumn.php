@@ -130,11 +130,9 @@ class ThreeColumn extends Model
 
     /**
      * 3コラム検索表示処理
-     * 
      * 検索ワードが空の場合は更新日の降順で一覧表示する
      * 
      * @param Request $request
-     * 
      */
      public function searchThreecolIndex($request)
      {
@@ -145,9 +143,7 @@ class ThreeColumn extends Model
             if (isset($keyword)) {
                 $three_columns = ThreeColumn::where('user_id', $id)
                     ->where(function($query) use($keyword) {
-                        $query->orwhere('emotion_name', 'like', '%' . $keyword . '%')
-                              ->orWhere('thinking', 'like', '%' . $keyword . '%');
-                       
+                        $query->orWhere('thinking', 'like', '%' . $keyword . '%');
                     })
                     ->orderBy('updated_at', 'desc')
                     ->paginate(5);
@@ -175,6 +171,7 @@ class ThreeColumn extends Model
             }
         }
     }
+
     /**
      * 3コラム保存処理
      * 
@@ -191,12 +188,8 @@ class ThreeColumn extends Model
             $three_column->event_id = $request->eventid;
             $three_column->thinking = $request->thinking;
 
-            $emotion_name     = $request->emotion_name;
-            $emotion_strength = $request->emotion_strength;
-           
             // 中間テーブルの保存はthree_column保存の後でないとidがない
              $three_column->save();
-            // dd($three_column);
             
             // 中間テーブル
             if (isset($request->habit[0])) {
@@ -245,31 +238,31 @@ class ThreeColumn extends Model
 
             if(isset($request->emotion_name[0])) {
                 $emotion = new Emotion;
-                $emotion->emotion_name     = $emotion_name[0]; 
-                $emotion->emotion_strength = $emotion_strength[0];
-                $emotion->event_id = $request->eventid;
-                $emotion->user_id  = Auth::id();
-                $emotion->threecolumn_id = $three_column->id;
+                $emotion->emotion_name     = $request->emotion_name[0]; 
+                $emotion->emotion_strength = $request->emotion_strength[0];
+                $emotion->event_id         = $request->eventid;
+                $emotion->user_id          = Auth::id();
+                $emotion->threecolumn_id   = $three_column->id;
                 $emotion->save();
             }
            
             if(isset($request->emotion_name[1])) {
                 $emotion = new Emotion;
-                $emotion->emotion_name     = $emotion_name[1]; 
-                $emotion->emotion_strength = $emotion_strength[1];
-                $emotion->event_id = $request->eventid;
-                $emotion->user_id  = Auth::id();
-                $emotion->threecolumn_id = $three_column->id;
+                $emotion->emotion_name     = $request->emotion_name[1]; 
+                $emotion->emotion_strength = $request->emotion_strength[1];
+                $emotion->event_id         = $request->eventid;
+                $emotion->user_id          = Auth::id();
+                $emotion->threecolumn_id   = $three_column->id;
                 $emotion->save();
             }
 
             if(isset($request->emotion_name[2])) {
                 $emotion = new Emotion;
-                $emotion->emotion_name     = $emotion_name[2]; 
-                $emotion->emotion_strength = $emotion_strength[2];
-                $emotion->event_id = $request->eventid;
-                $emotion->user_id  = Auth::id();
-                $emotion->threecolumn_id = $three_column->id;
+                $emotion->emotion_name     = $request->emotion_name[2]; 
+                $emotion->emotion_strength = $request->emotion_strength[2];
+                $emotion->event_id         = $request->eventid;
+                $emotion->user_id          = Auth::id();
+                $emotion->threecolumn_id   = $three_column->id;
                 $emotion->save();
             }
         });
@@ -356,10 +349,8 @@ class ThreeColumn extends Model
         $three_column = ThreeColumn::find($id);
         if(Auth::id() === $three_column->user_id) {
             // クロージャでトランザクション処理開始
+            // @refact
             DB::transaction(function () use ($request, $id, $three_column) {
-                
-                $three_column->emotion_name = $request->emotion_name;
-                $three_column->emotion_strength = $request->emotion_strength;
     
                 if(isset($request->emotion_name00)) {
                     $three_column->emotion_name00 = $request->emotion_name00;
@@ -456,7 +447,6 @@ class ThreeColumn extends Model
      * 3コラム削除処理
      * 
      * @param int $id
-     * 
      */
     public function deleteThreecolumn($id)
     {

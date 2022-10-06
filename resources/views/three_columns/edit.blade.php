@@ -85,7 +85,7 @@
           <input type="text" 
             class="form-control" 
             id="emotion_name00"
-            name="emotion_name00" 
+            name="emotion_name[0]" 
             value="{{ $emotions[0]->emotion_name }}">
           
           <!-- 感情名必須バリデーション表示-->
@@ -102,7 +102,7 @@
             <input type="text" 
               class="form-control mt-2" 
               id="emotion_name" 
-              name="emotion_name01" 
+              name="emotion_name[1]" 
               value="{{ $emotions[1]->emotion_name }}">
           @endif
 
@@ -121,7 +121,7 @@
               type="text" 
               class="form-control mt-2" 
               id="emotion_name" 
-              name="emotion_name02" 
+              name="emotion_name[2]" 
               value="{{$emotions[2]->emotion_name }}"
               required>
           @endif
@@ -147,7 +147,7 @@
             type="number" 
             class="form-control" 
             id="emotion_strength" 
-            name="emotion_strength00" 
+            name="emotion_strength[0]" 
             value="{{ $emotions[0]->emotion_strength }}"
           >
 
@@ -165,7 +165,7 @@
               type="number" 
               class="form-control mt-2" 
               id="emotion_strength" 
-              name="emotion_strength01" 
+              name="emotion_strength[1]" 
               value="{{ $emotions[1]->emotion_strength }}"
               required
             >
@@ -176,22 +176,12 @@
             type="number" 
             class="form-control mt-2" 
             id="emotion_strength" 
-            name="emotion_strength02" 
+            name="emotion_strength[2]" 
             value="{{ $emotions[2]->emotion_strength }}"
             required
           >
           @endif
 
-          @if(isset($three_column->emotion_strength02))
-          <input 
-            type="number" 
-            class="form-control mt-2" 
-            id="emotion_strength" 
-            name="emotion_strength02" 
-            value="{{ $three_column->emotion_strength02 }}"
-            required
-          >
-          @endif
         </div>
       </div>
       <!-- フロントバリデーションエラーメッセージ -->

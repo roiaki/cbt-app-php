@@ -142,7 +142,6 @@ window.validationConfirmPass = function() {
   if(errPassConfirmCount === 0) {
     removeErrmsg("#password", ".err-msg-name03");
   }
-
   return errPassConfirmCount;
 }
 
