@@ -180,6 +180,7 @@ class Solution extends Model
             DB::commit();
 
         } catch (Throwable $e) {
+            echo $e->getMessage();
             DB::rollBack();
     }
 }

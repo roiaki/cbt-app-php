@@ -172,14 +172,14 @@
           @endif
 
           @if(isset($emotions[2]->emotion_strength))
-          <input 
-            type="number" 
-            class="form-control mt-2" 
-            id="emotion_strength" 
-            name="emotion_strength[2]" 
-            value="{{ $emotions[2]->emotion_strength }}"
-            required
-          >
+            <input 
+              type="number" 
+              class="form-control mt-2" 
+              id="emotion_strength" 
+              name="emotion_strength[2]" 
+              value="{{ $emotions[2]->emotion_strength }}"
+              required
+            >
           @endif
 
         </div>
