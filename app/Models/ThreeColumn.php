@@ -347,37 +347,46 @@ class ThreeColumn extends Model
     public function updateThreecolumn($request, $id)
     {
         $three_column = ThreeColumn::find($id);
+       
+        // dd($request);
         if(Auth::id() === $three_column->user_id) {
             // クロージャでトランザクション処理開始
             // @refact
             DB::transaction(function () use ($request, $id, $three_column) {
-    
-                if(isset($request->emotion_name00)) {
-                    $three_column->emotion_name00 = $request->emotion_name00;
+                
+                $emotions     = Emotion::where('threecolumn_id', $id)->get();
+// dd($emotions[0]->emotion_name);
+                if(isset($request->emotion_name[0])) {
+                    $emotions[0]->emotion_name = $request->emotion_name[0];
+                    $emotions[0]->save();
                 }
                 
-                if(isset($request->emotion_name01)) {
-                    $three_column->emotion_name01 = $request->emotion_name01;
+                if(isset($request->emotion_name0[1])) {
+                    $emotions[1]->emotion_name = $request->emotion_name[1];
+                    $emotions[1]->save();
                 }
                 
-                if(isset($request->emotion_name02)) {
-                    $three_column->emotion_name02 = $request->emotion_name02;
+                if(isset($request->emotion_name[2])) {
+                    $emotions[2]->emotion_name = $request->emotion_name[2];
+                    $emotions[2]->save();
                 }
     
                 if(isset($request->emotion_strength00)) {
-                    $three_column->emotion_strength00 = $request->emotion_strength00;
+                    $emotions[0]->emotion_strength = $request->emotion_strength00;
+                    $emotions[0]->save();
                 }
     
                 if(isset($request->emotion_strength01)) {
-                    $three_column->emotion_strength01 = $request->emotion_strength01;
+                    $emotions[1]->emotion_strength = $request->emotion_strength01;
+                    $emotions[1]->save();
                 }
     
                 if(isset($request->emotion_strength02)) {
-                    $three_column->emotion_strength02 = $request->emotion_strength02;
+                    $emotions[2]->emotion_strength = $request->emotion_strength02;
+                    $emotions[2]->save();
                 }
     
-                $three_column->thinking = $request->thinking;
-    
+                $three_column->thinking   = $request->thinking;
                 $three_column->updated_at = date("Y-m-d G:i:s");
     
                 $three_column->save();

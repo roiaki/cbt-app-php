@@ -147,7 +147,7 @@
             type="number" 
             class="form-control" 
             id="emotion_strength" 
-            name="emotion_strength[0]" 
+            name="emotion_strength00" 
             value="{{ $emotions[0]->emotion_strength }}"
           >
 
@@ -165,7 +165,7 @@
               type="number" 
               class="form-control mt-2" 
               id="emotion_strength" 
-              name="emotion_strength[1]" 
+              name="emotion_strength01" 
               value="{{ $emotions[1]->emotion_strength }}"
               required
             >
@@ -176,7 +176,7 @@
             type="number" 
             class="form-control mt-2" 
             id="emotion_strength" 
-            name="emotion_strength[2]" 
+            name="emotion_strength02" 
             value="{{ $emotions[2]->emotion_strength }}"
             required
           >
