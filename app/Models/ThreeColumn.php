@@ -350,8 +350,7 @@ class ThreeColumn extends Model
        
         // dd($request);
         if(Auth::id() === $three_column->user_id) {
-            // クロージャでトランザクション処理開始
-            // @refact
+
             DB::transaction(function () use ($request, $id, $three_column) {
                 $three_column->thinking   = $request->thinking;
                 $three_column->updated_at = date("Y-m-d G:i:s");
@@ -389,8 +388,6 @@ class ThreeColumn extends Model
                     $emotions[2]->save();
                 }
     
-                
-        
                 // 考えの癖を中間テーブルで更新
                 if (isset($request->habit[0])) {
                     if ($request->habit[0] == "on") {
@@ -463,7 +460,6 @@ class ThreeColumn extends Model
         if(Auth::id() === $three_column->user_id) {
             $three_column->delete();
         }
-       
     }
 }
 
