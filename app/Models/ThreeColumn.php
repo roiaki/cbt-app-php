@@ -356,7 +356,8 @@ class ThreeColumn extends Model
                 $three_column->updated_at = date("Y-m-d G:i:s");
     
                 $three_column->save();
-                $emotions     = Emotion::where('threecolumn_id', $id)->get();
+
+                $emotions = Emotion::where('threecolumn_id', $id)->get();
 
                 if(isset($request->emotion_name[0])) {
                     $emotions[0]->emotion_name = $request->emotion_name[0];
