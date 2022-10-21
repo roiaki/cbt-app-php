@@ -11,26 +11,33 @@ window.confirmDelete = function () {
   }
 }
 
-// ログイン画面で送信ボタンが押された時、問題がなければ送信する
+/**
+ * ログイン画面で送信ボタンが押された時、問題がなければ送信する 
+ */ 
 window.checkLogin = function() {
-  let err = 0;
+  let errCount = 0;
 
-  err += validationLoginEmail();
-  err += validationLoginPass();
+  errCount += validationLoginEmail();
+  errCount += validationLoginPass();
 
-  if(err > 0) {
+  if(errCount > 0) {
     return false;
-
   } else {
     return true;
   }
 }
 
-//ログイン画面のメールアドレスのバリデーション
+/**
+ * ログイン画面のメールアドレスのバリデーションをします
+ * 
+ * @return {Number} errCount エラーの数
+ */
 window.validationLoginEmail = function() {
+  
   let errCount = 0;
 
   errCount += checkRequired(locale, "#email", ".err-msg-name01");
+
   if(errCount === 1) {
     //
   } else {
@@ -40,21 +47,26 @@ window.validationLoginEmail = function() {
   if(errCount === 0) {
     removeErrmsg("#email", ".err-msg-name01");
   }
-
   return errCount;
 }
 
-// ログイン画面のパスワードのバリデーション
+/**
+ * ログイン画面でのパスワードのバリデーションをします
+ * 
+ * @returns {Number} errCount エラーの数
+ */
 window.validationLoginPass = function() {
+  
   let errCount = 0;
+
   errCount += checkRequired(locale, "#password", ".err-msg-name02");
+
   if(errCount === 1) {
     //
   } else {
     errCount += checkMinNumInputChar(locale, "#password", ".err-msg-name02", 8);
   }
   
-
   if(errCount === 0) {
     removeErrmsg("#password", ".err-msg-name02");
   }
@@ -63,10 +75,14 @@ window.validationLoginPass = function() {
 
 /**
  * 登録画面で送信ボタンが押されたら各種バリデーションを検査し問題なければ送信し、
- * 問題があれば 送信をキャンセルする
+ *   問題があれば 送信をキャンセルする
+ * 
+ * @return {boolean} 
  */ 
 window.checkRegister = function() {
+  
   let err = 0;
+
   err += validationName();
   err += validationEmail();
   err += validationPass();
@@ -79,8 +95,12 @@ window.checkRegister = function() {
   }
 }
 
-// 登録画面のお名前のバリデーション
+/**
+ * ユーザ登録画面での名前のバリデーション
+ * @returns {Number} errNameCount エラーの数
+ */
 window.validationName = function() {
+  
   let errNameCount     = 0;
 
   //名前に対して入力必須を検査してNGなら１が返ってくる
@@ -99,17 +119,21 @@ window.validationName = function() {
   return errNameCount;
 }
 
-// 登録画面のメールアドレスのバリデーション
+/**
+ * ユーザ登録画面でのメールアドレスのバリデーション
+ * @returns {Number} errEmailCount エラーの数
+ */
 window.validationEmail = function() {
-  let errEmailCount     = 0;
+  
+  let errEmailCount = 0;
+  const MAX_CHAR    = 50;
 
-  //入力必須を検査してNGなら１が返ってくる
+  //入力必須を検査
   errEmailCount += checkRequired(locale, "#email", ".err-msg-name02");
   
   // 入力があってもメール形式ではない場合
   errEmailCount += checkEmailFormat(locale, "#email", ".err-msg-name02");
-    
-  errEmailCount += checkMaxNumInputChar(locale, "#email", ".err-msg-name02", 50);
+  errEmailCount += checkMaxNumInputChar(locale, "#email", ".err-msg-name02", MAX_CHAR);
     
   if(errEmailCount === 0) {
     removeErrmsg("#email", ".err-msg-name02");
@@ -118,25 +142,37 @@ window.validationEmail = function() {
   return errEmailCount;
 }
 
-// 登録パスワードのバリデーション
+/**
+ * ユーザ登録画面でのパスワードのバリデーションをします
+ * @returns {Number} errPassCount エラーの数
+ */
 window.validationPass = function() {
+  
   let errPassCount = 0;
+  const MAX_CHAR = 20;
+  const MIN_CHAR = 8;
+
   errPassCount += checkRequired(locale, "#password", ".err-msg-name03");
-  errPassCount += checkMaxNumInputChar(locale, "#password", ".err-msg-name03", 20);
-  errPassCount += checkMinNumInputChar(locale, "#password", ".err-msg-name03", 8);
+  errPassCount += checkMaxNumInputChar(locale, "#password", ".err-msg-name03", MAX_CHAR);
+  errPassCount += checkMinNumInputChar(locale, "#password", ".err-msg-name03", MIN_CHAR);
 
   if(errPassCount === 0) {
     removeErrmsg("#password", ".err-msg-name03");
   }
-
   return errPassCount;
 }
 
-// 登録パスワード確認フォームのバリデーション
+/**
+ * ユーザ登録画面での確認パスワードのバリデーション
+ * @returns {Number} errPassConfirmCount エラーの数
+ */
 window.validationConfirmPass = function() {
+  
   let errPassConfirmCount = 0;
+  const MAX_CHAR = 20;
+
   errPassConfirmCount += checkRequired(locale, "#password", ".err-msg-name03");
-  errPassConfirmCount += checkMaxNumInputChar(locale, "#password", ".err-msg-name03", 20);
+  errPassConfirmCount += checkMaxNumInputChar(locale, "#password", ".err-msg-name03", MAX_CHAR);
   errPassConfirmCount += confirmPass(locale, "#password", "#password-confirm", ".err-msg-name03");
 
   if(errPassConfirmCount === 0) {
@@ -145,11 +181,20 @@ window.validationConfirmPass = function() {
   return errPassConfirmCount;
 }
 
-//　登録パスワードと確認フォームの一致を確認
+/**
+ * ユーザ登録画面での確認パスワードがパスワードと一致しているか確認
+ * @param {string} locale 言語設定ロケール 
+ * @param {string} elementId パスワードフォームのエレメントID 
+ * @param {string} confirmelementId 確認パスワードのエレメントID
+ * @param {string} errMessageClass　エラー表示する場所
+ * @returns {Number} errCount エラーの数
+ */
 function confirmPass(locale, elementId, confirmelementId, errMessageClass) {
+  
   const pass        = document.querySelector(elementId);
   const confirmPass = document.querySelector(confirmelementId);
   const errMsg      = document.querySelector(errMessageClass);
+  
   let errCount = 0;
 
   if(pass.value === confirmPass.value) {
@@ -174,49 +219,66 @@ function confirmPass(locale, elementId, confirmelementId, errMessageClass) {
 }
 
 
-// エラー表示を消す
+/**
+ * エラー表示を消す
+ * @param {string} elementId 入力フォームのエレメントID
+ * @param {string} errMsg エラー表示の場所
+ */
 function removeErrmsg(elementId, errMsg) {
-  const target     = document.querySelector(elementId);
-  const errMsgname = document.querySelector(errMsg);
+  const TARGET  = document.querySelector(elementId);
+  const ERR_MSG = document.querySelector(errMsg);
   // エラーの表示を解除
-  target.classList.remove('border-danger');
-  errMsgname.textContent ='';
-  errMsgname.classList.remove('alert');
-  errMsgname.classList.remove('alert-danger');
+  TARGET.classList.remove('border-danger');
+  ERR_MSG.textContent ='';
+  ERR_MSG.classList.remove('alert');
+  ERR_MSG.classList.remove('alert-danger');
 }
 
-// メールアドレスの形式がチェックする
+/**
+ * メールアドレスの形式かどうかチェック
+ * @param {string} locale 
+ * @param {string} elementId 
+ * @param {string} errClass 
+ * @returns 
+ */
 function checkEmailFormat(locale, elementId, errClass) {
-  const email        = document.querySelector(elementId);
-  const errMsgName01 = document.querySelector(errClass);
-  let pattern = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/;
+  
+  const EMAIL   = document.querySelector(elementId);
+  const ERR_MSG = document.querySelector(errClass);
+  let pattern        = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/;
+
   let errEmailCount  = 0;
 
-  if(!pattern.test(email.value)) {
+  if(!pattern.test(EMAIL.value)) {
     errEmailCount += 1;
     if(locale === "ja") {
-      errMsgName01.textContent = "メールアドレスの形式で入力してください";
+      ERR_MSG.textContent = "メールアドレスの形式で入力してください";
     }
     if(locale === "en") {
-      errMsgName01.textContent = "Please enter in the form of an email address";
+      ERR_MSG.textContent = "Please enter in the form of an email address";
     }
     if(locale === "uk") {
-      errMsgName01.textContent = "Будь ласка, введіть у формі електронної адреси";
+      ERR_MSG.textContent = "Будь ласка, введіть у формі електронної адреси";
     }
     // クラスを追加(フォームの枠線を赤くする)
-    email.classList.add('border-danger');
-    errMsgName01.classList.add('alert');
-    errMsgName01.classList.add('alert-danger');
+    EMAIL.classList.add('border-danger');
+    ERR_MSG.classList.add('alert');
+    ERR_MSG.classList.add('alert-danger');
   } 
   return errEmailCount;
 }
 
-// 出来事バリデーション
+/**
+ * 出来事作成ページのバリデーション
+ * @param {string} locale 言語設定ロケール
+ * @returns {Number} errCount エラーの数
+ */
 window.eventValidation = function (locale) {
   
   // エラーメッセージを表示させる要素を取得
   const errMsgName01 = document.querySelector('.err-msg-name01');
   const errMsgName02 = document.querySelector('.err-msg-name02');
+  
   let errTitleCount   = 0;
   let errContentCount = 0;
   let errCount        = 0;
@@ -254,57 +316,65 @@ window.eventValidation = function (locale) {
 }
 
 
-// 動的に増減する感情名の入力フォーム必須バリデーション
+/**
+ * 動的に増減する感情名フォームのバリデーション
+ * @returns {Number} errCountエラーの数
+ */
 function checkRequiredEmotionNames() {
-  const emotion_name = document.querySelectorAll('#emotion_name');
-  const errMsg       = document.querySelector('.err-msg-name01');
-  errCount = 0;
-  if(emotion_name[0]) {
-    if(!emotion_name[0].value) {
-      emotion_name[0].classList.add('border-danger');
+
+  const EMOTION_NAME = document.querySelectorAll('#emotion_name');
+  const ERR_MSG      = document.querySelector('.err-msg-name01');
+  let errCount = 0;
+
+  // @check 共通化
+  if(EMOTION_NAME[0]) {
+    if(!EMOTION_NAME[0].value) {
+      EMOTION_NAME[0].classList.add('border-danger');
       errCount += 1;
     } else {
-      emotion_name[0].classList.remove('border-danger');
+      EMOTION_NAME[0].classList.remove('border-danger');
     }
   }
 
-  if(emotion_name[1]) {
-    if(!emotion_name[1].value) {
-      emotion_name[1].classList.add('border-danger');
+  if(EMOTION_NAME[1]) {
+    if(!EMOTION_NAME[1].value) {
+      EMOTION_NAME[1].classList.add('border-danger');
       errCount += 1;
     } else {
-      emotion_name[1].classList.remove('border-danger');
+      EMOTION_NAME[1].classList.remove('border-danger');
     }
   }
 
-  if(emotion_name[2]) {
-    if(!emotion_name[2].value) {
-      emotion_name[2].classList.add('border-danger');
+  if(EMOTION_NAME[2]) {
+    if(!EMOTION_NAME[2].value) {
+      EMOTION_NAME[2].classList.add('border-danger');
       errCount += 1;
     } else {
-      emotion_name[2].classList.remove('border-danger');
+      EMOTION_NAME[2].classList.remove('border-danger');
     }
   }
 
   if(errCount === 0) {
-    errMsg.textContent ='';
-    errMsg.classList.remove('alert');
-    errMsg.classList.remove('alert-danger');
+    ERR_MSG.textContent ='';
+    ERR_MSG.classList.remove('alert');
+    ERR_MSG.classList.remove('alert-danger');
   }
 
   if(errCount > 0) {
-    errMsg.textContent = '入力してください';
-    errMsg.classList.add('alert');
-    errMsg.classList.add('alert-danger');
+    ERR_MSG.textContent = '入力してください';
+    ERR_MSG.classList.add('alert');
+    ERR_MSG.classList.add('alert-danger');
   }
   return errCount;
 }
 
 // 動的に増減する感情の強さ入力フォーム必須バリデーション
 function checkRequiredEmotionStrengths() {
+
   const emotion_strength = document.querySelectorAll('#emotion_strength');
   const errMsg           = document.querySelector('.err-msg-name02');
-  errCount = 0;
+  let errCount = 0;
+
   if(emotion_strength[0]) {
     if(!emotion_strength[0].value) {
       emotion_strength[0].classList.add('border-danger');
@@ -349,7 +419,7 @@ function checkRequiredEmotionStrengths() {
 /**
  * 送信ボタンを押した時の3コラムバリデーション
  * 
- * @param locale 言語切り替え
+ * @param {string} locale 言語切り替え
  */
 window.threecolumnValidation = function (locale) {
 
@@ -357,8 +427,7 @@ window.threecolumnValidation = function (locale) {
   const emotion_name     = document.querySelectorAll('#emotion_name');
   const emotion_strength = document.querySelector('#emotion_strength');
   const thinking         = document.querySelector('#thinking');
-
-  const errMsgName03 = document.querySelector('.err-msg-name03');
+  const errMsgName03     = document.querySelector('.err-msg-name03');
 
   let errCount                = 0;
   let errEmotionNameCount     = 0;
@@ -390,6 +459,7 @@ window.threecolumnValidation = function (locale) {
   }
 
   errSum = errEmotionNameCount + errEmotionStrengthCount;
+
   // エラーがあった個所へスクロール
   if(errSum === 0 && errThinkingCount > 0) {
     window.scrollTo({
@@ -415,23 +485,27 @@ window.threecolumnValidation = function (locale) {
 
 /**
  * 7コラムバリデーション
- * @param locale 言語切り替え
+ * @param {string} locale 言語切り替え
+ * @return {Number} errCount エラーの数
  */
  window.sevencolumnValidation = function (locale) {
-  // フォームの要素を取得
-  const basis_thinking = document.querySelector('#basis_thinking');
-  const opposite_fact  = document.querySelector('#opposite_fact');
-  const new_thinking   = document.querySelector('#new_thinking');
   
-  const new_emotion_strength01   = document.querySelector('#new_emotion_strength');
-  const new_emotion_strength02   = document.querySelector('#new_emotion_strength00');
-  const new_emotion_strength03   = document.querySelector('#new_emotion_strength01');
-  const new_emotion_strength04   = document.querySelector('#new_emotion_strength02');
+  // フォームの要素を取得
+  const BASIS_THINKING = document.querySelector('#basis_thinking');
+  const OPPOSITE_FACT  = document.querySelector('#opposite_fact');
+  const NEW_THINKING   = document.querySelector('#new_thinking');
+  
+  const NEW_EMOTION_STRENGTH_FIRST   = document.querySelector('#new_emotion_strength');
+  const NEW_EMOTION_STRENGTH_SECOND  = document.querySelector('#new_emotion_strength00');
+  const NEW_EMOTION_STRENGTH_THIRD   = document.querySelector('#new_emotion_strength01');
+  const NEW_EMOTION_STRENGTH_FOURTH  = document.querySelector('#new_emotion_strength02');
 
-  const errMsgName01 = document.querySelector('.err-msg-name01');
-  const errMsgName02 = document.querySelector('.err-msg-name02');
-  const errMsgName03 = document.querySelector('.err-msg-name03');
-  const errMsgName04 = document.querySelector('.err-msg-name04');
+  const ERR_MSG_FIRST  = document.querySelector('.err-msg-name01');
+  const ERR_MSG_SECOND = document.querySelector('.err-msg-name02');
+  const ERR_MSG_THIRD  = document.querySelector('.err-msg-name03');
+  const ERR_MSG_FORTH  = document.querySelector('.err-msg-name04');
+
+  const MAX_CHAR = 500;
 
   let errCount              = 0;
   let errBasisThinkingCount = 0;
@@ -444,102 +518,102 @@ window.threecolumnValidation = function (locale) {
   let errNewEmotionSumCount = 0;
 
   errBasisThinkingCount += checkRequired(locale, "#basis_thinking", ".err-msg-name01");
-  errBasisThinkingCount += checkMaxNumInputChar(locale, "#basis_thinking", ".err-msg-name01", 500);
+  errBasisThinkingCount += checkMaxNumInputChar(locale, "#basis_thinking", ".err-msg-name01", MAX_CHAR);
 
   errOppsiteFactCount   += checkRequired(locale, "#opposite_fact", ".err-msg-name02");
-  errOppsiteFactCount   += checkMaxNumInputChar(locale, "#opposite_fact", ".err-msg-name02", 500);
+  errOppsiteFactCount   += checkMaxNumInputChar(locale, "#opposite_fact", ".err-msg-name02", MAX_CHAR);
 
   errThinkingCount      += checkRequired(locale, "#new_thinking", ".err-msg-name03");
-  errThinkingCount      += checkMaxNumInputChar(locale, "#new_thinking", ".err-msg-name03", 500);
+  errThinkingCount      += checkMaxNumInputChar(locale, "#new_thinking", ".err-msg-name03", MAX_CHAR);
 
-  if(new_emotion_strength01) {
+  if(NEW_EMOTION_STRENGTH_FIRST) {
     errNewEmotionCount01 += checkRequired(locale, "#new_emotion_strength", ".err-msg-name04");
     console.log(errNewEmotionCount01);
   }
-  if(new_emotion_strength02) {
+  if(NEW_EMOTION_STRENGTH_SECOND) {
     errNewEmotionCount02 += checkRequired(locale, "#new_emotion_strength00", ".err-msg-name04");
     console.log(errNewEmotionCount02);
   }
-  if(new_emotion_strength03) {
+  if(NEW_EMOTION_STRENGTH_THIRD) {
     errNewEmotionCount03 += checkRequired(locale, "#new_emotion_strength01", ".err-msg-name04");
     console.log(errNewEmotionCount03);
   }
-  if(new_emotion_strength04) {
+  if(NEW_EMOTION_STRENGTH_FOURTH) {
     errNewEmotionCount04 += checkRequired(locale, "#new_emotion_strength02", ".err-msg-name04");
     console.log(errNewEmotionCount04);
   }
 
   if(errBasisThinkingCount > 0) {
     window.scrollTo({
-      top: basis_thinking.offsetTop - 100,
+      top: BASIS_THINKING.offsetTop - 100,
       behavior: 'smooth'
     });
   }
 
   if(errOppsiteFactCount > 0 && errBasisThinkingCount === 0) {
     window.scrollTo({
-      top: opposite_fact.offsetTop - 100,
+      top: OPPOSITE_FACT.offsetTop - 100,
       behavior: 'smooth'
     });
   }
 
   if(errThinkingCount > 0 && errOppsiteFactCount === 0 && errBasisThinkingCount === 0) {
     window.scrollTo({
-      top: new_thinking.offsetTop - 100,
+      top: NEW_THINKING.offsetTop - 100,
       behavior: 'smooth'
     });
   }
 
   // エラーがないなら赤枠リセット
   if(errBasisThinkingCount === 0) {
-    errMsgName01.textContent ='';
-    basis_thinking.classList.remove('border-danger');
-    errMsgName01.classList.remove('alert');
-    errMsgName01.classList.remove('alert-danger');
+    ERR_MSG_FIRST.textContent ='';
+    BASIS_THINKING.classList.remove('border-danger');
+    ERR_MSG_FIRST.classList.remove('alert');
+    ERR_MSG_FIRST.classList.remove('alert-danger');
   }
   // エラーがないなら赤枠リセット
   if(errOppsiteFactCount === 0) {
-    errMsgName02.textContent ='';
-    opposite_fact.classList.remove('border-danger');
-    errMsgName02.classList.remove('alert');
-    errMsgName02.classList.remove('alert-danger');
+    ERR_MSG_SECOND.textContent ='';
+    OPPOSITE_FACT.classList.remove('border-danger');
+    ERR_MSG_SECOND.classList.remove('alert');
+    ERR_MSG_SECOND.classList.remove('alert-danger');
   }
   // エラーがないなら赤枠リセット
   if(errThinkingCount === 0) {
-    errMsgName03.textContent ='';
-    new_thinking.classList.remove('border-danger');
-    errMsgName03.classList.remove('alert');
-    errMsgName03.classList.remove('alert-danger');
+    ERR_MSG_THIRD.textContent ='';
+    NEW_THINKING.classList.remove('border-danger');
+    ERR_MSG_THIRD.classList.remove('alert');
+    ERR_MSG_THIRD.classList.remove('alert-danger');
   }
 
   // エラーがないなら赤枠リセット
-  if(new_emotion_strength01) {
+  if(NEW_EMOTION_STRENGTH_FIRST) {
     if(errNewEmotionCount01 === 0) {
-      new_emotion_strength01.classList.remove('border-danger');
+      (NEW_EMOTION_STRENGTH_FIRST).classList.remove('border-danger');
     }
   }
-  if(new_emotion_strength02) {
+  if(NEW_EMOTION_STRENGTH_SECOND) {
     if(errNewEmotionCount02 === 0) {
-      new_emotion_strength02.classList.remove('border-danger');
+      NEW_EMOTION_STRENGTH_SECOND.classList.remove('border-danger');
     }
   }
-  if(new_emotion_strength03) {
+  if(NEW_EMOTION_STRENGTH_THIRD) {
     if(errNewEmotionCount03 === 0) {
-      new_emotion_strength03.classList.remove('border-danger');
+      NEW_EMOTION_STRENGTH_THIRD.classList.remove('border-danger');
     }
   }
-  if(new_emotion_strength04) {
+  if(NEW_EMOTION_STRENGTH_FOURTH) {
     if(errNewEmotionCount04 === 0) {
-      new_emotion_strength04.classList.remove('border-danger');
+      NEW_EMOTION_STRENGTH_FOURTH.classList.remove('border-danger');
     }
   }
   
   errNewEmotionSumCount = errNewEmotionCount01 + errNewEmotionCount02 + errNewEmotionCount03 + errNewEmotionCount04;
   
   if(errNewEmotionSumCount === 0) {
-    errMsgName04.textContent ='';
-    errMsgName04.classList.remove('alert');
-    errMsgName04.classList.remove('alert-danger');
+    ERR_MSG_FORTH.textContent ='';
+    ERR_MSG_FORTH.classList.remove('alert');
+    ERR_MSG_FORTH.classList.remove('alert-danger');
   }
 
   errCount = errBasisThinkingCount + errOppsiteFactCount + errThinkingCount 
@@ -550,107 +624,114 @@ window.threecolumnValidation = function (locale) {
 }
 
 /**
- * 入力必須チェック
- * 
- * 引数：言語設定ロケール
- * 引数：検査するタグ（エレメント）のID
- * 引数：エラー表示するタグ、エレメントＩＤ
- * 戻り値：エラーカウント
+ * 入力必須の確認
+ * @param {string} locale 
+ * @param {string} elementId 
+ * @param {string} errMessageClass  
+ * @returns {Number} errCount エラーの数
  */
  function checkRequired(locale, elementId, errMessageClass) {
-  const tagetElement = document.querySelector(elementId);
-  const errMsg       = document.querySelector(errMessageClass);
+  const TAGET_ELEMENT = document.querySelector(elementId);
+  const ERR_MSG       = document.querySelector(errMessageClass);
   errCount = 0;
   
-  if(!tagetElement.value) {
+  if(!TAGET_ELEMENT.value) {
     // エラーメッセージのテキスト
     if(locale === "ja") {
-      errMsg.textContent = '入力してください';
+      ERR_MSG.textContent = '入力してください';
     }
     if(locale === "en") {
-      errMsg.textContent = 'Please input';
+      ERR_MSG.textContent = 'Please input';
     }
     if(locale === "uk") {
-      errMsg.textContent = 'будь ласка, введіть';
+      ERR_MSG.textContent = 'будь ласка, введіть';
     }
 
     // クラスを追加(フォームの枠線を赤くする)
-    tagetElement.classList.add('border-danger');
-    errMsg.classList.add('alert');
-    errMsg.classList.add('alert-danger');
+    TAGET_ELEMENT.classList.add('border-danger');
+    ERR_MSG.classList.add('alert');
+    ERR_MSG.classList.add('alert-danger');
     errCount = 1;
   }
   return errCount;
 }
 
 /**
- * 最大入力文字数チェックをする関数
+ * 入力フォームの最大入力文字数チェックします
  * 
- * 引数：言語設定ロケール
- * 引数：検査するタグ（エレメント）のID
- * 引数：エラー表示するタグ、エレメントＩＤ
- * 戻り値：エラーカウント
+ * @param {locale}：言語設定ロケール
+ * @param {elementId}：検査するタグ（エレメント）のID
+ * @param {errMessageClass}：エラー表示するタグ、エレメントＩＤ
+ * @return {errCount}：エラーの数
  */
  function checkMaxNumInputChar(locale, elementId, errMessageClass, maxNumber) {
   
-  const tagetElement = document.querySelector(elementId);
-  const errMsg = document.querySelector(errMessageClass);
-  let errCount = 0;
+  const TAGET_ELEMENT = document.querySelector(elementId);
+  const ERR_MSG       = document.querySelector(errMessageClass);
+  let errCount       = 0;
 
-  if(tagetElement.value.length > maxNumber) {
+  if(TAGET_ELEMENT.value.length > maxNumber) {
     if(locale === "ja") {
-      errMsg.textContent = String(maxNumber) + "文字以内で入力してください";
+      ERR_MSG.textContent = String(maxNumber) + "文字以内で入力してください";
     }
     if(locale === "en") {
-      errMsg.textContent = 'Please enter up to' + String(maxNumber) + 'characters';
+      ERR_MSG.textContent = 'Please enter up to' + String(maxNumber) + 'characters';
     }
     if(locale === "uk") {
-      errMsg.textContent = 'Введіть до' + String(maxNumber) + 'символів';
+      ERR_MSG.textContent = 'Введіть до' + String(maxNumber) + 'символів';
     }
 
     // クラスを追加(フォームの枠線を赤くする)
-    tagetElement.classList.add('border-danger');
-    errMsg.classList.add('alert');
-    errMsg.classList.add('alert-danger');
-    errCount = 1;
-  }
-  return errCount;
-}
-
-// 最小入力文字数をチェックする
-function checkMinNumInputChar(locale, elementId, errMessageClass, minNumber) {
-  
-  const tagetElement = document.querySelector(elementId);
-  const errMsg = document.querySelector(errMessageClass);
-  let errCount = 0;
-
-  if(tagetElement.value.length < minNumber) {
-    if(locale === "ja") {
-      errMsg.textContent = String(minNumber) + "文字以上で入力してください";
-    }
-    if(locale === "en") {
-      errMsg.textContent = 'Please enter at least' + String(minNumber) + 'characters';
-    }
-    if(locale === "uk") {
-      errMsg.textContent = 'Введіть принаймні один символ' + String(minNumber);
-    }
-
-    // クラスを追加(フォームの枠線を赤くする)
-    tagetElement.classList.add('border-danger');
-    errMsg.classList.add('alert');
-    errMsg.classList.add('alert-danger');
+    TAGET_ELEMENT.classList.add('border-danger');
+    ERR_MSG.classList.add('alert');
+    ERR_MSG.classList.add('alert-danger');
     errCount = 1;
   }
   return errCount;
 }
 
 /**
- * 数字であるかチェック
+ * 入力フォームの最小入力文字数をチェックします
  * 
- * 引数：言語設定ロケール
- * 引数：検査するタグ（エレメント）のID
- * 引数：エラー表示するタグ、エレメントＩＤ
- * 戻り値：エラーカウント
+ * @param {string} locale 
+ * @param {string} elementId 
+ * @param {string} errMessageClass 
+ * @param {Number} minNumber 
+ * @returns {Number} errCount 
+ */
+function checkMinNumInputChar(locale, elementId, errMessageClass, minNumber) {
+  
+  const TAGET_ELEMENT = document.querySelector(elementId);
+  const ERR_MSG = document.querySelector(errMessageClass);
+  let errCount = 0;
+
+  if(TAGET_ELEMENT.value.length < minNumber) {
+    if(locale === "ja") {
+      ERR_MSG.textContent = String(minNumber) + "文字以上で入力してください";
+    }
+    if(locale === "en") {
+      ERR_MSG.textContent = 'Please enter at least' + String(minNumber) + 'characters';
+    }
+    if(locale === "uk") {
+      ERR_MSG.textContent = 'Введіть принаймні один символ' + String(minNumber);
+    }
+
+    // クラスを追加(フォームの枠線を赤くする)
+    TAGET_ELEMENT.classList.add('border-danger');
+    ERR_MSG.classList.add('alert');
+    ERR_MSG.classList.add('alert-danger');
+    errCount = 1;
+  }
+  return errCount;
+}
+
+/**
+ * 数字であるかチェックします
+ * 
+ * @param {string}：locale 言語設定ロケール
+ * @param {string}：ecementId 検査するタグ（エレメント）のID
+ * @param {string}：errMsgClass エラー表示するタグ、エレメントＩＤ
+ * @return {number}：errCount エラーの数
 */
 function isNumber(locale, elementId, errMsgClass) {
   const targetElement = document.querySelector(elementId);
