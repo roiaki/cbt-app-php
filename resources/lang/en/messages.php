@@ -12,7 +12,7 @@ return [
     'about-cbt-title' => 'What is cognitive behavioral therapy?',
     'about-cbt-message01' => 'In our lives, have you ever been faced with a variety of difficult situations and had trouble solving them, or had trouble changing your mind?',
     'about-cbt-message02' => 'It is also said that when people are exposed to long-term stress, they tend to fall into extreme thinking. This is called psychological narrowing of vision.',
-    'about-cbt-message03' => 'This psychotherapy aims to solve problems from a "realistic and balanced" perspective that is neither overly optimistic nor pessimistic at such times.',
+    'about-cbt-message03' => 'It is a psychotherapy that aims to solve problems from a "realistic and balanced" perspective that is neither overly optimistic nor pessimistic in such situations.Another specialized treatment for recovery from PTSD, which occurs after very intense events such as war experiences, is cognitive processing therapy (CPT).',
     'about-thisapp-title' => 'About this app',
     'about-thisapp-message' => 'This application allows you to write down your own thoughts and feelings following the cognitive-behavioral therapy process (3-column or 7-column method). If they are difficult, they will be changed to favorable ones toward a solution. This is intended to assist in such problem solving. This application is only intended to assist. If you are not feeling well or have a serious condition, please consult a trusted psychologist or medical institution.',
 
