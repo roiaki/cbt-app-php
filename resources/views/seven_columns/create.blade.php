@@ -27,12 +27,13 @@
         <!-- idはグローバル属性であり、HTML内の全ての要素に適用される。
                  name属性はHTMLの特定の要素（フォーム要素）主にバックエンド
             -->
-        <input type="text" 
-               class="form-control" 
-               id="title" 
-               name="title" 
-               value="{{ $event->title }}"
-               readonly>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="title" 
+          name="title" 
+          value="{{ $event->title }}"
+          readonly>
 
         <!-- タイトル必須バリデーション表示-->
         @if($errors->has('title'))
@@ -46,12 +47,13 @@
 
       <div class="form-group">
         <label for="content"><h5>{{ __('sevencolumn.1-2_title') }}</h5></label>
-        <textarea class="form-control" 
-                  id="content" 
-                  name="content" 
-                  cols="90" 
-                  rows="5"
-                  readonly>{{ $event->content }}</textarea>
+        <textarea 
+          class="form-control" 
+          id="content" 
+          name="content" 
+          cols="90" 
+          rows="5"
+          readonly>{{ $event->content }}</textarea>
 
         <!-- バリデーションエラーメッセージ-->
         @if($errors->has('content'))
@@ -65,12 +67,13 @@
       
       <div class="form-group">
         <label for="thinking"><h5>{{ __('sevencolumn.3-1_title') }}</h5></label>
-        <textarea class="form-control" 
-                  id="thinking" 
-                  name="thinking" 
-                  cols="90" 
-                  rows="5" 
-                  readonly>{{ $three_column->thinking }}</textarea>
+        <textarea 
+          class="form-control" 
+          id="thinking" 
+          name="thinking" 
+          cols="90" 
+          rows="5" 
+          readonly>{{ $three_column->thinking }}</textarea>
 
         <!-- バリデーションエラーメッセージ-->
         @if($errors->has('thinking'))
@@ -88,11 +91,12 @@
         <p class="alert alert-success" role="alert">
           {{ __('sevencolumn.4_sentence') }}
         </p>
-        <textarea class="form-control" 
-                  id="basis_thinking" 
-                  name="basis_thinking" 
-                  cols="90" 
-                  rows="5">{{ old('basis_thinking') }}</textarea>
+        <textarea 
+          class="form-control" 
+          id="basis_thinking" 
+          name="basis_thinking" 
+          cols="90" 
+          rows="5">{{ old('basis_thinking') }}</textarea>
 
         <!-- フロントバリデーションエラーメッセージ -->
         <div class="err-msg-name01 mt-3"></div>
@@ -114,11 +118,12 @@
         <p class="alert alert-success" role="alert">
           {{ __('sevencolumn.5_sentence') }}
         </p>
-        <textarea class="form-control" 
-                  id="opposite_fact" 
-                  name="opposite_fact" 
-                  cols="90" 
-                  rows="5">{{ old('opposite_fact') }}</textarea>
+        <textarea 
+          class="form-control" 
+          id="opposite_fact" 
+          name="opposite_fact" 
+          cols="90" 
+          rows="5">{{ old('opposite_fact') }}</textarea>
 
         <!-- フロントバリデーションエラーメッセージ -->
         <div class="err-msg-name02 mt-3"></div>
@@ -140,11 +145,12 @@
         <p class="alert alert-success" role="alert">
         {{ __('sevencolumn.6_sentence') }}
         </p>
-        <textarea class="form-control" 
-                  id="new_thinking" 
-                  name="new_thinking" 
-                  cols="90" 
-                  rows="5">{{ old('new_thinking') }}</textarea>
+        <textarea 
+          class="form-control" 
+          id="new_thinking" 
+          name="new_thinking" 
+          cols="90" 
+          rows="5">{{ old('new_thinking') }}</textarea>
         
         <!-- フロントバリデーションエラーメッセージ -->
         <div class="err-msg-name03 mt-3"></div>
@@ -174,7 +180,7 @@
               <th>{{ __('sevencolumn.prev_emotion_strength') }}</th>
               <th>{{ __('sevencolumn.new_emotion_strength') }}</th></tr>
             </tr>
-            <?php var_dump($emotions[0]->emotion_name); ?>
+
             <tr>
               <td>
                 {{ $emotions[0]->emotion_name }}
@@ -186,10 +192,11 @@
                 {{ $emotions[0]->emotion_strength }}
               </td>
               <td align="center">
-                <input type="number" 
-                       class="form-control mt-1" 
-                       id="new_emotion_strength" 
-                       name="new_emotion_strength00">
+                <input 
+                  type="number" 
+                  class="form-control mt-1" 
+                  id="new_emotion_strength" 
+                  name="new_emotion_strength00">
               </td>
             </tr>
 
@@ -198,9 +205,10 @@
               <td>       
                 @if(isset($emotions[1]->emotion_name))
                   {{ $emotions[1]->emotion_name }}
-                  <input type="hidden"
-                       name="new_emotion_name01"
-                       value="{{$emotions[1]->emotion_name }}">
+                  <input 
+                    type="hidden"
+                    name="new_emotion_name01"
+                    value="{{$emotions[1]->emotion_name }}">
                 @endif
               </td>
               <td>
@@ -210,10 +218,11 @@
               </td>
               @if(isset($emotions[1]->emotion_strength))
                 <td>
-                  <input type="number" 
-                        class="form-control mt-2" 
-                        id="new_emotion_strength01" 
-                        name="new_emotion_strength01">
+                  <input 
+                    type="number" 
+                    class="form-control mt-2" 
+                    id="new_emotion_strength01" 
+                    name="new_emotion_strength01">
                 </td>
               @endif
             </tr>
@@ -224,9 +233,10 @@
               @if(isset($emotions[2]->emotion_name))
                 <td>       
                   {{ $emotions[2]->emotion_name }}
-                  <input type="hidden"
-                         name="new_emotion_name02"
-                         value="{{$emotions[2]->emotion_name }}">
+                  <input 
+                    type="hidden"
+                    name="new_emotion_name02"
+                    value="{{$emotions[2]->emotion_name }}">
                 </td>
               @endif
 
@@ -239,10 +249,11 @@
 
               @if(isset($emotions[2]->emotion_strength))
                 <td>
-                  <input type="number" 
-                         class="form-control mt-2" 
-                         id="new_emotion_strength02" 
-                         name="new_emotion_strength02">
+                  <input 
+                    type="number" 
+                    class="form-control mt-2" 
+                    id="new_emotion_strength02" 
+                    name="new_emotion_strength02">
                 </td>
               @endif
             </tr>
@@ -265,10 +276,10 @@
         </div>
         <!-- /感情の変化-->
 
-        <input type="submit" 
-               class="btn btn-primary btn-lg" 
-               value="{{ __('sevencolumn.button_create') }}"
-        >
+        <input 
+          type="submit" 
+          class="btn btn-primary btn-lg" 
+          value="{{ __('sevencolumn.button_create') }}">
 
         <div class="buttons">
           <button type="button" class="btn btn-secondary btn-lg" onclick="history.back(-1)">{{ __('sevencolumn.button_back') }}</button>
