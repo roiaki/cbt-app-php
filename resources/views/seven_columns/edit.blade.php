@@ -9,10 +9,6 @@
         配列の2つ目に $message->id を入れることで 
         update の URL である /messages/{message} の {message} に id が入ります
         -->
-    {!! Form::model($seven_column, 
-          ['route' => ['seven_columns.update', $seven_column->id], 
-          'method' => 'put']) 
-    !!}
 
     <form action="{{ route('seven_columns.update', ['param' => $seven_column->id] ) }}" method="POST">
       @csrf
@@ -20,12 +16,13 @@
         <div class="form-group">
           <!-- タイトル -->
           <label for="title"><h5>{{ __('sevencolumn.1-1_title') }}</h5></label>
-          <input type="text"
-                class="form-control"
-                id="title"
-                name="title"
-                readonly
-                value="{{ $event->title }}">
+          <input 
+            type="text"
+            class="form-control"
+            id="title"
+            name="title"
+            readonly
+            value="{{ $event->title }}">
         
           <!-- タイトル必須バリデーション表示 課題：まとめてかけないか-->
           @if($errors->has('title'))
@@ -40,12 +37,13 @@
       <div class="form-group">
         <!-- 内容 -->
         <label for="content"><h5>{{ __('sevencolumn.1-2_title') }}</h5></label>
-        <textarea class="form-control" 
-                  id="content" 
-                  name="content" 
-                  cols="50" 
-                  rows="3"
-                  readonly>{{ $event->content }}</textarea>
+        <textarea 
+          class="form-control" 
+          id="content" 
+          name="content" 
+          cols="50" 
+          rows="3"
+          readonly>{{ $event->content }}</textarea>
 
         <!-- 内容必須バリデーション表示-->
         @if($errors->has('content'))
@@ -59,12 +57,13 @@
       
       <div class="form-group">
         <label for="thinking"><h5>{{ __('sevencolumn.3-1_title') }}</h5></label>
-        <textarea class="form-control" 
-                  id="thinking" 
-                  name="thinking" 
-                  cols="50" 
-                  rows="3" 
-                  readonly>{{ $three_column->thinking }}</textarea>
+        <textarea 
+          class="form-control" 
+          id="thinking" 
+          name="thinking" 
+          cols="50" 
+          rows="3" 
+          readonly>{{ $three_column->thinking }}</textarea>
 
         <!-- 内容必須バリデーション表示-->
         @if($errors->has('thinking'))
@@ -78,11 +77,12 @@
 
       <div class="form-group">
         <label for="basis_thinking"><h5>{{ __('sevencolumn.4_title') }}</h5></label>
-        <textarea class="form-control" 
-                  id="basis_thinking" 
-                  name="basis_thinking" 
-                  cols="50" 
-                  rows="3" required>{{ $seven_column->basis_thinking }}</textarea>
+        <textarea 
+          class="form-control" 
+          id="basis_thinking" 
+          name="basis_thinking" 
+          cols="50" 
+          rows="3" required>{{ $seven_column->basis_thinking }}</textarea>
 
         <!-- 内容必須バリデーション表示-->
         @if($errors->has('basis_thinking'))
@@ -96,11 +96,12 @@
 
       <div class="form-group">
         <label for="opposite_fact"><h5>{{ __('sevencolumn.5_title') }}</h5></label>
-        <textarea class="form-control" 
-                  id="opposite_fact" 
-                  name="opposite_fact" 
-                  cols="50" 
-                  rows="3" required>{{ $seven_column->opposite_fact }}</textarea>
+        <textarea 
+          class="form-control" 
+          id="opposite_fact" 
+          name="opposite_fact" 
+          cols="50" 
+          rows="3" required>{{ $seven_column->opposite_fact }}</textarea>
 
         <!-- 内容必須バリデーション表示-->
         @if($errors->has('opposite_fact'))
@@ -114,11 +115,12 @@
 
       <div class="form-group">
         <label for="new_thinking"><h5>{{ __('sevencolumn.6_title') }}</h5></label>
-        <textarea class="form-control" 
-                  id="new_thinking" 
-                  name="new_thinking" 
-                  cols="50" 
-                  rows="3" required>{{ $seven_column->new_thinking }}</textarea>
+        <textarea 
+          class="form-control" 
+          id="new_thinking" 
+          name="new_thinking" 
+          cols="50" 
+          rows="3" required>{{ $seven_column->new_thinking }}</textarea>
 
         <!-- 内容必須バリデーション表示-->
         @if($errors->has('new_thinking'))
@@ -140,23 +142,26 @@
           <ul class="list-group">
             @if(isset($new_emotions[0]->new_emotion_name))
               <li class="list-group-item">{{ $new_emotions[0]->new_emotion_name }}</li>
-              <input type="hidden"
-                    name="new_emotion_name00"
-                    value="{{ $new_emotions[0]->new_emotion_name }}">
+              <input 
+                type="hidden"
+                name="new_emotion_name00"
+                value="{{ $new_emotions[0]->new_emotion_name }}">
             @endif
 
             @if(isset($new_emotions[1]->new_emotion_name))
               <li class="list-group-item">{{ $new_emotions[1]->new_emotion_name }}</li>
-              <input type="hidden"
-                     name="new_emotion_name01"
-                     value="{{ $new_emotions[1]->new_emotion_name }}">
+              <input 
+                type="hidden"
+                name="new_emotion_name01"
+                value="{{ $new_emotions[1]->new_emotion_name }}">
             @endif
 
             @if(isset($new_emotions[2]->new_emotion_name))
               <li class="list-group-item">{{ $new_emotions[2]->new_emotion_name }}</li>
-              <input type="hidden"
-                     name="new_emotion_name02"
-                     value="{{ $new_emotions[2]->new_emotion_name }}">
+              <input 
+                type="hidden"
+                name="new_emotion_name02"
+                value="{{ $new_emotions[2]->new_emotion_name }}">
             @endif
           </ul>
         </div>
@@ -186,30 +191,33 @@
           <label for="emotion_strength">{{ __('sevencolumn.new_emotion_strength') }}</label>
 
           @if(isset($emotions[0]->emotion_strength))
-          <input type="number" 
-                 class="form-control" 
-                 id="new_emotion_strength" 
-                 name="new_emotion_strength00"
-                 value="{{ $new_emotions[0]->new_emotion_strength }}"
-                 required>
+          <input 
+            type="number" 
+            class="form-control" 
+            id="new_emotion_strength" 
+            name="new_emotion_strength00"
+            value="{{ $new_emotions[0]->new_emotion_strength }}"
+            required>
           @endif
 
           @if(isset($emotions[1]->emotion_strength))
-          <input type="number" 
-                 class="form-control mt-3" 
-                 id="new_emotion_strength01" 
-                 name="new_emotion_strength01"
-                 value="{{ $new_emotions[1]->new_emotion_strength }}"
-                 required>
+          <input 
+            type="number" 
+            class="form-control mt-3" 
+            id="new_emotion_strength01" 
+            name="new_emotion_strength01"
+            value="{{ $new_emotions[1]->new_emotion_strength }}"
+            required>
           @endif
 
           @if(isset($emotions[2]->emotion_strength))
-          <input type="number" 
-                 class="form-control mt-3" 
-                 id="new_emotion_strength02" 
-                 name="new_emotion_strength02"    
-                 value="{{ $new_emotions[2]->new_emotion_strength }}"
-                 required>
+          <input 
+            type="number" 
+            class="form-control mt-3" 
+            id="new_emotion_strength02" 
+            name="new_emotion_strength02"    
+            value="{{ $new_emotions[2]->new_emotion_strength }}"
+            required>
           @endif
         </div>
         <!-- /新しいの感情の強さ -->

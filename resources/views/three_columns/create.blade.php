@@ -16,14 +16,12 @@
       <form 
         action="{{ route('three_columns.store') }}" 
         method="post" 
-        onsubmit="return threecolumnValidation(locale);"
-      >
+        onsubmit="return threecolumnValidation(locale);">
         @csrf
         <input 
           type="hidden" 
           name="eventid" 
-          value="{{ $event->id }}"
-        >
+          value="{{ $event->id }}">
 
         <div class="form-group">
 
@@ -34,8 +32,7 @@
             id="title"
             name="title"
             value="{{ $event->title }}"
-            readonly
-          >
+            readonly>
 
           <!-- バリデーションエラー表示-->
           @if($errors->has('title'))
@@ -56,8 +53,7 @@
             name="content" 
             cols="90" 
             rows="5" 
-            readonly>{{ $event->content }}
-          </textarea>
+            readonly>{{ $event->content }}</textarea>
 
           <!-- バリデーションエラー表示-->
           @if($errors->has('content'))
