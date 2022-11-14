@@ -15,7 +15,6 @@ class ThreeColumnsController extends Controller
 
     /**
      * 3コラム一覧表示処理
-     * 
      * @return view('three_columns.index', $data);
      */
     public function index()
@@ -28,7 +27,6 @@ class ThreeColumnsController extends Controller
 
     /**
      * 3コラム検索処理
-     * 
      * @param Request $request
      * @return view('three_columns.index', $data);
      */
@@ -43,7 +41,6 @@ class ThreeColumnsController extends Controller
 
     /**
      * 3コラム新規作成画面への遷移処理
-     * 
      * @param int $id
      * @return view('three_columns.create', $data);
      */
@@ -64,7 +61,6 @@ class ThreeColumnsController extends Controller
 
     /**
      * 3コラム保存処理
-     * 
      * @param Request $request
      * @return view('three_columns.show', $data);
      */
@@ -83,8 +79,7 @@ class ThreeColumnsController extends Controller
 
     /**
      * 3コラム詳細画面へ遷移処理
-     * 
-     * @param int $id
+     * @param int $id 3コラムのID
      * @return view('three_columns.show', $data);
      */
     public function show($id)
@@ -106,8 +101,7 @@ class ThreeColumnsController extends Controller
 
     /**
      * 3コラム編集画面へ遷移処理
-     * 
-     * @param int $id
+     * @param int $id 3コラムのID
      * @return view('three_columns.edit', $data);
      */
     public function edit($id)
@@ -129,9 +123,8 @@ class ThreeColumnsController extends Controller
 
     /**
      * 3コラム更新処理
-     * 
      * @param Request $request
-     * @param int $id
+     * @param int $id　3コラムのID
      * @return redirect('/three_columns');
      */
     public function update(UpdateThreeColumnRequest $request, $id)
@@ -152,8 +145,7 @@ class ThreeColumnsController extends Controller
 
     /**
      * 3コラム削除処理
-     * 
-     * @param int $id
+     * @param int $id 3コラムのID
      * @return redirect('/three_columns');
      */
     public function destroy($id)
@@ -173,7 +165,6 @@ class ThreeColumnsController extends Controller
 
     /**
      * 説明画面遷移処理
-     * 
      * @return view('users.info');
      */
     public function info()

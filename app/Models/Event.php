@@ -4,18 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 
 class Event extends Model
 {
     use HasFactory;
     /*
      * テーブルの主キー
-     * 
      * @var string
      */
     //protected $primaryKey = 'event_id';
@@ -69,11 +67,8 @@ class Event extends Model
 
 
     /** 
-     * 出来事一覧表示処理
-     * ログイン済みならば表示させる。
-     * 
+     * 出来事一覧表示処理。ログイン済みならば表示させる。
      * @return array $data 
-     * 
      */
     public function showEventIndex()
     {
@@ -91,12 +86,9 @@ class Event extends Model
 
     /**
      * 出来事一覧画面での検索処理
-     * 
      * 検索ワードが空の時は更新日の降順で一覧表示する
-     * 
      * @param Requset $request
-     * @return array $data
-     * 
+     * @return array $data 
      */
     public function serchIndex(Request $request)
     {   
@@ -133,10 +125,8 @@ class Event extends Model
 
     /**
      * 出来事保存処理
-     * 
      * @param Request $request
      * @return object $event
-     * 
      */
     public function storeEvent(Request $request) 
     {   
@@ -154,11 +144,9 @@ class Event extends Model
 
     /**
      * 出来事更新処理
-     * 
      * @param Request $request
-     * @param int $id
+     * @param int $id　出来事のID
      * @return objent $event
-     * 
      */
     public function updateEvent(Request $request, $id)
     {
@@ -177,9 +165,7 @@ class Event extends Model
 
     /**
      * 出来事削除処理
-     * 
-     * @param int $id
-     * 
+     * @param int $id　出来事のID
      */
     public function eventDelete($id)
     {
