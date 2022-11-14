@@ -57,7 +57,6 @@ class Solution extends Model
 
     /**
      * 解決策保存処理
-     * 
      */
     public function storeSolution($request)
     {
@@ -188,11 +187,10 @@ class Solution extends Model
     
     /**
      * 解決策更新処理
-     * 
      */
     public function updateSolution($request, $id)
     {
-        $user_id = Auth::id();
+        //$user_id = Auth::id();
         // クエリの制約に一致する最初のモデルを取得
         $trouble  = Trouble::find($id);
 
@@ -276,7 +274,7 @@ class Solution extends Model
 
     /**
      * 解決策削除処理
-     * @param $id
+     * @param $id 解決策のID
      */
     public function deleteSolution($id)
     {

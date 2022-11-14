@@ -62,7 +62,6 @@ class SevenColumn extends Model
 
     /**
      * 一覧表示処理
-     * 
      * @return array $data
      */
     public function showSevencolumnIndex()
@@ -83,10 +82,8 @@ class SevenColumn extends Model
 
     /**
      * 7コラム検索一覧表示処理
-     * 
      * @param Request $request
      * @return array $data
-     * 
      */
     public function searchSevencolumnIndex($request)
     {
@@ -118,7 +115,6 @@ class SevenColumn extends Model
 
     /**
      * 7コラム作成画面表示処理
-     * 
      * @param int $id
      */
     public function createSevencolumn($id)
@@ -144,7 +140,6 @@ class SevenColumn extends Model
 
     /**
      * 7コラム保存処理
-     * 
      * @param Request $request
      */
     public function storeSevencolumn($request)
@@ -202,7 +197,6 @@ class SevenColumn extends Model
 
     /**
      * 7コラム詳細ページ表示処理
-     * 
      * @param int $id
      * @return array $data
      */
@@ -236,10 +230,8 @@ class SevenColumn extends Model
 
     /**
      * 7コラム編集画面表示処理
-     * 
      * @param int $id
      * @return array $data
-     * 
      */
     public function showEditSevencolumn($id)
     {
@@ -267,10 +259,8 @@ class SevenColumn extends Model
 
     /**
      * 7コラム更新処理
-     * 
      * @param Request $request
      * @param int $id
-     * 
      */
     public function updateSevencolumn($request, $id) 
     {

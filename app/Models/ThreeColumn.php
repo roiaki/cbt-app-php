@@ -109,7 +109,6 @@ class ThreeColumn extends Model
 
     /**
      * 3コラム一覧表示処理
-     * 
      * @return array $data
      */
     public function showThreecolIndex()
@@ -131,7 +130,6 @@ class ThreeColumn extends Model
     /**
      * 3コラム検索表示処理
      * 検索ワードが空の場合は更新日の降順で一覧表示する
-     * 
      * @param Request $request
      */
      public function searchThreecolIndex($request)
@@ -174,7 +172,6 @@ class ThreeColumn extends Model
 
     /**
      * 3コラム保存処理
-     * 
      * @param Request $request
      * @return object $three_column
      */
@@ -272,7 +269,6 @@ class ThreeColumn extends Model
 
     /**
      * 3コラム詳細画面表示処理
-     * 
      * @param int $id
      * @return array $data
      */
@@ -309,7 +305,6 @@ class ThreeColumn extends Model
 
     /**
      * 3コラム編集画面表示処理
-     * 
      * @param int $id
      * @return array $data
      */
@@ -340,9 +335,8 @@ class ThreeColumn extends Model
 
     /**
      *  3コラム更新処理
-     *
-     * @param Reqest $request
-     * @param int $id
+     *  @param Reqest $request
+     *  @param int $id
      */
     public function updateThreecolumn($request, $id)
     {
@@ -452,7 +446,6 @@ class ThreeColumn extends Model
 
     /**
      * 3コラム削除処理
-     * 
      * @param int $id
      */
     public function deleteThreecolumn($id)

@@ -30,7 +30,7 @@ class SolutionsController extends Controller
 
     /**
      * 解決策保存処理
-     * 
+     * @param $request
      */
     public function store(Request $request) 
     {
@@ -50,7 +50,10 @@ class SolutionsController extends Controller
         return redirect('/solutions'); 
     }
 
-    // 詳細ページ表示処理
+    /**
+     * 詳細ページ表示処理
+     * @param int $id 解決策のID
+     */
     public function show($id)
     {
         $trouble   = Trouble::find($id);
@@ -99,7 +102,6 @@ class SolutionsController extends Controller
 
     /**
      * 解決策更新処理
-     * 
      * @param Request $request
      * @param int $id
      * @return redirect('/three_columns');
@@ -122,7 +124,6 @@ class SolutionsController extends Controller
 
     /**
      * 解決策削除処理
-     * 
      * @param int $id
      * @return redirect('/solutions');
      */
