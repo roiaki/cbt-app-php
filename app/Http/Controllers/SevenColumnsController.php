@@ -13,7 +13,9 @@ use App\Models\Emotion;
 
 class SevenColumnsController extends Controller
 {
-    // 7コラム一覧画面表示
+    /**
+     * 7コラム一覧表示
+     */
     public function index()
     {
         $sevencolumns = new SevenColumn;
@@ -22,15 +24,20 @@ class SevenColumnsController extends Controller
         return view('seven_columns.index', $data);
     }
 
-    // 7コラム検索表示
+    /**
+     * 7コラム検索
+     */
     public function searchIndex(Request $request)
     {
         $sevencolumns = new SevenColumn;
         $data = $sevencolumns->searchSevencolumnIndex($request);
+
         return view('seven_columns.index', $data);
     }
     
-    // 7コラム新規作成画面へ遷移
+    /**
+     * 7コラム新規作成画面へ遷移
+     */
     public function create($id)
     {
         $sevencolumn = new SevenColumn;
@@ -39,7 +46,9 @@ class SevenColumnsController extends Controller
         return view('seven_columns.create', $data);
     }
 
-    // 7コラム保存処理
+    /**
+     * 7コラム保存
+     */
     public function store(CreateSevenColumnRequest $request)
     {
         $sevencolumn = new sevencolumn;
@@ -48,7 +57,9 @@ class SevenColumnsController extends Controller
         return redirect('seven_columns');
     }
 
-    // 7コラム詳細ページ表示処理
+    /**
+     * 7コラム詳細画面へ遷移
+     */
     public function show($id)
     {
         $sevencolumn = SevenColumn::find($id);
@@ -65,7 +76,9 @@ class SevenColumnsController extends Controller
         }    
     }
 
-    // 7コラム編集画面表示処理
+    /**
+     * 7コラム編集画面へ遷移
+     */
     public function edit($id)
     {
         $sevencolumn = SevenColumn::find($id);
@@ -82,7 +95,9 @@ class SevenColumnsController extends Controller
         } 
     }
 
-    // 7コラム更新処理
+    /**
+     * 7コラム更新
+     */
     public function update(UpdateSevenColumnRequest $request, $id)
     {
         $sevencolumn = SevenColumn::find($id);
@@ -96,7 +111,9 @@ class SevenColumnsController extends Controller
         return redirect('seven_columns');
     }
 
-    // 7コラム削除処理
+    /**
+     * 7コラム削除
+     */
     public function destroy($id)
     {
         $sevencolumn = SevenColumn::find($id);

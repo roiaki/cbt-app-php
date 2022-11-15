@@ -177,7 +177,7 @@ class Event extends Model
 
     /**
      * 出来事のuser_idがログインユーザーとidと同一か判定するメソッド
-     * 
+     * @param int $id ユーザーID
      */
     public function examiningUser($id)
     {
