@@ -12,7 +12,9 @@ use Session;
 
 class SolutionsController extends Controller
 {
-    // 解決策一覧画面表示
+    /**
+     * 解決策一覧表示
+     */
     public function index()
     {
         $solution = new Solution;
@@ -22,7 +24,9 @@ class SolutionsController extends Controller
         return view('solutions.index', $data);
     }
 
-    // 解決策作成画面表示
+    /**
+     * 解決策作成画面へ遷移
+     */
     public function create()
     {
         return view('solutions.create');
@@ -30,7 +34,6 @@ class SolutionsController extends Controller
 
     /**
      * 解決策保存処理
-     * @param $request
      */
     public function store(Request $request) 
     {
@@ -77,7 +80,9 @@ class SolutionsController extends Controller
         return redirect('/solutions');
     }
 
-    // 編集ページ表示処理
+    /**
+     * 解決策編集画面へ遷移
+     */
     public function edit($id)
     {
         $trouble   = Trouble::find($id);
@@ -102,9 +107,6 @@ class SolutionsController extends Controller
 
     /**
      * 解決策更新処理
-     * @param Request $request
-     * @param int $id
-     * @return redirect('/three_columns');
      */
     public function update(Request $request, $id)
     {
@@ -124,8 +126,6 @@ class SolutionsController extends Controller
 
     /**
      * 解決策削除処理
-     * @param int $id
-     * @return redirect('/solutions');
      */
     public function destroy($id)
     {
