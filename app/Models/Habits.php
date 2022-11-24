@@ -9,14 +9,6 @@ class Habits extends Model
 {
     use HasFactory;
 
-    /*
-     * テーブルの主キー
-     * 
-     * @var string
-     */
-    //protected $primaryKey = 'habit_id';
-
-
     /**
      * 多対多
      */
