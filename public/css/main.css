@@ -95,11 +95,11 @@ div.pages {
 
 .cbt-title {
     margin: 15% 0% 30% 0%;
-
+    background-color: #e6e6fa;
 }
 
 .about-cbt {
-    padding: 80px, 30px;
+    padding-top: 5%;
     margin-bottom: 60px;
     text-align: center;
     background-color: #fff;
@@ -108,17 +108,50 @@ div.pages {
 
 .heading {
     position: relative;
-   
     margin: 30px 0 15px;
     letter-spacing: 2px;
     font-size:2rem;
-
 }
 
 .about-text {
     margin: 0.7% 13%;
     line-height: 2.5;
+    font-size: 18px;
+}
 
+
+.sa {
+    background-color: #16ceee;
+    /* text-align: center; */
+    width: 60%;
+    margin: 5% 20%;
+    padding: 2%;
+}
+.top_page_title {
+    text-align: center;
+    margin-bottom: 60px;   
+}
+.first {
+    height: 900px;
+}
+.back01 {
+    background-color:#ebf4f4;
+    padding: 0.4%;
+}
+.back02 {
+    background-color: #f2efef;
+    padding: 1%;
+}
+.back03 {
+    background-color:#ebf4f4;
+    padding: 1%;
+}
+.top_page_card {
+    background-color: #FFFFFF;   
+    width: 60%;
+    margin: 7% auto;
+    padding: 1.5%;
+    border-radius: 30px;
 }
 
 .works {
@@ -221,16 +254,16 @@ h1.outline {
     
     padding-left: 12px;
 }
-* {
-    margin: 0;
+
+    /* margin: 0;
     /* padding: 0; */
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     /* font-family: "Poppins", 'Roboto', sans-serif; */
     /* font-family: 'Roboto', sans-serif; */
 
-    font-family: 'M PLUS 1p', sans-serif;
+    /* font-family: 'M PLUS 1p', sans-serif; */ */
 
-  }
+  
 
 body {
     /* background-color:#356f4a !important; */
