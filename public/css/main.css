@@ -120,13 +120,6 @@ div.pages {
 }
 
 
-.sa {
-    background-color: #16ceee;
-    /* text-align: center; */
-    width: 60%;
-    margin: 5% 20%;
-    padding: 2%;
-}
 .top_page_title {
     text-align: center;
     margin-bottom: 60px;   
@@ -152,6 +145,15 @@ div.pages {
     margin: 7% auto;
     padding: 1.5%;
     border-radius: 30px;
+}
+
+.event_page_card {
+    background-color: #fefefe;   
+    width: 60%;
+    margin: 10px auto;
+    padding: 1.5%;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
 }
 
 .works {
@@ -327,6 +329,7 @@ body::after {
 .glasscard {
 
     margin-top:30px;
+    margin-bottom:30px;
     width: 100%;
     height: 100%; 
     border-radius: 30px;

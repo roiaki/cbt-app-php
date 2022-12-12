@@ -4,10 +4,13 @@
   <meta charset="utf-8">
   <title>CBT APP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <!-- animate css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
   <link rel="stylesheet" href="{{asset('css/main.css')}}">
   <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
 
@@ -83,19 +86,18 @@
                </ul>
             </li>
             <!-- ここまで言語切り替え -->
-            <!-- アカウント -->
+            <!-- アカウントdropdwon -->
             <li class="dropdown font-weight-bold pt-2" id="nav-lang">
               <a href="#" class="dropdown-toggle text-black-50" data-toggle="dropdown">
                 {{ __('messages.account') }}
                 <span class="caret"></span></a>
               <ul class="dropdown-menu bg-light text-black-50" aria-labelledby="dropdownMenu1">
                 <li>{!! link_to_route('users.profile', __('messages.profile'), [], ['class' => 'nav-link']) !!}</li>
-                
                 <li>{!! link_to_route('logout.get', __('messages.logout'), [], ['class' => 'nav-link']) !!}</li>
                 <li>{!! link_to_route('users.delete_confirm', __('messages.withdrawal'), [], ['class' => 'nav-link']) !!}</li>
               </ul>
             </li>
-            <!-- /アカウント -->
+            <!-- /アカウントdropdown -->
             
           @else
             <!-- ここから言語切り替え -->
@@ -153,7 +155,7 @@
   <!-- Propper.js読み込み -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
-
+ 
 </div>
   <script src="{{ mix('/js/app.js') }}"></script>
   <script src="{{ mix('/js/main.js') }}"></script>

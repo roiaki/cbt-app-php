@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="glasscard row justify-content-center">
-  <div class="col-sm-7">
+  <div class="col-sm-9 mb-5">
     <h3 class="title_head">{{ __('threecolumn.three_title') }}</h3>
 
     <!--↓↓ 検索フォーム ↓↓-->
@@ -20,35 +20,92 @@
     </div>
     <!--↑↑ 検索フォーム ↑↑-->
     
-    @if ( isset($three_columns) )
-      @if (count($three_columns) > 0)
-      <table class="table table-bordered table-hover">
-        <thead>
-          <tr class="table-info">
-            <th>{{ __('threecolumn.thinking') }}</th>
-            <th>{{ __('threecolumn.updated_day') }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach ($three_columns as $three_column)
-          <tr>
-            <td>
-              @if (mb_strlen($three_column->thinking) > 25)
-              {{ $thinking = mb_substr($three_column->thinking, 0, 25 ) . "..."; }}
-              @else
-              {{ $three_column->thinking }}
-              @endif
-            </td>
-            <td>{{ date( 'Y/n/j H:i', strtotime($three_column->updated_at) ) }}
-              <p><a href="{{ route('three_columns.show', $three_column->id) }}">{{ __('threecolumn.detail') }}</a></p>
-            </td>
-          </tr>
-          @endforeach
-        </tbody>
-      </table>
-      @endif
-    @endif
+    <!-- 3コラム一覧画面カード -->
+    @foreach($three_columns as $threecolumn)
+      <div class="d-flex justify-content-center">
+        <div class="event_page_card col-11">
+          <div class="card-body d-flex flex-row">
+            <a href="" class="text-dark">
+              <i class="fas fa-user-circle fa-3x mr-1"></i>
+              
+            </a>
+            <div>
+              <div class="font-weight-bold">
+                {{ $threecolumn->user->name }}
+              </div>
+              <div class="font-weight-lighter">{{ date( 'Y n/j H:i', strtotime($threecolumn->updated_at) ) }}</div>
+            </div>
 
+      
+            @if( Auth::id() === $threecolumn->user_id )
+              <!-- dropdown -->
+              <div class="ml-auto card-text">
+                <div class="dropdown">
+                  <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-edit"></i>
+                  </a>
+                  
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="{{ route('three_columns.edit', ['param' => $threecolumn->id]) }}">
+                      <i class="fas fa-pen mr-1"></i>3コラムを更新する
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-danger" 
+                       data-toggle="modal" 
+                       data-target="#modal-delete-{{ $threecolumn->id }}">
+                      <i class="fas fa-trash-alt mr-1"></i>3コラムを削除する
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <!-- dropdown -->
+
+              <!-- modal -->
+              <div id="" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <form method="POST" action="{{ route('three_columns.destroy', ['param' => $threecolumn->id]) }}">
+                      @csrf
+                      @method('DELETE')
+                      <div class="modal-body">
+                        を削除します。よろしいですか？
+                      </div>
+                      <div class="modal-footer justify-content-between">
+                        <a class="btn btn-outline-grey" data-dismiss="modal">キャンセル</a>
+                        <button type="submit" class="btn btn-danger">削除する</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <!-- modal -->
+            @endif
+
+          </div>
+          <a class="text-dark" href="{{ route('three_columns.show', $threecolumn->id) }}">
+            <div class="card-body pt-0">
+              <h3 class="h4 card-title">
+                  
+              </h3>
+              <div class="card-text">
+                @if (mb_strlen($threecolumn->thinking) > 40)
+                  {{ $content = mb_substr($threecolumn->thinking, 0, 40 ) . "..."; }}
+                @else
+                {{ $threecolumn->thinking }}
+                @endif
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    @endforeach
+    <!-- 3コラム一覧画面カード -->
+    
     <div class="d-flex justify-content-center">
       @if ( isset($three_columns) )
       {{ $three_columns->appends(request()->input())->links('pagination::bootstrap-4') }}

@@ -72,7 +72,7 @@
     </table>
     
     <div class="buttons-first">
-      <form action="{{ route('solutions.edit', ['param' => $trouble->id]) }}" method="get">
+      <form action="{{ route('solution.edit', ['param' => $trouble->id]) }}" method="get">
         @csrf
         <button type="submit" class="btn btn-secondary btn-lg">{{ __('solution.edit')}}</button>
       </form>

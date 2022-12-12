@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="glasscard row justify-content-center">
-  <div class="col-sm-7">
+  <div class="col-sm-9 mb-5">
     <h3 class="title_head">{{ __('sevencolumn.pageTitle') }}</h3>
     
     <!--↓↓ 検索フォーム ↓↓-->
@@ -25,45 +25,92 @@
     </div>
     <!--↑↑ 検索フォーム ↑↑-->
     
-    @if ( isset($seven_columns) )
-      @if ( count($seven_columns) > 0 )
-      <table class="table table-bordered table-hover">
-        <thread>
-          <tr class="table-info">
-            <th>{{ __('sevencolumn.basis_thinking') }}</th>
-            <th>{{ __('sevencolumn.opposite_fact') }}</th>
-            <th>{{ __('sevencolumn.updated_day') }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach ($seven_columns as $seven_column)
-          <tr>
-            <td>
-              @if(mb_strlen($seven_column->basis_thinking) > 25)
-                {{ $short_basis_thinking = mb_substr($seven_column->basis_thinking, 0, 25 ) . "..."; }}
-              @else
-                {{ $seven_column->basis_thinking }}
-              @endif
-            <td>  
-              @if (mb_strlen($seven_column->opposite_fact) > 25)
-                {{ $short_content = mb_substr($seven_column->opposite_fact, 0, 25 ) . "..."; }}
-              @else
-                {{ $seven_column->opposite_fact }}
-              @endif
-            </td>
-            <td>{{ date( 'Y/n/j H:i', strtotime($seven_column->updated_at) ) }}
-              <p><a href="{{ route('seven_columns.show', $seven_column->id) }}">{{ __('sevencolumn.detail') }}</a></p>
-            </td>
-          </tr>
-          @endforeach
-        </tbody>
-      </table>
-
+    <!-- 7コラム一覧カード -->
+    @foreach($seven_columns as $sevencolumn)
       <div class="d-flex justify-content-center">
-        {{ $seven_columns->appends(request()->input())->links('pagination::bootstrap-4') }}
+        <div class="event_page_card col-11">
+          <div class="card-body d-flex flex-row">
+            <a href="" class="text-dark">
+              <i class="fas fa-user-circle fa-3x mr-1"></i>
+              
+            </a>
+            <div>
+              <div class="font-weight-bold">
+                {{ $sevencolumn->user->name }}
+              </div>
+              <div class="font-weight-lighter">{{ date( 'Y n/j H:i', strtotime($sevencolumn->updated_at) ) }}</div>
+            </div>
+
+      
+            @if( Auth::id() === $sevencolumn->user_id )
+              <!-- dropdown -->
+              <div class="ml-auto card-text">
+                <div class="dropdown">
+                  <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-edit"></i>
+                  </a>
+                  
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="{{ route('seven_columns.edit', ['param' => $sevencolumn->id]) }}">
+                      <i class="fas fa-pen mr-1"></i>7コラムを更新する
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-danger" 
+                       data-toggle="modal" 
+                       data-target="#modal-delete-{{ $sevencolumn->id }}">
+                      <i class="fas fa-trash-alt mr-1"></i>7コラムを削除する
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <!-- dropdown -->
+
+              <!-- modal -->
+              <div id="" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <form method="POST" action="{{ route('seven_columns.destroy', ['param' => $sevencolumn->id]) }}">
+                      @csrf
+                      @method('DELETE')
+                      <div class="modal-body">
+                        を削除します。よろしいですか？
+                      </div>
+                      <div class="modal-footer justify-content-between">
+                        <a class="btn btn-outline-grey" data-dismiss="modal">キャンセル</a>
+                        <button type="submit" class="btn btn-danger">削除する</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <!-- modal -->
+            @endif
+
+          </div>
+          <a class="text-dark" href="{{ route('seven_columns.show', $sevencolumn->id) }}">
+            <div class="card-body pt-0">
+              <h3 class="h4 card-title">
+                  
+              </h3>
+              <div class="card-text">
+                @if (mb_strlen($sevencolumn->basis_thinking) > 50)
+                  {{ $content = mb_substr($sevencolumn->basis_thinking, 0, 50 ) . "..."; }}
+                @else
+                {{ $sevencolumn->basis_thinking }}
+                @endif
+              </div>
+            </div>
+          </a>
+        </div>
       </div>
-      @endif
-    @endif
+    @endforeach
+    <!-- 7コラム一覧カード -->
+     
   </div>
 </div>
 
