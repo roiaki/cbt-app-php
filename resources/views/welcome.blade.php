@@ -4,14 +4,13 @@
 <section class="first">
   <div class="welcomeglasscard">
     <div class="text-center">
-      <p class="pt-5">{{ __('messages.sentence01') }}<br>{{ __('messages.sentence02') }}</p>
+      <p class="pt-1">{{ __('messages.sentence01') }}<br>{{ __('messages.sentence02') }}</p>
       <h1 class="outline">{{ __('messages.welcome_title') }}</h1>
-      
-      <div>
+      <!-- <div>
         <h3>
           <span class="message animate__animated animate__backInDown animate__delay-1s">May you have many smailes!</span>
-        </h3>         
-      </div>
+        </h3>          
+      </div> -->
     </div>
   </div>
    
@@ -29,8 +28,7 @@
   <div>
     <!--<audio controlslist="nodownload" controls autoplay src="images/bgm.mp3" loop></audio>-->
   </div>
-  
-   
+
   <section class="back01">
     <div class="top_page_card">
       <h2 class="top_page_title">{{ __('messages.about-cbt-title') }}</h2>

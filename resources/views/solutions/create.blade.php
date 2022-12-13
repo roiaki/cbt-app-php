@@ -55,7 +55,7 @@
         @if($errors->has('solution.*'))
           @foreach($errors->get('solution') as $message)
           <ul>
-              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
           </ul>
           @endforeach
         @endif
@@ -63,7 +63,7 @@
         @if($errors->has('merit.*'))
           @foreach($errors->get('merit') as $message)
           <ul>
-              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
           </ul>
           @endforeach
         @endif
@@ -71,7 +71,7 @@
         @if($errors->has('demerit.*'))
           @foreach($errors->get('demerit') as $message)
           <ul>
-              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
           </ul>
           @endforeach
         @endif

@@ -11,7 +11,7 @@ let locale = <?php echo $json_array; ?>
 
 <div class="glasscard row justify-content-center">
   <div class="col-sm-7">
-  <h3 class="title_head">{{ __("event.event_edit_head") }}( id={{ $event->id }} )</h3>
+  <h3 class="title_head">{{ __("event.event_edit_head") }}</h3>
     <form 
       action="{{ route('events.update', ['event' => $event->id] ) }}" 
       method="post" 

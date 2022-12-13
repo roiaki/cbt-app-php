@@ -90,7 +90,7 @@ class Event extends Model
      * @param Requset $request
      * @return array $data 
      */
-    public function serchIndex(Request $request)
+    public function dispIndex(Request $request)
     {   
         $keyword = $request->keyword;
         $id = Auth::user()->id;

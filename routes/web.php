@@ -74,8 +74,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('solutions', 'SolutionsController@index')->name('solutions');
     Route::get('solution/create', 'SolutionsController@create')->name('solution.create');
     Route::post('solutions', 'SolutionsController@store')->name('solutions.store');
-    Route::get('solution/{param}', 'SolutionsController@show')->name('solutions.show');
-    Route::get('solution/{param}/edit', 'SolutionsController@edit')->name('solutions.edit');
+    Route::get('solution/{param}', 'SolutionsController@show')->name('solution.show');
+    Route::get('solution/{param}/edit', 'SolutionsController@edit')->name('solution.edit');
     Route::put('solution/{param}', 'SolutionsController@update')->name('solution.update');
     Route::delete('solution/{param}', 'SolutionsController@destroy')->name('solution.destroy');
     
