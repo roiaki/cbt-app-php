@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="glasscard row justify-content-center">
+<div class="row justify-content-center">
   <div class="col-sm-7">
     <h3 class="title_head">{{ __('threecolumn.showPageTitle') }}　( id={{ $three_column->id }} )</h3>
 

@@ -2,9 +2,9 @@
 
 @section('content')
 
-<div class="glasscard row justify-content-center">
+<div class="row justify-content-center">
   <div class="col-sm-7">  
-  <h3 class="title_head">{{ __('sevencolumn.sevencolEditPageTitle') }} ( id={{ $seven_column->id }} )</h3>
+  <h3 class="title_head">{{ __('sevencolumn.sevencolEditPageTitle') }}</h3>
     <!-- 'route' => ['messages.update', $message->id] というルーティング指定になります。
         配列の2つ目に $message->id を入れることで 
         update の URL である /messages/{message} の {message} に id が入ります
@@ -13,6 +13,7 @@
     <form action="{{ route('seven_columns.update', ['param' => $seven_column->id] ) }}" method="POST">
       @csrf
       @method('PUT')
+      <div id="read_only_flame">
         <div class="form-group">
           <!-- タイトル -->
           <label for="title"><h5>{{ __('sevencolumn.1-1_title') }}</h5></label>
@@ -74,8 +75,9 @@
         @endforeach
         @endif
       </div>
+      </div>
 
-      <div class="form-group">
+      <div class="form-group" id="input_flame">
         <label for="basis_thinking"><h5>{{ __('sevencolumn.4_title') }}</h5></label>
         <textarea 
           class="form-control" 
@@ -94,7 +96,7 @@
         @endif
       </div>
 
-      <div class="form-group">
+      <div class="form-group" id="input_flame">
         <label for="opposite_fact"><h5>{{ __('sevencolumn.5_title') }}</h5></label>
         <textarea 
           class="form-control" 
@@ -113,7 +115,7 @@
         @endif
       </div>
 
-      <div class="form-group">
+      <div class="form-group" id="input_flame">
         <label for="new_thinking"><h5>{{ __('sevencolumn.6_title') }}</h5></label>
         <textarea 
           class="form-control" 
@@ -133,11 +135,11 @@
       </div>
 
       <!-- ７新しい感情 -->
-      <div class="form-group">
+      <div class="form-group" id="input_flame">
         <h5>{{ __('sevencolumn.7_title') }}</h5>
         <!-- ここから　-->
         <div class="row mt-3">
-        <div class="form-group col-3">
+        <div class="form-group col-4">
           <label for="emotion_name">{{ __('sevencolumn.emotion_name') }}</label>
           <ul class="list-group">
             @if(isset($new_emotions[0]->new_emotion_name))
@@ -167,7 +169,7 @@
         </div>
 
         <!-- 以前の感情の強さ -->
-        <div class="form-group col-3">
+        <div class="form-group col-4">
           <label for="emotion_strength">{{ __('sevencolumn.prev_emotion_strength') }}</label>
           <ul class="list-group">
             
@@ -187,7 +189,7 @@
         <!-- /以前の感情の強さ -->
 
         <!-- 新しいの感情の強さ -->
-        <div class="form-group col-3">
+        <div class="form-group col-4">
           <label for="emotion_strength">{{ __('sevencolumn.new_emotion_strength') }}</label>
 
           @if(isset($emotions[0]->emotion_strength))
@@ -197,6 +199,7 @@
             id="new_emotion_strength" 
             name="new_emotion_strength00"
             value="{{ $new_emotions[0]->new_emotion_strength }}"
+            style="height:50px;"
             required>
           @endif
 
@@ -217,6 +220,7 @@
             id="new_emotion_strength02" 
             name="new_emotion_strength02"    
             value="{{ $new_emotions[2]->new_emotion_strength }}"
+            style="height:50px;"
             required>
           @endif
         </div>

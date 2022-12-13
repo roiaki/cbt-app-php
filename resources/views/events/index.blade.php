@@ -4,7 +4,7 @@
 
 <!-- <div class="glasscard row justify-content-center"> -->
 <div class="d-flex justify-content-center">
-  <div class="col-8">
+  <div class="col-sm-8">
 
     <h3 class="title_head">{{ __('event.event_title') }}</h3>
     <!--↓↓ 検索フォーム ↓↓-->
