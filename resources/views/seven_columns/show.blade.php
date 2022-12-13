@@ -3,9 +3,9 @@
 @section('content')
 
 <!-- ここにページ毎のコンテンツを書く -->
-<div class="glasscard row justify-content-center">
+<div class="row justify-content-center">
   <div class="col-sm-7">
-    <h3 class="title_head">{{ __('sevencolumn.sevenShowPageTitle') }} ( id = {{ $seven_column->id }} )</h3>
+    <h3 class="title_head">{{ __('sevencolumn.sevenShowPageTitle') }}</h3>
 
     <table class="table table-bordered">
       <tr>

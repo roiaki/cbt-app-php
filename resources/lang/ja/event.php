@@ -19,7 +19,7 @@ return [
     "back" => "戻る",
 
     // 詳細ページ
-    "event_detail_head" => "出来事 詳細ページ  ",
+    "event_detail_head" => "出来事　詳細",
     "event_id" => "出来事ID",
     "created_day" => "作成日",
     "updated_day" => "更新日",
@@ -31,7 +31,7 @@ return [
     "delete" => "削除",
 
     // 編集ページ
-    "event_edit_head" => "出来事編集ページ",
+    "event_edit_head" => "出来事　編集",
     "event_edit_title" => "タイトル",
     "event_edit_content" => "出来事 その時の状況",
     "update_button" => "更新",

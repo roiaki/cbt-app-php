@@ -2,8 +2,8 @@
 
 @section('content')
 
-<div class="glasscard row justify-content-center">
-  <div class="col-sm-9">
+<div class="row justify-content-center">
+  <div class="col-sm-8">
     <h3 class="title_head">{{ __('solution.pageTitle') }}</h3>
     
     <!-- 検索フォーム -->
@@ -25,40 +25,11 @@
       </div>
     </div>
     <!-- /検索フォーム -->
-    
-    <!-- @if ( isset($solutions) )
-      @if ( count($solutions) > 0 )
-      <table class="table table-bordered table-hover">
-        <thread>
-          <tr class="table-info">
-            <th>{{ __('solution.trouble') }}</th>        
-            <th>{{ __('solution.updated') }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach ($solutions as $trouble)
-          <tr>
-            <td>  
-              {{ $trouble->trouble }}
-            </td>
-            <td>
-              {{ date( 'Y/n/j H:i', strtotime($trouble->updated_at) ) }}
-              <p><a href="{{ route('solution.show', $trouble->id) }}">{{ __('event.detail') }}</a></p>
-            </td>
-          </tr>
-          @endforeach
-        </tbody>
-      </table>
-
-     
-      @endif
-    @endif -->
-
 
     <!-- 解決策一覧カード -->
     @foreach($troubles as $trouble)
       <div class="d-flex justify-content-center">
-        <div class="event_page_card col-11">
+        <div class="event_page_card col-12">
           <div class="card-body d-flex flex-row">
             <a href="" class="text-dark">
               <i class="fas fa-user-circle fa-3x mr-1"></i>

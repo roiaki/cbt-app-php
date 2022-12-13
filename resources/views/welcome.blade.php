@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.top_app')
 
 @section('content1')
 <section class="first">

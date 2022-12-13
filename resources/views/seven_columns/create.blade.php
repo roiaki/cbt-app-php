@@ -9,7 +9,7 @@
 	let locale = <?php echo $json_array; ?>
 </script>
 
-<div class="glasscard row justify-content-center">
+<div class="row justify-content-center">
   <div class="col-sm-7">
   <h3 class="title_head">{{ __('sevencolumn.createPageTitle') }}</h3>
     <!-- model 第一引数：Modelのインスタンス、第二引数：連想配列　-->
@@ -22,71 +22,67 @@
       <input type="hidden" name="threecol_id" value="{{ $three_column->id }}">
       <input type="hidden" name="event_id" value="{{ $three_column->event_id }}">
       
-      <div class="form-group">
-        <label for="title"><h5>{{ __('sevencolumn.1-1_title') }}</h5></label>
-        <!-- idはグローバル属性であり、HTML内の全ての要素に適用される。
-                 name属性はHTMLの特定の要素（フォーム要素）主にバックエンド
-            -->
-        <input 
-          type="text" 
-          class="form-control" 
-          id="title" 
-          name="title" 
-          value="{{ $event->title }}"
-          readonly>
+      <div id="read_only_flame">
+        <div class="form-group">
+          <label for="title"><h5>{{ __('sevencolumn.1-1_title') }}</h5></label>
+          <!-- idはグローバル属性であり、HTML内の全ての要素に適用される。
+                  name属性はHTMLの特定の要素（フォーム要素）主にバックエンド
+              -->
+          <input type="text" class="form-control" id="title" name="title" value="{{ $event->title }}" readonly>
 
-        <!-- タイトル必須バリデーション表示-->
-        @if($errors->has('title'))
-          @foreach($errors->get('title') as $message)
-          <ul>
-            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-          </ul>
-          @endforeach
-        @endif
-      </div>
+          <!-- タイトル必須バリデーション表示-->
+          @if($errors->has('title'))
+            @foreach($errors->get('title') as $message)
+            <ul>
+              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+            </ul>
+            @endforeach
+          @endif
+        </div>
 
-      <div class="form-group">
-        <label for="content"><h5>{{ __('sevencolumn.1-2_title') }}</h5></label>
-        <textarea 
-          class="form-control" 
-          id="content" 
-          name="content" 
-          cols="90" 
-          rows="5"
-          readonly>{{ $event->content }}</textarea>
+        <div class="form-group">
+          <label for="content"><h5>{{ __('sevencolumn.1-2_title') }}</h5></label>
+          <textarea 
+            class="form-control" 
+            id="content" 
+            name="content" 
+            cols="90" 
+            rows="5"
+            readonly>{{ $event->content }}</textarea>
 
-        <!-- バリデーションエラーメッセージ-->
-        @if($errors->has('content'))
-          @foreach($errors->get('content') as $message)
-          <ul>
-            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-          </ul>
-          @endforeach
-        @endif
-      </div>
+          <!-- バリデーションエラーメッセージ-->
+          @if($errors->has('content'))
+            @foreach($errors->get('content') as $message)
+            <ul>
+              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+            </ul>
+            @endforeach
+          @endif
+        </div>
       
-      <div class="form-group">
-        <label for="thinking"><h5>{{ __('sevencolumn.3-1_title') }}</h5></label>
-        <textarea 
-          class="form-control" 
-          id="thinking" 
-          name="thinking" 
-          cols="90" 
-          rows="5" 
-          readonly>{{ $three_column->thinking }}</textarea>
+        <div class="form-group">
+          <label for="thinking"><h5>{{ __('sevencolumn.3-1_title') }}</h5></label>
+          <textarea 
+            class="form-control" 
+            id="thinking" 
+            name="thinking" 
+            cols="90" 
+            rows="5" 
+            readonly>{{ $three_column->thinking }}</textarea>
 
-        <!-- バリデーションエラーメッセージ-->
-        @if($errors->has('thinking'))
-          @foreach($errors->get('thinking') as $message)
-          <ul>
-            <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-          </ul>
-          @endforeach
-        @endif
+          <!-- バリデーションエラーメッセージ-->
+          @if($errors->has('thinking'))
+            @foreach($errors->get('thinking') as $message)
+            <ul>
+              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+            </ul>
+            @endforeach
+          @endif
+        </div>
       </div>
 
       <!-- 自動思考を裏付ける根拠 -->
-      <div class="form-group mt-5">
+      <div class="form-group mt-5" id="input_flame">
         <label for="basis_thinking"><h5>{{ __('sevencolumn.4_title') }}</h5></label>
         <p class="alert alert-success" role="alert">
           {{ __('sevencolumn.4_sentence') }}
@@ -113,7 +109,7 @@
       <!-- /自動思考を裏付ける根拠 -->
 
       <!-- 反証 -->
-      <div class="form-group mt-5">
+      <div class="form-group mt-5" id="input_flame">
         <label for="opposite_fact"><h5>{{ __('sevencolumn.5_title') }}</h5></label>
         <p class="alert alert-success" role="alert">
           {{ __('sevencolumn.5_sentence') }}
@@ -140,7 +136,7 @@
       <!-- /反証 -->
 
       <!-- 適応的思考 -->
-      <div class="form-group mt-5">
+      <div class="form-group mt-5" id="input_flame">
         <label for="new_thinking"><h5>{{ __('sevencolumn.6_title') }}</h5></label>
         <p class="alert alert-success" role="alert">
         {{ __('sevencolumn.6_sentence') }}
@@ -167,7 +163,7 @@
       <!-- /適応的思考 -->
 
       <!-- 感情の変化-->
-      <div class="form-group mt-5">
+      <div class="form-group mt-5" id="input_flame">
         <label for="new_emotion"><h5>{{ __('sevencolumn.7_title') }}</h5></label>
         <p class="alert alert-success" role="alert">
         {{ __('sevencolumn.7_sentence') }}
@@ -274,6 +270,7 @@
           @endif
        
         </div>
+      </div>
         <!-- /感情の変化-->
 
         <input 

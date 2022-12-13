@@ -2,11 +2,11 @@
 
 @section('content')
 
-<div class="glasscard row justify-content-center">
-  <div class="col-sm-7">
+<div class="row justify-content-center">
+  <div class="col-sm-8">
     <h3 class="title_head">{{ __('event.event_detail_head') }}</h3>
 
-    <table class="table table-bordered">
+    <table class="" id="">
       <tr>
         <th>{{ __('event.event_id') }}</th>
         <th>{{ __('event.created_day') }}</th>
@@ -20,7 +20,7 @@
 
     </table>
 
-    <table class="table table-bordered">
+    <table>
       <tr>
         <th>{{ __('event.title') }}</th>
       </tr>
@@ -28,7 +28,7 @@
         <td>{{ $event->title }}</td>      
       </tr>
     </table>
-    <table class="table table-bordered">
+    <table>
       <tr>
         <th>{{ __('event.content') }}</th>
       </tr>
