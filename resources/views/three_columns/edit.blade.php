@@ -11,24 +11,22 @@
 
 <div class="row justify-content-center">
   <div class="col-sm-7">
-  <h3 class="title_head">{{ __('threecolumn.editPageTitle') }} ( id={{ $three_column->id }} )</h3>
-    <!-- 'route' => ['messages.update', $message->id] というルーティング指定になります。
-        配列の2つ目に $message->id を入れることで 
-        update の URL である /messages/{message} の {message} に id が入ります
-    -->
+    <h3 class="title_head">{{ __('threecolumn.editPageTitle') }}</h3>
+      <!-- 'route' => ['messages.update', $message->id] というルーティング指定になります。
+          配列の2つ目に $message->id を入れることで 
+          update の URL である /messages/{message} の {message} に id が入ります
+      -->
 
     <form 
       action="{{ route('three_columns.update', ['param' => $three_column->id] ) }}" 
       method="POST"
-      onsubmit="return threecolumnValidation(locale);"
-    >
+      onsubmit="return threecolumnValidation(locale);">
       @csrf
       @method('PUT')
       <input 
         type="hidden" 
         name="eventid" 
-        value="{{ $event->id }}"
-      >
+        value="{{ $event->id }}">
 
       <div class="form-group" id="read_only_flame">
         <!-- タイトル -->
@@ -42,8 +40,7 @@
           id="title" 
           name="title" 
           value="{{ $event->title }}"
-          readonly
-        >
+          readonly>
 
         <!-- タイトル必須バリデーション表示-->
         @if($errors->has('title'))
@@ -77,116 +74,119 @@
         @endif
       </div>
 
-      <div class="row" id="input_flame">
-        <div class="form-group col">
-          <label for="emotion_name"><h5>{{ __('threecolumn.2-1_title') }}</h5></label>
-          
-          <!-- 感情１-->
-          <input type="text" 
-            class="form-control" 
-            id="emotion_name00"
-            name="emotion_name[0]" 
-            value="{{ $emotions[0]->emotion_name }}">
-          
-          <!-- 感情名必須バリデーション表示-->
-          @if($errors->has('emotion_name00'))
-            @foreach($errors->get('emotion_name00') as $message)
-            <ul>
-              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-            </ul>
-            @endforeach
-          @endif
-
-          <!-- 感情２-->
-          @if(isset($emotions[1]->emotion_name))
+      <!-- 感情名　-->
+      <div id="input_flame">
+        <div class="row">
+          <div class="form-group col">
+            <label for="emotion_name"><h5>{{ __('threecolumn.2-1_title') }}</h5></label>
+            
+            <!-- 感情１-->
             <input type="text" 
-              class="form-control mt-2" 
-              id="emotion_name" 
-              name="emotion_name[1]" 
-              value="{{ $emotions[1]->emotion_name }}">
-          @endif
+              class="form-control" 
+              id="emotion_name00"
+              name="emotion_name[0]" 
+              value="{{ $emotions[0]->emotion_name }}">
+            
+            <!-- 感情名必須バリデーション表示-->
+            @if($errors->has('emotion_name00'))
+              @foreach($errors->get('emotion_name00') as $message)
+              <ul>
+                <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+              </ul>
+              @endforeach
+            @endif
 
-          <!-- 感情名必須バリデーション表示-->
-          @if($errors->has('emotion_name00'))
-            @foreach($errors->get('emotion_name00') as $message)
-            <ul>
-              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-            </ul>
-            @endforeach
-          @endif
+            <!-- 感情２-->
+            @if(isset($emotions[1]->emotion_name))
+              <input type="text" 
+                class="form-control mt-2" 
+                id="emotion_name" 
+                name="emotion_name[1]" 
+                value="{{ $emotions[1]->emotion_name }}">
+            @endif
 
-          <!-- 感情３-->
-          @if(isset($emotions[2]->emotion_name))
-            <input 
-              type="text" 
-              class="form-control mt-2" 
-              id="emotion_name" 
-              name="emotion_name[2]" 
-              value="{{$emotions[2]->emotion_name }}"
-              required>
-          @endif
+            <!-- 感情名必須バリデーション表示-->
+            @if($errors->has('emotion_name00'))
+              @foreach($errors->get('emotion_name00') as $message)
+              <ul>
+                <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+              </ul>
+              @endforeach
+            @endif
 
-          <!-- 感情名必須バリデーション表示-->
-          @if($errors->has('emotion_name01'))
-            @foreach($errors->get('emotion_name01') as $message)
-            <ul>
-              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-            </ul>
-            @endforeach
-          @endif
-        </div>
+            <!-- 感情３-->
+            @if(isset($emotions[2]->emotion_name))
+              <input 
+                type="text" 
+                class="form-control mt-2" 
+                id="emotion_name" 
+                name="emotion_name[2]" 
+                value="{{$emotions[2]->emotion_name }}"
+                required>
+            @endif
+
+            <!-- 感情名必須バリデーション表示-->
+            @if($errors->has('emotion_name01'))
+              @foreach($errors->get('emotion_name01') as $message)
+              <ul>
+                <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+              </ul>
+              @endforeach
+            @endif
+          </div>
 
         <!-- フロントバリデーションエラーメッセージ -->
         <div class="err-msg-name01 mt-3"></div>
 
-          
-        <div class="form-group col">
-          <label for="emotion_strength"><h5>{{ __('threecolumn.2-2_title') }}</h5></label>
-          
-          <input 
-            type="number" 
-            class="form-control" 
-            id="emotion_strength" 
-            name="emotion_strength[0]" 
-            value="{{ $emotions[0]->emotion_strength }}"
-          >
-
-          <!-- 感情の強さ必須バリデーション表示-->
-          @if($errors->has('emotion_strength'))
-            @foreach($errors->get('emotion_strength') as $message)
-            <ul>
-              <li class="ml-2 my-1 text-danger">{{ $message }}</li>
-            </ul>
-            @endforeach
-          @endif
-
-          @if(isset($emotions[1]->emotion_strength))
+          <!-- 感情の強さ -->
+          <div class="form-group col">
+            <label for="emotion_strength"><h5>{{ __('threecolumn.2-2_title') }}</h5></label>
+            
             <input 
               type="number" 
-              class="form-control mt-2" 
+              class="form-control" 
               id="emotion_strength" 
-              name="emotion_strength[1]" 
-              value="{{ $emotions[1]->emotion_strength }}"
-              required
+              name="emotion_strength[0]" 
+              value="{{ $emotions[0]->emotion_strength }}"
             >
-          @endif
 
-          @if(isset($emotions[2]->emotion_strength))
-            <input 
-              type="number" 
-              class="form-control mt-2" 
-              id="emotion_strength" 
-              name="emotion_strength[2]" 
-              value="{{ $emotions[2]->emotion_strength }}"
-              required
-            >
-          @endif
+            <!-- 感情の強さ必須バリデーション表示-->
+            @if($errors->has('emotion_strength'))
+              @foreach($errors->get('emotion_strength') as $message)
+              <ul>
+                <li class="ml-2 my-1 text-danger">{{ $message }}</li>
+              </ul>
+              @endforeach
+            @endif
 
+            @if(isset($emotions[1]->emotion_strength))
+              <input 
+                type="number" 
+                class="form-control mt-2" 
+                id="emotion_strength" 
+                name="emotion_strength[1]" 
+                value="{{ $emotions[1]->emotion_strength }}"
+                required
+              >
+            @endif
+
+            @if(isset($emotions[2]->emotion_strength))
+              <input 
+                type="number" 
+                class="form-control mt-2" 
+                id="emotion_strength" 
+                name="emotion_strength[2]" 
+                value="{{ $emotions[2]->emotion_strength }}"
+                required
+              >
+            @endif
+          </div>
         </div>
       </div>
       <!-- フロントバリデーションエラーメッセージ -->
       <div class="err-msg-name02 mt-3"></div>
 
+      <!-- 自動思考 -->
       <div class="form-group" id="input_flame">
         <label for="thinking"><h5>{{ __('threecolumn.3-1_title') }}</h5></label><br>
         <textarea 
@@ -210,6 +210,7 @@
         @endif
       </div>
     
+      <!-- 考え方の癖 -->
       <div id="input_flame">
         <label class="mt-3"><h5>{{ __('threecolumn.3-2_title') }}</h5></label>  
           <div class="form-group">

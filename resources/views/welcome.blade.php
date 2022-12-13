@@ -25,34 +25,42 @@
   @endguest
 </section>
 
-  <div>
-    <!--<audio controlslist="nodownload" controls autoplay src="images/bgm.mp3" loop></audio>-->
-  </div>
-
   <section class="back01">
-    <div class="top_page_card">
-      <h2 class="top_page_title">{{ __('messages.about-cbt-title') }}</h2>
-      <p class="about-text">{{ __('messages.about-cbt-message01') }}</p>
-      <p class="about-text">{{ __('messages.about-cbt-message02') }}</p>
-      <p class="about-text">{{ __('messages.about-cbt-message03') }}</p>
+    <div class="d-flex justify-content-center">
+      <div class="col-sm-7">
+        <div class="top_page_card">
+          <h2 class="top_page_title">{{ __('messages.about-cbt-title') }}</h2>
+          <p class="about-text">{{ __('messages.about-cbt-message01') }}</p>
+          <p class="about-text">{{ __('messages.about-cbt-message02') }}</p>
+          <p class="about-text">{{ __('messages.about-cbt-message03') }}</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="back02">
-    <div class="top_page_card">
-      <h2 class="top_page_title">{{ __('messages.cognitive_distortion_title') }}</h2>
-      <p class="about-text">{{ __('messages.cognitive_distortion_description') }}</p>
-    </div>
-    <div class="top_page_card">
-      <h2 class="top_page_title">{{ __('messages.cognitive_distortion_cause_title') }}</h2>
-      <p class="about-text">{{ __('messages.cognitive_distortion_cause') }}</p>
+    <div class="d-flex justify-content-center">
+      <div class="col-sm-7">
+        <div class="top_page_card">
+          <h2 class="top_page_title">{{ __('messages.cognitive_distortion_title') }}</h2>
+          <p class="about-text">{{ __('messages.cognitive_distortion_description') }}</p>
+        </div>
+        <div class="top_page_card">
+          <h2 class="top_page_title">{{ __('messages.cognitive_distortion_cause_title') }}</h2>
+          <p class="about-text">{{ __('messages.cognitive_distortion_cause') }}</p>
+        </div>
+      </div>
     </div>
   </section>
     
   <section class="back01">
-    <div class="top_page_card">
-      <h2 class="top_page_title">{{ __('messages.about-thisapp-title') }}</h2>
-      <p class="about-text">{{ __('messages.about-thisapp-message') }}</p>
+    <div class="d-flex justify-content-center">
+      <div class="col-sm-7">
+        <div class="top_page_card">
+          <h2 class="top_page_title">{{ __('messages.about-thisapp-title') }}</h2>
+          <p class="about-text">{{ __('messages.about-thisapp-message') }}</p>
+        </div>
+      </div>
     </div>
   </section>
   
