@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="glasscard row justify-content-center">
-  <div class="col-sm-9 mb-5">
+<div class="row justify-content-center">
+  <div class="col-sm-8 mb-5">
     <h3 class="title_head">{{ __('threecolumn.three_title') }}</h3>
 
     <!--↓↓ 検索フォーム ↓↓-->
@@ -23,11 +23,10 @@
     <!-- 3コラム一覧画面カード -->
     @foreach($three_columns as $threecolumn)
       <div class="d-flex justify-content-center">
-        <div class="event_page_card col-11">
+        <div class="event_page_card col-12">
           <div class="card-body d-flex flex-row">
             <a href="" class="text-dark">
               <i class="fas fa-user-circle fa-3x mr-1"></i>
-              
             </a>
             <div>
               <div class="font-weight-bold">
@@ -60,20 +59,22 @@
               </div>
               <!-- dropdown -->
 
-              <!-- modal -->
-              <div id="" class="modal fade" tabindex="-1" role="dialog">
+              <!-- modal ok -->
+              <div id="modal-delete-{{$threecolumn->id}}" class="modal fade" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
+                      <h3>削除確認</h3>
                       <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                    <form method="POST" action="{{ route('three_columns.destroy', ['param' => $threecolumn->id]) }}">
+                    <form method="post" action="{{ route('three_columns.destroy', ['param' => $threecolumn->id]) }}">
                       @csrf
                       @method('DELETE')
                       <div class="modal-body">
-                        を削除します。よろしいですか？
+                        {{ $threecolumn->updated_at}}<br><br>
+                        {{ $threecolumn->thinking}} を削除します。よろしいですか？
                       </div>
                       <div class="modal-footer justify-content-between">
                         <a class="btn btn-outline-grey" data-dismiss="modal">キャンセル</a>

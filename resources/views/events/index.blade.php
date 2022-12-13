@@ -2,8 +2,9 @@
 
 @section('content')
 
-<div class="glasscard row justify-content-center">
-  <div class="col-sm-9">
+<!-- <div class="glasscard row justify-content-center"> -->
+<div class="d-flex justify-content-center">
+  <div class="col-8">
 
     <h3 class="title_head">{{ __('event.event_title') }}</h3>
     <!--↓↓ 検索フォーム ↓↓-->
@@ -24,19 +25,18 @@
     <!-- 出来事一覧カード -->
     @foreach($events as $event)
       <div class="d-flex justify-content-center">
-        <div class="event_page_card col-11">
+        <div class="event_page_card col-12">
           <div class="card-body d-flex flex-row">
             <a href="" class="text-dark">
               <i class="fas fa-user-circle fa-3x mr-1"></i>
-              
             </a>
             <div>
               <div class="font-weight-bold">
-                {{ $event->user->name }}
+                
+                
               </div>
               <div class="font-weight-lighter">{{ date( 'Y n/j H:i', strtotime($event->updated_at) ) }}</div>
             </div>
-
       
             @if( Auth::id() === $event->user_id )
               <!-- dropdown -->
@@ -52,8 +52,8 @@
                     </a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" 
-                       data-toggle="modal" 
-                       data-target="#modal-delete-{{ $event->id }}">
+                      data-toggle="modal" 
+                      data-target="#modal-delete-{{$event->id}}">
                       <i class="fas fa-trash-alt mr-1"></i>出来事を削除する
                     </a>
                   </div>
@@ -61,32 +61,10 @@
               </div>
               <!-- dropdown -->
 
-              <!-- modal -->
-              <div id="" class="modal fade" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <form method="POST" action="{{ route('events.destroy', ['event' => $event->id]) }}">
-                      @csrf
-                      @method('DELETE')
-                      <div class="modal-body">
-                        を削除します。よろしいですか？
-                      </div>
-                      <div class="modal-footer justify-content-between">
-                        <a class="btn btn-outline-grey" data-dismiss="modal">キャンセル</a>
-                        <button type="submit" class="btn btn-danger">削除する</button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-              <!-- modal -->
-            @endif
+              <!-- modal button-->
+              <!-- <a class="btn btn-outline-danger" data-toggle="modal" data-target="#modal-delete-{{$event->id}}" data-title="" data-url="" > 削除 </a> -->
 
+            @endif
           </div>
           <a class="text-dark" href="{{ route('events.show', $event->id) }}">
             <div class="card-body pt-0">
@@ -104,6 +82,31 @@
           </a>
         </div>
       </div>
+
+      <!-- modal ok -->
+      <div style="z-index: 1500" class="modal fade" id="modal-delete-{{$event->id}}" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        
+        <form role="form" class="form-inline" method="post" action="{{ route('events.destroy', ['event' => $event->id] ) }}">
+          @csrf
+          @method('DELETE')
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">削除確認 koko</h4>
+              </div>
+              <div class="modal-body">
+                <p></p>
+                {{ $event->created_at}}<br><br>
+                {{ $event->title }} を削除しますがいいですか？
+              </div>
+              <div class="modal-footer">
+                <a class="btn btn-light" data-dismiss="modal">閉じる</a>
+                <button type="submit" class="btn btn-danger">削除</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>  
     @endforeach
     <!-- 出来事カード -->
 
@@ -116,5 +119,28 @@
     </div>
   </div>
 </div>
+
+<!-- modal1 -->
+<div style="z-index: 1500" class="modal fade" id="SampleModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  //form-inline:文字の量に合わせてモーダルの大きさが変化する
+  <form role="form" class="form-inline" method="post" action="">
+  @csrf
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">削除確認r</h4>
+        </div>
+        <div class="modal-body">
+          <p></p>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-light" data-dismiss="modal">閉じる</a>
+          <button type="submit" class="btn btn-danger">削除</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
 
 @endsection

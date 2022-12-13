@@ -28,7 +28,7 @@ class EventsController extends Controller
     public function searchIndex(Request $request)
     {
         $Event = new Event();
-        $data  = $Event->serchIndex($request);
+        $data  = $Event->dispIndex($request);
         return view('events.index', $data);
     }
 

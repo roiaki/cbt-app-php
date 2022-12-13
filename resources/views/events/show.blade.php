@@ -4,7 +4,7 @@
 
 <div class="glasscard row justify-content-center">
   <div class="col-sm-7">
-    <h3 class="title_head">{{ __('event.event_detail_head') }} (id = {{ $event->id }} ) </h3>
+    <h3 class="title_head">{{ __('event.event_detail_head') }}</h3>
 
     <table class="table table-bordered">
       <tr>
