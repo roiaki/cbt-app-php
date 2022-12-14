@@ -14,7 +14,7 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       
-      <div class="glasscard">
+      <div id="auth_frame">
        
         <div class="card-body">
         <div><h3 class="mb-5" style="text-align: center;">{{ __('auth.Login') }}</h3></div>
