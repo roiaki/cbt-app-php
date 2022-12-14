@@ -13,7 +13,7 @@
     <form action="{{ route('seven_columns.update', ['param' => $seven_column->id] ) }}" method="POST">
       @csrf
       @method('PUT')
-      <div id="read_only_flame">
+      <div id="read_only_frame">
         <div class="form-group">
           <!-- タイトル -->
           <label for="title"><h5>{{ __('sevencolumn.1-1_title') }}</h5></label>
@@ -77,7 +77,7 @@
       </div>
       </div>
 
-      <div class="form-group" id="input_flame">
+      <div class="form-group" id="input_frame">
         <label for="basis_thinking"><h5>{{ __('sevencolumn.4_title') }}</h5></label>
         <textarea 
           class="form-control" 
@@ -96,7 +96,7 @@
         @endif
       </div>
 
-      <div class="form-group" id="input_flame">
+      <div class="form-group" id="input_frame">
         <label for="opposite_fact"><h5>{{ __('sevencolumn.5_title') }}</h5></label>
         <textarea 
           class="form-control" 
@@ -115,7 +115,7 @@
         @endif
       </div>
 
-      <div class="form-group" id="input_flame">
+      <div class="form-group" id="input_frame">
         <label for="new_thinking"><h5>{{ __('sevencolumn.6_title') }}</h5></label>
         <textarea 
           class="form-control" 
@@ -135,7 +135,7 @@
       </div>
 
       <!-- ７新しい感情 -->
-      <div class="form-group" id="input_flame">
+      <div class="form-group" id="input_frame">
         <h5>{{ __('sevencolumn.7_title') }}</h5>
         <!-- ここから　-->
         <div class="row mt-3">

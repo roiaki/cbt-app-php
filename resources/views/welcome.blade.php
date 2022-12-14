@@ -4,8 +4,8 @@
 <section class="first">
   <div class="welcomeglasscard">
     <div class="text-center">
-      <p class="pt-1">{{ __('messages.sentence01') }}<br>{{ __('messages.sentence02') }}</p>
-      <h1 class="outline">{{ __('messages.welcome_title') }}</h1>
+      <p class="top_app_text">{{ __('messages.sentence01') }}<br>{{ __('messages.sentence02') }}</p>
+      <h1 class="app_title">{{ __('messages.welcome_title') }}</h1>
       <!-- <div>
         <h3>
           <span class="message animate__animated animate__backInDown animate__delay-1s">May you have many smailes!</span>
@@ -30,9 +30,9 @@
       <div class="col-sm-7">
         <div class="top_page_card">
           <h2 class="top_page_title">{{ __('messages.about-cbt-title') }}</h2>
-          <p class="about-text">{{ __('messages.about-cbt-message01') }}</p>
-          <p class="about-text">{{ __('messages.about-cbt-message02') }}</p>
-          <p class="about-text">{{ __('messages.about-cbt-message03') }}</p>
+          <p class="about_text">{{ __('messages.about-cbt-message01') }}</p>
+          <p class="about_text">{{ __('messages.about-cbt-message02') }}</p>
+          <p class="about_text">{{ __('messages.about-cbt-message03') }}</p>
         </div>
       </div>
     </div>
@@ -43,11 +43,11 @@
       <div class="col-sm-7">
         <div class="top_page_card">
           <h2 class="top_page_title">{{ __('messages.cognitive_distortion_title') }}</h2>
-          <p class="about-text">{{ __('messages.cognitive_distortion_description') }}</p>
+          <p class="about_text">{{ __('messages.cognitive_distortion_description') }}</p>
         </div>
         <div class="top_page_card">
           <h2 class="top_page_title">{{ __('messages.cognitive_distortion_cause_title') }}</h2>
-          <p class="about-text">{{ __('messages.cognitive_distortion_cause') }}</p>
+          <p class="about_text">{{ __('messages.cognitive_distortion_cause') }}</p>
         </div>
       </div>
     </div>
@@ -58,7 +58,7 @@
       <div class="col-sm-7">
         <div class="top_page_card">
           <h2 class="top_page_title">{{ __('messages.about-thisapp-title') }}</h2>
-          <p class="about-text">{{ __('messages.about-thisapp-message') }}</p>
+          <p class="about_text">{{ __('messages.about-thisapp-message') }}</p>
         </div>
       </div>
     </div>

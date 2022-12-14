@@ -113,16 +113,23 @@ div.pages {
     font-size:2rem;
 }
 
-.about-text {
+.top_app_text {
+    line-height: 2;
+    font-size: 18px; 
+}
+
+.about_text {
     margin: 0.7% 13%;
-    line-height: 2.5;
+    line-height: 2.3;
     font-size: 18px;
 }
 
-
 .top_page_title {
     text-align: center;
-    margin-bottom: 60px;   
+    color: #000080;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 30px;   
 }
 .first {
     height: 900px;
@@ -178,12 +185,12 @@ div.pages {
     /* ↑ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
 }
 
-h1.outline {
+h1.app_title {
     /* font-family: cursive; */
     display        : inline-block;
     color          : rgba(255, 255, 255);            /* 文字の色 */
-    font-size      : 33pt;               /* 文字のサイズ */
-    letter-spacing : 5px;                /* 文字間 */
+    font-size      : 38pt;               /* 文字のサイズ */
+    letter-spacing : 6px;                /* 文字間 */
     text-shadow    : 
          2px  2px 2px rgba(245, 234, 234, 0.25),
         -2px  2px 2px rgba(245, 234, 234, 0.25),
@@ -451,7 +458,7 @@ table tr:last-child td:first-child {
 table tr:last-child td:last-child {
     border-radius: 0 0 5px 0;
 }
-#input_flame {
+#input_frame {
     box-shadow: 0px 0px 0.1px 0.1px rgba(0,0,0,0.4) inset;
     padding: 30px;
     border-radius: 10px;
@@ -459,12 +466,21 @@ table tr:last-child td:last-child {
     overflow: hidden;
 }
 
-#read_only_flame {
+#read_only_frame {
     box-shadow: 0px 0px 0.1px 0.1px rgba(0,0,0,0.4) inset;
     padding: 30px;
     border-radius: 10px;
     background-color: #f5f5f5;
     overflow: hidden;
     margin-bottom: 30px;
+}
+
+#auth_frame {
+    box-shadow: 1px 1px 3px 2px rgba(0,0,0,0.4);
+    padding: 20px;
+    margin-top: 10%;
+    border-radius: 10px;
+    background-color: #ffffff;
+    overflow: hidden; 
 }
 

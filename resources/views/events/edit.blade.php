@@ -18,7 +18,7 @@ let locale = <?php echo $json_array; ?>
         onsubmit="return eventValidation(locale);">
         @csrf
         @method('PUT')
-        <div class="form-group" id="input_flame">
+        <div class="form-group" id="auth_frame">
           <!-- 出来事のタイトル -->
           <label for="title"><h5>{{ __('event.event_edit_title') }}</h5></label>
           <input 
@@ -41,7 +41,7 @@ let locale = <?php echo $json_array; ?>
           @endif
         </div>
 
-        <div class="form-group" id="input_flame">
+        <div class="form-group" id="auth_frame">
           <!-- 出来事の内容 -->
           <label for="content"><h5>{{ __('event.event_edit_content') }}</h5></label>
           <textarea 

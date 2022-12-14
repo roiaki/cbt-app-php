@@ -28,7 +28,7 @@
         name="eventid" 
         value="{{ $event->id }}">
 
-      <div class="form-group" id="read_only_flame">
+      <div class="form-group" id="read_only_frame">
         <!-- タイトル -->
         <label for="title"><h5>{{ __('threecolumn.1-1_title') }}</h5></label>
         <!-- idはグローバル属性であり、HTML内の全ての要素に適用される。
@@ -52,7 +52,7 @@
         @endif
       </div>
 
-      <div class="form-group" id="read_only_flame">
+      <div class="form-group" id="read_only_frame">
         <!-- 内容 -->
         <label for="content"><h5>{{ __('threecolumn.1-2_title') }}</h5></label>
         <textarea 
@@ -75,7 +75,7 @@
       </div>
 
       <!-- 感情名　-->
-      <div id="input_flame">
+      <div id="input_frame">
         <div class="row">
           <div class="form-group col">
             <label for="emotion_name"><h5>{{ __('threecolumn.2-1_title') }}</h5></label>
@@ -187,7 +187,7 @@
       <div class="err-msg-name02 mt-3"></div>
 
       <!-- 自動思考 -->
-      <div class="form-group" id="input_flame">
+      <div class="form-group" id="input_frame">
         <label for="thinking"><h5>{{ __('threecolumn.3-1_title') }}</h5></label><br>
         <textarea 
           class="form-control" 
@@ -211,7 +211,7 @@
       </div>
     
       <!-- 考え方の癖 -->
-      <div id="input_flame">
+      <div id="input_frame">
         <label class="mt-3"><h5>{{ __('threecolumn.3-2_title') }}</h5></label>  
           <div class="form-group">
             
