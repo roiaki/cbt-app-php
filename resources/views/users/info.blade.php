@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="row justify-content-center mt-5">
-  <div class="col-sm-8" id="input_flame">
+  <div class="col-sm-8" id="input_frame">
     <h3 class="title_head">{{ __('messages.info_title') }}</h3>
     <br>
       <p>
