@@ -36,15 +36,24 @@
 
 <body id="content">
 <div class="footerFixed">
+ 
+  
   <header>
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
-      <a class="navbar-brand font-weight-bold ml-5 beauty" href="/">CBT APP</a>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light" id="nav1">
+      <!-- <a class="navbar-brand font-weight-bold ml-5 beauty" href="/" id="sam">CBT APP</a> -->
+      <a class="navbar-brand font-weight-bold ml-5" href="/" id="sam">CBT APP</a>
+      
       <!-- 横幅が狭い時に出るハンバーガーボタン -->
-      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
+      <button type="button" 
+              class="navbar-toggler" 
+              data-toggle="collapse" 
+              data-target="#Navber" 
+              aria-controls="Navber" 
+              aria-expanded="false" 
+              aria-label="レスポンシブ・ナビゲーションバー">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <div class="collapse navbar-collapse" id="nav-bar">
+      <div class="collapse navbar-collapse" id="Navber">
         <ul class="navbar-nav ml-auto">
 
           @if(Auth::check())
@@ -119,6 +128,7 @@
       </div>
     </nav>
   </header>
+
   <!-- フラッシュメッセージ -->
   @if(session('flash_message'))
     <div class="d-block mx-auto img-fluid w-50 alert alert-success justify-content-center col-5" id="flash">
@@ -149,24 +159,26 @@
   <script src="{{ mix('/js/main.js') }}"></script>
   <script src="{{ mix('/js/validation.js') }}"></script>
   <script src="{{ mix('/js/modal.js') }}"></script>
-  <script type="text/javascript" src="{{ asset('js/vanilla-tilt.js') }}"></script>
+  <!-- <script type="text/javascript" src="{{ asset('js/vanilla-tilt.js') }}"></script> -->
 
   <script>
-    var windowWidth = $(window).width();
-    var windowSm = 640;
-    console.log(windowWidth);
-    if(windowWidth > windowSm) {
-      VanillaTilt.init(document.querySelector(".welcomeglasscard"), {
-      max: 2,
-      speed: 1.,
-      glare: true,
-      "max-glare": 0.5,    
-    });
-    VanillaTilt.init(document.querySelector(".glasscard"), {
-      max: 0,
-      speed: 0.1
-    });
-    } 
+    // var windowWidth = $(window).width();
+    // var windowSm = 640;
+    // console.log(windowWidth);
+    // if(windowWidth > windowSm) {
+    //   VanillaTilt.init(document.querySelector(".welcomeglasscard"), {
+    //   max: 2,
+    //   speed: 1.,
+    //   glare: true,
+    //   "max-glare": 0.5
+    // });
+
+  
+    // VanillaTilt.init(document.querySelector(".glasscard"), {
+    //   max: 0,
+    //   speed: 0.1
+    // });
+    //  } 
 </script>
   <!-- JQuery -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -194,6 +206,16 @@
   <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
   
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ 
+  <script>
+    $(function() {
+    $('.Toggle').click(function() {
+        $(this).toggleClass('active');
+      $('.menu').toggleClass('open');
+      });
+    });
+  </script>
 
   <script>
     window.onload = function() {
