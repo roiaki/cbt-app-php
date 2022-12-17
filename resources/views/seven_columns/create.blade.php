@@ -22,7 +22,7 @@
       <input type="hidden" name="threecol_id" value="{{ $three_column->id }}">
       <input type="hidden" name="event_id" value="{{ $three_column->event_id }}">
       
-      <div id="read_only_flame">
+      <div id="read_only_frame">
         <div class="form-group">
           <label for="title"><h5>{{ __('sevencolumn.1-1_title') }}</h5></label>
           <!-- idはグローバル属性であり、HTML内の全ての要素に適用される。
@@ -82,7 +82,7 @@
       </div>
 
       <!-- 自動思考を裏付ける根拠 -->
-      <div class="form-group mt-5" id="input_flame">
+      <div class="form-group mt-5" id="input_frame">
         <label for="basis_thinking"><h5>{{ __('sevencolumn.4_title') }}</h5></label>
         <p class="alert alert-success" role="alert">
           {{ __('sevencolumn.4_sentence') }}
@@ -109,7 +109,7 @@
       <!-- /自動思考を裏付ける根拠 -->
 
       <!-- 反証 -->
-      <div class="form-group mt-5" id="input_flame">
+      <div class="form-group mt-5" id="input_frame">
         <label for="opposite_fact"><h5>{{ __('sevencolumn.5_title') }}</h5></label>
         <p class="alert alert-success" role="alert">
           {{ __('sevencolumn.5_sentence') }}
@@ -136,7 +136,7 @@
       <!-- /反証 -->
 
       <!-- 適応的思考 -->
-      <div class="form-group mt-5" id="input_flame">
+      <div class="form-group mt-5" id="input_frame">
         <label for="new_thinking"><h5>{{ __('sevencolumn.6_title') }}</h5></label>
         <p class="alert alert-success" role="alert">
         {{ __('sevencolumn.6_sentence') }}
@@ -163,7 +163,7 @@
       <!-- /適応的思考 -->
 
       <!-- 感情の変化-->
-      <div class="form-group mt-5" id="input_flame">
+      <div class="form-group mt-5" id="input_frame">
         <label for="new_emotion"><h5>{{ __('sevencolumn.7_title') }}</h5></label>
         <p class="alert alert-success" role="alert">
         {{ __('sevencolumn.7_sentence') }}
