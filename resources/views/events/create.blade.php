@@ -18,7 +18,7 @@
             onsubmit="return eventValidation(locale);"
           >
             @csrf
-            <div class="form-group" id="auth_frame">
+            <div class="form-group" id="input_frame">
               <!-- タイトル -->
               <label for="eventTitle"><h5>{{ __('event.create_title') }}</h5></label>
               <input 
@@ -46,7 +46,7 @@
               <!-- /バリデーションエラー表示 -->
             </div>
 
-            <div class="form-group" id="auth_frame">
+            <div class="form-group" id="input_frame">
               <!-- 内容 -->
               <label for="eventContent"><h5>{{ __('event.create_contents') }}</h5></label>
               <textarea 
