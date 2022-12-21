@@ -3,7 +3,11 @@
 <head>
   <meta charset="utf-8">
   <title>
-    @yield('title')
+    @hasSection('title')
+      @yield('title')
+    @else
+      {{ config('app.name') }}
+    @endif
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- CSRF Token -->
@@ -19,7 +23,7 @@
   <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
 
   <!-- Vue.js を読み込む -->
-  <!--<script src="https://unpkg.com/vue@next"></script>-->
+  <!-- <script src="https://unpkg.com/vue@next"></script> -->
   
   <!-- 開発バージョン、便利なコンソールの警告が含まれています -->
   <!--<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>-->
@@ -38,9 +42,9 @@
 
 <body id="content">
   <div class="footerFixed">
-    <header>
-      @include('navs.nav')
-    </header>
+  <header>
+    @include('navs.nav')
+  </header>
 
   <!-- フラッシュメッセージ -->
   @if(session('flash_message'))
@@ -67,49 +71,31 @@
 
 
 </div>
-  <!--  -->
-  <script src="{{ mix('/js/app.js') }}"></script>
-  <script src="{{ mix('/js/main.js') }}"></script>
-  <script src="{{ mix('/js/validation.js') }}"></script>
-  <!-- <script src="{{ mix('/js/modal.js') }}"></script> -->
-  <!-- <script type="text/javascript" src="{{ asset('js/vanilla-tilt.js') }}"></script> -->
-
-  <script>
-    $(function() {
-    $('.Toggle').click(function() {
-        $(this).toggleClass('active');
-      $('.menu').toggleClass('open');
-      });
-    });
-  </script>
-
-  <script>
-    window.onload = function() {
-      $('#SampleModal').on('shown.bs.modal', function (event) {
-          var button = $(event.relatedTarget);//モーダルを呼び出すときに使われたボタンを取得
-          var title = button.data('title');//data-titleの値を取得
-          var url = button.data('url');//data-urlの値を取得
-          var modal = $(this);//モーダルを取得
-
-          //Ajaxの処理はここに
-          //modal-bodyのpタグにtextメソッド内を表示
-          modal.find('.modal-body p').eq(0).text("本当に"+title+"を削除しますか?");
-          //formタグのaction属性にurlのデータ渡す
-          modal.find('form').attr('action',url);
-      });
-    }
-  </script>
-   <!-- Scripts -->
-   <script src="{{ mix('js/app.js') }}"></script>
-    <!-- JQuery -->
-    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
-    </script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- @check kore-->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  <!-- MDB core JavaScript -->
+  <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/js/mdb.min.js"></script> -->
   <!-- fontawesome -->
   <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS, then Font Awesome -->
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script> -->
+  
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <!-- Propper.js読み込み -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script> -->
+  <!-- <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script> -->
+  <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
+ 
 </body>
 </html>

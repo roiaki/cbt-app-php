@@ -1,5 +1,7 @@
 @extends('layouts.top_app')
 
+@section('title', 'CBT APP')
+
 @section('toppage')
 <section class="first">
   <div class="welcomeglasscard">
