@@ -1,94 +1,93 @@
 @extends('layouts.app')
 
+@section('title', '出来事 作成')
+
 @section('content')
+
 <?php 
   $json_array = json_encode($locale);
 ?>
+
 <script>
 	let locale = <?php echo $json_array; ?>
 </script>
-<div class="d-flex justify-content-center">
+
+<div class="row d-flex justify-content-center">
   <div class="col-sm-7"> 
-    <!-- <div class="row justify-content-center">
-      <div class="col-sm-10">    -->
-        <h3 class="title_head">{{ __('event.create_headtitle') }}</h3>
-          <form 
-            action="{{ route('events.store') }}" 
-            method="post" 
-            onsubmit="return eventValidation(locale);"
-          >
-            @csrf
-            <div class="form-group" id="input_frame">
-              <!-- タイトル -->
-              <label for="eventTitle"><h5>{{ __('event.create_title') }}</h5></label>
-              <input 
-                type="text" 
-                class="form-control" 
-                id="eventTitle" 
-                name="title" 
-                value = "{{ old('title') }}"
-              >
-              <!-- /タイトル-->
+    <h3 class="title_head">{{ __('event.create_headtitle') }}</h3>
+      <form 
+        action="{{ route('events.store') }}" 
+        method="post" 
+        onsubmit="return eventValidation(locale);">
+        @csrf
+        <div class="form-group" id="input_frame">
+          <!-- タイトル -->
+          <label for="eventTitle"><h5>{{ __('event.create_title') }}</h5></label>
+          <input 
+            type="text" 
+            class="form-control" 
+            id="eventTitle" 
+            name="title" 
+            value = "{{ old('title') }}">
 
-              <!-- フロントバリデーションエラーメッセージ -->
-              <div class="err-msg-name01 mt-3"></div>
-              
-              <!-- バリデーションエラー表示 -->
-              @if($errors->has('title'))
-                @foreach($errors->get('title') as $message)
-                  <div class="alert alert-danger mt-3" role="alert">
-                    <ul>
-                      <li class="text-danger">{{ $message }}</li>
-                    </ul>
-                  </div>
-                @endforeach
-              @endif
-              <!-- /バリデーションエラー表示 -->
-            </div>
+          <!-- フロントバリデーションエラーメッセージ -->
+          <div class="err-msg-name01 mt-3"></div>
+          
+          <!-- バリデーションエラー表示 -->
+          @if($errors->has('title'))
+            @foreach($errors->get('title') as $message)
+              <div class="alert alert-danger mt-3" role="alert">
+                <ul>
+                  <li class="text-danger">{{ $message }}</li>
+                </ul>
+              </div>
+            @endforeach
+          @endif
+          <!-- /バリデーションエラー表示 -->
+        </div>
 
-            <div class="form-group" id="input_frame">
-              <!-- 内容 -->
-              <label for="eventContent"><h5>{{ __('event.create_contents') }}</h5></label>
-              <textarea 
-                class="form-control" 
-                id="eventContent" 
-                name="content" 
-                cols="90" 
-                rows="7">{{ old('content') }}</textarea>
-              <!-- /内容 -->
+        <div class="form-group" id="input_frame">
+          <!-- 内容 -->
+          <label for="eventContent"><h5>{{ __('event.create_contents') }}</h5></label>
+          <textarea 
+            class="form-control" 
+            id="eventContent" 
+            name="content" 
+            cols="90" 
+            rows="7">{{ old('content') }}</textarea>
 
-              <!-- フロントバリデーションエラーメッセージ -->
-              <div class="err-msg-name02 mt-3"></div>
+          <!-- フロントバリデーションエラーメッセージ -->
+          <div class="err-msg-name02 mt-3"></div>
 
-              <!-- バリデーションエラー表示 -->
-              @if($errors->has('content'))
-                @foreach($errors->get('content') as $message)
-                  <div class="alert alert-danger mt-3" role="alert">
-                    <ul>
-                      <li class="text-danger">{{ $message }}</li>
-                    </ul>
-                  </div>
-                @endforeach
-              @endif
-              <!-- /バリデーションエラー表示 -->
-            </div>
-            
-            <input 
-              type="submit" 
-              id="eventSubmit" 
-              value="{{ __('event.create_button') }}" 
-              class="btn btn-primary btn-lg"
-            > 
-            
-            <div class="buttons">
-              <button 
-                type="button" 
-                class="btn btn-secondary btn-lg" 
-                onclick="history.back(-1)">{{ __('event.back')}}
-              </button>
-            </div>
-            
-          </form>
+          <!-- バリデーションエラー表示 -->
+          @if($errors->has('content'))
+            @foreach($errors->get('content') as $message)
+              <div class="alert alert-danger mt-3" role="alert">
+                <ul>
+                  <li class="text-danger">{{ $message }}</li>
+                </ul>
+              </div>
+            @endforeach
+          @endif
+          <!-- /バリデーションエラー表示 -->
+        </div>
+        
+        <input 
+          type="submit" 
+          id="eventSubmit" 
+          value="{{ __('event.create_button') }}" 
+          class="btn btn-primary btn-lg"
+        > 
+        
+        <div class="buttons">
+          <button 
+            type="button" 
+            class="btn btn-secondary btn-lg" 
+            onclick="history.back(-1)">{{ __('event.back')}}
+          </button>
+        </div>
+        
+      </form>
   </div>
 </div>
 @endsection

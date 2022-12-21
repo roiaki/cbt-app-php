@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', '3コラム詳細')
+
 @section('content')
 <div class="row justify-content-center">
   <div class="col-sm-7">

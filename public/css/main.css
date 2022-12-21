@@ -262,7 +262,7 @@ h1.app_title {
 } 
 
 body#content {
-    background-color:#f0f0f0 !important;
+    background-color:#f3f3f3 !important;
     align-items: center;
     min-height: 100vh;
     /*background: #356f4a;*/
@@ -455,12 +455,11 @@ table tr:last-child td:last-child {
 #input_frame {
     padding: 30px;
     border-radius: 10px;
-    background-color: #fdfdfd;
+    background-color: #ffffff;
     border: 0.5px #dadce0;
     border-style: solid;
     overflow: hidden;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    
 }
 
 #read_only_frame {

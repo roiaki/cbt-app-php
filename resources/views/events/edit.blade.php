@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', '出来事 編集')
+
 @section('content')
 <?php
   $locale = App::currentLocale();

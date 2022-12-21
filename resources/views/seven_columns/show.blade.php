@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', '7コラム詳細')
+
 @section('content')
 
 <!-- ここにページ毎のコンテンツを書く -->

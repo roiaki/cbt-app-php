@@ -10,10 +10,9 @@ window.confirmDelete = function () {
     return false;
   }
 }
-
 /**
- * ログイン画面で送信ボタンが押された時、問題がなければ送信する 
- */ 
+ * ログイン画面で送信ボタンが押された時、問題がなければ送信する
+ */
 window.checkLogin = function() {
   let errCount = 0;
 
@@ -26,7 +25,6 @@ window.checkLogin = function() {
     return true;
   }
 }
-
 /**
  * ログイン画面のメールアドレスのバリデーションをします
  * 

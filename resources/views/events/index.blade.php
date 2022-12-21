@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
+@section('title', '出来事一覧')
+
 @section('content')
 
-<!-- <div class="glasscard row justify-content-center"> -->
 <div class="d-flex justify-content-center">
   <div class="col-sm-8">
 
@@ -61,15 +62,13 @@
               </div>
               <!-- dropdown -->
 
-              <!-- modal button-->
-              <!-- <a class="btn btn-outline-danger" data-toggle="modal" data-target="#modal-delete-{{$event->id}}" data-title="" data-url="" > 削除 </a> -->
-
             @endif
           </div>
+
           <a class="text-dark" href="{{ route('events.show', $event->id) }}">
             <div class="card-body pt-0">
               <h3 class="h4 card-title">
-                  {{ $event->title }}
+                {{ $event->title }}
               </h3>
               <div class="card-text">
                 @if (mb_strlen($event->content) > 40)
@@ -84,15 +83,19 @@
       </div>
 
       <!-- modal ok -->
-      <div style="z-index: 1500" class="modal fade" id="modal-delete-{{$event->id}}" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-        
+      <div style="z-index: 1500" 
+           class="modal fade" 
+           id="modal-delete-{{$event->id}}" 
+           tabindex="-1" role="dialog" 
+           aria-labelledby="basicModal" 
+           aria-hidden="true">
         <form role="form" class="form-inline" method="post" action="{{ route('events.destroy', ['event' => $event->id] ) }}">
           @csrf
           @method('DELETE')
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">削除確認 koko</h4>
+                <h4 class="modal-title" id="myModalLabel">削除確認</h4>
               </div>
               <div class="modal-body">
                 <p></p>
@@ -141,6 +144,5 @@
     </div>
   </form>
 </div>
-
 
 @endsection

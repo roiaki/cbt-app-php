@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
+@section('title', '3コラム一覧')
+
 @section('content')
+
 <div class="row justify-content-center">
   <div class="col-sm-8 mb-5">
     <h3 class="title_head">{{ __('threecolumn.three_title') }}</h3>

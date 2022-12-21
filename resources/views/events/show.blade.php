@@ -1,12 +1,14 @@
 @extends('layouts.app')
 
+@section('title', '出来事詳細')
+
 @section('content')
 
 <div class="row justify-content-center">
   <div class="col-sm-8">
     <h3 class="title_head">{{ __('event.event_detail_head') }}</h3>
 
-    <table class="" id="">
+    <table>
       <tr>
         <th>{{ __('event.event_id') }}</th>
         <th>{{ __('event.created_day') }}</th>
@@ -17,7 +19,6 @@
         <td>{{ date( 'Y/n/d H:i', strtotime($event->created_at) ) }}</td>
         <td>{{ date( 'Y/n/d H:i', strtotime($event->updated_at) ) }}</td>
       </tr>
-
     </table>
 
     <table>
