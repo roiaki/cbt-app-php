@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', '7コラム一覧')
+
 @section('content')
 
 <div class="row justify-content-center">
@@ -24,7 +26,7 @@
       </div>
     </div>
     <!--↑↑ 検索フォーム ↑↑-->
-    
+
     <!-- 7コラム一覧カード -->
     @foreach($seven_columns as $sevencolumn)
       <div class="d-flex justify-content-center">
@@ -47,7 +49,8 @@
               <div class="ml-auto card-text">
                 <div class="dropdown">
                   <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-edit"></i>
+                    <!-- <i class="fas fa-edit"></i> -->
+                    編集
                   </a>
                   
                   <div class="dropdown-menu dropdown-menu-right">
@@ -70,6 +73,7 @@
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
+                      <h4 class="modal-title" id="myModalLabel">削除確認</h4>
                       <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
                         <span aria-hidden="true">&times;</span>
                       </button>

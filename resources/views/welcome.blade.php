@@ -1,6 +1,6 @@
 @extends('layouts.top_app')
 
-@section('content1')
+@section('toppage')
 <section class="first">
   <div class="welcomeglasscard">
     <div class="text-center">
@@ -25,44 +25,43 @@
   @endguest
 </section>
 
-  <section class="back01">
-    <div class="d-flex justify-content-center">
-      <div class="col-sm-7">
-        <div class="top_page_card">
-          <h2 class="top_page_title">{{ __('messages.about-cbt-title') }}</h2>
-          <p class="about_text">{{ __('messages.about-cbt-message01') }}</p>
-          <p class="about_text">{{ __('messages.about-cbt-message02') }}</p>
-          <p class="about_text">{{ __('messages.about-cbt-message03') }}</p>
-        </div>
+<section class="back01">
+  <div class="d-flex justify-content-center">
+    <div class="col-sm-7">
+      <div class="top_page_card">
+        <h2 class="top_page_title">{{ __('messages.about-cbt-title') }}</h2>
+        <p class="about_text">{{ __('messages.about-cbt-message01') }}</p>
+        <p class="about_text">{{ __('messages.about-cbt-message02') }}</p>
+        <p class="about_text">{{ __('messages.about-cbt-message03') }}</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="back02">
-    <div class="d-flex justify-content-center">
-      <div class="col-sm-7">
-        <div class="top_page_card">
-          <h2 class="top_page_title">{{ __('messages.cognitive_distortion_title') }}</h2>
-          <p class="about_text">{{ __('messages.cognitive_distortion_description') }}</p>
-        </div>
-        <div class="top_page_card">
-          <h2 class="top_page_title">{{ __('messages.cognitive_distortion_cause_title') }}</h2>
-          <p class="about_text">{{ __('messages.cognitive_distortion_cause') }}</p>
-        </div>
+<section class="back02">
+  <div class="d-flex justify-content-center">
+    <div class="col-sm-7">
+      <div class="top_page_card">
+        <h2 class="top_page_title">{{ __('messages.cognitive_distortion_title') }}</h2>
+        <p class="about_text">{{ __('messages.cognitive_distortion_description') }}</p>
+      </div>
+      <div class="top_page_card">
+        <h2 class="top_page_title">{{ __('messages.cognitive_distortion_cause_title') }}</h2>
+        <p class="about_text">{{ __('messages.cognitive_distortion_cause') }}</p>
       </div>
     </div>
-  </section>
-    
-  <section class="back01">
-    <div class="d-flex justify-content-center">
-      <div class="col-sm-7">
-        <div class="top_page_card">
-          <h2 class="top_page_title">{{ __('messages.about-thisapp-title') }}</h2>
-          <p class="about_text">{{ __('messages.about-thisapp-message') }}</p>
-        </div>
+  </div>
+</section>
+  
+<section class="back01">
+  <div class="d-flex justify-content-center">
+    <div class="col-sm-7">
+      <div class="top_page_card">
+        <h2 class="top_page_title">{{ __('messages.about-thisapp-title') }}</h2>
+        <p class="about_text">{{ __('messages.about-thisapp-message') }}</p>
       </div>
     </div>
-  </section>
-  
-  
+  </div>
+</section>
+
 @endsection

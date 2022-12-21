@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', '解決策作成')
+
 @section('content')
 
 <div class="glasscard row justify-content-center">
