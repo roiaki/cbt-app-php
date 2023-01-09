@@ -181,8 +181,8 @@ class Solution extends Model
         } catch (Throwable $e) {
             echo $e->getMessage();
             DB::rollBack();
+        }
     }
-}
 
     
     /**

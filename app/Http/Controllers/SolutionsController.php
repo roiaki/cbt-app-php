@@ -129,8 +129,9 @@ class SolutionsController extends Controller
      */
     public function destroy($id)
     {
-        $solution = Solution::find($id);
-        if(Auth::id() === $solution->user_id) {
+        $trouble = Trouble::find($id);
+        if(Auth::id() === $trouble->user_id) {
+            $solution = new Solution;
             $solution->deleteSolution($id);
         }
         return redirect('/solutions');

@@ -30,6 +30,7 @@
 
     <!-- 解決策一覧カード -->
     @foreach($troubles as $trouble)
+      @if( Auth::id() === $trouble->user_id )
       <div class="d-flex justify-content-center">
         <div class="event_page_card col-12">
           <div class="card-body d-flex flex-row">
@@ -44,57 +45,57 @@
               <div class="font-weight-lighter">{{ date( 'Y n/j H:i', strtotime($trouble->updated_at) ) }}</div>
             </div>
 
-      
-            @if( Auth::id() === $trouble->user_id )
-              <!-- dropdown -->
-              <div class="ml-auto card-text">
-                <div class="dropdown">
-                  <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-edit"></i>
+            <!-- dropdown -->
+            <div class="ml-auto card-text">
+              <div class="dropdown">
+                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-edit"></i>
+                </a>
+                
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-item" href="{{ route('solution.edit', ['param' => $trouble->id]) }}">
+                    <i class="fas fa-pen mr-1"></i>解決策を更新する
                   </a>
-                  
-                  <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="{{ route('solution.edit', ['param' => $trouble->id]) }}">
-                      <i class="fas fa-pen mr-1"></i>解決策を更新する
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" 
-                       data-toggle="modal" 
-                       data-target="#modal-delete-{{ $trouble->id }}">
-                      <i class="fas fa-trash-alt mr-1"></i>を削除する
-                    </a>
-                  </div>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item text-danger" 
+                      data-toggle="modal" 
+                      data-target="#modal-delete-{{ $trouble->id }}">
+                    <i class="fas fa-trash-alt mr-1"></i>を削除する
+                  </a>
                 </div>
               </div>
-              <!-- dropdown -->
-
-              <!-- modal -->
-              <div id="" class="modal fade" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <form method="POST" action="{{ route('solution.destroy', ['param' => $trouble->id]) }}">
-                      @csrf
-                      @method('DELETE')
-                      <div class="modal-body">
-                        を削除します。よろしいですか？
-                      </div>
-                      <div class="modal-footer justify-content-between">
-                        <a class="btn btn-outline-grey" data-dismiss="modal">キャンセル</a>
-                        <button type="submit" class="btn btn-danger">削除する</button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-              <!-- modal -->
-            @endif
-
+            </div>
+            <!-- dropdown -->
           </div>
+
+          <!-- modal -->
+          <div id="modal-delete-{{ $trouble->id }}" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="myModalLabel">削除確認</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form method="POST" action="{{ route('solution.destroy', ['param' => $trouble->id]) }}">
+                  @csrf
+                  @method('DELETE')
+                  <div class="modal-body">
+                    <p>{{ $trouble->created_at }}</p>
+                    <p>{{ $trouble->trouble}}</p>
+                    を削除します。よろしいですか？
+                  </div>
+                  <div class="modal-footer justify-content-between">
+                    <a class="btn btn-info" data-dismiss="modal">キャンセル</a>
+                    <button type="submit" class="btn btn-danger">削除する</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- modal -->
+
           <a class="text-dark" href="{{ route('solution.show', $trouble->id) }}">
             <div class="card-body pt-0">
               <h3 class="h4 card-title">
@@ -111,6 +112,7 @@
           </a>
         </div>
       </div>
+      @endif
     @endforeach
     <!-- 解決策一覧カード -->
 
