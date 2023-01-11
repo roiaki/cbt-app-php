@@ -93,18 +93,18 @@ class Event extends Model
     public function dispIndex(Request $request)
     {   
         $keyword = $request->keyword;
-        $id = Auth::user()->id;
+        $user_id = Auth::user()->id;
       
         if (isset($keyword)) {           
             $events = DB::table('events')
-                ->where('user_id', $id)
+                ->where('user_id', $user_id)
                 ->where(function($query) use($keyword) {
                     $query->where('title', 'like', '%' . $keyword . '%')
                           ->orWhere('content', 'like', '%' . $keyword . '%');
                   })
                   ->orderBy('updated_at', 'desc')
-                  ->paginate(10);
-
+                  ->paginate(5);
+                  
             $data = [
                 'events'  => $events,
                 'keyword' => $keyword

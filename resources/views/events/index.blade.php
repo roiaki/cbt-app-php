@@ -34,7 +34,7 @@
             </a>
             <div>
               <div class="font-weight-bold">
-                {{ $event->user->name }}
+                 <!-- @check event->user->name とすると検索条件によってエラーが出るが原因が分からない　-->
               </div>
               <div class="font-weight-lighter">{{ date( 'Y n/j H:i', strtotime($event->updated_at) ) }}</div>
             </div>

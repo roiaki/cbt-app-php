@@ -34,10 +34,10 @@
           <div class="card-body d-flex flex-row">
             <a href="" class="text-dark">
               <i class="fas fa-user-circle fa-3x mr-1"></i>
-              
             </a>
             <div>
               <div class="font-weight-bold">
+                <!-- @check sevencolumn->user->name とすると検索条件によってエラーが出るが原因が分からない　-->
                 {{ $sevencolumn->user->name }}
               </div>
               <div class="font-weight-lighter">{{ date( 'Y n/j H:i', strtotime($sevencolumn->updated_at) ) }}</div>
