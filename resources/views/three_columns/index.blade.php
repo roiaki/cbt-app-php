@@ -33,6 +33,7 @@
             </a>
             <div>
               <div class="font-weight-bold">
+                <!-- @check theecolumn->user->name とすると検索条件によってエラーが出るが原因が分からない　-->
                 {{ $threecolumn->user->name }}
               </div>
               <div class="font-weight-lighter">{{ date( 'Y n/j H:i', strtotime($threecolumn->updated_at) ) }}</div>
