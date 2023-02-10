@@ -32,7 +32,11 @@
   <!-- 入力ボックスを追加するボタン -->
   <div class="btn-toolbar">
     <div class="btn-group">
-      <button class="btn btn-info" type="button" @click="addInput" v-if="!isTextMax">
+      <button 
+        class="btn btn-info" 
+        type="button" 
+        @click="addInput" 
+        v-if="!isTextMax">
         ＋<span v-text="remainingTextCount"></span>
       </button>
     </div>
