@@ -12,9 +12,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-  <link rel="stylesheet" href="{{asset('css/main.css')}}">
-  <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
+  
+  @if(config('app.env') === 'production')
+    <link rel="stylesheet" href="{{ secure_asset('css/main.css') }}">
+    <link rel="shortcut icon" href="{{ secure_asset('images/favicon.ico') }}">
+  @else
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
+  @endif
 
   <!-- Vue.js を読み込む -->
   <!--<script src="https://unpkg.com/vue@next"></script>-->
