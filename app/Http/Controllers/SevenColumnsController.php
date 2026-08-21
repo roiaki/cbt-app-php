@@ -43,6 +43,10 @@ class SevenColumnsController extends Controller
         $sevencolumn = new SevenColumn;
         $data = $sevencolumn->createSevencolumn($id);
 
+        if(!isset($data)) {
+            return redirect('three_columns');
+        }
+
         return view('seven_columns.create', $data);
     }
 
@@ -52,7 +56,11 @@ class SevenColumnsController extends Controller
     public function store(CreateSevenColumnRequest $request)
     {
         $sevencolumn = new sevencolumn;
-        $sevencolumn->storeSevencolumn($request);
+        $saved = $sevencolumn->storeSevencolumn($request);
+
+        if(!$saved) {
+            return redirect('three_columns');
+        }
 
         return redirect('seven_columns');
     }
@@ -106,7 +114,9 @@ class SevenColumnsController extends Controller
             return redirect('seven_columns');
         }
 
-        $sevencolumn->updateSevencolumn($request, $id);
+        if(Auth::id() === $sevencolumn->user_id) {
+            $sevencolumn->updateSevencolumn($request, $id);
+        }
 
         return redirect('seven_columns');
     }

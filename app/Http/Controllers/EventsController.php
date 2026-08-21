@@ -32,7 +32,6 @@ class EventsController extends Controller
         return view('events.index', $data);
     }
 
-
     /**
      * 出来事の新規作成画面へ遷移
      */
@@ -41,7 +40,6 @@ class EventsController extends Controller
         $locale = App::currentLocale();
         return view('events.create', ['locale' => $locale]);
     }
-
 
     /**
      * 出来事の保存機能
@@ -52,7 +50,6 @@ class EventsController extends Controller
         $event = $Event->storeEvent($request);
         return view('events.show', ['event' => $event]);
     }
-
 
     /**
      * 出来事の詳細画面の表示
@@ -72,7 +69,6 @@ class EventsController extends Controller
         return redirect('/events');
     }
 
-
     /**
      * 出来事の編集画面へ遷移
      */
@@ -90,7 +86,6 @@ class EventsController extends Controller
 
         return redirect('/events');
     }
-
 
     /**
      * 出来事の更新機能
@@ -110,7 +105,6 @@ class EventsController extends Controller
         
         return redirect('/events');
     }
-
 
     /**
      * 出来事の削除機能

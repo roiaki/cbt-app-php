@@ -123,6 +123,10 @@ class SevenColumn extends Model
         $user_id = $user->id;
 
         $three_column = ThreeColumn::where('id', $id)->where('user_id', $user_id)->first();
+        if(!isset($three_column)) {
+            return null;
+        }
+
         $emotions     = Emotion::where('threecolumn_id', $id)->get();
         $event_id     = $three_column->event_id;
 
@@ -144,6 +148,22 @@ class SevenColumn extends Model
      */
     public function storeSevencolumn($request)
     {
+        $three_column = ThreeColumn::where('id', $request->threecol_id)
+            ->where('user_id', Auth::id())
+            ->first();
+
+        if(!isset($three_column) || (int)$three_column->event_id !== (int)$request->event_id) {
+            return false;
+        }
+
+        $event = Event::where('id', $request->event_id)
+            ->where('user_id', Auth::id())
+            ->first();
+
+        if(!isset($event)) {
+            return false;
+        }
+
         DB::transaction(function () use ($request) {
 
             $seven_column = new SevenColumn();
@@ -193,6 +213,8 @@ class SevenColumn extends Model
                 $new_emotion->save();
             }
         }); 
+
+        return true;
     }
 
     /**
@@ -275,17 +297,17 @@ class SevenColumn extends Model
         $sevencolumn_id = $id;
         $new_emotions   = NewEmotion::where('sevencolumn_id', $sevencolumn_id)->get();
 
-        if(isset($request->new_emotion_strength00)) {
+        if(isset($request->new_emotion_strength00) && isset($new_emotions[0])) {
             $new_emotions[0]->new_emotion_strength = $request->new_emotion_strength00;
             $new_emotions[0]->save();
         }
 
-        if(isset($request->new_emotion_strength01)) {
+        if(isset($request->new_emotion_strength01) && isset($new_emotions[1])) {
             $new_emotions[1]->new_emotion_strength = $request->new_emotion_strength01;
             $new_emotions[1]->save();
         }
 
-        if(isset($request->new_emotion_strength02)) {
+        if(isset($request->new_emotion_strength02) && isset($new_emotions[2])) {
             $new_emotions[2]->new_emotion_strength = $request->new_emotion_strength02;
             $new_emotions[2]->save();
         }
