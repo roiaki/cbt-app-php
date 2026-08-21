@@ -11,9 +11,9 @@ const Manifest = require('laravel-mix/src/Manifest');
  | file for the application as well as bundling up all the JS files.
  |
  */
- mix.js('resources/js/app.js', 'public/js')
+mix.js('resources/js/app.js', 'public/js')
   .js('resources/js/main.js', 'public/js')
   .js('resources/js/validation.js', 'public/js')
   .js('resources/js/modal.js', 'public/js')
-  .postCss('resources/css/app.css', 'public/css', [
- ]).vue();
+  .sass('resources/sass/app.scss', 'public/css')
+  .vue();
