@@ -14,9 +14,11 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   
   @if(config('app.env') === 'production')
-    <link rel="stylesheet" href="{{ secure_asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="shortcut icon" href="{{ secure_asset('images/favicon.ico') }}">
   @else
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
   @endif
@@ -68,6 +70,7 @@
   <script src="{{ mix('/js/app.js') }}"></script>
   <script src="{{ mix('/js/main.js') }}"></script>
   <script src="{{ mix('/js/validation.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
   <script src="{{ mix('/js/modal.js') }}"></script>
   <script type="text/javascript" src="{{ asset('js/vanilla-tilt.js') }}"></script>
 
@@ -95,7 +98,6 @@
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script> -->
   <!-- <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script> -->
   <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
   
   <!-- vanillaの読み込み順でヘッダー動作に影響がある-->
   {{--  --}}
