@@ -24,11 +24,11 @@
   
   @if(config('app.env') === 'production')
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="/css/main.css">
     <link rel="shortcut icon" href="{{ secure_asset('images/favicon.ico') }}">
   @else
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="/css/main.css">
     <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
   @endif
 
