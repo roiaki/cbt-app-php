@@ -23,9 +23,11 @@
   <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}"> --}}
   
   @if(config('app.env') === 'production')
-    <link rel="stylesheet" href="{{ secure_asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="shortcut icon" href="{{ secure_asset('images/favicon.ico') }}">
   @else
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
   @endif
@@ -82,6 +84,7 @@
   <script src="{{ mix('/js/app.js') }}"></script>
   <script src="{{ mix('/js/main.js') }}"></script>
   <script src="{{ mix('/js/validation.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
   <script src="{{ mix('/js/modal.js') }}"></script>
 
   <!-- fontawesome -->
