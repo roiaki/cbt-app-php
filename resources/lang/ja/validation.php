@@ -31,6 +31,7 @@ return [
     ],
     'boolean' => ':attributeはtrueかfalseにしてください。',
     'confirmed' => ':attributeが確認用と一致しません。',
+    'current_password' => '現在のパスワードが正しくありません。',
     'date' => ':attributeを正しい日付で入力してください。',
     'date_equals' => ':attributeを:dateと一致するよう入力してください。',
     'date_format' => ':attributeの書式を:formatに沿って入力してください。',
@@ -148,6 +149,7 @@ return [
     'attributes' => [
         'name'                 => '名前',
         'email'                => 'メールアドレス',
+        'current_password'     => '現在のパスワード',
         'password'             => 'パスワード',
         'title'                => 'タイトル',
         'content'              => '内容',

@@ -18,15 +18,24 @@
             @method('PUT')
             <input type="hidden" name="userId" value="{{ $user->id }}">
             <table class="table">
-<!--             
-              <th>以前のパスワード</th>
-              <td>
-                <input 
-                  type="password"
-                  id="oldpassword"
-                  class="form-control"
-                  name="oldpassword">
-              </td> -->
+              <tr>
+                <th class="col-3 profile">現在のパスワード</th>
+                <td class="col-7">
+                  <input
+                    type="password"
+                    id="current_password"
+                    class="form-control @error('current_password') is-invalid @enderror"
+                    name="current_password">
+
+                  @error('current_password')
+                    <div class="alert alert-danger mt-3" role="alert">
+                      <ul>
+                        <li class="text-danger">{{ $message }}</li>
+                      </ul>
+                    </div>
+                  @enderror
+                </td>
+              </tr>
               
               <tr>
                 <th class="col-3 profile">新しいパスワード</th>
@@ -34,21 +43,29 @@
                   <input 
                     type="password"
                     id="password"
-                    class="form-control"
+                    class="form-control @error('password') is-invalid @enderror"
                     name="password"> 
+
+                  @error('password')
+                    <div class="alert alert-danger mt-3" role="alert">
+                      <ul>
+                        <li class="text-danger">{{ $message }}</li>
+                      </ul>
+                    </div>
+                  @enderror
                 </td>
               </tr>
            
-              <!-- <tr>
+              <tr>
                 <th>新しいパスワードをもう一度</th>
                 <td>
                   <input 
                     type="password"
-                    id="confirmPassword"
+                    id="password_confirmation"
                     class="form-control"
-                    name="confirmPassword">
+                    name="password_confirmation">
                 </td>
-              </tr> -->
+              </tr>
               
             </table>
             
@@ -59,4 +76,3 @@
   </div>
 
 @endsection
-
