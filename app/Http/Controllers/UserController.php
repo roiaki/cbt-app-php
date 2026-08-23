@@ -9,6 +9,7 @@ use Laravel\Ui\Presets\React;
 
 use App\Http\Requests\UpdateNameRequest;
 use App\Http\Requests\UpdateEmailRequest;
+use App\Http\Requests\UpdatePasswordRequest;
 
 class UserController extends Controller
 {
@@ -148,7 +149,7 @@ class UserController extends Controller
     /**
      * パスワード更新処理
      */
-    public function passwordUpdate(Request $request) {
+    public function passwordUpdate(UpdatePasswordRequest $request) {
         $userId = (int)$request->userId;
         $user   = User::find(Auth::id());
         if($user->id === $userId) {
